@@ -18,34 +18,39 @@ import '../../assets/css/default.css';
 import {NavLink} from "react-router-dom";
 
 
+class PublicApp extends React.Component {
 
-const PublicApp = () => (
-    <div id={'wrap'}>
+    render() {
 
-        {/* Header */}
-        <header className="header">
-            <div className="sticky">
-                <div className="container">
-                    <div className="logo"><a href="index.html">
-                        <img src="/assets/images/logo.png" alt={""}/></a></div>
-                    {/* Nav */}
-                    <nav>
-                        <ul id="ownmenu" className="ownmenu">
-                            <li className="active">
-                                <NavLink to={'/'}>Home</NavLink>
-                            </li>
+        return (
+            <div id={'wrap'}>
 
-                        </ul>
-                    </nav>
-                </div>
+
+                {/* Header */}
+                <header className="header">
+                    <div className="sticky">
+                        <div className="container">
+                            <div className="logo"><a href="index.html">
+                                <img src="/assets/images/logo.png" alt={""}/></a></div>
+                            {/* Nav */}
+                            <nav>
+                                <ul id="ownmenu" className="ownmenu">
+                                    <li className="active">
+                                        <NavLink to={'/'}>Home</NavLink>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+
+                <Switch>
+
+                    <Route exact path="/" component={HomePage}/>
+                </Switch>
             </div>
-        </header>
-
-        <Switch>
-
-            <Route exact path="/" component={HomePage}/>
-        </Switch>
-    </div>
-);
-
+        )
+    }
+}
 export default PublicApp;
