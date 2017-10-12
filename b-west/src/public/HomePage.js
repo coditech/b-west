@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 const HomePage = () => {
 
@@ -10,249 +11,22 @@ const HomePage = () => {
             <header className="header">
                 <div className="sticky">
                     <div className="container">
-                        <div className="logo"><a href="index.html"><img src="images/logo.png" alt={""}/></a></div>
+                        <div className="logo"><a href="index.html">
+                            <img src="/assets/images/logo.png" alt={""}/></a></div>
                         {/* Nav */}
                         <nav>
                             <ul id="ownmenu" className="ownmenu">
-                                <li className="active"><a href="index.html">HOME</a>
-                                    <ul className="dropdown">
-                                        <li><a href="index.html">Index Defult</a></li>
-                                    </ul>
+                                <li className="active">
+                                    <NavLink to={'/'}>Home</NavLink>
                                 </li>
-                                <li><a href="02-shop-sidebar-right.html">Demos</a>
-                                    {/*======= MEGA MENU =========*/}
-                                    <div className="megamenu full-width">
-                                        <div className="row nav-post">
-                                            <div className="col-sm-3">
-                                                <h6>INTERACTIVE ELEMENTS</h6>
-                                                <hr/>
-                                                <ul>
-                                                    <li><a href="element_accordion.html"> Accordion</a></li>
-                                                    <li><a href="element_buttons.html"> Buttons</a></li>
-                                                    <li><a href="element_call_out.html"> Call Out</a></li>
-                                                    <li><a href="element_counter.html"> Counter</a></li>
-                                                    <li><a href="element_fact.html"> Facts</a></li>
-                                                    <li><a href="element_icons.html">Icons</a></li>
-                                                </ul>
-                                            </div>
-                                            <div className="col-sm-3">
-                                                <h6>COMMON ELEMENTS</h6>
-                                                <hr/>
-                                                <ul>
-                                                    <li><a href="element_our_teams.html"> Our Team</a></li>
-                                                    <li><a href="element_pricing_table.html"> Pricing Table</a></li>
-                                                    <li><a href="element_progress_bar.html"> Progress Bar</a></li>
-                                                    <li><a href="element_testimonials.html"> Testimonials</a></li>
-                                                    <li><a href="element_typography.html"> Typography</a></li>
-                                                    <li><a href="element_work_process.html"> Work Process</a></li>
-                                                </ul>
-                                            </div>
-                                            <div className="col-sm-3">
-                                                <h6>ICON/GRAPHICS</h6>
-                                                <hr/>
-                                                <ul>
-                                                    <li><a href="main_coporate_1.html">Index Coporate</a></li>
-                                                    <li><a href="main_creative_2.html">Index 2</a></li>
-                                                    <li><a href="main_creative_3.html">Index 3</a></li>
-                                                    <li><a href="main_creative_4.html">Index 4</a></li>
-                                                    <li><a href="main_creative_5.html">Index 5</a></li>
-                                                    <li><a href="main_creative_6.html">Index 6</a></li>
-                                                </ul>
-                                            </div>
-                                            <div className="col-sm-3">
-                                                <h6>OTHER</h6>
-                                                <hr/>
-                                                <ul>
-                                                    <li><a href="portfolio_2.html">PORTFOLIO 01 Full 4 Col</a></li>
-                                                    <li><a href="portfolio_3.html">PORTFOLIO 02 MANSORY</a></li>
-                                                    <li><a href="portfolio_4.html">PORTFOLIO 03 </a></li>
-                                                    <li><a href="portfolio_5.html">Portfolio 04</a></li>
-                                                    <li><a href="portfolio_detail_1.html">Portfolio Detail 02</a></li>
-                                                    <li><a href="portfolio_detail_2.html">Portfolio Detail 02</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="index.html">PAGES</a>
-                                    <ul className="dropdown">
-                                        <li><a href="index.html">HOME</a>
-                                            <ul className="dropdown">
-                                                <li><a href="index.html">Index Defult</a></li>
-                                                <li><a href="main_coporate_1.html">Index Coporate</a></li>
-                                                <li><a href="main_creative_2.html">Index Creative 2</a></li>
-                                                <li><a href="main_creative_3.html">Index Creative 3</a></li>
-                                                <li><a href="main_creative_4.html">Index Creative 4</a></li>
-                                                <li><a href="main_creative_4_left_nav.html">Index 4 Left Nav</a></li>
-                                                <li><a href="main_creative_5.html">Index Creative 5</a></li>
-                                                <li><a href="main_creative_6.html">Index Creative 6</a></li>
-                                                <li><a href="main_creative_6_left_nav.html">Index 6 Left Nav</a></li>
-                                                <li><a href="main_shop_1.html">Index Shop 1</a></li>
-                                                <li><a href="main_shop_2.html">Index Shop 2</a></li>
-                                                <li><a href="main_shop_3.html">Index Shop 3</a></li>
-                                                <li><a href="index_loading.html">Index loading Version</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="element_typography.html">Elements</a>
-                                            <ul className="dropdown">
-                                                <li><a href="element_accordion.html"> Accordion</a></li>
-                                                <li><a href="element_buttons.html"> Buttons</a></li>
-                                                <li><a href="element_call_out.html"> Call Out</a></li>
-                                                <li><a href="element_counter.html"> Counter</a></li>
-                                                <li><a href="element_fact.html"> Facts</a></li>
-                                                <li><a href="element_icons.html">Icons</a></li>
-                                                <li><a href="element_our_teams.html"> Our Team</a></li>
-                                                <li><a href="element_pricing_table.html"> Pricing Table</a></li>
-                                                <li><a href="element_progress_bar.html"> Progress Bar</a></li>
-                                                <li><a href="element_testimonials.html"> Testimonials</a></li>
-                                                <li><a href="element_typography.html"> Typography</a></li>
-                                                <li><a href="element_work_process.html"> Work Process</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="about_us_1.html">About</a>
-                                            <ul className="dropdown">
-                                                <li><a href="about_me.html">About Me</a></li>
-                                                <li><a href="about_us_1.html">About US</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="service_1.html">Service</a>
-                                            <ul className="dropdown">
-                                                <li><a href="service_1.html">Service 1</a></li>
-                                                <li><a href="service_2.html">Service 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="shop_full_width.html">Shop</a>
-                                            <ul className="dropdown">
-                                                <li><a href="shop_full_width.html">Shop Full Width</a></li>
-                                                <li><a href="shop_side_bar.html">Shop Sidebar Left</a></li>
-                                                <li><a href="shop_detail.html">Shop Detail</a></li>
-                                                <li><a href="check_out.html">Checkout</a></li>
-                                                <li><a href="your_cart.html">Your Cart</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="portfolio_1.html">PORTFOLIO</a>
-                                            <ul className="dropdown">
-                                                <li><a href="portfolio_2.html">PORTFOLIO 01 Full 4 Col</a></li>
-                                                <li><a href="portfolio_3.html">PORTFOLIO 02 MANSORY</a></li>
-                                                <li><a href="portfolio_4.html">PORTFOLIO 03 </a></li>
-                                                <li><a href="portfolio_5.html">Portfolio 04</a></li>
-                                                <li><a href="portfolio_detail_1.html">Portfolio Detail 02</a></li>
-                                                <li><a href="portfolio_detail_2.html">Portfolio Detail 02</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="blog_mansory.html">Blog</a>
-                                            <ul className="dropdown">
-                                                <li><a href="blog_mansory.html">Blog Mansory</a></li>
-                                                <li><a href="blog_side_bar.html">Blog Side Bar</a></li>
-                                                <li><a href="blog_split_post.html">Blog Split Post</a></li>
-                                                <li><a href="blog_standard.html">Blog Standard</a></li>
-                                                <li><a href="blog_details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="coming_soon_1.html">Coming Soon</a>
-                                            <ul className="dropdown">
-                                                <li><a href="coming_soon_1.html">Coming Soon 1</a></li>
-                                                <li><a href="coming_soon_2.html">Coming Soon 1</a></li>
-                                                <li><a href="coming_soon_3.html">Coming Soon 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact_1.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="shop_full_width.html">Shop</a>
-                                    <ul className="dropdown">
-                                        <li><a href="shop_full_width.html">Shop Full Width</a></li>
-                                        <li><a href="shop_side_bar.html">Shop Sidebar Left</a></li>
-                                        <li><a href="shop_detail.html">Shop Detail</a></li>
-                                        <li><a href="check_out.html">Checkout</a></li>
-                                        <li><a href="your_cart.html">Your Cart</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="portfolio_1.html">PORTFOLIO</a>
-                                    <ul className="dropdown">
-                                        <li><a href="portfolio_2.html">PORTFOLIO 01 Full 4 Col</a></li>
-                                        <li><a href="portfolio_3.html">PORTFOLIO 02 MANSORY</a></li>
-                                        <li><a href="portfolio_4.html">PORTFOLIO 03 </a></li>
-                                        <li><a href="portfolio_5.html">Portfolio 04</a></li>
-                                        <li><a href="portfolio_detail_1.html">Portfolio Detail 02</a></li>
-                                        <li><a href="portfolio_detail_2.html">Portfolio Detail 02</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="blog_mansory.html">Blog</a>
-                                    <ul className="dropdown">
-                                        <li><a href="blog_mansory.html">Blog Mansory</a></li>
-                                        <li><a href="blog_side_bar.html">Blog Side Bar</a></li>
-                                        <li><a href="blog_split_post.html">Blog Split Post</a></li>
-                                        <li><a href="blog_standard.html">Blog Standard</a></li>
-                                        <li><a href="blog_details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact_1.html">CONTACT</a></li>
-                                {/*======= Shopping Cart =========*/}
-                                <li className="shop-cart right"><a href=""><i className="fa fa-shopping-cart"/></a>
-                                    <span className="numb">2</span>
-                                    <ul className="dropdown">
-                                        <li>
-                                            <div className="media">
-                                                <div className="media-left">
-                                                    <div className="cart-img"><a > <img
-                                                        className="media-object img-responsive"
-                                                        src="images/shop/cart-small-img-1.jpg" alt="..."/> </a></div>
-                                                </div>
-                                                <div className="media-body">
-                                                    <h6 className="media-heading">JACQUARD FLORAL COAT</h6>
-                                                    <span
-                                                        className="price font-crimson text-primary font-18px font-italic">129.00 USD</span>
-                                                    <span className="qty">QTY: 01</span></div>
-                                            </div>
-                                        </li>
-                                        <li className="no-margin">
-                                            <div className="media">
-                                                <div className="media-left">
-                                                    <div className="cart-img"><a > <img
-                                                        className="media-object img-responsive"
-                                                        src="images/shop/cart-small-img-2.jpg" alt="..."/> </a></div>
-                                                </div>
-                                                <div className="media-body">
-                                                    <h6 className="media-heading">FLAT SOLE PATENT SANDAL</h6>
-                                                    <span
-                                                        className="price font-crimson text-primary font-18px font-italic">129.00 USD</span>
-                                                    <span className="qty">QTY: 01</span></div>
-                                            </div>
-                                        </li>
-                                        <li className="no-padding no-border no-margin">
-                                            <h5 className="text-center">SUBTOTAL:<span
-                                                className="font-crimson font-italic text-primary"> $258.00</span></h5>
-                                        </li>
-                                        <li className="no-padding no-border no-margin">
-                                            <div className="row">
-                                                <div className="col-xs-12"><a href="#." className="btn btn-small">PROCESS
-                                                    TO CHECKOUT</a></div>
-                                                <div className="col-xs-12"><a href="#." className="btn btn-1 btn-small">VIEW
-                                                    SHOPPING CART</a></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                {/*======= SEARCH ICON =========*/}
-                                <li className="search-nav right"><a href="#."><i className="fa fa-search"/></a>
-                                    <ul className="dropdown">
-                                        <li>
-                                            <form>
-                                                <input type="search" className="form-control"
-                                                       placeholder="Enter Your Keywords..." required/>
-                                                <button type="submit"> SEARCH</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </li>
+
                             </ul>
                         </nav>
                     </div>
                 </div>
             </header>
             {/* End Header */}
-            {/*======= HOME MAIN SLIDER =========*/}
+            {/*======= HOME MAIN SLIDERs =========*/}
             <section className="home-slider">
                 <div className="tp-banner-container">
                     <div className="tp-banner">
@@ -261,15 +35,15 @@ const HomePage = () => {
                             <li data-transition="random" data-slotamount={7} data-masterspeed={300}
                                 data-saveperformance="off">
                                 {/* MAIN IMAGE */}
-                                <img src="images/sliders/2/slide-1.jpg" alt="home-2-slider" data-bgposition="center top"
+                                <img src="assets/images/sliders/2/slide-1.jpg" alt="home-2-slider" data-bgposition="center top"
                                      data-bgfit="cover" data-bgrepeat="no-repeat"/>
                                 {/* LAYERS */}
                                 {/* LAYER NR. 1 */}
                                 <div className="tp-caption sfb" data-x="center" data-hoffset={0} data-y="center"
                                      data-voffset={-140} data-speed={500} data-start={1000}
                                      data-easing="Power3.easeInOut" data-elementdelay="0.1" data-endelementdelay="0.1"
-                                     data-endspeed={300} style={{zIndex: 5}}><img src="images/sliders/2/logo-img.png"
-                                                                                  alt={""}/></div>
+                                     data-endspeed={300} style={{zIndex: 5}}><img src="assets/images/sliders/2/logo-img.png"
+                                                                                  alt/></div>
                                 {/* LAYER NR. 2 */}
                                 <div className="tp-caption mediumtext skewfromright tp-resizeme" data-x="center"
                                      data-hoffset={0} data-y="center" data-voffset={0} data-speed={500}
@@ -292,12 +66,13 @@ const HomePage = () => {
                                      data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none"
                                      data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed={300}
                                      style={{zIndex: 8, maxWidth: 'auto', maxHeight: 'auto', whiteSpace: 'nowrap'}}><a
-                                     className="btn btn-med btn-color">PURCHASES</a></div>
+                                    href="#" className="btn btn-med btn-color">PURCHASES</a></div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </section>
+
             {/* Content */}
             <div id="content">
                 {/* Welcome */}
@@ -346,7 +121,7 @@ const HomePage = () => {
                                         MORE</a></div>
                                 {/* Image */}
                                 <div className="col-md-6"><img className="img-responsive" src="images/intro/intro-5.png"
-                                                               alt={""} /></div>
+                                                               alt={""}/></div>
                             </div>
                         </div>
                         {/* Intro Style 5 */}
@@ -354,7 +129,7 @@ const HomePage = () => {
                             <div className="row">
                                 {/* Image */}
                                 <div className="col-md-6"><img className="img-responsive" src="images/intro/intro-6.png"
-                                                               alt={""} /></div>
+                                                               alt={""}/></div>
                                 <div className="col-md-6">
                                     <div className="heading-block no-margin-bottom margin-top-0"><span
                                         className="margin-bottom-15">A truly multi - concept theme</span>
@@ -378,7 +153,7 @@ const HomePage = () => {
                             {/* Facts */}
                             <div className="col-md-12">
                                 {/* Icon */}
-                                <img src="images/fact/icon-1.png" alt={""} />
+                                <img src="/assets/images/fact/icon-1.png" alt={""}/>
                                 <div className="c-style-7 c-text-white"><span className="number"> <span
                                     className="timer" data-speed={2000} data-refresh-interval={100} data-to={35}
                                     data-from={0}>35</span> </span>
@@ -402,7 +177,8 @@ const HomePage = () => {
                             {/* BLOG POST */}
                             <div className="col-md-4">
                                 <article className="blog-post">
-                                    <div className="post-img"><img src="images/blog/2/blog-1.png" alt={""} /></div>
+                                    <div className="post-img"><img src="/assets/images/blog/2/blog-1.png" alt={""}/>
+                                    </div>
                                     {/* BLOG DETAIL */}
                                     <a href="#." className="tittle-post"> Faster Response Time with Reverse </a> <span
                                     className="post-bt">by <span className="text-color-primary">Natasha</span></span>
@@ -421,7 +197,8 @@ const HomePage = () => {
                             {/* BLOG POST */}
                             <div className="col-md-4">
                                 <article className="blog-post">
-                                    <div className="post-img"><img src="images/blog/2/blog-2.png" alt={""} /></div>
+                                    <div className="post-img"><img src="/assets/images/blog/2/blog-2.png" alt={""}/>
+                                    </div>
                                     {/* BLOG DETAIL */}
                                     <a href="#." className="tittle-post"> Faster Response Time with Reverse </a> <span
                                     className="post-bt">by <span className="text-color-primary">Natasha</span></span>
@@ -440,7 +217,8 @@ const HomePage = () => {
                             {/* BLOG POST */}
                             <div className="col-md-4">
                                 <article className="blog-post">
-                                    <div className="post-img"><img src="images/blog/2/blog-3.png" alt={""} /></div>
+                                    <div className="post-img"><img src="/assets/images/blog/2/blog-3.png" alt={""}/>
+                                    </div>
                                     {/* BLOG DETAIL */}
                                     <a href="#." className="tittle-post"> Faster Response Time with Reverse </a> <span
                                     className="post-bt">by <span className="text-color-primary">Natasha</span></span>
@@ -459,15 +237,7 @@ const HomePage = () => {
                         </div>
                     </div>
                 </section>
-                {/* INTRO STYLE */}
-                <section className="testimonial bg-parallax padding-bottom-100 padding-top-100"
-                         style={{background: 'url(images/intro/intro-7.png) fixed no-repeat'}}>
-                    <div className="container">
-                        <div className="heading-block style-2 light text-center margin-top-100 margin-bottom-100"><span>Doing business like this takes much more effort than doing your own business.</span>
-                            <h2>GET THE VERY BEST FOR YOUR WEB SITE</h2>
-                        </div>
-                    </div>
-                </section>
+
             </div>
             {/* End Content */}
             {/* Footer */}
@@ -488,7 +258,8 @@ const HomePage = () => {
                                                     industry. Lorem Ipsum has been the industry's standard dummy text
                                                     ever since the 1500s, when an unknown printer took a galley of type
                                                     and scrambled it to make a type specimen book.</p>
-                                                <img className="footer-logo" src="images/footer/footer_logo_1.png" alt={""} />
+                                                <img className="footer-logo" src="images/footer/footer_logo_1.png"
+                                                     alt={""}/>
                                             </div>
                                         </div>
                                     </div>
@@ -519,7 +290,8 @@ const HomePage = () => {
                                                     <div className="twitter-content"> Looking for an awesome CREATIVE
                                                         WordPress Theme? Esquise was updated and optimized to run even
                                                         better. Find it here: <a href="http://t.co/0WWEMQEQ48"
-                                                                                 target="_blank" rel="noopener noreferrer" >http://t.co/0WWEMQEQ48</a>
+                                                                                 target="_blank"
+                                                                                 rel="noopener noreferrer">http://t.co/0WWEMQEQ48</a>
                                                     </div>
                                                     <div className="twitter-context"><i className="fa fa-twitter"/><span
                                                         className="twitter-date">01 day ago</span></div>
@@ -527,7 +299,8 @@ const HomePage = () => {
                                                 <div className="twitter-item">
                                                     <div className="twitter-content"> It is a long established fact that
                                                         a reader will be distracted by the readable . Find it here: <a
-                                                            href="http://t.co/0WWEMQEQ48" rel="noopener noreferrer"  target="_blank">http://t.co/0WWEMQEQ48</a>
+                                                            href="http://t.co/0WWEMQEQ48" rel="noopener noreferrer"
+                                                            target="_blank">http://t.co/0WWEMQEQ48</a>
                                                     </div>
                                                     <div className="twitter-context"><i className="fa fa-twitter"/><span
                                                         className="twitter-date">02 days ago</span></div>
@@ -542,22 +315,22 @@ const HomePage = () => {
                                             <h3 className="block-title"><span>Instagram Widget</span></h3>
                                             <ul>
                                                 <li><a href="#.."> <img src="images/footer/footer_instagram_01.png"
-                                                                        alt={""} /> <span className="overlay"><i
+                                                                        alt={""}/> <span className="overlay"><i
                                                     className="fa fa-search"/></span> </a></li>
                                                 <li><a href="#.."> <img src="images/footer/footer_instagram_02.png"
-                                                                        alt={""} /> <span className="overlay"><i
+                                                                        alt={""}/> <span className="overlay"><i
                                                     className="fa fa-search"/></span> </a></li>
                                                 <li><a href="#.."> <img src="images/footer/footer_instagram_03.png"
-                                                                        alt={""} /> <span className="overlay"><i
+                                                                        alt={""}/> <span className="overlay"><i
                                                     className="fa fa-search"/></span> </a></li>
                                                 <li><a href="#.."> <img src="images/footer/footer_instagram_04.png"
-                                                                        alt={""} /> <span className="overlay"><i
+                                                                        alt={""}/> <span className="overlay"><i
                                                     className="fa fa-search"/></span> </a></li>
                                                 <li><a href="#.."> <img src="images/footer/footer_instagram_05.png"
-                                                                        alt={""} /> <span className="overlay"><i
+                                                                        alt={""}/> <span className="overlay"><i
                                                     className="fa fa-search"/></span> </a></li>
                                                 <li><a href="#.."> <img src="images/footer/footer_instagram_06.png"
-                                                                        alt={""} /> <span className="overlay"><i
+                                                                        alt={""}/> <span className="overlay"><i
                                                     className="fa fa-search"/></span> </a></li>
                                             </ul>
                                         </div>
@@ -595,7 +368,7 @@ const HomePage = () => {
             </footer>
             {/* End Footer */}
             {/* GO TO TOP */}
-            <a  className="cd-top"><i className="fa fa-angle-up"/></a>
+            <a className="cd-top"><i className="fa fa-angle-up"/></a>
             {/* GO TO TOP End */}
         </div>
 

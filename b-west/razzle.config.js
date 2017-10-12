@@ -1,4 +1,5 @@
 'use strict';
+var ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 
 module.exports = {
     modify( config, { target, dev }, webpack ) {
@@ -6,7 +7,7 @@ module.exports = {
 
         /**
          * Allow markdown loading
-         */
+         * /
         const markdownLoader = {
             test: /\.md$/,
             use: [
@@ -34,11 +35,24 @@ module.exports = {
             config.module.rules.push(loader)
 
         })
-
+        /**/
         /**
          * Allow for `__filename` and `__dirname` in
          * modules
          */
+
+        // insert modernizr
+        var modernizr_config = dev ? {} : {
+            minify: {
+                output: {
+                    comments: true,
+                    beautify: true
+                }
+            }
+        }
+
+        config.plugins.push(new ModernizrWebpackPlugin(modernizr_config))
+
         config.context = __dirname
         const node_conf ={ __filename: true,
             __dirname: true
