@@ -5,6 +5,19 @@ module.exports = {
     modify( config, { target, dev }, webpack ) {
 
 
+        if(target != 'node'){
+
+            const oldEntry = config.entry.client[config.entry.client.length-1]
+            const adminEntry = `${oldEntry}-admin`
+
+            config.entry.admin = [adminEntry]
+
+            config.output.filename = dev
+                ? 'static/js/[name].js'
+                : 'static/js/[name].[hash:8].js';
+
+        }
+
         /**
          * Allow markdown loading
          * /
