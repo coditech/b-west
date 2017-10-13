@@ -1,11 +1,11 @@
 import React from 'react';
-import Header, {Header2} from "../../components/Header";
 import {STATUS} from "../../commanConfig";
 import {fetchHeaderData} from "../api/index";
 import {About} from "../../components/About";
 import Stories from "../../components/Stories";
 import Store from "../../components/Store";
 import SmallSlider from "../../components/SmallSlider";
+import Header, {Header2, Header3} from "../../components/Header";
 
 
 class HomePage extends React.Component {
@@ -48,6 +48,7 @@ class HomePage extends React.Component {
 
     componentDidMount() {
         const oldState = this.state;
+
         this.setState({...oldState, headerData: {...oldState.headerData, status: STATUS.LOADING}});
         fetchHeaderData()
             .then(headerData => {
@@ -100,7 +101,8 @@ class HomePage extends React.Component {
 
                 {/* End Header */}
                 {/*======= HOME MAIN SLIDERs =========*/}
-                <Header2/>
+                {/*<Header {...this.state.headerData}/>*/}
+                <Header3 {...this.state.headerData}/>
                 {/* Content */}
                 <div id="content">
                     {/* Welcome */}

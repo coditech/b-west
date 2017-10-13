@@ -35,7 +35,7 @@ const Stories = ({ story }) => {
       </div>
       
       </section>
-      <section className={'promo dark'} style={{textAlign: "center;"}}>
+      <section className={'promo dark'} style={{textAlign: "center"}}>
         <div className="container text-center">
          <a href="#." className="btn btn-color btn-med">Read More</a>
         </div>

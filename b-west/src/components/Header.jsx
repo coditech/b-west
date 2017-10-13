@@ -1,10 +1,11 @@
 import React from 'react';
 import {STATUS} from '../commanConfig';
 
-import './Header.css'
+import './Header.css';
 
 const Header = ({status, image, title, subTitle, actionButton}) => {
 
+    console.log('Status ==>>', status);
     if (status === STATUS.LOADING || status === STATUS.NONE) {
 
         return (
@@ -89,14 +90,16 @@ const Header = ({status, image, title, subTitle, actionButton}) => {
 
         )
     }
+    return (<h2>Some error</h2>)
 }
 
-const Header2 = () => {
+const Header2 = ({status, image, title, subTitle, actionButton}) => {
 
-    return (
-        <section className="home-slider">
-            <div className="tp-banner-container">
+    console.log('Status ==>>', status);
+    if (status === STATUS.LOADING || status === STATUS.NONE) {
 
+        return (
+            <section className="home-slider">
                 <header className="hero">
                     <div className="center-content">
                         <h1>An Article Title</h1>
@@ -104,9 +107,43 @@ const Header2 = () => {
                         <a className="button">Some Action Here</a>
                     </div>
                 </header>
+            </section>
+        )
+    }
+
+    if (status === STATUS.READY) {
+        return (
+            <section className="home-slider">
+                <header className="hero">
+                    <div className="center-content">
+                        <h1>An Article Title</h1>
+                        <h3>A longer subtitle but still important</h3>
+                        <a className="button">Some Action Here</a>
+                    </div>
+                </header>
+            </section>
+
+        )
+    }
+    return (<h2>Some error</h2>)
+}
+
+const Header3 = ({status, image, title, subTitle, actionButton}) => {
+    const style = {
+        backgroundImage: 'url("' + image.src + '")'
+    }
+    return (
+
+        <div className="jumbotron hero-technology" style={style}>
+            <div className={'hero-content'}>
+                <h1 className="hero-title">Hero Technology</h1>
+                <p className="hero-subtitle">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus
+                    ac
+                    facilisis in, egestas eget quam.</p>
+                <p><a className="btn btn-primary btn-lg hero-button" role="button" href="#">Learn more</a></p>
             </div>
-        </section>
+        </div>
     )
 }
-export {Header2}
+export {Header2, Header3}
 export default Header;

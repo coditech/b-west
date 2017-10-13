@@ -71,8 +71,6 @@ server
         <script src="/assets/js/vendors/jquery.sticky.js"></script>
         
          <!--SLIDER REVOLUTION 4.x SCRIPTS  -->
-        <script type="text/javascript" src="/assets/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-        <script type="text/javascript" src="/assets/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
         <script src="/assets/js/zap.js"></script>
                 
         <script>
