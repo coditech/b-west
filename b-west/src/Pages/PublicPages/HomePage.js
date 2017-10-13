@@ -64,11 +64,11 @@ class HomePage extends React.Component {
             , subTitle: 'B-West Hon-Kong'
             , content: '<p>Hello world <a></a><p>'
             , imageOne: {
-                src: AboutImage
+                src: '/assets/images/intro/intro-2.png'
                 , alt: 'Image One Logo'
             }
             , imageTwo: {
-                src: AboutImage
+                src: '/assets/images/intro/intro-2.png'
                 , alt: 'Image Two Logo'
             }
         }
@@ -83,36 +83,6 @@ class HomePage extends React.Component {
                 <div id="content">
                     {/* Welcome */}
                     <About {...aboutData}/>
-                    <section className="welcome intro-style-2 padding-top-80  dark-pattern">
-                        <div className="container">
-                            <div className="row">
-                                {/* Intro Text */}
-                                <div className="col-md-5">
-                                    <div className="heading-block no-margin">
-                                        <h2 className="no-margin margin-top-30 text-transform-none">Growth up</h2>
-                                        <h1 className="no-margin margin-bottom-30 ">your business</h1>
-                                        <span className="margin-bottom-10">Welcome The ZAP - Best solution for Creative Website</span>
-                                    </div>
-                                    <hr/>
-                                    <p className="font-crimson">These cases are perfectly simple and easy to
-                                        distinguish. In
-                                        a free hour, when our power of choice is untrammelled and when nothing
-                                        prevents
-                                        our
-                                        being able to do what we like best, every pleasure is to be welcomed and
-                                        every
-                                        pain
-                                        avoided. But in certain circumstances and owing to the claims of duty or the
-                                        obligations of business it will frequently occur that pleasures have to be
-                                        repudiated and annoyances accepted. </p>
-                                </div>
-                                {/* Intro Image */}
-                                <div className="col-md-7 text-center"><a href="#."> <img className="responsive-img"
-                                                                                         src="../../assets/images/intro/intro-2.png"
-                                                                                         alt="Intro "/> </a></div>
-                            </div>
-                        </div>
-                    </section>
                     {/* OUR CORE FEATURES */}
                     <section className="padding-top-80 padding-bottom-80">
                         <div className="container">
