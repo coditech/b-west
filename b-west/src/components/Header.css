@@ -22,8 +22,7 @@ h1.hero-title, h2.hero-title, h3.hero-title {
 
 p.hero-subtitle {
     max-width: 600px;
-    margin: 25px auto auto auto;
-    margin-bottom: 0;
+    margin: 25px auto 0 auto;
     padding: 10px 15px;
     background-color: rgba(0, 0, 0, 0.1);
     color: #fff;
