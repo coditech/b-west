@@ -28,7 +28,7 @@
 }
 .ball {
 	border-radius: 50%;
-	background: #eeb013;
+	background: #b9cf4f;
 	width: 10px;
 	height: 10px;
 	position: absolute;
@@ -163,7 +163,7 @@ header nav .ownmenu ul.dropdown .indicator {
 	-webkit-box-sizing: border-box;
 }
 .ownmenu ul.dropdown li:hover > a {
-	color: #e4a913 !important;
+	color: #b9cf4f !important;
 }
 .ownmenu ul.dropdown li ul.dropdown.left {
 	left: auto;
@@ -686,8 +686,8 @@ html[xmlns] .flexslider .slides {
 	color: #fff;
 }
 .checkbox-warning input[type="checkbox"]:checked + label::before, .checkbox-warning input[type="radio"]:checked + label::before {
-	background-color: #f0ad4e;
-	border-color: #f0ad4e;
+	background-color: #b9cf4f;
+	border-color: #b9cf4f;
 }
 .checkbox-warning input[type="checkbox"]:checked + label::after, .checkbox-warning input[type="radio"]:checked + label::after {
 	color: #fff;
@@ -795,13 +795,13 @@ html[xmlns] .flexslider .slides {
 	background-color: #5bc0de;
 }
 .radio-warning input[type="radio"] + label::after {
-	background-color: #f0ad4e;
+	background-color: #b9cf4f;
 }
 .radio-warning input[type="radio"]:checked + label::before {
-	border-color: #f0ad4e;
+	border-color: #b9cf4f;
 }
 .radio-warning input[type="radio"]:checked + label::after {
-	background-color: #f0ad4e;
+	background-color: #b9cf4f;
 }
 .radio-success input[type="radio"] + label::after {
 	background-color: #5cb85c;
@@ -873,7 +873,7 @@ input[type="checkbox"] .styled:checked + label::after, input[type="radio"] .styl
 	border-radius: 5px;
 }
 .bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active {
-	background: #eeb013;
+	background: #b9cf4f;
 }
 .bx-wrapper .bx-prev {
 }
@@ -1525,7 +1525,7 @@ select.mobile-device {
 	right: 0;
 }
 .cost-price-content .noUi-handle-lower, .cost-price-content .noUi-handle-upper {
-	background-color: #eeb013;
+	background-color: #b9cf4f;
 	border: none;
 	border-radius: 50%;
 }

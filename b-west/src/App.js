@@ -5,6 +5,7 @@ import PublicApp from "./Pages/PublicPages/PublicApp";
 import {LoginPage} from "./Pages/PublicPages/LoginPage";
 import {MenuPage} from "./Pages/PublicPages/MenuPage";
 import AdminApp from "./Pages/AdminPages/AdminApp";
+import './App.css'
 
 const App = () => (
     <Switch>

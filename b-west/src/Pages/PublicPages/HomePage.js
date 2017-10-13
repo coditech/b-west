@@ -110,23 +110,7 @@ class HomePage extends React.Component {
                     <Stories {...passedStory}/>
 
                     {/* Facts */}
-                    <section className="facts style-4 padding-top-90 padding-bottom-90"
-                             style={{background: '#f4f4f4'}}>
-                        <div className="container-fluid">
-                            <div className="row counter">
-                                {/* Facts */}
-                                <div className="col-md-12">
-                                    {/* Icon */}
-                                    <img src="/assets/images/fact/icon-1.png" alt={""}/>
-                                    <div className="c-style-7 c-text-white"><span className="number"> <span
-                                        className="timer" data-speed={2000} data-refresh-interval={100} data-to={35}
-                                        data-from={0}>35</span> </span>
-                                        <h5>Team Member</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+
 
                     {/* Store */}
 
