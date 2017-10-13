@@ -3,8 +3,14 @@ import Header from "../../components/Header";
 import {STATUS} from "../../commanConfig";
 import {fetchHeaderData} from "../api/index";
 import {About} from "../../components/About";
+<<<<<<< HEAD
 import AboutImage from "../../assets/images/intro/intro-5.png";
 import Stories from "../../components/Stories";
+=======
+import Store from "../../components/Store";
+
+import AboutImage from '../../assets/images/intro/intro-5.png'
+>>>>>>> e564b5e3007b395cffefe6d564c0a1f430bd3ed0
 
 class HomePage extends React.Component {
 
@@ -64,11 +70,11 @@ class HomePage extends React.Component {
             , subTitle: 'B-West Hon-Kong'
             , content: '<p>Hello world <a></a><p>'
             , imageOne: {
-                src: AboutImage
+                src: '/assets/images/intro/intro-2.png'
                 , alt: 'Image One Logo'
             }
             , imageTwo: {
-                src: AboutImage
+                src: '/assets/images/intro/intro-2.png'
                 , alt: 'Image Two Logo'
             }
         }
@@ -104,9 +110,70 @@ class HomePage extends React.Component {
                 <div id="content">
                     {/* Welcome */}
                     <About {...aboutData}/>
+<<<<<<< HEAD
                     <Stories {...passedStory}/>
                     
                    
+=======
+                    {/* OUR CORE FEATURES */}
+                    <section className="padding-top-80 padding-bottom-80">
+                        <div className="container">
+                            {/* Intro Style 2 */}
+                            <div className="intro-5 margin-top-20">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="heading-block no-margin-bottom margin-top-100"><span
+                                            className="margin-bottom-15 margin-top-20">We work with passion</span>
+                                            <h2 className="margin-bottom-20 margin-top-1">WE ARE CREATIVE
+                                                AGENCY</h2>
+                                        </div>
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                            accusantium
+                                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
+                                            inventore
+                                            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
+                                            enim
+                                            ipsam
+                                            voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
+                                        <a href="#."
+                                           className="btn btn-large dark-border font-normal margin-top-50 letter-space-1">READ
+                                            MORE</a></div>
+                                    {/* Image */}
+                                    <div className="col-md-6"><img className="img-responsive"
+                                                                   src="images/intro/intro-5.png"
+                                                                   alt={""}/></div>
+                                </div>
+                            </div>
+                            {/* Intro Style 5 */}
+                            <div className="intro-5 margin-top-20">
+                                <div className="row">
+                                    {/* Image */}
+                                    <div className="col-md-6"><img className="img-responsive"
+                                                                   src="images/intro/intro-6.png"
+                                                                   alt={""}/></div>
+                                    <div className="col-md-6">
+                                        <div className="heading-block no-margin-bottom margin-top-0"><span
+                                            className="margin-bottom-15">A truly multi - concept theme</span>
+                                            <h2 className="margin-bottom-20 margin-top-1">THE ZAP - BEST PSD
+                                                TEMPLATE</h2>
+                                        </div>
+                                        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum
+                                            necessitatibus
+                                            saepe
+                                            eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                                            Itaque
+                                            earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
+                                            voluptatibus
+                                            maiores alias consequatur aut perferendis doloribus asperiores
+                                            repellat.</p>
+                                        <a href="#."
+                                           className="btn btn-large dark-border font-normal margin-top-50 letter-space-1">READ
+                                            MORE</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+>>>>>>> e564b5e3007b395cffefe6d564c0a1f430bd3ed0
                     {/* Facts */}
                     <section className="facts style-4 padding-top-90 padding-bottom-90"
                              style={{background: '#f4f4f4'}}>
@@ -125,95 +192,10 @@ class HomePage extends React.Component {
                             </div>
                         </div>
                     </section>
-                    {/* Blog */}
-                    <section className="blog padding-top-80 padding-bottom-80">
-                        {/* TITTLE */}
-                        <div className="container">
-                            {/* MAIN HEADING */}
-                            <div className="heading-block text-center">
-                                <h3>LATEST BLOG</h3>
-                                <hr className="color"/>
-                                <span>Tell your Story</span></div>
-                            {/* BLOG ROW */}
-                            <div className="row">
-                                {/* BLOG POST */}
-                                <div className="col-md-4">
-                                    <article className="blog-post">
-                                        <div className="post-img"><img src="/assets/images/blog/2/blog-1.png"
-                                                                       alt={""}/>
-                                        </div>
-                                        {/* BLOG DETAIL */}
-                                        <a href="#." className="tittle-post"> Faster Response Time with Reverse </a>
-                                        <span
-                                            className="post-bt">by <span
-                                            className="text-color-primary">Natasha</span></span>
-                                        <ul className="post-info">
-                                            <li><i className="fa fa-comments-o"/>97</li>
-                                            <li><i className="fa fa-eye"/>565</li>
-                                            <li><i className="fa fa-bookmark-o"/>Photography</li>
-                                            <li><span className="date font-crimson">27 JAN</span></li>
-                                        </ul>
-                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                            praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                            molestias
-                                            excepturi sint occaecati cupiditate non provident</p>
-                                        <a href="#."
-                                           className="btn gray-border margin-top-20 text-normal">READMORE</a>
-                                    </article>
-                                </div>
-                                {/* BLOG POST */}
-                                <div className="col-md-4">
-                                    <article className="blog-post">
-                                        <div className="post-img"><img src="/assets/images/blog/2/blog-2.png"
-                                                                       alt={""}/>
-                                        </div>
-                                        {/* BLOG DETAIL */}
-                                        <a href="#." className="tittle-post"> Faster Response Time with Reverse </a>
-                                        <span
-                                            className="post-bt">by <span
-                                            className="text-color-primary">Natasha</span></span>
-                                        <ul className="post-info">
-                                            <li><i className="fa fa-comments-o"/>97</li>
-                                            <li><i className="fa fa-eye"/>565</li>
-                                            <li><i className="fa fa-bookmark-o"/>Photography</li>
-                                            <li><span className="date font-crimson">27 JAN</span></li>
-                                        </ul>
-                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                            praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                            molestias
-                                            excepturi sint occaecati cupiditate non provident</p>
-                                        <a href="#."
-                                           className="btn gray-border margin-top-20 text-normal">READMORE</a>
-                                    </article>
-                                </div>
-                                {/* BLOG POST */}
-                                <div className="col-md-4">
-                                    <article className="blog-post">
-                                        <div className="post-img"><img src="/assets/images/blog/2/blog-3.png"
-                                                                       alt={""}/>
-                                        </div>
-                                        {/* BLOG DETAIL */}
-                                        <a href="#." className="tittle-post"> Faster Response Time with Reverse </a>
-                                        <span
-                                            className="post-bt">by <span
-                                            className="text-color-primary">Natasha</span></span>
-                                        <ul className="post-info">
-                                            <li><i className="fa fa-comments-o"/>97</li>
-                                            <li><i className="fa fa-eye"/>565</li>
-                                            <li><i className="fa fa-bookmark-o"/>Photography</li>
-                                            <li><span className="date font-crimson">27 JAN</span></li>
-                                        </ul>
-                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                            praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                            molestias
-                                            excepturi sint occaecati cupiditate non provident</p>
-                                        <a href="#."
-                                           className="btn gray-border margin-top-20 text-normal">READMORE</a>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    
+                    {/* Store */}
+                    <Store />
+                    
 
                 </div>
                 {/* End Content */}
