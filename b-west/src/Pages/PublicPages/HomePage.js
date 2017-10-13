@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import {STATUS} from "../../commanConfig";
 import {fetchHeaderData} from "../api/index";
 import {About} from "../../components/About";
+import Store from "../../components/Store";
 
 import AboutImage from '../../assets/images/intro/intro-5.png'
 
@@ -159,95 +160,10 @@ class HomePage extends React.Component {
                             </div>
                         </div>
                     </section>
-                    {/* Blog */}
-                    <section className="blog padding-top-80 padding-bottom-80">
-                        {/* TITTLE */}
-                        <div className="container">
-                            {/* MAIN HEADING */}
-                            <div className="heading-block text-center">
-                                <h3>LATEST BLOG</h3>
-                                <hr className="color"/>
-                                <span>Tell your Story</span></div>
-                            {/* BLOG ROW */}
-                            <div className="row">
-                                {/* BLOG POST */}
-                                <div className="col-md-4">
-                                    <article className="blog-post">
-                                        <div className="post-img"><img src="/assets/images/blog/2/blog-1.png"
-                                                                       alt={""}/>
-                                        </div>
-                                        {/* BLOG DETAIL */}
-                                        <a href="#." className="tittle-post"> Faster Response Time with Reverse </a>
-                                        <span
-                                            className="post-bt">by <span
-                                            className="text-color-primary">Natasha</span></span>
-                                        <ul className="post-info">
-                                            <li><i className="fa fa-comments-o"/>97</li>
-                                            <li><i className="fa fa-eye"/>565</li>
-                                            <li><i className="fa fa-bookmark-o"/>Photography</li>
-                                            <li><span className="date font-crimson">27 JAN</span></li>
-                                        </ul>
-                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                            praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                            molestias
-                                            excepturi sint occaecati cupiditate non provident</p>
-                                        <a href="#."
-                                           className="btn gray-border margin-top-20 text-normal">READMORE</a>
-                                    </article>
-                                </div>
-                                {/* BLOG POST */}
-                                <div className="col-md-4">
-                                    <article className="blog-post">
-                                        <div className="post-img"><img src="/assets/images/blog/2/blog-2.png"
-                                                                       alt={""}/>
-                                        </div>
-                                        {/* BLOG DETAIL */}
-                                        <a href="#." className="tittle-post"> Faster Response Time with Reverse </a>
-                                        <span
-                                            className="post-bt">by <span
-                                            className="text-color-primary">Natasha</span></span>
-                                        <ul className="post-info">
-                                            <li><i className="fa fa-comments-o"/>97</li>
-                                            <li><i className="fa fa-eye"/>565</li>
-                                            <li><i className="fa fa-bookmark-o"/>Photography</li>
-                                            <li><span className="date font-crimson">27 JAN</span></li>
-                                        </ul>
-                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                            praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                            molestias
-                                            excepturi sint occaecati cupiditate non provident</p>
-                                        <a href="#."
-                                           className="btn gray-border margin-top-20 text-normal">READMORE</a>
-                                    </article>
-                                </div>
-                                {/* BLOG POST */}
-                                <div className="col-md-4">
-                                    <article className="blog-post">
-                                        <div className="post-img"><img src="/assets/images/blog/2/blog-3.png"
-                                                                       alt={""}/>
-                                        </div>
-                                        {/* BLOG DETAIL */}
-                                        <a href="#." className="tittle-post"> Faster Response Time with Reverse </a>
-                                        <span
-                                            className="post-bt">by <span
-                                            className="text-color-primary">Natasha</span></span>
-                                        <ul className="post-info">
-                                            <li><i className="fa fa-comments-o"/>97</li>
-                                            <li><i className="fa fa-eye"/>565</li>
-                                            <li><i className="fa fa-bookmark-o"/>Photography</li>
-                                            <li><span className="date font-crimson">27 JAN</span></li>
-                                        </ul>
-                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                            praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                            molestias
-                                            excepturi sint occaecati cupiditate non provident</p>
-                                        <a href="#."
-                                           className="btn gray-border margin-top-20 text-normal">READMORE</a>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    
+                    {/* Store */}
+                    <Store />
+                    
 
                 </div>
                 {/* End Content */}
