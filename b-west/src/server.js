@@ -76,16 +76,18 @@ server
         <script src="/assets/js/zap.js"></script>
                 
         <script>
-        /*-----------------------------------------------------------------------------------*/
-        /*    Parallax
-        /*-----------------------------------------------------------------------------------*/
-        $('.images-slider').flexslider({
-          animation: "fade",
-          controlNav: "thumbnails"
-        });
-        
-        
-        </script>
+       /*-----------------------------------------------------------------------------------*/
+       /*    Parallax
+       /*-----------------------------------------------------------------------------------*/
+       
+       var makeSlider = () => $('.images-slider').flexslider({
+         animation: "fade",
+         controlNav: "thumbnails"
+       });
+       
+       // setTimeout(makeSlider,1000)
+       
+       </script>
     </body>
 </html>`
             );

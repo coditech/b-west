@@ -5,6 +5,7 @@ import {fetchHeaderData} from "../api/index";
 import {About} from "../../components/About";
 import Stories from "../../components/Stories";
 import Store from "../../components/Store";
+import SmallSlider from "../../components/SmallSlider";
 
 
 class HomePage extends React.Component {
@@ -126,7 +127,7 @@ class HomePage extends React.Component {
                     </section>
 
                     {/* Store */}
-                    {/*<!-- Blog -->*/}
+
                     <section className="shop padding-top-80 padding-bottom-80">
                         {/*<!-- TITTLE -->*/}
                         <div className="container">
@@ -140,6 +141,8 @@ class HomePage extends React.Component {
                             <Store/>
                         </div>
                     </section>
+                    {/* Small Slider*/}
+                    <SmallSlider/>
 
 
                 </div>
