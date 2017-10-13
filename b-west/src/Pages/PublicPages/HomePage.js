@@ -4,6 +4,7 @@ import {STATUS} from "../../commanConfig";
 import {fetchHeaderData} from "../api/index";
 import {About} from "../../components/About";
 import Store from "../../components/Store";
+import SmallSlider from "../../components/SmallSlider";
 
 import AboutImage from '../../assets/images/intro/intro-5.png'
 
@@ -190,10 +191,12 @@ class HomePage extends React.Component {
                             </div>
                         </div>
                     </section>
-                    
+
                     {/* Store */}
                     <Store />
-                    
+                    {/* Small Slider*/}
+                    <SmallSlider />
+
 
                 </div>
                 {/* End Content */}

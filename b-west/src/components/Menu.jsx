@@ -19,7 +19,7 @@ const dataTest = [
   }
 ];
 
-const Menu = ({menu}) => {
+const Menu = () => {
   return (
     <header className="header">
       <div className="sticky">

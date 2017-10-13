@@ -38,8 +38,8 @@ const Store = () => {
     <div className="container">
       <div className="popurlar_product">
         <ul className="row">
-          {dataTest.map((storeItem, n) => (
-            <li className="col-sm-4">
+          {dataTest.map((storeItem, index) => (
+            <li className="col-sm-4" key={index}>
               <div className="items-in">
                 {storeItem.status ? (
                   <div className="shop-tags">{storeItem.status}</div>

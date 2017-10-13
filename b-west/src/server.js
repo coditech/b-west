@@ -74,6 +74,19 @@ server
         <script type="text/javascript" src="/assets/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
         <script type="text/javascript" src="/assets/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
         <script src="/assets/js/zap.js"></script>
+        <script>
+       /*-----------------------------------------------------------------------------------*/
+       /*    Parallax
+       /*-----------------------------------------------------------------------------------*/
+       
+       var makeSlider = () => $('.images-slider').flexslider({
+         animation: "fade",
+         controlNav: "thumbnails"
+       });
+       
+       // setTimeout(makeSlider,1000)
+       
+       </script>
     </body>
 </html>`
             );
