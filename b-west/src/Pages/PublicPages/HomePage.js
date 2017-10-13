@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from "../../components/Header";
 import {STATUS} from "../commanConfig";
+import {fetchHeaderData} from "../api/index";
 
 
 class HomePage extends React.Component {
@@ -43,22 +44,11 @@ class HomePage extends React.Component {
 
     componentDidMount() {
         const oldState = this.state;
+        const headerData = fetchHeaderData()
         const newState = {
             ...oldState
             , status: STATUS.READY
-            , headerData: {
-                status: STATUS.READY
-                , image: {
-                    src: '../../assets/images/sliders/2/slide-1.jpg',
-                    alt: 'Header Image'
-                }
-                , title: 'Hello world this is a title'
-                , subTitle: 'Hello world this is a subtitle'
-                , actionButton: {
-                    text: 'Hello World'
-                    , actionFunction: this.actionFunctionButton
-                }
-            }
+            , headerData: headerData
         }
         this.setState(newState);
 

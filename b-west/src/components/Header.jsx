@@ -9,7 +9,7 @@ const Header = ({image, title, subTitle, actionButton}) => {
                 <div className="tp-banner">
                     <ul>
                         {/* SLIDE  */}
-                        <li data-transition="fade" data-slotamount={7} data-masterspeed={300}
+                        <li data-transition="fade"
                             data-saveperformance="off">
                             {/* MAIN IMAGE */}
                             <img src={image.src} alt={image.alt}
@@ -18,25 +18,25 @@ const Header = ({image, title, subTitle, actionButton}) => {
                             {/* LAYERS */}
                             {/* LAYER NR. 2 */}
                             <div className="tp-caption mediumtext skewfromright tp-resizeme" data-x="center"
-                                 data-hoffset={0} data-y="center" data-voffset={0} data-speed={500}
-                                 data-start={1400} data-easing="Power3.easeInOut" data-splitin="words"
+                                 data-hoffset={0} data-y="center" data-voffset={0}
+                                 data-easing="Power3.easeInOut" data-splitin="words"
                                  data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
-                                 data-endspeed={300} style={{zIndex: 6, fontSize: 48, color: '#fff'}}>
+                                  style={{zIndex: 6, fontSize: 48, color: '#fff'}}>
                                 {title}
                             </div>
                             {/* LAYER NR. 3 */}
                             <div className="tp-caption font-italic font-crimson skewfromleft tp-resizeme"
-                                 data-x="center" data-hoffset={0} data-y="center" data-voffset={60} data-speed={500}
-                                 data-start={1900} data-easing="Power3.easeInOut" data-splitin="none"
+                                 data-x="center" data-hoffset={0} data-y="center" data-voffset={60}
+                                  data-easing="Power3.easeInOut" data-splitin="none"
                                  data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
-                                 data-endspeed={300} style={{zIndex: 7, color: '#fff', fontSize: 24}}>
+                                 style={{zIndex: 7, color: '#fff', fontSize: 24}}>
                                 {subTitle}
                             </div>
                             {/* LAYER NR. 4 */}
                             <div className="tp-caption sfb tp-resizeme" data-x="center" data-hoffset={0}
-                                 data-y="center" data-voffset={140} data-speed={500} data-start={2300}
+                                 data-y="center" data-voffset={140}
                                  data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none"
-                                 data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed={300}
+                                 data-elementdelay="0.1" data-endelementdelay="0.1"
                                  style={{zIndex: 8, maxWidth: 'auto', maxHeight: 'auto', whiteSpace: 'nowrap'}}><a
                                 className="btn btn-med btn-color"
                                 onClick={(event) => actionButton.actionFunction(event)}>{actionButton.text}</a>

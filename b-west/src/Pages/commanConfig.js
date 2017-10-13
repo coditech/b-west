@@ -5,4 +5,5 @@ const STATUS = {
     ERROR: 3
 };
 
-export {STATUS}
+const websiteUrl = 'http://localhost:3000';
+export {STATUS, websiteUrl}
