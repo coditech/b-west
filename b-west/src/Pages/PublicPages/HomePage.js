@@ -127,7 +127,21 @@ class HomePage extends React.Component {
                     </section>
 
                     {/* Store */}
-                    <Store/>
+                    {/*<!-- Blog -->*/}
+                    <section className="shop padding-top-80 padding-bottom-80">
+                        {/*<!-- TITTLE -->*/}
+                        <div className="container">
+                            {/*<!-- MAIN HEADING -->*/}
+                            <div className="heading-block text-center">
+                                <h3>LATEST PRODUCTS</h3>
+                                <hr className="color"/>
+                                    {/*<span>Tell your Story</span>*/}
+                            </div>
+
+                            <Store/>
+                        </div>
+                    </section>
+
 
 
                 </div>
