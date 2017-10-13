@@ -1,4 +1,4 @@
-import {STATUS, websiteUrl} from '../commanConfig';
+import {STATUS, websiteUrl} from '../../commanConfig';
 
 function fetchJson(url) {
     return fetch(websiteUrl + '/api/' + url).then(res => res.json())
@@ -9,20 +9,24 @@ function fetchPostJson(url, settings) {
 }
 
 const fetchHeaderData = () => {
-    return {
-        status: STATUS.READY
-        , image: {
-            src: '../../assets/images/sliders/2/slide-1.jpg',
-            alt: 'Header Image'
-        }
-        , title: 'Hello world this is a title'
-        , subTitle: 'Hello world this is a subtitle'
-        , actionButton: {
-            text: 'Hello World'
-            , actionFunction: this.actionFunctionButton
-            , url: ''
-        }
-    }
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve({
+                status: STATUS.READY
+                , image: {
+                    src: '../../assets/images/sliders/2/slide-1.jpg',
+                    alt: 'Header Image'
+                }
+                , title: 'Hello world this is a title'
+                , subTitle: 'Hello world this is a subtitle'
+                , actionButton: {
+                    text: 'Hello World'
+                    , actionFunction: this.actionFunctionButton
+                    , url: ''
+                }
+            })
+        },200)
+    })
 }
 const WebsiteStructure = {
 
