@@ -13,7 +13,7 @@ import '../../assets/css/responsive.css';
 import '../../assets/rs-plugin/css/settings.css';
 //  COLORS
 import '../../assets/css/default.css';
-import {NavLink} from "react-router-dom";
+import Menu from '../../components/Menu';
 
 
 class PublicApp extends React.Component {
@@ -25,24 +25,7 @@ class PublicApp extends React.Component {
 
 
                 {/* Header */}
-                <header className="header">
-                    <div className="sticky">
-                        <div className="container">
-                            <div className="logo"><a href="index.html">
-                                <img src="/assets/images/logo.png" alt={""}/></a></div>
-                            {/* Nav */}
-                            <nav>
-                                <ul id="ownmenu" className="ownmenu">
-                                    <li className="active">
-                                        <NavLink to={'/'}>Home</NavLink>
-                                    </li>
-
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </header>
-
+                <Menu />
                 <Switch>
 
                     <Route exact path="/" component={HomePage}/>
