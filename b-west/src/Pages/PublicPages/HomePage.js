@@ -5,7 +5,6 @@ import {fetchHeaderData} from "../api/index";
 import {About} from "../../components/About";
 import Store from "../../components/Store";
 
-import AboutImage from '../../assets/images/intro/intro-5.png'
 
 class HomePage extends React.Component {
 
