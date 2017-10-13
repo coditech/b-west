@@ -7,6 +7,7 @@ div.jumbotron.hero-technology {
     padding-bottom: 100px;
     background-attachment: local;
     min-height: 86vh;
+    margin: auto auto 0 auto;
 }
 
 div.jumbotron.hero-technology .hero-content {
@@ -22,7 +23,7 @@ h1.hero-title, h2.hero-title, h3.hero-title {
 
 p.hero-subtitle {
     max-width: 600px;
-    margin: 25px auto 0 auto;
+    margin: 25px auto;
     padding: 10px 15px;
     background-color: rgba(0, 0, 0, 0.1);
     color: #fff;
