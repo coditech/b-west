@@ -1306,7 +1306,6 @@ img.tp-slider-alternative-image {
     -o-transition: opacity .3s;
     -ms-transition: opacity .3s;
     transition: opacity .3s;
-    background-image: linear-gradient(bottom, rgb(0, 0, 0) 13%, rgb(50, 50, 50) 100%);
     background-image: -o-linear-gradient(bottom, rgb(0, 0, 0) 13%, rgb(50, 50, 50) 100%);
     background-image: -moz-linear-gradient(bottom, rgb(0, 0, 0) 13%, rgb(50, 50, 50) 100%);
     background-image: -webkit-linear-gradient(bottom, rgb(0, 0, 0) 13%, rgb(50, 50, 50) 100%);

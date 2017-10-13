@@ -1,24 +1,8 @@
 import React from 'react';
 
 
-const Header = ({image, title, subTitle}) => {
+const Header = ({image, title, subTitle, actionButton}) => {
 
-    const actionFunctionButton = (event) => {
-        event.preventDefault();
-        alert(123);
-    }
-    const data = {
-        image: {
-            src: '../../assets/images/sliders/2/slide-1.jpg',
-            alt: 'Header Image'
-        }
-        , title: 'Hello world this is a title'
-        , subTitle: 'Hello world this is a subtitle'
-        , actionButton: {
-            text: 'Hello World'
-            , actionFunction: actionFunctionButton
-        }
-    }
     return (
         <section className="home-slider">
             <div className="tp-banner-container">
@@ -28,7 +12,7 @@ const Header = ({image, title, subTitle}) => {
                         <li data-transition="fade" data-slotamount={7} data-masterspeed={300}
                             data-saveperformance="off">
                             {/* MAIN IMAGE */}
-                            <img src={data.image.src} alt={data.image.alt}
+                            <img src={image.src} alt={image.alt}
                                  data-bgposition="center top"
                                  data-bgfit="cover" data-bgrepeat="no-repeat"/>
                             {/* LAYERS */}
@@ -38,7 +22,7 @@ const Header = ({image, title, subTitle}) => {
                                  data-start={1400} data-easing="Power3.easeInOut" data-splitin="words"
                                  data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
                                  data-endspeed={300} style={{zIndex: 6, fontSize: 48, color: '#fff'}}>
-                                {data.title}
+                                {title}
                             </div>
                             {/* LAYER NR. 3 */}
                             <div className="tp-caption font-italic font-crimson skewfromleft tp-resizeme"
@@ -46,7 +30,7 @@ const Header = ({image, title, subTitle}) => {
                                  data-start={1900} data-easing="Power3.easeInOut" data-splitin="none"
                                  data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
                                  data-endspeed={300} style={{zIndex: 7, color: '#fff', fontSize: 24}}>
-                                {data.subTitle}
+                                {subTitle}
                             </div>
                             {/* LAYER NR. 4 */}
                             <div className="tp-caption sfb tp-resizeme" data-x="center" data-hoffset={0}
@@ -55,7 +39,7 @@ const Header = ({image, title, subTitle}) => {
                                  data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed={300}
                                  style={{zIndex: 8, maxWidth: 'auto', maxHeight: 'auto', whiteSpace: 'nowrap'}}><a
                                 className="btn btn-med btn-color"
-                                onClick={(event) => data.actionButton.actionFunction(event)}>{data.actionButton.text}</a>
+                                onClick={(event) => actionButton.actionFunction(event)}>{actionButton.text}</a>
                             </div>
                         </li>
                     </ul>

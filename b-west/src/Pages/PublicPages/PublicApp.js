@@ -3,8 +3,6 @@ import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
 
 import {HomePage} from "./HomePage";
-
-// import './App.css';
 import '../../assets/css/ionicons.min.css';
 import '../../assets/css/bootstrap/css/bootstrap.min.css';
 import '../../assets/css/font-awesome.min.css';
