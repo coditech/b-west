@@ -2,7 +2,9 @@ import React from 'react';
 import Header from "../../components/Header";
 import {STATUS} from "../../commanConfig";
 import {fetchHeaderData} from "../api/index";
+import {About} from "../../components/About";
 
+import AboutImage from '../../assets/images/intro/intro-5.png'
 
 class HomePage extends React.Component {
 
@@ -57,6 +59,19 @@ class HomePage extends React.Component {
     }
 
     render() {
+        const aboutData = {
+            title: 'B-West'
+            , subTitle: 'B-West Hon-Kong'
+            , content: '<p>Hello world <a></a><p>'
+            , imageOne: {
+                src: AboutImage
+                , alt: 'Image One Logo'
+            }
+            , imageTwo: {
+                src: AboutImage
+                , alt: 'Image Two Logo'
+            }
+        }
         return (
             <div>
 
@@ -67,6 +82,7 @@ class HomePage extends React.Component {
                 {/* Content */}
                 <div id="content">
                     {/* Welcome */}
+                    <About {...aboutData}/>
                     <section className="welcome intro-style-2 padding-top-80  dark-pattern">
                         <div className="container">
                             <div className="row">
