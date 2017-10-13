@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "../../components/Header";
+import Header, {Header2} from "../../components/Header";
 import {STATUS} from "../../commanConfig";
 import {fetchHeaderData} from "../api/index";
 import {About} from "../../components/About";
@@ -99,8 +99,7 @@ class HomePage extends React.Component {
 
                 {/* End Header */}
                 {/*======= HOME MAIN SLIDERs =========*/}
-                <Header {...this.state.headerData}/>
-
+                <Header2/>
                 {/* Content */}
                 <div id="content">
                     {/* Welcome */}
@@ -135,13 +134,12 @@ class HomePage extends React.Component {
                             <div className="heading-block text-center">
                                 <h3>LATEST PRODUCTS</h3>
                                 <hr className="color"/>
-                                    {/*<span>Tell your Story</span>*/}
+                                {/*<span>Tell your Story</span>*/}
                             </div>
 
                             <Store/>
                         </div>
                     </section>
-
 
 
                 </div>

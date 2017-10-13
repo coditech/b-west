@@ -1,6 +1,7 @@
 import React from 'react';
-
 import {STATUS} from '../commanConfig';
+
+import './Header.css'
 
 const Header = ({status, image, title, subTitle, actionButton}) => {
 
@@ -90,4 +91,22 @@ const Header = ({status, image, title, subTitle, actionButton}) => {
     }
 }
 
+const Header2 = () => {
+
+    return (
+        <section className="home-slider">
+            <div className="tp-banner-container">
+
+                <header className="hero">
+                    <div className="center-content">
+                        <h1>An Article Title</h1>
+                        <h3>A longer subtitle but still important</h3>
+                        <a className="button">Some Action Here</a>
+                    </div>
+                </header>
+            </div>
+        </section>
+    )
+}
+export {Header2}
 export default Header;
