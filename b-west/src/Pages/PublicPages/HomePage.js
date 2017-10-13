@@ -3,8 +3,8 @@ import Header from "../../components/Header";
 import {STATUS} from "../../commanConfig";
 import {fetchHeaderData} from "../api/index";
 import {About} from "../../components/About";
-
-import AboutImage from '../../assets/images/intro/intro-5.png'
+import AboutImage from "../../assets/images/intro/intro-5.png";
+import Stories from "../../components/Stories";
 
 class HomePage extends React.Component {
 
@@ -72,6 +72,27 @@ class HomePage extends React.Component {
                 , alt: 'Image Two Logo'
             }
         }
+
+        const passedStory = {
+            story: {
+              firstStory: {
+                title: "THE ZAP - BEST PSD TEMPLATE",
+                slogan: "allahu akbar",
+                desc:
+                  "Lorem ipsum dolor sit amet, voluptatem consectetuer donec nullam velit pretium, libero morbi commodo vel, adipiscing dui nibh, a quis ipsum neque praesent magnis. Amet ante varius vitae integer sollicitudin nisl, rutrum a sit accumsan ut orci. Turpis lacus eget in pede eros sit, justo ipsum ipsum natoque in in delectus. Non nam nulla blandit at wisi, consectetuer risus ultrices in amet malesuada, tellus ultricies, nunc nonummy nonummy. Ligula quisque eleifend consequat vehicula pharetra eu, amet vitae eget vestibulum imperdiet, fermentum est pellentesque, morbi nec at metus pede. Tellus fames elit metus varius, est ante, ligula hendrerit egestas suspendisse, urna non amet tortor scelerisque dui vestibulum, ullamcorper sed. Pharetra lectus nec, a egestas id gravida, viverra molestie sed, ligula quam ridiculus. Eros tempus hendrerit nec vitae mollis nisl. Rhoncus tincidunt.",
+                image: "/assets/images/intro/intro-2.png",
+                alt: "",
+              },
+              secondStory: {
+                title: "THE ZAP - BEST PSD TEMPLATE 2",
+                slogan: "allahu akbar 2",
+                desc:
+                  "Lorem ipsum dolor sit amet, voluptatem consectetuer donec nullam velit pretium, libero morbi commodo vel, adipiscing dui nibh, a quis ipsum neque praesent magnis. Amet ante varius vitae integer sollicitudin nisl, rutrum a sit accumsan ut orci. Turpis lacus eget in pede eros sit, justo ipsum ipsum natoque in in delectus. Non nam nulla blandit at wisi, consectetuer risus ultrices in amet malesuada, tellus ultricies, nunc nonummy nonummy. Ligula quisque eleifend consequat vehicula pharetra eu, amet vitae eget vestibulum imperdiet, fermentum est pellentesque, morbi nec at metus pede. Tellus fames elit metus varius, est ante, ligula hendrerit egestas suspendisse, urna non amet tortor scelerisque dui vestibulum, ullamcorper sed. Pharetra lectus nec, a egestas id gravida, viverra molestie sed, ligula quam ridiculus. Eros tempus hendrerit nec vitae mollis nisl. Rhoncus tincidunt.",
+                image: "/assets/images/intro/intro-2.png",
+                alt: "",
+              },
+            }
+          };
         return (
             <div>
 
@@ -83,94 +104,9 @@ class HomePage extends React.Component {
                 <div id="content">
                     {/* Welcome */}
                     <About {...aboutData}/>
-                    <section className="welcome intro-style-2 padding-top-80  dark-pattern">
-                        <div className="container">
-                            <div className="row">
-                                {/* Intro Text */}
-                                <div className="col-md-5">
-                                    <div className="heading-block no-margin">
-                                        <h2 className="no-margin margin-top-30 text-transform-none">Growth up</h2>
-                                        <h1 className="no-margin margin-bottom-30 ">your business</h1>
-                                        <span className="margin-bottom-10">Welcome The ZAP - Best solution for Creative Website</span>
-                                    </div>
-                                    <hr/>
-                                    <p className="font-crimson">These cases are perfectly simple and easy to
-                                        distinguish. In
-                                        a free hour, when our power of choice is untrammelled and when nothing
-                                        prevents
-                                        our
-                                        being able to do what we like best, every pleasure is to be welcomed and
-                                        every
-                                        pain
-                                        avoided. But in certain circumstances and owing to the claims of duty or the
-                                        obligations of business it will frequently occur that pleasures have to be
-                                        repudiated and annoyances accepted. </p>
-                                </div>
-                                {/* Intro Image */}
-                                <div className="col-md-7 text-center"><a href="#."> <img className="responsive-img"
-                                                                                         src="../../assets/images/intro/intro-2.png"
-                                                                                         alt="Intro "/> </a></div>
-                            </div>
-                        </div>
-                    </section>
-                    {/* OUR CORE FEATURES */}
-                    <section className="padding-top-80 padding-bottom-80">
-                        <div className="container">
-                            {/* Intro Style 2 */}
-                            <div className="intro-5 margin-top-20">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="heading-block no-margin-bottom margin-top-100"><span
-                                            className="margin-bottom-15 margin-top-20">We work with passion</span>
-                                            <h2 className="margin-bottom-20 margin-top-1">WE ARE CREATIVE
-                                                AGENCY</h2>
-                                        </div>
-                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                            accusantium
-                                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                            inventore
-                                            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                                            enim
-                                            ipsam
-                                            voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
-                                        <a href="#."
-                                           className="btn btn-large dark-border font-normal margin-top-50 letter-space-1">READ
-                                            MORE</a></div>
-                                    {/* Image */}
-                                    <div className="col-md-6"><img className="img-responsive"
-                                                                   src="images/intro/intro-5.png"
-                                                                   alt={""}/></div>
-                                </div>
-                            </div>
-                            {/* Intro Style 5 */}
-                            <div className="intro-5 margin-top-20">
-                                <div className="row">
-                                    {/* Image */}
-                                    <div className="col-md-6"><img className="img-responsive"
-                                                                   src="images/intro/intro-6.png"
-                                                                   alt={""}/></div>
-                                    <div className="col-md-6">
-                                        <div className="heading-block no-margin-bottom margin-top-0"><span
-                                            className="margin-bottom-15">A truly multi - concept theme</span>
-                                            <h2 className="margin-bottom-20 margin-top-1">THE ZAP - BEST PSD
-                                                TEMPLATE</h2>
-                                        </div>
-                                        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum
-                                            necessitatibus
-                                            saepe
-                                            eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
-                                            Itaque
-                                            earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-                                            voluptatibus
-                                            maiores alias consequatur aut perferendis doloribus asperiores
-                                            repellat.</p>
-                                        <a href="#."
-                                           className="btn btn-large dark-border font-normal margin-top-50 letter-space-1">READ
-                                            MORE</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <Stories {...passedStory}/>
+                    
+                   
                     {/* Facts */}
                     <section className="facts style-4 padding-top-90 padding-bottom-90"
                              style={{background: '#f4f4f4'}}>
