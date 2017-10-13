@@ -3,13 +3,10 @@
 }
 
 .about-image-block .image2 {
-    background-color: red;
     overflow-x: hidden;
     margin-left: 29%;
 }
 .about-image-block .image2 img {
-    position: relative;
-    right: 25%;
 }
 
 .about-image-block {
@@ -17,11 +14,10 @@
 }
 
 .about-image-block .image1 {
-    background-color: blue;
     width: 35%;
     position: absolute;
     z-index: 33;
-    top: 27%;
+    top: 15%;
 }
 
 .about-image-block .image1 img {

@@ -12,7 +12,7 @@ div.jumbotron.hero-technology {
 
 div.jumbotron.hero-technology .hero-content {
     position: relative;
-    top: 200px;
+    top: 15vh;
 }
 
 h1.hero-title, h2.hero-title, h3.hero-title {
@@ -30,4 +30,3 @@ p.hero-subtitle {
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
     font-weight: 500;
 }
-

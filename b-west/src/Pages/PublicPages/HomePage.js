@@ -6,7 +6,8 @@ import Stories from "../../components/Stories";
 import Store from "../../components/Store";
 import SmallSlider from "../../components/SmallSlider";
 import Header, {Header2, Header3} from "../../components/Header";
-
+import Banner from "../../components/Banner";
+import '../../components/Footer.css'
 
 class HomePage extends React.Component {
 
@@ -67,11 +68,11 @@ class HomePage extends React.Component {
             , subTitle: 'B-West Hon-Kong'
             , content: '<p>Hello world <a></a><p>'
             , imageOne: {
-                src: '/assets/images/intro/intro-2.png'
+                src: '/beityLogo.png'
                 , alt: 'Image One Logo'
             }
             , imageTwo: {
-                src: '/assets/images/intro/intro-2.png'
+                src: '/b-westAboutImage2.jpg'
                 , alt: 'Image Two Logo'
             }
         }
@@ -83,7 +84,7 @@ class HomePage extends React.Component {
                     slogan: "allahu akbar",
                     desc:
                         "Lorem ipsum dolor sit amet, voluptatem consectetuer donec nullam velit pretium, libero morbi commodo vel, adipiscing dui nibh, a quis ipsum neque praesent magnis. Amet ante varius vitae integer sollicitudin nisl, rutrum a sit accumsan ut orci. Turpis lacus eget in pede eros sit, justo ipsum ipsum natoque in in delectus. Non nam nulla blandit at wisi, consectetuer risus ultrices in amet malesuada, tellus ultricies, nunc nonummy nonummy. Ligula quisque eleifend consequat vehicula pharetra eu, amet vitae eget vestibulum imperdiet, fermentum est pellentesque, morbi nec at metus pede. Tellus fames elit metus varius, est ante, ligula hendrerit egestas suspendisse, urna non amet tortor scelerisque dui vestibulum, ullamcorper sed. Pharetra lectus nec, a egestas id gravida, viverra molestie sed, ligula quam ridiculus. Eros tempus hendrerit nec vitae mollis nisl. Rhoncus tincidunt.",
-                    image: "/assets/images/intro/intro-2.png",
+                    image: "/villagers1.jpg",
                     alt: "",
                 },
                 secondStory: {
@@ -91,7 +92,7 @@ class HomePage extends React.Component {
                     slogan: "allahu akbar 2",
                     desc:
                         "Lorem ipsum dolor sit amet, voluptatem consectetuer donec nullam velit pretium, libero morbi commodo vel, adipiscing dui nibh, a quis ipsum neque praesent magnis. Amet ante varius vitae integer sollicitudin nisl, rutrum a sit accumsan ut orci. Turpis lacus eget in pede eros sit, justo ipsum ipsum natoque in in delectus. Non nam nulla blandit at wisi, consectetuer risus ultrices in amet malesuada, tellus ultricies, nunc nonummy nonummy. Ligula quisque eleifend consequat vehicula pharetra eu, amet vitae eget vestibulum imperdiet, fermentum est pellentesque, morbi nec at metus pede. Tellus fames elit metus varius, est ante, ligula hendrerit egestas suspendisse, urna non amet tortor scelerisque dui vestibulum, ullamcorper sed. Pharetra lectus nec, a egestas id gravida, viverra molestie sed, ligula quam ridiculus. Eros tempus hendrerit nec vitae mollis nisl. Rhoncus tincidunt.",
-                    image: "/assets/images/intro/intro-2.png",
+                    image: "/villagers2.jpg",
                     alt: "",
                 },
             }
@@ -108,7 +109,7 @@ class HomePage extends React.Component {
                     {/* Welcome */}
                     <About {...aboutData}/>
                     <Stories {...passedStory}/>
-
+                    <Banner {...{backgroundImage: '/followus.jpg'}}/>
                     {/* Facts */}
 
 
@@ -128,157 +129,67 @@ class HomePage extends React.Component {
                         </div>
                     </section>
                     {/* Small Slider*/}
-                    <SmallSlider/>
+                    {/*<SmallSlider/>*/}
 
 
                 </div>
                 {/* End Content */}
                 {/* Footer */}
-                <footer id="footer">
-                    <div className="footer-wrapper">
-                        {/* Footer Top */}
-                        <div className="footer-top">
-                            <div className="footer-top-wrapper">
-                                <div className="container">
-                                    <div className="row">
-                                        {/* About Block */}
-                                        <div className="col-md-4">
-                                            <div className="block block-about">
-                                                <h3 className="block-title no-underline"><span
-                                                    className="text-primary">Creative Agency from London - UK</span>
-                                                </h3>
-                                                <div className="block-content">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and
-                                                        typesetting
-                                                        industry. Lorem Ipsum has been the industry's standard dummy
-                                                        text
-                                                        ever since the 1500s, when an unknown printer took a galley
-                                                        of
-                                                        type
-                                                        and scrambled it to make a type specimen book.</p>
-                                                    <img className="footer-logo"
-                                                         src="images/footer/footer_logo_1.png"
-                                                         alt={""}/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/* End About Block */}
-                                        {/* Footer Links Block */}
-                                        <div className="col-md-2">
-                                            <div className="block block-links">
-                                                <h3 className="block-title"><span>Info</span></h3>
-                                                <div className="block-content">
-                                                    <ul>
-                                                        <li><a href="#.">Theme Features</a></li>
-                                                        <li><a href="#.">Page Builder</a></li>
-                                                        <li><a href="#.">Privacy Policy</a></li>
-                                                        <li><a href="#.">Shop Rules</a></li>
-                                                        <li><a href="#.">Services</a></li>
-                                                        <li><a href="#.">Gallery Layout</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/* End Footer Links Block */}
-                                        {/* Twitter Widget Block */}
-                                        <div className="col-md-3">
-                                            <div className="block block-twitter-widget">
-                                                <h3 className="block-title"><span>Twitter Widget</span></h3>
-                                                <div className="block-content">
-                                                    <div className="twitter-item">
-                                                        <div className="twitter-content"> Looking for an awesome
-                                                            CREATIVE
-                                                            WordPress Theme? Esquise was updated and optimized to
-                                                            run
-                                                            even
-                                                            better. Find it here: <a href="http://t.co/0WWEMQEQ48"
-                                                                                     target="_blank"
-                                                                                     rel="noopener noreferrer">http://t.co/0WWEMQEQ48</a>
-                                                        </div>
-                                                        <div className="twitter-context"><i
-                                                            className="fa fa-twitter"/><span
-                                                            className="twitter-date">01 day ago</span></div>
-                                                    </div>
-                                                    <div className="twitter-item">
-                                                        <div className="twitter-content"> It is a long established
-                                                            fact
-                                                            that
-                                                            a reader will be distracted by the readable . Find it
-                                                            here:
-                                                            <a
-                                                                href="http://t.co/0WWEMQEQ48"
-                                                                rel="noopener noreferrer"
-                                                                target="_blank">http://t.co/0WWEMQEQ48</a>
-                                                        </div>
-                                                        <div className="twitter-context"><i
-                                                            className="fa fa-twitter"/><span
-                                                            className="twitter-date">02 days ago</span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/* End Twitter Widget Block */}
-                                        {/* Instagram Widget Block */}
-                                        <div className="col-md-3">
-                                            <div className="block block-instagram-widget">
-                                                <h3 className="block-title"><span>Instagram Widget</span></h3>
-                                                <ul>
-                                                    <li><a href="#.."> <img
-                                                        src="images/footer/footer_instagram_01.png"
-                                                        alt={""}/> <span className="overlay"><i
-                                                        className="fa fa-search"/></span> </a></li>
-                                                    <li><a href="#.."> <img
-                                                        src="images/footer/footer_instagram_02.png"
-                                                        alt={""}/> <span className="overlay"><i
-                                                        className="fa fa-search"/></span> </a></li>
-                                                    <li><a href="#.."> <img
-                                                        src="images/footer/footer_instagram_03.png"
-                                                        alt={""}/> <span className="overlay"><i
-                                                        className="fa fa-search"/></span> </a></li>
-                                                    <li><a href="#.."> <img
-                                                        src="images/footer/footer_instagram_04.png"
-                                                        alt={""}/> <span className="overlay"><i
-                                                        className="fa fa-search"/></span> </a></li>
-                                                    <li><a href="#.."> <img
-                                                        src="images/footer/footer_instagram_05.png"
-                                                        alt={""}/> <span className="overlay"><i
-                                                        className="fa fa-search"/></span> </a></li>
-                                                    <li><a href="#.."> <img
-                                                        src="images/footer/footer_instagram_06.png"
-                                                        alt={""}/> <span className="overlay"><i
-                                                        className="fa fa-search"/></span> </a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        {/* End Instagram Widget Block */}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* End Footer Top */}
-                        {/* Footer Bottom */}
-                        <div className="footer-bottom">
-                            <div className="footer-bottom-wrapper">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-md-6 copyright">
-                                            <p>© 2015 ZAP Creative HTML Template. Designed By wpelite.</p>
-                                        </div>
-                                        <div className="col-md-6 social-links">
-                                            <ul className="right">
-                                                <li><a href="#."><i className="fa fa-facebook"/></a></li>
-                                                <li><a href="#."><i className="fa fa-twitter"/></a></li>
-                                                <li><a href="#."><i className="fa fa-dribbble"/></a></li>
-                                                <li><a href="#."><i className="fa fa-behance"/></a></li>
-                                                <li><a href="#."><i className="fa fa-pinterest"/></a></li>
-                                                <li><a href="#."><i className="fa fa-google-plus"/></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* End Footer Bottom */}
+                <footer className="footer">
+                    <div className="footer-container">
+                        <ul className="footer-social__items">
+                            <li className="footer-social__item">
+                                <a className=" social_link" href="http://instagram.com/villagergoods"
+                                   target="_blank">
+                                    <i className={'fa fa-instagram'}/>
+                                </a>
+                            </li>
+                            <li className="footer-social__item">
+                                <a className="social_link" href="http://facebook.com/villagergoods"
+                                   target="_blank">
+                                    <i className={'fa fa-facebook'}/>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul className="footer__links">
+                            <li className="footer__list-item">
+                                <a href="/pages/coconut-water" className="footer__link">
+                                    Coconut Water
+                                </a>
+                            </li>
+                            <li className="footer__list-item">
+                                <a href="/collections/shop" className="footer__link">
+                                    Shop
+                                </a>
+                            </li>
+                            <li className="footer__list-item">
+                                <a href="/pages/contact" className="footer__link">
+                                    Contact
+                                </a>
+                            </li>
+                            <li className="footer__list-item">
+                                <a href="/pages/terms-of-service" className="footer__link">
+                                    Terms of Use
+                                </a>
+                            </li>
+                            <li className="footer__list-item">
+                                <a href="/pages/privacy-policy" className="footer__link">
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li className="footer__list-item">
+                                <a href="/pages/faq" className="footer__link">
+                                    FAQs
+                                </a>
+                            </li>
+
+                        </ul>
+
+                        <p className="footer__credit">
+                            <a href="http://department.nyc" className="footer__credit-href" target="_blank">
+                                Site Credit: Department
+                            </a>
+                        </p>
                     </div>
                 </footer>
                 {/* End Footer */}

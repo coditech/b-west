@@ -1,0 +1,40 @@
+.insta_btn {
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-size: 12px;
+    line-height: normal;
+    font-weight: 100;
+    letter-spacing: 0;
+    text-decoration: none;
+    text-align: center;
+    -webkit-appearance: none;
+    outline: none;
+    color: white;
+    -webkit-transition: background 0.2s ease 0s, border-color 0.2s ease 0s;
+    -moz-transition: background 0.2s ease 0s, border-color 0.2s ease 0s;
+    -o-transition: background 0.2s ease 0s, border-color 0.2s ease 0s;
+    border: 1px solid white;
+    background: transparent;
+}
+
+.banner {
+    text-align: center;
+}
+
+.banner h2 {
+    font-size: 25px;
+
+}
+
+.banner h3 {
+    font-size: 5rem;
+}
+
+.banner h2, .banner h3 {
+    color: white;
+}
+
+/*********/

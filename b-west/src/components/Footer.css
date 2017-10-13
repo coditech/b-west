@@ -1,0 +1,226 @@
+
+.footer {
+    font-size: 12px;
+    padding: 30px 0 20px;
+    background: black;
+    color: white;
+    position: relative;
+    display: block;
+}
+
+@media screen and (max-width: 1000px) {
+    .footer {
+        padding: 30px 0 15px;
+        text-align: left
+    }
+}
+
+.footer-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
+    clear: both;
+    padding-left: 45px;
+    padding-right: 45px;
+    text-align: center
+}
+
+.footer-container:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+@media screen and (max-width: 699px) {
+    .footer-container {
+        padding-left: 20px;
+        padding-right: 20px
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .footer-container {
+        padding-left: 35px;
+        padding-right: 35px
+    }
+}
+
+@media screen and (max-width: 699px) {
+    .footer-container {
+        padding-left: 12.5px;
+        padding-right: 12.5px
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .footer-container {
+        text-align: left
+    }
+}
+
+.footer-logo {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 30px;
+    margin-top: 2px
+}
+
+.footer-logo svg {
+    width: 120px;
+    height: 20px
+}
+
+@media screen and (max-width: 1000px) {
+    .footer-logo {
+        position: static;
+        display: block;
+        width: 100%;
+        margin: 5px 0 15px 0;
+        text-align: left
+    }
+}
+
+.footer-social__items {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 45px;
+    margin-top: 2px
+}
+
+@media screen and (max-width: 1000px) {
+    .footer-social__items {
+        position: static;
+        display: block;
+        width: 100%;
+        margin: 5px 0 15px 4px;
+        text-align: center
+    }
+}
+
+.footer-social__item {
+    display: inline-block;
+    padding: 0;
+    list-style-type: none;
+    margin-right: 8px;
+    font-size: 14px
+}
+
+@media screen and (max-width: 1000px) {
+    .footer-social__item {
+        text-align: center;
+        margin-bottom: 10px;
+        margin-right: 20px
+    }
+}
+footer .footer-container .social_link {
+    color: white;
+    font-size: 3rem;
+}
+.footer-social__link {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block
+}
+
+.footer-social__link:visited, .footer-social__link:active {
+    color: #fff;
+    text-decoration: none
+}
+
+.footer-social__link:hover {
+    color: #434344
+}
+
+.footer__links {
+    display: inline-block;
+    margin-top: 2px
+}
+
+@media screen and (max-width: 1000px) {
+    .footer__links {
+        float: none;
+        padding: 0;
+        margin: 25px 0 25px;
+        width: 100%
+    }
+}
+
+.footer__list-item {
+    list-style: none;
+    float: left
+}
+
+@media screen and (max-width: 1000px) {
+    .footer__list-item {
+        float: none;
+        text-align: center;
+        margin-bottom: 10px
+    }
+}
+
+.footer__link {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    -webkit-transition: color 0.15s ease 0s;
+    -moz-transition: color 0.15s ease 0s;
+    -o-transition: color 0.15s ease 0s
+}
+
+.footer__link:visited, .footer__link:active {
+    color: #fff;
+    text-decoration: none
+}
+
+.footer__link:hover {
+    color: #434344
+}
+
+@media screen and (max-width: 1000px) {
+    .footer__link {
+        padding-left: 0
+    }
+}
+
+.footer__credit {
+    text-align: right;
+    margin-top: 2px;
+    position: absolute;
+    right: 40px;
+    display: inline-block;
+    color: #818181
+}
+
+@media screen and (max-width: 1000px) {
+    .footer__credit {
+        position: static;
+        float: none;
+        text-align: center;
+        margin: 0 auto;
+        width: 100%
+    }
+}
+
+.footer__credit-href {
+    color: #818181;
+    text-decoration: none
+}
+
+.footer__credit-href:visited, .footer__credit-href:active {
+    color: #818181;
+    text-decoration: none
+}
+
+.footer__credit-href:hover {
+    color: white
+}
+
+@media screen and (min-width: 700px) {
+    .footer__credit-href {
+        padding-left: 5px
+    }
+}

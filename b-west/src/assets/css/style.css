@@ -184,10 +184,10 @@ p.intro-small {
 	font-weight: bold !important;
 }
 a:hover, a:focus {
-	color: #f6b138;
+	color: #427d43;
 }
 .text-color-primary {
-	color: #f6b138;
+	color: #427d43;
 }
 .border-bottom-1 {
 	border-bottom: 1px solid #ededed;
@@ -1594,7 +1594,7 @@ header.coporate-header .is-sticky .sticky .ownmenu > li > .megamenu {
 	overflow: hidden;
 }
 .portfolio-overlay:before {
-	background-color: #f6b138;
+	background-color: #427d43;
 	bottom: 0;
 	content: "";
 	display: block;
@@ -1611,7 +1611,7 @@ header.coporate-header .is-sticky .sticky .ownmenu > li > .megamenu {
 	transition: all 400ms ease-out;
 }
 .portfolio-overlay h3 > a:hover, .portfolio-overlay h3 > a:active, .portfolio-overlay h3 > a.active, .portfolio-overlay h3 > a:focus, .portfolio-overlay span > a:hover, .portfolio-overlay span > a:active, .portfolio-overlay span > a.active, .portfolio-overlay span > a:focus {
-	color: #f6b138;
+	color: #427d43;
 }
 .portfolio-overlay .position-center-center {
 	width: 100%;
@@ -2916,7 +2916,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 			CONTACT FORM
 ========================================================*/
 .contact .icon-box .ib-icon i {
-	color: #f6b138;
+	color: #427d43;
 	font-size: 40px;
 }
 .contact .ib-info p {
@@ -3014,7 +3014,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	line-height: 26px;
 	position: relative;
 	bottom: -20px;
-	color: #f6b138;
+	color: #427d43;
 }
 .contact-form label span {
 	color: #fff;
@@ -3026,7 +3026,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	padding: 10px 20px;
 }
 #contact_form li .form-control:focus {
-	border-bottom: 1px solid #f6b138;
+	border-bottom: 1px solid #427d43;
 }
 .contact-form button {
 	float: right;
@@ -3045,8 +3045,8 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	transition: all 0.4s ease-in-out;
 }
 .contact-form button:hover {
-	background: #f6b138;
-	border-color: #f6b138;
+	background: #427d43;
+	border-color: #427d43;
 }
 .contact.style-2 .contact-img {
 	position: relative;
@@ -3880,7 +3880,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	text-transform: uppercase;
 }
 .icon-box.ib-style-5 .ib-info a:hover, .icon-box.ib-style-5 .ib-info a:active, .icon-box.ib-style-5 .ib-info a.active, .icon-box.ib-style-5 .ib-info a:focus {
-	color: #f6b138;
+	color: #427d43;
 }
 .icon-box.ib-black .ib-icon {
 	background-color: #141414 !important;
@@ -3967,10 +3967,10 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	counter-increment: ordered-counter;
 }
 .iconlist.i-primary li > i, .iconlist.i-primary li:before {
-	color: #f6b138;
+	color: #427d43;
 }
 .iconlist.i-fill-primary li > i, .iconlist.i-fill-primary li:before {
-	background-color: #f6b138;
+	background-color: #427d43;
 	color: #FFFFFF;
 }
 .iconlist.i-fill-gray li > i, .iconlist.i-fill-gray li:before {
@@ -4024,7 +4024,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	font-size: 14px;
 }
 .text-primary {
-	color: #f6b138 !important;
+	color: #427d43 !important;
 }
 /*=======================================================
 			PRICINF TABLE
@@ -4525,7 +4525,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	text-align: center;
 }
 .counter .c-style-3 .number {
-	background-color: #f6b138;
+	background-color: #427d43;
 	color: #FFFFFF;
 	display: block;
 	height: 72px;
@@ -4662,7 +4662,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	color: #636363;
 }
 #footer a:hover {
-	color: #f6b138;
+	color: #427d43;
 }
 #footer p {
 	line-height: 24px;
@@ -4683,7 +4683,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	margin-bottom: 20px;
 }
 #footer .text-primary {
-	color: #f6b138 !important;
+	color: #427d43 !important;
 }
 #footer .block .block-title {
 	color: #ffffff;
@@ -4699,7 +4699,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	margin-top: 20px;
 }
 #footer .block .block-title:not(.no-underline):before {
-	background: #f6b138;
+	background: #427d43;
 	bottom: 0;
 	content: "";
 	height: 3px;
@@ -4754,7 +4754,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 }
 .block-instagram-widget a:hover .overlay {
 	opacity: 1;
-	background-color: #f6b138;
+	background-color: #427d43;
 }
 .block-twitter-widget {
 	font-size: 11px;
@@ -4907,7 +4907,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 }
 .team.style-2 .team-small li a i {
 	float: right;
-	color: #f6b138;
+	color: #427d43;
 }
 .team.style-3 ul li {
 	text-align: center;
@@ -5068,7 +5068,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	color: #fff;
 }
 .team.style-5 .hover-detail li a:hover {
-	color: #f6b138;
+	color: #427d43;
 }
 .team.style-5 .position-center-center {
 	width: 100%;
@@ -6468,7 +6468,7 @@ blockquote cite {
 	border: 1px solid rgba(255,255,255,0.3);
 }
 .coming-soon .social-icons li a:hover {
-	background: #f6b138;
+	background: #427d43;
 }
 .coming-soon.style-2 {
 }
@@ -7098,12 +7098,12 @@ blockquote cite {
 	position: fixed;
 	bottom: 40px;
 	right: 40px;
-	color: #f6b138;
+	color: #427d43;
 	border-radius: 50%;
 	font-size: 26px;
 	text-align: center;
 	line-height: 40px;
-	border: 3px solid #f6b138;
+	border: 3px solid #427d43;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 	overflow: hidden;
 	white-space: nowrap;
@@ -7132,7 +7132,7 @@ blockquote cite {
 	opacity: .5;
 }
 .no-touch .cd-top:hover {
-	background-color: #f6b138;
+	background-color: #427d43;
 	opacity: 1;
 	color: #fff;
 }

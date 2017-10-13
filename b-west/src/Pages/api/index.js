@@ -14,7 +14,7 @@ const fetchHeaderData = () => {
             resolve({
                 status: STATUS.READY
                 , image: {
-                    src: '../../assets/images/sliders/2/slide-1.jpg',
+                    src: '/header.jpg',
                     alt: 'Header Image'
                 }
                 , title: 'Hello world this is a title'

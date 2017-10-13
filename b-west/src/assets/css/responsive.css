@@ -319,7 +319,13 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
+    header .logo {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 1000px) {
     .ownmenu {
         width: 100%;
         max-height: 450px;

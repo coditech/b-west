@@ -340,7 +340,7 @@ header nav .ownmenu ul.dropdown .indicator {
 	height: 2px;
 	background: #999;
 }
-@media (max-width:767px) {
+@media (max-width:1000px) {
 .ownmenu > li {
 	display: block;
 	width: 100%;
