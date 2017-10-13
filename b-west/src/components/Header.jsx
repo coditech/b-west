@@ -2,6 +2,7 @@ import React from 'react';
 import {STATUS} from '../commanConfig';
 
 import './Header.css';
+import {NavLink} from "react-router-dom";
 
 const Header = ({status, image, title, subTitle, actionButton}) => {
 
@@ -137,10 +138,15 @@ const Header3 = ({status, image, title, subTitle, actionButton}) => {
         <div className="jumbotron hero-technology" style={style}>
             <div className={'hero-content'}>
                 <h1 className="hero-title">Hero Technology</h1>
-                <p className="hero-subtitle">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus
+                <p className="hero-subtitle">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,
+                    dapibus
                     ac
                     facilisis in, egestas eget quam.</p>
-                <p><a className="btn btn-primary btn-lg hero-button" role="button" href="#">Learn more</a></p>
+
+                <p>
+                    <NavLink to={'/'} className={'btn btn-primary btn-lg hero-button'} role={'button'}>Learn
+                        More</NavLink>
+                </p>
             </div>
         </div>
     )

@@ -9,8 +9,7 @@ import '../../assets/css/font-awesome.min.css';
 import '../../assets/css/main.css';
 import '../../assets/css/style.css';
 import '../../assets/css/responsive.css';
-// SLIDER REVOLUTION 4.x CSS SETTINGS
-import '../../assets/rs-plugin/css/settings.css';
+
 //  COLORS
 import '../../assets/css/default.css';
 import Menu from '../../components/Menu';
@@ -18,14 +17,47 @@ import Menu from '../../components/Menu';
 
 class PublicApp extends React.Component {
 
+    constructor(props, context) {
+        super(props, context)
+        this.state = {
+            menuItems: [
+                {
+                    name: "Home",
+                    url: "/",
+                },
+                {
+                    name: "About Us",
+                    url: "/about-us",
+                },
+                {
+                    name: "Villagers",
+                    url: "/villagers",
+                },
+                {
+                    name: "Products",
+                    url: "/products",
+                },
+                {
+                    name: "Contact Us",
+                    url: "/contact-us",
+                }
+            ],
+            logo: {
+                src: '/b-west-latin-logo.png'
+                , alt: 'B-West Logo'
+            }
+        }
+    }
+
     render() {
+
 
         return (
             <div id={'wrap'}>
 
 
                 {/* Header */}
-                <Menu />
+                <Menu {...this.state}/>
                 <Switch>
                     <Route exact path="/" component={HomePage}/>
                 </Switch>
@@ -33,4 +65,5 @@ class PublicApp extends React.Component {
         )
     }
 }
+
 export default PublicApp;

@@ -813,7 +813,7 @@ header nav .ownmenu li {
 header nav li a:hover {
 	color: #fff;
 }
-header nav li.active a {
+header nav li a.active {
 	color: #fff;
 	border-bottom: 2px solid #b9cf4f;
 	border-color: transparent;
@@ -1264,7 +1264,7 @@ header.coporate-header nav li a {
 	padding: 15px 0;
 	border-color: transparent;
 }
-header.coporate-header nav li.active a {
+header.coporate-header nav li a.active {
 	color: #b9cf4f;
 	border-top: 1px solid #b9cf4f;
 	border-bottom: 1px solid #b9cf4f;
