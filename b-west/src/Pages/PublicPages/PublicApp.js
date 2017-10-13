@@ -27,7 +27,6 @@ class PublicApp extends React.Component {
                 {/* Header */}
                 <Menu />
                 <Switch>
-
                     <Route exact path="/" component={HomePage}/>
                 </Switch>
             </div>
