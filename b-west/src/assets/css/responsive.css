@@ -329,7 +329,6 @@
     .ownmenu {
         width: 100%;
         max-height: 450px;
-        overflow-y: scroll;
     }
 
     .ownmenu > li.showhide span.icon {
