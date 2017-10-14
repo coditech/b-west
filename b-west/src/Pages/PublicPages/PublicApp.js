@@ -13,6 +13,7 @@ import '../../assets/css/responsive.css';
 //  COLORS
 import '../../assets/css/default.css';
 import Menu from '../../components/Menu';
+import Footer from "../../components/Footer";
 
 
 class PublicApp extends React.Component {
@@ -61,6 +62,9 @@ class PublicApp extends React.Component {
                 <Switch>
                     <Route exact path="/" component={HomePage}/>
                 </Switch>
+                <Footer />
+
+                
             </div>
         )
     }
