@@ -14,6 +14,7 @@ import '../../assets/css/responsive.css';
 import '../../assets/css/default.css';
 import Menu from '../../components/Menu';
 import Footer from "../../components/Footer";
+import {ProductsPage} from "./ProductsPage";
 
 
 class PublicApp extends React.Component {
@@ -50,6 +51,7 @@ class PublicApp extends React.Component {
         }
     }
 
+
     render() {
 
 
@@ -61,6 +63,8 @@ class PublicApp extends React.Component {
                 <Menu {...this.state}/>
                 <Switch>
                     <Route exact path="/" component={HomePage}/>
+                    <Route exact path="/products" component={ProductsPage}/>
+
                 </Switch>
                 <Footer />
 

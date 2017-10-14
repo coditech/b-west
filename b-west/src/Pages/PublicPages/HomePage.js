@@ -1,11 +1,11 @@
 import React from 'react';
 import {STATUS} from "../../commanConfig";
-import {fetchHeaderData} from "../api/index";
+import {fetchHomeHeaderData} from "../api/index";
 import {About} from "../../components/About";
 import Stories from "../../components/Stories";
 import Store from "../../components/Store";
 import SmallSlider from "../../components/SmallSlider";
-import Header, {Header2, Header3} from "../../components/Header";
+import Header from "../../components/Header";
 import Banner from "../../components/Banner";
 import '../../components/Footer.css'
 import {NavLink} from "react-router-dom";
@@ -53,7 +53,7 @@ class HomePage extends React.Component {
         const oldState = this.state;
 
         this.setState({...oldState, headerData: {...oldState.headerData, status: STATUS.LOADING}});
-        fetchHeaderData()
+        fetchHomeHeaderData()
             .then(headerData => {
                 this.setState((oldState) => ({
                     ...oldState
@@ -105,7 +105,7 @@ class HomePage extends React.Component {
                 {/* End Header */}
                 {/*======= HOME MAIN SLIDERs =========*/}
                 {/*<Header {...this.state.headerData}/>*/}
-                <Header3 {...this.state.headerData}/>
+                <Header {...this.state.headerData}/>
                 {/* Content */}
                 <div id="content">
                     {/* Welcome */}

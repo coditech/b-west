@@ -8,8 +8,8 @@ function fetchPostJson(url, settings) {
     return fetch(websiteUrl + '/api/' + url, settings).then(res => res.json())
 }
 
-const fetchHeaderData = () => {
-    return new Promise((resolve,reject)=>{
+const fetchHomeHeaderData = () => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve({
                 status: STATUS.READY
@@ -25,7 +25,27 @@ const fetchHeaderData = () => {
                     , url: ''
                 }
             })
-        },200)
+        }, 200)
+    })
+}
+const fetchFindAStoreHeaderData = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({
+                status: STATUS.READY
+                , image: {
+                    src: '/buylocal.jpg',
+                    alt: 'Header Image'
+                }
+                , title: 'Hello world this is a title'
+                , subTitle: 'Hello world this is a subtitle'
+                , actionButton: {
+                    text: 'Hello World'
+                    , actionFunction: this.actionFunctionButton
+                    , url: ''
+                }
+            })
+        }, 200)
     })
 }
 const WebsiteStructure = {
@@ -85,7 +105,8 @@ const WebsiteStructure = {
 }
 
 const api = {
-    fetchHeaderData
+    fetchHomeHeaderData
+    , fetchFindAStoreHeaderData
 }
-export {fetchHeaderData}
+export {fetchHomeHeaderData, fetchFindAStoreHeaderData}
 export default api;

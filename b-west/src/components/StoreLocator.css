@@ -1,0 +1,138 @@
+
+
+.store-locator {
+    background-color: #dadde6;
+}
+.store-locator .fl-left {
+    float: left;
+}
+
+.store-locator .fl-right {
+    float: right;
+}
+
+
+.store-locator h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    border-left: 10px solid #fec500;
+    padding-left: 10px;
+    margin-bottom: 30px;
+}
+
+
+.store-locator .card {
+    display: table-row;
+    background-color: #fff;
+    color: #989898;
+    margin-bottom: 10px;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+    border-radius: 4px;
+    position: relative;
+}
+
+.store-locator .card + .card {
+    margin-left: 2%;
+}
+
+.store-locator .date {
+    display: table-cell;
+    width: 1%;
+    position: relative;
+    text-align: center;
+    border-right: 2px dashed #dadde6;
+}
+
+.store-locator .date:before,
+.store-locator .date:after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #dadde6;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.store-locator .date:after {
+    top: auto;
+    bottom: -15px;
+}
+.store-locator .card-cont {
+    display: table-cell;
+    width: 75%;
+    font-size: 85%;
+    padding: 10px 10px 30px 50px;
+}
+
+.store-locator .card-cont h3 {
+    color: #3c3c3c;
+    font-size: 130%;
+}
+
+
+.store-locator .card-cont > div {
+    display: table-row;
+}
+
+.store-locator .card-cont .even-date i,
+.store-locator .card-cont .even-info i,
+.store-locator .card-cont .even-date .address,
+.store-locator .card-cont .even-info p {
+    display: table-cell;
+}
+
+.store-locator .card-cont .even-date i,
+.store-locator .card-cont .even-info i {
+    padding: 5% 5% 0 0;
+}
+
+.store-locator .card-cont .even-info p {
+    padding: 30px 50px 0 0;
+}
+
+.store-locator .card-cont .even-date .address span {
+    display: block;
+}
+
+.store-locator .card-cont a {
+    text-decoration: none;
+    max-width: 100%;
+    text-align: center;
+    line-height: 30px;
+    background: #b9cf4f;
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    margin-top: 10px;
+    font-weight: bold;
+    border-radius: 0px;
+    letter-spacing: 1px;
+    color: #141414;
+    position: relative;
+
+    overflow: hidden;
+}
+@media screen and (max-width: 860px) {
+    .store-locator .card {
+        display: block;
+        float: none;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .store-locator .card + .card {
+        margin-left: 0;
+    }
+
+    .store-locator .card-cont .even-date,
+    .store-locator  .card-cont .even-info {
+        font-size: 75%;
+    }
+}
+

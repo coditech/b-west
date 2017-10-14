@@ -9,7 +9,9 @@ div.jumbotron.hero-technology {
     min-height: 86vh;
     margin: auto auto 0 auto;
 }
-
+div.jumbotron.hero-technology.find-a-store {
+    min-height: 45vh;
+}
 div.jumbotron.hero-technology .hero-content {
     position: relative;
     top: 15vh;

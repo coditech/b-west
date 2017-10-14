@@ -4,7 +4,7 @@ import {STATUS} from '../commanConfig';
 import './Header.css';
 import {NavLink} from "react-router-dom";
 
-const Header = ({status, image, title, subTitle, actionButton}) => {
+const Header2 = ({status, image, title, subTitle, actionButton}) => {
 
     console.log('Status ==>>', status);
     if (status === STATUS.LOADING || status === STATUS.NONE) {
@@ -94,62 +94,64 @@ const Header = ({status, image, title, subTitle, actionButton}) => {
     return (<h2>Some error</h2>)
 }
 
-const Header2 = ({status, image, title, subTitle, actionButton}) => {
-
-    console.log('Status ==>>', status);
+const Header = ({status, image, title, subTitle, actionButton, additionalClass}) => {
+    const styleReady = {
+        backgroundImage: 'url("' + image.src + '")'
+    }
     if (status === STATUS.LOADING || status === STATUS.NONE) {
 
         return (
-            <section className="home-slider">
-                <header className="hero">
-                    <div className="center-content">
-                        <h1>An Article Title</h1>
-                        <h3>A longer subtitle but still important</h3>
-                        <a className="button">Some Action Here</a>
-                    </div>
-                </header>
-            </section>
+            <div className={"jumbotron hero-technology " + additionalClass}>
+                <div className={'hero-content'}>
+                    <h1 className="hero-title">B-West</h1>
+                    <p className="hero-subtitle">Default Header Title</p>
+
+                    <p>
+                        <NavLink to={actionButton} className={'btn btn-primary btn-lg hero-button'} role={'button'}>Learn
+                            More</NavLink>
+                    </p>
+                </div>
+            </div>
         )
     }
-
     if (status === STATUS.READY) {
         return (
-            <section className="home-slider">
-                <header className="hero">
-                    <div className="center-content">
-                        <h1>An Article Title</h1>
-                        <h3>A longer subtitle but still important</h3>
-                        <a className="button">Some Action Here</a>
-                    </div>
-                </header>
-            </section>
+
+            <div className={"jumbotron hero-technology " + additionalClass} style={styleReady}>
+                <div className={'hero-content'}>
+
+                    {
+                        title ? <h1 className="hero-title">{title}</h1> : null
+
+                    }
+                    {
+                        subTitle ? <p className="hero-subtitle">{subTitle}</p> : null
+                    }
+
+
+                    {actionButton ? <p>
+                        <NavLink to={actionButton} onClick={(event) => actionButton.actionFunction(event)}
+                                 className={'btn btn-primary btn-lg hero-button'}
+                                 role={'button'}>{actionButton.text}</NavLink>
+                    </p> : null}
+
+                </div>
+            </div>
+
+        )
+    } else {
+        return (
+            <div className={"jumbotron hero-technology " + additionalClass}
+                 style={{minHeight: '200px', background: 'black'}}>
+                <div className={'hero-content'}>
+                    <h1 className="hero-title">{title}</h1>
+                    <p className="hero-subtitle">{subTitle}</p>
+
+
+                </div>
+            </div>
 
         )
     }
-    return (<h2>Some error</h2>)
 }
-
-const Header3 = ({status, image, title, subTitle, actionButton}) => {
-    const style = {
-        backgroundImage: 'url("' + image.src + '")'
-    }
-    return (
-
-        <div className="jumbotron hero-technology" style={style}>
-            <div className={'hero-content'}>
-                <h1 className="hero-title">Hero Technology</h1>
-                <p className="hero-subtitle">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,
-                    dapibus
-                    ac
-                    facilisis in, egestas eget quam.</p>
-
-                <p>
-                    <NavLink to={'/'} className={'btn btn-primary btn-lg hero-button'} role={'button'}>Learn
-                        More</NavLink>
-                </p>
-            </div>
-        </div>
-    )
-}
-export {Header2, Header3}
 export default Header;

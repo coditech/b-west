@@ -351,9 +351,6 @@
         background: rgba(0, 0, 0, 0.8);
     }
 
-    .is-sticky .sticky {
-        position: relative !important;
-    }
 
     header .logo {
         position: relative;
