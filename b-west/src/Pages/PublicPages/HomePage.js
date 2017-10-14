@@ -8,6 +8,7 @@ import SmallSlider from "../../components/SmallSlider";
 import Header, {Header2, Header3} from "../../components/Header";
 import Banner from "../../components/Banner";
 import '../../components/Footer.css'
+import {NavLink} from "react-router-dom";
 
 class HomePage extends React.Component {
 
@@ -126,6 +127,9 @@ class HomePage extends React.Component {
                             </div>
 
                             <Store/>
+                            <div className="text-center">
+                                <NavLink to={'/products'} className={'btn btn-large dark-border font-normal margin-top-50 letter-space-1'}>SHOW MORE</NavLink>
+                            </div>
                         </div>
                     </section>
                     {/* Small Slider*/}
