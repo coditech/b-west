@@ -1,7 +1,6 @@
 import React from 'react';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
-import * as firebase from 'firebase';
 
 import {HomePage} from "./HomePage";
 import '../../assets/css/ionicons.min.css';
@@ -16,16 +15,6 @@ import '../../assets/css/default.css';
 import Menu from '../../components/Menu';
 import Footer from "../../components/Footer";
 import {ProductsPage} from "./ProductsPage";
-
-const config = {
-    apiKey: "AIzaSyCeMr31aX1fWxxIPRr8Zvemmm6-zOmYhws",
-    authDomain: "b-west.firebaseapp.com",
-    databaseURL: "https://b-west.firebaseio.com",
-    projectId: "b-west",
-    storageBucket: "b-west.appspot.com",
-    messagingSenderId: "277196104830"
-};
-firebase.initializeApp(config);
 
 class PublicApp extends React.Component {
 
@@ -58,27 +47,7 @@ class PublicApp extends React.Component {
                 src: '/b-west-latin-logo.png'
                 , alt: 'B-West Logo'
             },
-            speed: 10
         }
-    }
-
-
-    componentDidMount() {
-        const oldState = this.state;
-
-        const rootRef = firebase.database().ref().child('b-west');
-        const speedRef = rootRef.child('speed');
-        console.log('snap ==>', 23);
-
-        rootRef.on('value', snap => {
-            console.log('snap ==>', snap);
-
-            this.setState({
-                ...oldState,
-                speed: snap.val()
-            })
-        })
-
     }
 
     render() {
@@ -86,10 +55,6 @@ class PublicApp extends React.Component {
 
         return (
             <div id={'wrap'}>
-
-                <div>
-                    {this.state.speed}
-                </div>
                 {/* Header */}
                 <Menu {...this.state}/>
                 <Switch>
