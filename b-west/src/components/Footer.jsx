@@ -12,6 +12,7 @@ const Footer = ({ menuItems }) => {
               className="social_link"
               href="http://instagram.com/villagergoods"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <i className={"fa fa-instagram"} />
             </a>
@@ -21,6 +22,7 @@ const Footer = ({ menuItems }) => {
               className="social_link"
               href="http://facebook.com/villagergoods"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <i className={"fa fa-facebook"} />
             </a>
