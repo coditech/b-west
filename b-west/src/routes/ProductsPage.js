@@ -73,7 +73,7 @@ class ProductsPage extends React.Component {
                                             <i className="fa fa-map-marker"/>
                                             <div className="address"><span>Address 1</span><span>Address 2</span></div>
                                         </div>
-                                        <a href="#">Locate On Map</a></section>
+                                        <a>Locate On Map</a></section>
                                 </section>
                             </article>
                             <article className="card fl-left">
@@ -81,10 +81,10 @@ class ProductsPage extends React.Component {
                                     <section className="card-cont">
                                         <small>B-West</small>
                                         <h3>Bekaa Store</h3>
-                                        <div className="even-date"><i className="fa fa-map-marker"></i>
+                                        <div className="even-date"><i className="fa fa-map-marker"/>
                                             <div className="address"><span>Address 1</span><span>Address 2</span></div>
                                         </div>
-                                        <a href="#">Locate On Map</a></section>
+                                        <a >Locate On Map</a></section>
                                 </section>
                             </article>
                             <article className="card fl-left">
@@ -92,10 +92,10 @@ class ProductsPage extends React.Component {
                                     <section className="card-cont">
                                         <small>B-West</small>
                                         <h3>Bekaa Store</h3>
-                                        <div className="even-date"><i className="fa fa-map-marker"></i>
+                                        <div className="even-date"><i className="fa fa-map-marker"/>
                                             <div className="address"><span>Address 1</span><span>Address 2</span></div>
                                         </div>
-                                        <a href="#">Locate On Map</a></section>
+                                        <a >Locate On Map</a></section>
                                 </section>
                             </article>
                         </div>

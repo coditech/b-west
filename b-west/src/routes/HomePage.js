@@ -4,7 +4,6 @@ import {fetchHomeHeaderData} from "../helpers/index";
 import {About} from "../components/About";
 import Stories from "../components/Stories";
 import Store from "../components/Store";
-import SmallSlider from "../components/SmallSlider";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import {NavLink} from "react-router-dom";
@@ -44,7 +43,6 @@ class HomePage extends React.Component {
 
     actionFunctionButton = (event) => {
         event.preventDefault();
-        console.log(this.state);
         alert(123);
     };
 

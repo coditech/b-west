@@ -2,7 +2,7 @@ import React from 'react';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
 import '../styles/bootstrap.min.css';
-
+import '../styles/Admin.css'
 import {SideBar} from "../components/Sidebar";
 
 const User = () => {
