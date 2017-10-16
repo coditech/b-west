@@ -49,6 +49,7 @@ const Store = () => {
                   image={storeItem.image}
                   price={storeItem.price}
                   status={storeItem.status}
+                  classContainer={"col-xs-4"}
                   key={n}
                 />
               ) : null

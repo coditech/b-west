@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/Store.css";
 
-const Product = ({ status, productUrl, name, price, image }) => {
+const Product = ({ status, productUrl, name, price, image, classContainer}) => {
   return (
-    <li className="col-sm-4">
+    <li className={classContainer}>
       <div className="items-in">
         {status ? <div className="shop-tags">{status}</div> : ""}
         <a href={productUrl}>
