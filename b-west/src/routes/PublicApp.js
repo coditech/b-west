@@ -61,7 +61,7 @@ class PublicApp extends React.Component {
                     <Route exact path="/products" component={ProductsPage}/>
 
                 </Switch>
-                <Footer/>
+                <Footer {...this.state}/>
 
 
             </div>
