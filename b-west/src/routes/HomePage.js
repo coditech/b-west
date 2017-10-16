@@ -4,7 +4,6 @@ import {fetchHomeHeaderData} from "../helpers/index";
 import {About} from "../components/About";
 import Stories from "../components/Stories";
 import Store from "../components/Store";
-import SmallSlider from "../components/SmallSlider";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import {NavLink} from "react-router-dom";
@@ -44,7 +43,6 @@ class HomePage extends React.Component {
 
     actionFunctionButton = (event) => {
         event.preventDefault();
-        console.log(this.state);
         alert(123);
     };
 
@@ -82,7 +80,7 @@ class HomePage extends React.Component {
             story: {
                 firstStory: {
                     title: "THE ZAP - BEST PSD TEMPLATE",
-                    slogan: "allahu akbar",
+                    slogan: "slogan here",
                     desc:
                         "Lorem ipsum dolor sit amet, voluptatem consectetuer donec nullam velit pretium, libero morbi commodo vel, adipiscing dui nibh, a quis ipsum neque praesent magnis. Amet ante varius vitae integer sollicitudin nisl, rutrum a sit accumsan ut orci. Turpis lacus eget in pede eros sit, justo ipsum ipsum natoque in in delectus. Non nam nulla blandit at wisi, consectetuer risus ultrices in amet malesuada, tellus ultricies, nunc nonummy nonummy. Ligula quisque eleifend consequat vehicula pharetra eu, amet vitae eget vestibulum imperdiet, fermentum est pellentesque, morbi nec at metus pede. Tellus fames elit metus varius, est ante, ligula hendrerit egestas suspendisse, urna non amet tortor scelerisque dui vestibulum, ullamcorper sed. Pharetra lectus nec, a egestas id gravida, viverra molestie sed, ligula quam ridiculus. Eros tempus hendrerit nec vitae mollis nisl. Rhoncus tincidunt.",
                     image: "/villagers1.jpg",
@@ -90,7 +88,7 @@ class HomePage extends React.Component {
                 },
                 secondStory: {
                     title: "THE ZAP - BEST PSD TEMPLATE 2",
-                    slogan: "allahu akbar 2",
+                    slogan: "slogan here 2",
                     desc:
                         "Lorem ipsum dolor sit amet, voluptatem consectetuer donec nullam velit pretium, libero morbi commodo vel, adipiscing dui nibh, a quis ipsum neque praesent magnis. Amet ante varius vitae integer sollicitudin nisl, rutrum a sit accumsan ut orci. Turpis lacus eget in pede eros sit, justo ipsum ipsum natoque in in delectus. Non nam nulla blandit at wisi, consectetuer risus ultrices in amet malesuada, tellus ultricies, nunc nonummy nonummy. Ligula quisque eleifend consequat vehicula pharetra eu, amet vitae eget vestibulum imperdiet, fermentum est pellentesque, morbi nec at metus pede. Tellus fames elit metus varius, est ante, ligula hendrerit egestas suspendisse, urna non amet tortor scelerisque dui vestibulum, ullamcorper sed. Pharetra lectus nec, a egestas id gravida, viverra molestie sed, ligula quam ridiculus. Eros tempus hendrerit nec vitae mollis nisl. Rhoncus tincidunt.",
                     image: "/villagers2.jpg",

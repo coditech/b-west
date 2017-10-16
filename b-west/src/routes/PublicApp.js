@@ -13,6 +13,7 @@ import '../styles/font-awesome.min.css';
 import '../styles/theme-main.css';
 import '../styles/theme-style.css';
 import '../styles/theme-responsive.css';
+import {FindAStorePage} from "./FindAStorePage";
 
 
 class PublicApp extends React.Component {
@@ -58,10 +59,11 @@ class PublicApp extends React.Component {
                 <Menu {...this.state}/>
                 <Switch>
                     <Route exact path="/" component={HomePage}/>
+                    <Route exact path="/find-a-store" component={FindAStorePage}/>
                     <Route exact path="/products" component={ProductsPage}/>
 
                 </Switch>
-                <Footer/>
+                <Footer {...this.state}/>
 
 
             </div>

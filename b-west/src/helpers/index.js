@@ -38,12 +38,6 @@ const fetchFindAStoreHeaderData = () => {
                     alt: "Header Image"
                 }
                 , title: "Hello world this is a title"
-                , subTitle: "Hello world this is a subtitle"
-                , actionButton: {
-                    text: "Hello World"
-                    , actionFunction: this.actionFunctionButton
-                    , url: ""
-                }
             })
         }, 200)
     })

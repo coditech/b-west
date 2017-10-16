@@ -2,16 +2,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/Footer.css";
 
-const Footer = () => {
+const Footer = ({ menuItems }) => {
   return (
     <footer className="footer">
       <div className="footer-container">
         <ul className="footer-social__items">
           <li className="footer-social__item">
             <a
-              className=" social_link"
+              className="social_link"
               href="http://instagram.com/villagergoods"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <i className={"fa fa-instagram"} />
             </a>
@@ -21,52 +22,34 @@ const Footer = () => {
               className="social_link"
               href="http://facebook.com/villagergoods"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <i className={"fa fa-facebook"} />
             </a>
           </li>
         </ul>
+
         <ul className="footer__links">
-          <li className="footer__list-item">
-            <a href="/pages/coconut-water" className="footer__link">
-              Coconut Water
-            </a>
-          </li>
-          <li className="footer__list-item">
-            <a href="/collections/shop" className="footer__link">
-              Shop
-            </a>
-          </li>
-          <li className="footer__list-item">
-            <a href="/pages/contact" className="footer__link">
-              Contact
-            </a>
-          </li>
-          <li className="footer__list-item">
-            <a href="/pages/terms-of-service" className="footer__link">
-              Terms of Use
-            </a>
-          </li>
-          <li className="footer__list-item">
-            <a href="/pages/privacy-policy" className="footer__link">
-              Privacy Policy
-            </a>
-          </li>
-          <li className="footer__list-item">
-            <a href="/pages/faq" className="footer__link">
-              FAQs
-            </a>
-          </li>
+          {menuItems.map(({ url, name }, index) => (
+            <li key={index} className={"footer__list-item"}>
+              <NavLink exact={true} to={url} className={"footer__link"}>
+                {name + "    "}
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
         <p className="footer__credit">
           <a
             href="http://codi.tech"
-            className="footer__credit-href"
+            className="footer__link"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Designed And Developped By
+            <img src={"/codi-logo-white.svg"} className={"footer-logo-codi"} />
           </a>
+          
         </p>
       </div>
     </footer>

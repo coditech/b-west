@@ -3,12 +3,12 @@ import '../styles/Stories.css'
 const Stories = ({ story }) => {
   return (
   <div> 
-    <section className="padding-top-80 padding-bottom-80">
+    <section className="padding-top-50 padding-bottom-80">
             <div className="container">
     <div className="intro-5 margin-top-20">
       <div className="row">
         <div className="col-md-6">
-            <div className="heading-block no-margin-bottom margin-top-100"> <span className="margin-bottom-15 margin-top-20">{story.firstStory.slogan}</span>
+            <div className="heading-block no-margin-bottom margin-top-0"> <span className="margin-bottom-15 margin-top-20">{story.firstStory.slogan}</span>
             <h2 className="margin-bottom-20 margin-top-1">{story.firstStory.title}</h2>
           </div>
           <p>{story.firstStory.desc}</p>

@@ -16,6 +16,69 @@ rootRef.once("value", function (snapshot) {
     console.log(snapshot.val());
 });
 
+api.get('/', (req, res, next) => {
+
+    rootRef.once("value", function (snapshot) {
+        allData = snapshot.val();
+        res.send({
+            success: true,
+            data: allData
+        });
+    });
+});
+
+
+api.get('/about', (req, res, next) => {
+
+    const aboutRef = rootRef.child('about');
+    aboutRef.once("value", function (snapshot) {
+
+        let items = snapshot.val();
+        let allData = [];
+        for (let item in items) {
+            allData.push({
+                id: item
+            });
+        }
+        res.send({
+            success: true,
+            data: allData
+        });
+    });
+});
+
+api.get('/products', (req, res, next) => {
+
+    const productsRef = rootRef.child('products');
+    productsRef.once("value", function (snapshot) {
+
+        let items = snapshot.val();
+        let allData = [];
+        for (let item in items) {
+            allData.push({
+                id: item
+            });
+        }
+        res.send({
+            success: true,
+            data: allData
+        });
+    });
+});
+
+api.get('/contact', (req, res, next) => {
+
+    const productsRef = rootRef.child('products');
+    productsRef.once("value", function (snapshot) {
+        allData = snapshot.val();
+        res.send({
+            success: true,
+            data: allData
+        });
+    });
+});
+
+
 // Insert and overide all list
 api.get('/insert', (req, res, next) => {
     const usersRef = rootRef.child("users");

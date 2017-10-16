@@ -7,7 +7,7 @@ import {fetchFindAStoreHeaderData} from "../helpers/index";
 const iframe = '<iframe allowfullscreen=\'true\' frameborder="0" width="100%" height="700px"\n' +
     '                                src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBZ6uoGFiBceh7ni0WpT9B_iA9BO6ERIjA&amp;center=-33.8569%2C151.2152&amp;zoom=11"></iframe>';
 
-class ProductsPage extends React.Component {
+class FindAStorePage extends React.Component {
 
 
     constructor(props, context) {
@@ -21,13 +21,8 @@ class ProductsPage extends React.Component {
                     src: '',
                     alt: ''
                 }
-                , title: ''
-                , subTitle: ''
-                , actionButton: {
-                    text: ''
-                    , actionFunction: ''
-                },
-                additionalClass: 'find-a-store'
+                , title: '',
+                additionalClass: 'find-a-stores'
             }
         }
 
@@ -108,4 +103,4 @@ class ProductsPage extends React.Component {
     }
 }
 
-export {ProductsPage}
+export {FindAStorePage}
