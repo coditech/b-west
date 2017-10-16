@@ -43,7 +43,7 @@ class FindAStorePage extends React.Component {
                 this.setState((oldState) => ({
                     ...oldState
                     , status: STATUS.READY
-                    , headerData: {...headerData, additionalClass: 'find-a-store'}
+                    , headerData: {...headerData, additionalClass: 'find-a-store dark-pattern'}
                 }))
             })
 
