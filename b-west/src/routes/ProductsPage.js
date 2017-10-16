@@ -1,8 +1,8 @@
 import React from 'react';
 import '../styles/StoreLocator.css';
-import Header from "../../components/Header";
-import {STATUS} from "../../commanConfig";
-import {fetchFindAStoreHeaderData} from "../../helpers/index";
+import Header from "../components/Header";
+import {STATUS} from "../commanConfig";
+import {fetchFindAStoreHeaderData} from "../helpers/index";
 
 const iframe = '<iframe allowfullscreen=\'true\' frameborder="0" width="100%" height="700px"\n' +
     '                                src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBZ6uoGFiBceh7ni0WpT9B_iA9BO6ERIjA&amp;center=-33.8569%2C151.2152&amp;zoom=11"></iframe>';

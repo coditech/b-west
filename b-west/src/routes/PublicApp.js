@@ -8,11 +8,11 @@ import Footer from "../components/Footer";
 import {ProductsPage} from "./ProductsPage";
 
 import '../styles/ionicons.min.css';
-import '../../styles/bootstrap.min.css';
-import '../../styles/font-awesome.min.css';
-import '../../styles/theme-main.css';
-import '../../styles/theme-style.css';
-import '../../styles/theme-responsive.css';
+import '../styles/bootstrap.min.css';
+import '../styles/font-awesome.min.css';
+import '../styles/theme-main.css';
+import '../styles/theme-style.css';
+import '../styles/theme-responsive.css';
 
 
 class PublicApp extends React.Component {
