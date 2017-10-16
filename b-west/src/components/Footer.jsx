@@ -42,6 +42,7 @@ const Footer = ({ menuItems }) => {
             href="http://codi.tech"
             className="footer__link"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Designed And Developped By
             <img src={"/codi-logo-white.svg"} className={"footer-logo-codi"} />
