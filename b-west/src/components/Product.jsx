@@ -7,7 +7,7 @@ const Product = ({ status, productUrl, name, price, image, classContainer}) => {
       <div className="items-in">
         {status ? <div className="shop-tags">{status}</div> : ""}
         <a href={productUrl}>
-          <img src={image.url} alt={image.url} />
+          <img src={image.src} alt={image.url} />
         </a>
       </div>
       <div className="details-sec">

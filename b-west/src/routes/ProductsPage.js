@@ -3,6 +3,7 @@ import '../styles/StoreLocator.css';
 import Header from "../components/Header";
 import {STATUS} from "../commanConfig";
 import {fetchFindAStoreHeaderData} from "../helpers/index";
+import Product from "../components/Product";
 
 const iframe = '<iframe allowfullscreen=\'true\' frameborder="0" width="100%" height="700px"\n' +
     '                                src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBZ6uoGFiBceh7ni0WpT9B_iA9BO6ERIjA&amp;center=-33.8569%2C151.2152&amp;zoom=11"></iframe>';
@@ -56,51 +57,282 @@ class ProductsPage extends React.Component {
 
 
     render() {
-
+        const products = [
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_1.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: { src: '/product_2.jpg', alt: 'product 2' },
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+            {
+                status: 'sale',
+                productUrl: '/productUrl',
+                name: 'Labneh',
+                price: "32",
+                image: {src: '/product_3.jpg', alt: 'product 1'},
+                classContainer: 'col-sm-4 col-xs-6'
+            },
+        ]
         return (
             <div>
                 <Header {...this.state.headerData}/>
                 <div className="container-fluid store-locator">
-
-                    <div className="row">
-                        <div className="col-lg-5 col-md-5 col-sm-5">
-                            <article className="card fl-left">
-                                <section className="date">
-                                    <section className="card-cont">
-                                        <small>B-West</small>
-                                        <h3>Bekaa Store</h3>
-                                        <div className="even-date">
-                                            <i className="fa fa-map-marker"/>
-                                            <div className="address"><span>Address 1</span><span>Address 2</span></div>
-                                        </div>
-                                        <a>Locate On Map</a></section>
-                                </section>
-                            </article>
-                            <article className="card fl-left">
-                                <section className="date">
-                                    <section className="card-cont">
-                                        <small>B-West</small>
-                                        <h3>Bekaa Store</h3>
-                                        <div className="even-date"><i className="fa fa-map-marker"/>
-                                            <div className="address"><span>Address 1</span><span>Address 2</span></div>
-                                        </div>
-                                        <a >Locate On Map</a></section>
-                                </section>
-                            </article>
-                            <article className="card fl-left">
-                                <section className="date">
-                                    <section className="card-cont">
-                                        <small>B-West</small>
-                                        <h3>Bekaa Store</h3>
-                                        <div className="even-date"><i className="fa fa-map-marker"/>
-                                            <div className="address"><span>Address 1</span><span>Address 2</span></div>
-                                        </div>
-                                        <a >Locate On Map</a></section>
-                                </section>
-                            </article>
-                        </div>
-                        <div className="col-lg-7 col-md-7 col-sm-7" dangerouslySetInnerHTML={this.iframe()}>
-                        </div>
+                    <div className="popurlar_product">
+                        <ul className="row">
+                            {
+                                products.map((product, index) => <Product key={index} {...product}/>)
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>
