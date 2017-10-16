@@ -36,5 +36,9 @@
 .banner h2, .banner h3 {
     color: white;
 }
+i.insta-logo{
+    font-size:125px;
+    display:block;
+}
 
 /*********/

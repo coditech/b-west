@@ -15,7 +15,7 @@ const Banner = ({backgroundImage}) => {
                     <div className="col-md-12">
                         {/* Icon */}
                         <h2>
-                            <i className={'fa fa-instagram'} style={{fontSize: '3rem', display: 'block'}}/>
+                            <i className={'fa fa-instagram insta-logo'} />
                             @b-west
                         </h2>
                         <h3>Join Our JOIN OUR JOURNEY</h3>
