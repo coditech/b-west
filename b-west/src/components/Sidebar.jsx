@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 
-import './SideBar.css'
+import '../styles/SideBar.css'
 
 const SideBar = () => {
     const menItems = [

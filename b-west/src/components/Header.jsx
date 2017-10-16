@@ -1,7 +1,7 @@
 import React from 'react';
 import {STATUS} from '../commanConfig';
 
-import './Header.css';
+import '../styles/Header.css';
 import {NavLink} from "react-router-dom";
 
 const Header2 = ({status, image, title, subTitle, actionButton}) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import './About.css'
+import '../styles/About.css'
 
 const About = ({title, subTitle, content, imageOne, imageTwo}) => {
     console.log('content', content)

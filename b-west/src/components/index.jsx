@@ -5,7 +5,7 @@ import {About} from "./About";
 import Stories from "./Stories"; 
 import Banner from "./Banner";
 
-import "./styles.css";
+import "../styles/styles.css";
 
 const styles = {
   fontFamily: "sans-serif",

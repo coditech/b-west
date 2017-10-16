@@ -1,6 +1,6 @@
 import React from 'react';
-import './Login.css';
-import BWestImage from '../assets/b-west-latin-logo.png'
+import '../styles/Login.css';
+import BWestImage from '../images/logo.png';
 
 const logoStyle = {
     maxWidth: '100px'

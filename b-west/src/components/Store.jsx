@@ -1,5 +1,5 @@
 import React from "react";
-import './Store.css'
+import '../styles/Store.css'
 const dataTest = [
     {
         image: {
