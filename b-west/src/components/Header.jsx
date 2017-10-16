@@ -104,12 +104,6 @@ const Header = ({status, image, title, subTitle, actionButton, additionalClass})
             <div className={"jumbotron hero-technology " + additionalClass}>
                 <div className={'hero-content'}>
                     <h1 className="hero-title">B-West</h1>
-                    <p className="hero-subtitle">Default Header Title</p>
-
-                    <p>
-                        <NavLink to={actionButton} className={'btn btn-primary btn-lg hero-button'} role={'button'}>Learn
-                            More</NavLink>
-                    </p>
                 </div>
             </div>
         )
@@ -144,10 +138,7 @@ const Header = ({status, image, title, subTitle, actionButton, additionalClass})
             <div className={"jumbotron hero-technology " + additionalClass}
                  style={{minHeight: '200px', background: 'black'}}>
                 <div className={'hero-content'}>
-                    <h1 className="hero-title">{title}</h1>
-                    <p className="hero-subtitle">{subTitle}</p>
-
-
+                    <h1 className="hero-title">Something went wrong</h1>
                 </div>
             </div>
 
