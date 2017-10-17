@@ -23,7 +23,8 @@ class HomePage extends React.Component {
             featuredStories: props.featuredStories,
             instaBanner: props.instaBanner,
             featuredProducts: props.featuredProducts,
-            findAStoereBanner: props.findAStoereBanner
+            findAStoereBanner: props.findAStoereBanner,
+            subscriberBanner: props.subscriberBanner
         }
         this.bindMe([
             'actionFunctionButton'
@@ -43,7 +44,7 @@ class HomePage extends React.Component {
 
 
     render() {
-        const {homeHeader, aboutUsHomeSection, featuredStories, instaBanner, featuredProducts, findAStoereBanner} = this.state;
+        const {homeHeader, aboutUsHomeSection, featuredStories,subscriberBanner, instaBanner, featuredProducts, findAStoereBanner} = this.state;
         return (
             <div>
 
@@ -83,13 +84,8 @@ class HomePage extends React.Component {
 
 
                 </div>
-                {/* End Content */}
-                {/* Footer */}
+                { subscriberBanner.display ? <SubscribeBanner/>: null}
 
-
-                <SubscribeBanner/>
-                {/* End Footer */}
-                {/* GO TO TOP */}
                 <a className="cd-top"><i className="fa fa-angle-up"/></a>
                 {/* GO TO TOP End */}
             </div>

@@ -565,11 +565,8 @@ class App extends React.Component {
 
                 <Route path="/admin" component={AdminApp}/>
                 <Route path="/login" component={LoginPage}/>
-                <Route path="/" onUpdate={() => {
-                    alert(1);
+                <Route path="/"  render={(props) => {
                     window.scrollTo(0, 0)
-                }} render={(props) => {
-
                     return ( <PublicApp  {...mix(props)}/>)
                 }
                 }/>

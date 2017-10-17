@@ -2,7 +2,6 @@ import React from 'react';
 import Header from "../components/Header";
 import {AboutContent} from "../components/AboutContent";
 
-
 class AboutUsPage extends React.Component {
 
     constructor(props, context) {
@@ -34,3 +33,5 @@ class AboutUsPage extends React.Component {
 }
 
 export {AboutUsPage}
+//<Router onUpdate={() => window.scrollTo(0, 0)}>
+//</Router>

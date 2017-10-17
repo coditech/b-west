@@ -39,7 +39,8 @@ class PublicApp extends React.Component {
             villagersStories: props.villagersStories,
             villagersStoriesHeader: props.villagersStoriesHeader,
             products: props.products,
-            productsPageHeader: props.productsPageHeader
+            productsPageHeader: props.productsPageHeader,
+            subscriberBanner: props.subscriberBanner
 
         }
     }
@@ -49,7 +50,7 @@ class PublicApp extends React.Component {
             menu, homeHeader, aboutUsHomeSection, featuredStories, instaBanner,
             featuredProducts, findAStoereBanner, aboutUs, findAStore,
             villagersStories, villagersStoriesHeader,
-            products,productsPageHeader
+            products,productsPageHeader,subscriberBanner
         } = this.state;
         const mixHomePage = mixProps({
             homeHeader,
@@ -57,7 +58,8 @@ class PublicApp extends React.Component {
             featuredStories,
             instaBanner,
             featuredProducts,
-            findAStoereBanner
+            findAStoereBanner,
+            subscriberBanner
         });
         const mixAboutPage = mixProps({aboutUs});
         const mixFindAStore = mixProps({findAStore});
@@ -72,6 +74,7 @@ class PublicApp extends React.Component {
 
                         return ( <HomePage {...mixHomePage(props)}/>)
                     }
+                    
                     }/>
                     <Route exact path="/about-us" render={(props) => {
 
