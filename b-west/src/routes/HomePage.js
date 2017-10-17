@@ -1,12 +1,14 @@
 import React from 'react';
 import {STATUS} from "../commanConfig";
-import {fetchHomeHeaderData} from "../helpers/index";
 import {About} from "../components/About";
 import Stories from "../components/Stories";
 import Store from "../components/Store";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import {NavLink} from "react-router-dom";
+import {SubscribeBanner} from "../components/SubscribeBanner";
+import {FindAStorePage} from "./FindAStorePage";
+import FindAStoreBanner from "../components/FIndAStoreBanner";
 
 
 class HomePage extends React.Component {
@@ -16,19 +18,12 @@ class HomePage extends React.Component {
         super(props, context);
         this.state = {
             status: STATUS.NONE
-            , headerData: {
-                status: STATUS.NONE
-                , image: {
-                    src: '',
-                    alt: ''
-                }
-                , title: ''
-                , subTitle: ''
-                , actionButton: {
-                    text: ''
-                    , actionFunction: ''
-                }
-            }
+            , homeHeader: props.homeHeader,
+            aboutUsHomeSection: props.aboutUsHomeSection,
+            featuredStories: props.featuredStories,
+            instaBanner: props.instaBanner,
+            featuredProducts: props.featuredProducts,
+            findAStoereBanner: props.findAStoereBanner
         }
         this.bindMe([
             'actionFunctionButton'
@@ -46,72 +41,22 @@ class HomePage extends React.Component {
         alert(123);
     };
 
-    componentDidMount() {
-        const oldState = this.state;
-
-        this.setState({...oldState, headerData: {...oldState.headerData, status: STATUS.LOADING}});
-        fetchHomeHeaderData()
-            .then(headerData => {
-                this.setState((oldState) => ({
-                    ...oldState
-                    , status: STATUS.READY
-                    , headerData: headerData
-                }))
-            })
-
-    }
 
     render() {
-        const aboutData = {
-            title: 'B-West'
-            , subTitle: 'B-West Hon-Kong'
-            , content: '<p>Hello world <a></a><p>'
-            , imageOne: {
-                src: '/beityLogo.png'
-                , alt: 'Image One Logo'
-            }
-            , imageTwo: {
-                src: '/b-westAboutImage2.jpg'
-                , alt: 'Image Two Logo'
-            }
-        }
-
-        const passedStory = {
-            story: {
-                firstStory: {
-                    title: "THE ZAP - BEST PSD TEMPLATE",
-                    slogan: "slogan here",
-                    desc:
-                        "Lorem ipsum dolor sit amet, voluptatem consectetuer donec nullam velit pretium, libero morbi commodo vel, adipiscing dui nibh, a quis ipsum neque praesent magnis. Amet ante varius vitae integer sollicitudin nisl, rutrum a sit accumsan ut orci. Turpis lacus eget in pede eros sit, justo ipsum ipsum natoque in in delectus. Non nam nulla blandit at wisi, consectetuer risus ultrices in amet malesuada, tellus ultricies, nunc nonummy nonummy. Ligula quisque eleifend consequat vehicula pharetra eu, amet vitae eget vestibulum imperdiet, fermentum est pellentesque, morbi nec at metus pede. Tellus fames elit metus varius, est ante, ligula hendrerit egestas suspendisse, urna non amet tortor scelerisque dui vestibulum, ullamcorper sed. Pharetra lectus nec, a egestas id gravida, viverra molestie sed, ligula quam ridiculus. Eros tempus hendrerit nec vitae mollis nisl. Rhoncus tincidunt.",
-                    image: "/villagers1.jpg",
-                    alt: "",
-                },
-                secondStory: {
-                    title: "THE ZAP - BEST PSD TEMPLATE 2",
-                    slogan: "slogan here 2",
-                    desc:
-                        "Lorem ipsum dolor sit amet, voluptatem consectetuer donec nullam velit pretium, libero morbi commodo vel, adipiscing dui nibh, a quis ipsum neque praesent magnis. Amet ante varius vitae integer sollicitudin nisl, rutrum a sit accumsan ut orci. Turpis lacus eget in pede eros sit, justo ipsum ipsum natoque in in delectus. Non nam nulla blandit at wisi, consectetuer risus ultrices in amet malesuada, tellus ultricies, nunc nonummy nonummy. Ligula quisque eleifend consequat vehicula pharetra eu, amet vitae eget vestibulum imperdiet, fermentum est pellentesque, morbi nec at metus pede. Tellus fames elit metus varius, est ante, ligula hendrerit egestas suspendisse, urna non amet tortor scelerisque dui vestibulum, ullamcorper sed. Pharetra lectus nec, a egestas id gravida, viverra molestie sed, ligula quam ridiculus. Eros tempus hendrerit nec vitae mollis nisl. Rhoncus tincidunt.",
-                    image: "/villagers2.jpg",
-                    alt: "",
-                },
-            }
-        };
+        const {homeHeader, aboutUsHomeSection, featuredStories, instaBanner, featuredProducts, findAStoereBanner} = this.state;
         return (
             <div>
 
                 {/* End Header */}
                 {/*======= HOME MAIN SLIDERs =========*/}
                 {/*<Header {...this.state.headerData}/>*/}
-                <Header {...this.state.headerData}/>
+                <Header {...homeHeader}/>
                 {/* Content */}
                 <div id="content">
                     {/* Welcome */}
-                    <About {...aboutData}/>
-                    <Stories {...passedStory}/>
-                    <Banner {...{backgroundImage: '/followus.jpg'}}/>
-                    {/* Facts */}
-
-
+                    <About {...aboutUsHomeSection}/>
+                    <Stories {...featuredStories}/>
+                    <Banner {...instaBanner}/>
                     {/* Store */}
 
                     <section className="shop padding-top-80 padding-bottom-80">
@@ -124,12 +69,15 @@ class HomePage extends React.Component {
                                 {/*<span>Tell your Story</span>*/}
                             </div>
 
-                            <Store/>
+                            <Store {...{featuredProducts}}/>
                             <div className="text-center">
-                                <NavLink to={'/products'} className={'btn btn-large dark-border font-normal margin-top-50 letter-space-1'}>SHOW MORE</NavLink>
+                                <NavLink to={'/products#wrap'}
+                                         className={'btn btn-large dark-border font-normal margin-top-50 letter-space-1'}>SHOW
+                                    MORE</NavLink>
                             </div>
                         </div>
                     </section>
+                    <FindAStoreBanner {...{backgroundImage: findAStoereBanner.backgroundImage}}/>
                     {/* Small Slider*/}
                     {/*<SmallSlider/>*/}
 
@@ -138,8 +86,8 @@ class HomePage extends React.Component {
                 {/* End Content */}
                 {/* Footer */}
 
-                
 
+                <SubscribeBanner/>
                 {/* End Footer */}
                 {/* GO TO TOP */}
                 <a className="cd-top"><i className="fa fa-angle-up"/></a>

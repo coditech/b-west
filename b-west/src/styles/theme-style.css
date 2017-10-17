@@ -202,7 +202,7 @@ a:hover, a:focus {
     transform: translate(-50%, -50%);
 }
 .dark-pattern {
-    background: url(../images/portfolio/2/bg-parallax-1.png) repeat;
+    background: url(../images/bg/pattern-dark-bg.jpg) repeat;
 }
 .white-bg {
     background: #fff;
@@ -1926,7 +1926,7 @@ header.coporate-header .is-sticky .sticky .ownmenu > li > .megamenu {
 ========================================================*/
 .popurlar_product {
 }
-.popurlar_product .items-in {
+.popurlar_product .items-in ,.product .items-in {
     position: relative;
     overflow: hidden;
     margin-top: 40px;
@@ -2009,7 +2009,7 @@ header.coporate-header .is-sticky .sticky .ownmenu > li > .megamenu {
     letter-spacing: 1px;
     color: #141414;
 }
-.popurlar_product .shop-tags {
+.popurlar_product .shop-tags,.product .shop-tags {
     border: 2px solid #000000;
     font-size: 10px;
     font-weight: bold;

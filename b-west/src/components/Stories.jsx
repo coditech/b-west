@@ -1,48 +1,64 @@
 import React from "react";
 import '../styles/Stories.css'
-const Stories = ({ story }) => {
-  return (
-  <div> 
-    <section className="padding-top-50 padding-bottom-80">
-            <div className="container">
-    <div className="intro-5 margin-top-20">
-      <div className="row">
-        <div className="col-md-6">
-            <div className="heading-block no-margin-bottom margin-top-0"> <span className="margin-bottom-15 margin-top-20">{story.firstStory.slogan}</span>
-            <h2 className="margin-bottom-20 margin-top-1">{story.firstStory.title}</h2>
-          </div>
-          <p>{story.firstStory.desc}</p>
-          <a href="#." className="btn btn-large dark-border font-normal margin-top-50 letter-space-1">READ MORE</a> </div>
+import {NavLink} from "react-router-dom";
 
-        <div className="col-md-6"> <img className="img-responsive" src={story.firstStory.image} alt={story.firstStory.alt}></img> </div>
-        </div>
-      </div>
+const Stories = ({firstStory, secondStory}) => {
+    return (
+        <div>
+            <section className="padding-top-50 padding-bottom-80">
+                <div className="container">
+                    <div className="intro-5 margin-top-20">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="heading-block no-margin-bottom margin-top-0"><span
+                                    className="margin-bottom-15 margin-top-20">{firstStory.slogan}</span>
+                                    <h2 className="margin-bottom-20 margin-top-1">{firstStory.title}</h2>
+                                </div>
+                                <p>{firstStory.desc}</p>
+                                <NavLink to={'/villagers#' + firstStory.slug}
+                                         className={'btn btn-large dark-border font-normal margin-top-50 letter-space-1'}>
+                                    READ&nbsp;MORE
+                                </NavLink>
+                            </div>
 
-      
-    <div className="intro-5 margin-top-20">
-        <div className="row">
+                            <div className="col-md-6"><img className="img-responsive" src={firstStory.image}
+                                                           alt={firstStory.alt}/></div>
+                        </div>
+                    </div>
 
-        
-          <div className="col-md-6"> <img className="img-responsive" src={story.secondStory.image} alt={story.secondStory.alt}></img> </div>
-          <div className="col-md-6">
-            <div className="heading-block no-margin-bottom margin-top-0"> <span className="margin-bottom-15">{story.secondStory.slogan}</span>
-              <h2 className="margin-bottom-20 margin-top-1">{story.secondStory.title}</h2>
-              </div>
-                <p>{story.secondStory.desc}</p>
-                <a href="#." className="btn btn-large dark-border font-normal margin-top-50 letter-space-1">READ MORE</a> </div>
-          </div>
+                    <hr/>
+                    <div className="intro-5 margin-top-20">
+                        <div className="row">
+
+
+                            <div className="col-md-6">
+                                <img className="img-responsive" src={secondStory.image}
+                                     alt={secondStory.alt}/>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="heading-block no-margin-bottom margin-top-0"><span
+                                    className="margin-bottom-15">{secondStory.slogan}</span>
+                                    <h2 className="margin-bottom-20 margin-top-1">{secondStory.title}</h2>
+                                </div>
+                                <p>{secondStory.desc}</p>
+                                <NavLink to={'/villagers#' + secondStory.slug}
+                                         className={'btn btn-large dark-border font-normal margin-top-50 letter-space-1'}>
+                                    READ&nbsp;MORE
+                                </NavLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <section className={'promo dark dark-pattern'} style={{textAlign: "center"}}>
+                <div className="container text-center">
+                    <NavLink to={'/villagers#wrap'} className={'btn btn-color btn-med'}>More Villagers Stories</NavLink>
+                </div>
+            </section>
         </div>
-      </div>
-      
-      </section>
-      <section className={'promo dark'} style={{textAlign: "center"}}>
-        <div className="container text-center">
-         <a href="#." className="btn btn-color btn-med">Read More</a>
-        </div>
-      </section>
-      </div>
-      
-  );
+
+    );
 };
 
 export default Stories;

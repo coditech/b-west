@@ -32,7 +32,7 @@
     color: rgb(152, 152, 152);
 }
 
-.store-locator .date {
+.store-locator .location {
     display: table-cell;
     width: 1%;
     position: relative;
@@ -43,8 +43,8 @@
     border-right-color: rgb(160, 162, 171);
 }
 
-.store-locator .date:before,
-.store-locator .date:after {
+.store-locator .location:before,
+.store-locator .location:after {
     content: "";
     display: block;
     width: 30px;
@@ -57,7 +57,7 @@
     border-radius: 50%;
 }
 
-section.date {
+section.location {
     background-color: #ecebeb;
 }
 
@@ -65,7 +65,7 @@ section.card-cont {
     background-color: #ecebeb;
 }
 
-.store-locator .date:after {
+.store-locator .location:after {
     top: auto;
     bottom: -15px;
 }
@@ -86,14 +86,14 @@ section.card-cont {
     display: table-row;
 }
 
-.store-locator .card-cont .even-date i,
+.store-locator .card-cont .even-location i,
 .store-locator .card-cont .even-info i,
-.store-locator .card-cont .even-date .address,
+.store-locator .card-cont .even-location .address,
 .store-locator .card-cont .even-info p {
     display: table-cell;
 }
 
-.store-locator .card-cont .even-date i,
+.store-locator .card-cont .even-location i,
 .store-locator .card-cont .even-info i {
     padding: 5% 5% 0 0;
 }
@@ -102,11 +102,11 @@ section.card-cont {
     padding: 30px 50px 0 0;
 }
 
-.store-locator .card-cont .even-date .address span {
+.store-locator .card-cont .even-location .address span {
     display: block;
 }
 
-.store-locator .card-cont a {
+.store-locator .card-cont a.mapBtn, .store-locator .card-cont .mapBtn {
     text-decoration: none;
     max-width: 100%;
     text-align: center;
@@ -118,7 +118,7 @@ section.card-cont {
     padding: 10px 30px;
     margin-top: 10px;
     font-weight: bold;
-    border-radius: 0px;
+    border-radius: 0;
     letter-spacing: 1px;
     color: #141414;
     position: relative;
@@ -137,7 +137,7 @@ section.card-cont {
         margin-left: 0;
     }
 
-    .store-locator .card-cont .even-date,
+    .store-locator .card-cont .even-location,
     .store-locator  .card-cont .even-info {
         font-size: 75%;
     }

@@ -16,11 +16,11 @@ const About = ({title, subTitle, content, imageOne, imageTwo}) => {
                     <div className="col-md-5 text-center">
                         <div className="heading-block no-margin">
 
-                            <h1 className="no-margin margin-bottom-30  title">
+                            <h2 className="no-margin margin-bottom-30  title">
                                 {title}
-                            </h1>
+                            </h2>
 
-                            <span className="margin-bottom-10">{subTitle}</span>
+                            <h3 className="margin-bottom-10 subtitle">{subTitle}</h3>
                             <div className="font-crimson content" dangerouslySetInnerHTML={{__html: content}}/>
 
                             <NavLink to={'/about-us'}

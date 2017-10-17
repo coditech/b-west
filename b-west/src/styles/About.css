@@ -6,6 +6,7 @@
     overflow-x: hidden;
     margin-left: 29%;
 }
+
 .about-image-block .image2 img {
 }
 
@@ -25,6 +26,10 @@
 
 }
 
-.about-us.dark-pattern .title {
+.about-us.dark-pattern .title, .about-us.dark-pattern .subtitle, .about-us.dark-pattern .content {
     color: white;
+}
+
+.about-us.dark-pattern .content {
+    font-size: 1.6em;
 }

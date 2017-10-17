@@ -2176,16 +2176,16 @@ header.coporate-header .is-sticky .sticky .ownmenu > li > .megamenu {
 	display: inline-block;
 	width: 100%;
 }
-.item-detail-page .flex-nav-next {
+.flex-nav-next {
 	right: 15px;
 }
-.item-detail-page .flex-nav-prev {
+ .flex-nav-prev {
 	left: 15px;
 }
-.item-detail-page .flex-direction-nav {
+.flex-direction-nav {
 	display: none;
 }
-.item-detail-page .flex-control-thumbs {
+.flex-control-thumbs {
 	display: inline-block;
 	width: 100%;
 	margin-top: 0px;
