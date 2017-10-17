@@ -566,7 +566,10 @@ class App extends React.Component {
                 <Route path="/admin" component={AdminApp}/>
                 <Route path="/login" component={LoginPage}/>
                 <Route path="/"  render={(props) => {
-                    {/* window.scrollTo(0, 0) */}
+                    // TODO: move this to componentDidMount
+                    if(typeof window !== 'undefined'){
+                        window.scrollTo(0, 0)
+                    }
                     return ( <PublicApp  {...mix(props)}/>)
                 }
                 }/>
