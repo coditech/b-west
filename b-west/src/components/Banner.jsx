@@ -15,11 +15,12 @@ const Banner = ({backgroundImage}) => {
                     <div className="col-md-12">
                         {/* Icon */}
                         <h2>
-                            <i className={'fa fa-instagram insta-logo'} />
+                            <i className={'fa fa-instagram insta-logo'}/>
                             @b-west
                         </h2>
                         <h3>Join Our JOIN OUR JOURNEY</h3>
-                        <a href={'https://instagram.com'} target={'_blank'} className={'insta_btn'}>Follow Us</a>
+                        <a href={'https://instagram.com'} target={'_blank'}
+                           className={' btn btn-color btn-med insta_btn'}>Follow Us</a>
                     </div>
                 </div>
             </div>

@@ -13,57 +13,105 @@ import '../styles/font-awesome.min.css';
 import '../styles/theme-main.css';
 import '../styles/theme-style.css';
 import '../styles/theme-responsive.css';
+import '../styles/PublicApp.css'
 import {FindAStorePage} from "./FindAStorePage";
+import {AboutUsPage} from "./AboutUsPage";
+import {ContactUsPage} from "./ContactUsPage";
+import {VillagersPage} from "./VillagersPage";
+import {ProductItemPage} from "./ProductItemPage";
 
+const mixProps = (passed_props_home) => (props) => ({...passed_props_home, ...props})
 
 class PublicApp extends React.Component {
 
     constructor(props, context) {
-        super(props, context)
+        super(props, context);
         this.state = {
-            menuItems: [
-                {
-                    name: "Home",
-                    url: "/",
-                },
-                {
-                    name: "About Us",
-                    url: "/about-us",
-                },
-                {
-                    name: "Villagers",
-                    url: "/villagers",
-                },
-                {
-                    name: "Products",
-                    url: "/products",
-                },
-                {
-                    name: "Contact Us",
-                    url: "/contact-us",
-                }
-            ],
-            logo: {
-                src: '/b-west-latin-logo.png'
-                , alt: 'B-West Logo'
-            },
+            menu: props.menu,
+            homeHeader: props.homeHeader,
+            aboutUsHomeSection: props.aboutUsHomeSection,
+            featuredStories: props.featuredStories,
+            instaBanner: props.instaBanner,
+            featuredProducts: props.featuredProducts,
+            findAStoereBanner: props.findAStoereBanner,
+            aboutUs: props.aboutUs,
+            findAStore: props.findAStore,
+            villagersStories: props.villagersStories,
+            villagersStoriesHeader: props.villagersStoriesHeader,
+            products: props.products,
+            productsPageHeader: props.productsPageHeader,
+            subscriberBanner: props.subscriberBanner
+
         }
     }
 
     render() {
-
-
+        const {
+            menu, homeHeader, aboutUsHomeSection, featuredStories, instaBanner,
+            featuredProducts, findAStoereBanner, aboutUs, findAStore,
+            villagersStories, villagersStoriesHeader,
+            products,productsPageHeader,subscriberBanner
+        } = this.state;
+        const mixHomePage = mixProps({
+            homeHeader,
+            aboutUsHomeSection,
+            featuredStories,
+            instaBanner,
+            featuredProducts,
+            findAStoereBanner,
+            subscriberBanner
+        });
+        const mixAboutPage = mixProps({aboutUs});
+        const mixFindAStore = mixProps({findAStore});
+        const mixVillagers = mixProps({villagersStories, villagersStoriesHeader});
+        const mixProductsPage = mixProps({products,productsPageHeader})
         return (
             <div id={'wrap'}>
                 {/* Header */}
-                <Menu {...this.state}/>
+                <Menu {...menu}/>
                 <Switch>
-                    <Route exact path="/" component={HomePage}/>
-                    <Route exact path="/find-a-store" component={FindAStorePage}/>
-                    <Route exact path="/products" component={ProductsPage}/>
+                    <Route exact path="/" render={(props) => {
+
+                        return ( <HomePage {...mixHomePage(props)}/>)
+                    }
+                    
+                    }/>
+                    <Route exact path="/about-us" render={(props) => {
+
+                        return ( <AboutUsPage {...mixAboutPage(props)}/>)
+                    }
+                    }/>
+                    <Route exact path="/find-a-store" render={(props) => {
+
+                        return ( <FindAStorePage {...mixFindAStore(props)}/>)
+                    }
+                    }/>
+                    <Route exact path="/villagers" render={(props) => {
+
+                        return ( <VillagersPage {...mixVillagers(props)}/>)
+                    }
+                    }/>
+
+                    <Route exact path="/products" render={(props) => {
+
+                        return ( <ProductsPage {...mixProductsPage(props)}/>)
+                    }
+                    }/>
+                    <Route exact path="/products/:slug" render={(props) => {
+
+                        console.log("props, ", props);
+                        const products = this.state.products.filter(({slug}) => {
+                            return slug === props.match.params.slug;
+                        })
+                        const mixProductItemPage = mixProps({products});
+                        return products.length > 0 ?
+                         ( <ProductItemPage {...mixProductItemPage(props)}  productFound={true}/>) :<ProductItemPage {...mixProductItemPage(props)}  productFound={false}/>;
+                    }
+                    }/>
+                    <Route exact path="/contact-us" component={ContactUsPage}/>
 
                 </Switch>
-                <Footer {...this.state}/>
+                <Footer {...menu}/>
 
 
             </div>

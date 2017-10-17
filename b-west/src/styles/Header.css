@@ -9,11 +9,21 @@ div.jumbotron.hero-technology {
     min-height: 86vh;
     margin: auto auto 0 auto;
 }
-div.jumbotron.hero-technology.find-a-store {
+div.jumbotron.hero-technology .header-content p,div.jumbotron.hero-technology .header-content strong{
+    color: #fff;
+    max-width: 800px;
+    margin: auto;
+}
+div.jumbotron.hero-technology.dark-pattern {
+background-size: inherit;
+}
+div.jumbotron.hero-technology.find-a-store ,div.jumbotron.hero-technology.villagers,div.jumbotron.hero-technology.products-header ,div.jumbotron.hero-technology.product-item-header {
     min-height: 45vh;
 }
 div.jumbotron.hero-technology .hero-content {
     position: relative;
+    max-width: 90%;
+    margin: auto;
     top: 15vh;
 }
 

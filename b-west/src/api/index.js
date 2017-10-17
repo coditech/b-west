@@ -1,16 +1,9 @@
 import express from 'express';
-import * as adminFirebase from "firebase-admin";
-import serviceAccount from '../b-west-firebase-adminsdk-e58gj-0315440c03.json';
-
+import db from '../databaseConnection';
 const api = express();
-adminFirebase.initializeApp({
-    credential: adminFirebase.credential.cert(serviceAccount),
-    databaseURL: "https://b-west.firebaseio.com"
-});
 
-let allData = {};
-const db = adminFirebase.database();
 const rootRef = db.ref("/");
+let allData = [];
 rootRef.once("value", function (snapshot) {
     allData = snapshot.val();
     console.log(snapshot.val());

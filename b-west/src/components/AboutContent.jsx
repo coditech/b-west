@@ -1,21 +1,20 @@
 import React from "react";
-import "./components/styles/AboutContent.css";
+import "../styles/AboutContent.css";
 
+const AboutContent = ({title, content,image}) => (
+    <div className={'section-container'}>
+        <div className={"about-section"}>
+            <h2 className={'title'}>{title}</h2>
+            <div className="about-content" dangerouslySetInnerHTML={{ __html: content }} />
+        </div>
+        {
+            image ?  <img className={'image'}
+                          src={image.src}
+                          alt={image.alt}
+            /> : null
+        }
 
-const AboutContent = ({ title, content }) => {
-  return (
-    <div>
-      <div class="all-body">
-        <h2 class="about-title">{title}</h2>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </div>
-
-      <div>
-        <section className="image-section">
-          <img src={"http://au-kbc.org/ctm/slide/img31.jpg"} />
-        </section>
-      </div>
     </div>
-  );
-};
-export {AboutContent}
+);
+
+export {AboutContent};

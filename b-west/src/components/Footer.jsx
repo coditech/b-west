@@ -46,8 +46,8 @@ const Footer = ({ menuItems }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Designed And Developped By
-            <img src={"/codi-logo-white.svg"} className={"footer-logo-codi"} />
+           <span className={'licence'}> Designed And Developped By </span>
+            <img src={"/codi-logo-white.svg"} alt={'Codi Logo'} className={"footer-logo-codi"} />
           </a>
           
         </p>

@@ -583,6 +583,9 @@ html[xmlns] .flexslider .slides {
     zoom: 1;
     *display: inline;
 }
+.floatRight {
+    float: right;
+}
 
 .flex-control-paging li a {
     width: 11px;

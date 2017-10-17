@@ -33,10 +33,6 @@ const fetchFindAStoreHeaderData = () => {
         setTimeout(() => {
             resolve({
                 status: STATUS.READY
-                , image: {
-                    src: "/buylocal.jpg",
-                    alt: "Header Image"
-                }
                 , title: "Hello world this is a title"
             })
         }, 200)
