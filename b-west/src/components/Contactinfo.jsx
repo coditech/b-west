@@ -1,27 +1,28 @@
 import React from "react";
-import "./components/styles/Contactinfo.css";
+import "../styles/Contactinfo.css";
 
-const Contactinfo = ({ title, content }) => {
+const ContactInfo = ({ title, content }) => {
 
 
   return (
-    <div class="titleContact"  >
-      <h2 class="about-title">{title} </h2>
+    <div className="titleContact margin-top-80 margin-bottom-80 contact"  >
+      <h2 className="about-title">{title} </h2>
 
-      <div class="infoContact"  dangerouslySetInnerHTML={{ __html: content }} />
+      <div className="infoContact"  dangerouslySetInnerHTML={{ __html: content }} />
+        <a>
+            <i style={{ fontSize: "40px", paddingRight: '10px' }} className={'fa fa-instagram '}
+            />
+        </a>
       <a>
-        <i style={{ fontSize: "30px" }}
+        <i style={{ fontSize: "40px" }}
           className={'fa fa-facebook-official '}
         />
       </a>
-      <a>
-        <i style={{ fontSize: "30px" }} className={'fa fa-facebook-official '}
-        />
-      </a>
+
     </div>
   );
 };
 
-export { Contactinfo };
+export { ContactInfo };
 
 

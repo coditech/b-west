@@ -1,6 +1,14 @@
-.infoContact{
+.infoContact {
     text-align: center;
-  }
-  .titleContact{
+}
+
+.titleContact {
     text-align: center;
-  }
+}
+.contact , .contact h2, h2 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+.contact h2 {
+    text-transform: uppercase;
+}

@@ -35,7 +35,7 @@ class ProductItemPage extends React.Component {
                                         </div>
                                         <div className="col-sm-6 large-detail">
                                             <h2 className="margin-top-0 margin-bottom-20">{name}</h2>
-                                           <div dangerouslySetInnerHTML={{__html: description}}></div>
+                                           <div dangerouslySetInnerHTML={{__html: description}}/>
                                             <hr/>
                                             <div className="some-info no-border">
 

@@ -40,7 +40,7 @@ class ProductsPage extends React.Component {
         return (
             <div>
                 <Header {...productsPageHeader} additionalClass={'products-header'}/>
-                <div className="container-fluid store-locator">
+                <div className="container store-locator">
                     <div className="popurlar_product">
                         <ul className="row">
 

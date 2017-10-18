@@ -13,7 +13,7 @@ const Product = ({status, slug, name, price, image, classContainer}) => {
             </div>
             <div className="details-sec">
                 <a href={'/products/' + slug}> {name} </a>
-                <span className="font-crimson font-italic font-18px">{price}</span>
+                <span className="font-crimson font-italic font-18px">$ {price}</span>
             </div>
         </li>
     );

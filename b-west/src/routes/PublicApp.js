@@ -40,7 +40,8 @@ class PublicApp extends React.Component {
             villagersStoriesHeader: props.villagersStoriesHeader,
             products: props.products,
             productsPageHeader: props.productsPageHeader,
-            subscriberBanner: props.subscriberBanner
+            subscriberBanner: props.subscriberBanner,
+            constactUs: props.constactUs
 
         }
     }
@@ -50,7 +51,8 @@ class PublicApp extends React.Component {
             menu, homeHeader, aboutUsHomeSection, featuredStories, instaBanner,
             featuredProducts, findAStoereBanner, aboutUs, findAStore,
             villagersStories, villagersStoriesHeader,
-            products,productsPageHeader,subscriberBanner
+            products, productsPageHeader, subscriberBanner,
+            constactUs
         } = this.state;
         const mixHomePage = mixProps({
             homeHeader,
@@ -64,7 +66,8 @@ class PublicApp extends React.Component {
         const mixAboutPage = mixProps({aboutUs});
         const mixFindAStore = mixProps({findAStore});
         const mixVillagers = mixProps({villagersStories, villagersStoriesHeader});
-        const mixProductsPage = mixProps({products,productsPageHeader})
+        const mixProductsPage = mixProps({products, productsPageHeader})
+        const mixContactPage = mixProps({constactUs})
         return (
             <div id={'wrap'}>
                 {/* Header */}
@@ -74,7 +77,7 @@ class PublicApp extends React.Component {
 
                         return ( <HomePage {...mixHomePage(props)}/>)
                     }
-                    
+
                     }/>
                     <Route exact path="/about-us" render={(props) => {
 
@@ -105,10 +108,15 @@ class PublicApp extends React.Component {
                         })
                         const mixProductItemPage = mixProps({products});
                         return products.length > 0 ?
-                         ( <ProductItemPage {...mixProductItemPage(props)}  productFound={true}/>) :<ProductItemPage {...mixProductItemPage(props)}  productFound={false}/>;
+                            ( <ProductItemPage {...mixProductItemPage(props)} productFound={true}/>) :
+                            <ProductItemPage {...mixProductItemPage(props)} productFound={false}/>;
                     }
                     }/>
-                    <Route exact path="/contact-us" component={ContactUsPage}/>
+                    <Route exact path="/contact-us" render={(props) => {
+
+                        return ( <ContactUsPage {...mixContactPage(props)}/>)
+                    }
+                    }/>
 
                 </Switch>
                 <Footer {...menu}/>

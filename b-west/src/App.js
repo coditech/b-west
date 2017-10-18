@@ -47,7 +47,6 @@ class App extends React.Component {
                 },
             },
             homeHeader: {
-                status: STATUS.READY,
                 image: {
                     src: "/header.jpg",
                     alt: "Header Image"
@@ -100,7 +99,7 @@ class App extends React.Component {
                     slug: 'story-1',
                     slogan: 'slogan here (subtitle)',
                     content: {
-                        full: '<p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p><p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p>',
+                        full: '<p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.<br/>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p>',
                         short: 'Short content 1 paragraph Donec sollicitudin molestie malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risu'
                     },
                     images: [
@@ -121,7 +120,7 @@ class App extends React.Component {
                     slug: 'story-2',
                     slogan: 'slogan here (subtitle)',
                     content: {
-                        full: '<p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p><p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p>',
+                        full: '<p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.<br/>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p>',
                         short: 'Short content 1 paragraph Donec sollicitudin molestie malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risu'
                     },
                     images: [
@@ -138,7 +137,7 @@ class App extends React.Component {
                     ]
                 }, {
                     title: 'THE ZAP - BEST PSD TEMPLATE',
-                    slug: 'story-1',
+                    slug: 'story-3',
                     slogan: 'slogan here (subtitle)',
                     content: {
                         full: '<p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p><p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p>',
@@ -159,7 +158,49 @@ class App extends React.Component {
                 },
                 {
                     title: 'THE ZAP - BEST PSD TEMPLATE',
-                    slug: 'story-2',
+                    slug: 'story-4',
+                    slogan: 'slogan here (subtitle)',
+                    content: {
+                        full: '<p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p><p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p>',
+                        short: 'Short content 1 paragraph Donec sollicitudin molestie malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risu'
+                    },
+                    images: [
+                        {
+                            src: '/villagers1.jpg',
+                            alt: 'Villagers 1'
+                        }, {
+                            src: '/villagers2.jpg',
+                            alt: 'Villagers 2'
+                        }, {
+                            src: '/villagers1.jpg',
+                            alt: 'Villagers 1'
+                        }
+                    ]
+                },
+                {
+                    title: 'THE ZAP - BEST PSD TEMPLATE',
+                    slug: 'story-5',
+                    slogan: 'slogan here (subtitle)',
+                    content: {
+                        full: '<p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p><p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p>',
+                        short: 'Short content 1 paragraph Donec sollicitudin molestie malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risu'
+                    },
+                    images: [
+                        {
+                            src: '/villagers1.jpg',
+                            alt: 'Villagers 1'
+                        }, {
+                            src: '/villagers2.jpg',
+                            alt: 'Villagers 2'
+                        }, {
+                            src: '/villagers1.jpg',
+                            alt: 'Villagers 1'
+                        }
+                    ]
+                },
+                {
+                    title: 'THE ZAP - BEST PSD TEMPLATE',
+                    slug: 'story-6',
                     slogan: 'slogan here (subtitle)',
                     content: {
                         full: '<p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p><p>You’ve probably heard of <a href="/tools/lorem-ipsum-generator/">Lorem Ipsum</a> before – it’s the most-used dummy text excerpt out there. People use it because it has a fairly normal distribution of letters and words (making it look like normal English), but it’s also Latin, which means your average reader won’t get distracted by trying to read it. It’s perfect for showcasing design work as it should look when fleshed out with text, because it allows viewers to focus on the design work itself, instead of the text. It’s also a great way to showcase the functionality of programs like word processors, font types, and more.</p>',
@@ -473,8 +514,7 @@ class App extends React.Component {
                     image: {src: '/product_3.jpg', alt: 'product 1'},
                     classContainer: 'col-sm-4 col-xs-6', description: '<p>This product is </p>'
                 }
-            ]
-            ,
+            ],
             subscriberBanner: {
                 display: true
             },
@@ -488,14 +528,6 @@ class App extends React.Component {
                     image: {
                         src: '/about.jpg',
                         alt: 'About Us pic'
-                    }
-                },
-                {
-                    title: "Titles",
-                    content: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit tortor eget felis porttitor volutpat. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.</p>",
-                    image: {
-                        src: '/about.jpg',
-                        alt: "about us"
                     }
                 },
                 {
@@ -547,10 +579,15 @@ class App extends React.Component {
             },
             villagersStoriesHeader: {
                 title: 'We helped each family to have better life '
-            }, productsPageHeader: {
+            },
+            productsPageHeader: {
                 title: 'productsPageHeader title',
+            },
+            constactUs: {
+                headerTitle: 'How can we help you?',
+                title: 'HIT US UP',
+                content: `<p>Mr Michel Skaff<br/>Saghbine - District of West Bekaa, Abu Ha<br/>mad building<br/>Saghbine, West Bekaa<br/>Lebanon<br/><a href="+9613334121">+961 3 334 121</a><br/><a href="mailto:skaff.michel@gmail.com">skaff.michel@gmail.com</a></p>`
             }
-
 
         }
     }
@@ -561,16 +598,20 @@ class App extends React.Component {
         const mix = mixProps(passedProps);
 
         return (
-            <Switch>
+            <div>
+                <Switch>
 
-                <Route path="/admin" component={AdminApp}/>
-                <Route path="/login" component={LoginPage}/>
-                <Route path="/"  render={(props) => {
-                    {/* window.scrollTo(0, 0) */}
-                    return ( <PublicApp  {...mix(props)}/>)
-                }
-                }/>
-            </Switch>
+                    <Route path="/admin" component={AdminApp}/>
+                    <Route path="/login" component={LoginPage}/>
+                    <Route path="/" render={(props) => {
+
+                        // window.scrollTo(0, 0);
+
+                        return ( <PublicApp  {...mix(props)}/>)
+                    }
+                    }/>
+                </Switch>
+            </div>
         )
     }
 }
