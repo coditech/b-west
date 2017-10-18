@@ -1,6 +1,14 @@
 import express from 'express';
 import db from '../databaseConnection';
+import bodyParser from 'body-parser';
 const api = express();
+api.use(bodyParser.json());
+api.use(bodyParser.urlencoded({ extended: true }));
+api.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 const rootRef = db.ref("/");
 let allData = [];
@@ -94,7 +102,7 @@ api.get('/insert', (req, res, next) => {
     res.send({
         active: true
     });
-})
+});
 
 // Insert and overide all list
 api.get('/insertvalidate', (req, res, next) => {
@@ -132,9 +140,22 @@ api.get('/insert_list', (req, res, next) => {
     });
 
 })
+//  Extract Get url
+// var parts = url.parse(req.url, true);
+// var query = parts.query;
 
+api.post('/homeheader', (req, res, next) => {
+    const usersRef = rootRef.child("users");
+    usersRef.set({});
+    var post_body = req.body;
 
-api.post('/home')
+    console.log('Req body', req.body);
+    console.log('Req params', req.params);
+    res.send({
+        post_body,
+        params: req.param
+    });
+})
 
 api.get('/*', (req, res, next) => {
     res.send(allData)

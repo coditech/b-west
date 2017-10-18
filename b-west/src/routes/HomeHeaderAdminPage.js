@@ -1,6 +1,7 @@
 import React from 'react';
 import CKEditor from "react-ckeditor-component";
 import superagent from 'superagent';
+import  {websiteUrl} from '../helpers'
 
 class HomeHeaderAdminPage extends React.Component {
 
@@ -49,7 +50,7 @@ class HomeHeaderAdminPage extends React.Component {
             }
         }
         // formData.append('title', this, );
-        superagent.post('your_ajax_url')
+        superagent.post(websiteUrl + 'api/homeheader')
             .send(formData)
             .end((err, response) => {
                 if (err) {
@@ -101,7 +102,8 @@ class HomeHeaderAdminPage extends React.Component {
                             />
                         </div>
                     </div>
-                    <span><input type={'checkbox'} name={'actionButton'} value={'false'}/>Select if action button is available
+                    <span>
+                        <input type={'checkbox'} name={'actionButton'} value={'false'}/>Select if action button is available
                     on Home Header</span>
                     <div className="row form-group text-center">
                         <div className="col-sm-6">
