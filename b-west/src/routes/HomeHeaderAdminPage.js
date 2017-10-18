@@ -1,6 +1,7 @@
 import React from 'react';
 import CKEditor from "react-ckeditor-component";
-import  superagent from 'superagent';
+import superagent from 'superagent';
+
 class HomeHeaderAdminPage extends React.Component {
 
     constructor(props, context) {
@@ -47,12 +48,13 @@ class HomeHeaderAdminPage extends React.Component {
                 formData.append(key, files[key]);
             }
         }
+        // formData.append('title', this, );
         superagent.post('your_ajax_url')
             .send(formData)
             .end((err, response) => {
-                if(err) {
+                if (err) {
                     //there was an error, handle it here
-                } else if(response.ok) {
+                } else if (response.ok) {
                     //this was successful, handle it here
                 }
             });
@@ -64,7 +66,7 @@ class HomeHeaderAdminPage extends React.Component {
             <div>
                 <h2>Home Header Admin Page</h2>
 
-                <form>
+                <form onSubmit={(event) => this.onSubmit(event)}>
                     <div className="row form-group text-center">
                         <div className="col-sm-6">
                             <label htmlFor="title" className={' '}>Title</label>
