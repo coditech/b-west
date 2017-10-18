@@ -6,7 +6,7 @@ const showForm = event => {
     document.getElementById('footer__form').style.display = "block";
 };
 
-const SubscribeBanner = () => {
+const SubscribeBanner = ({url}) => {
     return (
 
         <div
@@ -23,7 +23,7 @@ const SubscribeBanner = () => {
                 <div
                     className="newsletter-footer__form displayNone"
                     id="footer__form">
-                    <form className="js-component-loaded">
+                    <form className="js-component-loaded" action={url}>
                         <div className="newsletter-footer__input-wrapper">
                             <h1 className="newsletter-footer__title a a--fade-up a--animating">
                                 NEWSLETTER SIGNUP

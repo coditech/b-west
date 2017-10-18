@@ -488,6 +488,9 @@ class App extends React.Component {
                     classContainer: 'col-sm-4 col-xs-6', description: '<p>This product is </p>'
                 },
             ],
+            productsPageHeader: {
+                title: 'productsPageHeader title',
+            },
             featuredProducts: [
                 {
                     status: 'sale',
@@ -515,10 +518,8 @@ class App extends React.Component {
                 }
             ],
             subscriberBanner: {
-                display: true
-            },
-            findAStoereBanner: {
-                backgroundImage: '/find-a-store.jpg'
+                display: true,
+                mailcimpUrl: ''
             },
             aboutUs: [
                 {
@@ -572,16 +573,14 @@ class App extends React.Component {
                     },
                 ],
                 googleMapAPI: '',
-                header: {
-                    title: 'Find Our Products',
-                }
+                title: 'Find Our Products',
+                bannerBackgroundImage: '/find-a-store.jpg'
+
             },
             villagersStoriesHeader: {
                 title: 'We helped each family to have better life '
             },
-            productsPageHeader: {
-                title: 'productsPageHeader title',
-            },
+
             constactUs: {
                 headerTitle: 'How can we help you?',
                 title: 'HIT US UP',
@@ -589,6 +588,7 @@ class App extends React.Component {
             }
 
         }
+
     }
 
 

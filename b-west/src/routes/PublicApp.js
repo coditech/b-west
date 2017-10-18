@@ -61,7 +61,8 @@ class PublicApp extends React.Component {
             instaBanner,
             featuredProducts,
             findAStoereBanner,
-            subscriberBanner
+            subscriberBanner,
+            findAStore
         });
         const mixAboutPage = mixProps({aboutUs});
         const mixFindAStore = mixProps({findAStore});
