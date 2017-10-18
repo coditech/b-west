@@ -4,11 +4,6 @@ import bodyParser from 'body-parser';
 const api = express();
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: true }));
-api.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 
 const rootRef = db.ref("/");
 let allData = [];
