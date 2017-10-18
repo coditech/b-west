@@ -5,7 +5,6 @@ import PublicApp from "./routes/PublicApp";
 import {LoginPage} from "./routes/LoginPage";
 import AdminApp from "./routes/AdminApp";
 import './styles/App.css'
-import {STATUS} from './commanConfig'
 
 const mixProps = (passed_props_home) => (props) => ({...passed_props_home, ...props});
 
@@ -604,9 +603,10 @@ class App extends React.Component {
                     <Route path="/admin" component={AdminApp}/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/" render={(props) => {
-
-                        // window.scrollTo(0, 0);
-
+                        // TODO: move this to componentDidMount
+                        if (typeof window !== 'undefined') {
+                            window.scrollTo(0, 0)
+                        }
                         return ( <PublicApp  {...mix(props)}/>)
                     }
                     }/>
