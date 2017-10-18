@@ -1,16 +1,18 @@
 import express from 'express';
 import db from '../databaseConnection';
-import bodyParser from 'body-parser';
+import multer from 'multer';
+
 const api = express();
-api.use(bodyParser.json());
-api.use(bodyParser.urlencoded({ extended: true }));
-api.use(function(req, res, next) {
+
+let upload = multer({dest: 'uploads/'})
+api.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
 const rootRef = db.ref("/");
+// const upload = multer({ dest: 'uploads/' })
+
 let allData = [];
 rootRef.once("value", function (snapshot) {
     allData = snapshot.val();
@@ -152,8 +154,8 @@ api.post('/homeheader', (req, res, next) => {
     console.log('Req body', req.body);
     console.log('Req params', req.params);
     res.send({
-        post_body,
-        params: req.param
+        body: req.body || 'none',
+        params: req.params || 'none'
     });
 })
 

@@ -2,7 +2,6 @@ import React from 'react';
 import CKEditor from "react-ckeditor-component";
 import superagent from 'superagent';
 import  {websiteUrl} from '../helpers'
-
 class HomeHeaderAdminPage extends React.Component {
 
     constructor(props, context) {
@@ -49,6 +48,7 @@ class HomeHeaderAdminPage extends React.Component {
                 formData.append(key, files[key]);
             }
         }
+
         // formData.append('title', this, );
         superagent.post(websiteUrl + 'api/homeheader')
             .send(formData)
@@ -67,7 +67,7 @@ class HomeHeaderAdminPage extends React.Component {
             <div>
                 <h2>Home Header Admin Page</h2>
 
-                <form onSubmit={(event) => this.onSubmit(event)}>
+                <form  onSubmit={(event) => this.onSubmit(event)}>
                     <div className="row form-group text-center">
                         <div className="col-sm-6">
                             <label htmlFor="title" className={' '}>Title</label>
