@@ -233,7 +233,7 @@ class App extends React.Component {
                 {
                     status: 'sale',
                     slug: 'productUr2l',
-                    name: 'Labneh',
+                    name: 'ASD',
                     price: "32",
                     image: {src: '/product_2.jpg', alt: 'product 2'},
                     classContainer: 'col-sm-4 col-xs-6', description: '<p>This product is </p>'
@@ -241,7 +241,7 @@ class App extends React.Component {
                 {
                     status: 'sale',
                     slug: 'productUr3l',
-                    name: 'Labneh',
+                    name: 'Jrnfd',
                     price: "32",
                     image: {src: '/product_3.jpg', alt: 'product 1'},
                     classContainer: 'col-sm-4 col-xs-6', description: '<p>This product is </p>'
@@ -249,7 +249,7 @@ class App extends React.Component {
                 {
                     status: 'sale',
                     slug: 'productUr4l',
-                    name: 'Labneh',
+                    name: 'Jebneg',
                     price: "32",
                     image: {src: '/product_1.jpg', alt: 'product 1'},
                     classContainer: 'col-sm-4 col-xs-6', description: '<p>This product is </p>'
@@ -257,7 +257,7 @@ class App extends React.Component {
                 {
                     status: 'sale',
                     slug: 'productUr5l',
-                    name: 'Labneh',
+                    name: 'lame',
                     price: "32",
                     image: {src: '/product_2.jpg', alt: 'product 2'},
                     classContainer: 'col-sm-4 col-xs-6', description: '<p>This product is </p>'
@@ -273,7 +273,7 @@ class App extends React.Component {
                 {
                     status: 'sale',
                     slug: 'productUrl2',
-                    name: 'Labneh',
+                    name: 'asdfsd',
                     price: "32",
                     image: {src: '/product_1.jpg', alt: 'product 1'},
                     classContainer: 'col-sm-4 col-xs-6', description: '<p>This product is </p>'
@@ -281,7 +281,7 @@ class App extends React.Component {
                 {
                     status: 'sale',
                     slug: 'productUrl3',
-                    name: 'Labneh',
+                    name: 'fosto2',
                     price: "32",
                     image: {src: '/product_2.jpg', alt: 'product 2'},
                     classContainer: 'col-sm-4 col-xs-6', description: '<p>This product is </p>'
@@ -289,7 +289,7 @@ class App extends React.Component {
                 {
                     status: 'sale',
                     slug: 'productUrl4',
-                    name: 'Labneh',
+                    name: 'rttry',
                     price: "32",
                     image: {src: '/product_3.jpg', alt: 'product 1'},
                     classContainer: 'col-sm-4 col-xs-6', description: '<p>This product is </p>'
