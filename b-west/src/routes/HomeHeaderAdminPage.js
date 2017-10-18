@@ -1,7 +1,8 @@
 import React from 'react';
 import CKEditor from "react-ckeditor-component";
 import superagent from 'superagent';
-import  {websiteUrl} from '../helpers'
+import {websiteUrl} from '../helpers'
+
 class HomeHeaderAdminPage extends React.Component {
 
     constructor(props, context) {
@@ -39,7 +40,8 @@ class HomeHeaderAdminPage extends React.Component {
         console.log("afterPaste event called with event info: ", evt);
     }
 
-    onSubmit() {
+    onSubmit(evt) {
+        evt.preventDefault();
         let formData = new FormData();
         const files = this.filesInput.files;
         for (var key in files) {
@@ -49,10 +51,20 @@ class HomeHeaderAdminPage extends React.Component {
             }
         }
 
-        // formData.append('title', this, );
+        const form = evt.target
+
+        // HEADER IMAGE MISSING IN THE FORM DATA
+        formData.append('title', form.title.value);
+        formData.append('subTitle', form.subTitle.value);
+        formData.append('content', this.state.content);
+        formData.append('actionButton', form.actionButton.value);
+        formData.append('actionUrl', form.actionUrl.value);
+        formData.append('actionText', form.actionText.value);
+
         superagent.post(websiteUrl + 'api/homeheader')
             .send(formData)
             .end((err, response) => {
+                console.log(response)
                 if (err) {
                     //there was an error, handle it here
                 } else if (response.ok) {
@@ -67,7 +79,7 @@ class HomeHeaderAdminPage extends React.Component {
             <div>
                 <h2>Home Header Admin Page</h2>
 
-                <form  onSubmit={(event) => this.onSubmit(event)}>
+                <form onSubmit={(event) => this.onSubmit(event)}>
                     <div className="row form-group text-center">
                         <div className="col-sm-6">
                             <label htmlFor="title" className={' '}>Title</label>
@@ -88,7 +100,7 @@ class HomeHeaderAdminPage extends React.Component {
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-6">
-                            <label htmlFor="subTitle" className={' '}>Sub Title</label>
+                            <label htmlFor="content" className={' '}>Content</label>
                         </div>
                         <div className="col-sm-6">
                             <CKEditor
@@ -103,14 +115,14 @@ class HomeHeaderAdminPage extends React.Component {
                         </div>
                     </div>
                     <span>
-                        <input type={'checkbox'} name={'actionButton'} value={'false'}/>Select if action button is available
+                        <input type={'checkbox'} name={'actionButton'} id={'actionButton'} value={'false'}/>Select if action button is available
                     on Home Header</span>
                     <div className="row form-group text-center">
                         <div className="col-sm-6">
                             <label htmlFor="actionUrl" className={' '}>Action Url</label>
                         </div>
                         <div className="col-sm-6">
-                            <input className={'form-control'} type="text" id={'actionUrl'} name={'subTitle'}
+                            <input className={'form-control'} type="text" id={'actionUrl'} name={'actionUrl'}
                                    value={this.state.actionUrl}/>
                         </div>
                     </div>
@@ -119,7 +131,7 @@ class HomeHeaderAdminPage extends React.Component {
                             <label htmlFor="actionText" className={' '}>Action Text</label>
                         </div>
                         <div className="col-sm-6">
-                            <input className={'form-control'} type="text" id={'actionText'} name={'subTitle'}
+                            <input className={'form-control'} type="text" id={'actionText'} name={'actionText'}
                                    value={this.state.actionText}/>
                         </div>
                     </div>
@@ -133,7 +145,7 @@ class HomeHeaderAdminPage extends React.Component {
                             }} id={'image'} name={'file'}/>
                         </div>
                     </div>
-
+                    <input type="submit" method="post"/>
                 </form>
             </div>
         )
