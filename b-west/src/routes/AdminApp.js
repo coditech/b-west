@@ -4,17 +4,12 @@ import Switch from 'react-router-dom/Switch';
 import '../styles/bootstrap.min.css';
 import '../styles/Admin.css'
 import {SideBar} from "../components/Sidebar";
+import {HomeHeaderAdminPage} from "./HomeHeaderAdminPage";
 
 const User = () => {
 
     return (
         <h3>Users</h3>
-    )
-}
-const Product = () => {
-
-    return (
-        <h3>Product</h3>
     )
 }
 
@@ -24,6 +19,7 @@ const Default = () => {
         <h3>Default</h3>
     )
 };
+
 class AdminApp extends React.Component {
 
     constructor(props, context) {
@@ -59,12 +55,11 @@ class AdminApp extends React.Component {
                     <SideBar/>
                     <div id="page-content-wrapper">
                         <div className="container-fluid">
-                            12
                             <Switch>
 
-                                <Route exact path="/user" component={User}/>
-                                <Route exact path="/product" component={Product}/>
-                                <Route exact path="/" component={Default}/>
+                                <Route exact path="admin/user" component={User}/>
+                                <Route exact path="/admin/home" component={HomeHeaderAdminPage}/>
+                                <Route  path="/" component={Default}/>
                             </Switch>
                         </div>
                     </div>

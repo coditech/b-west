@@ -55,7 +55,6 @@ class App extends React.Component {
                 content: '<p>Hello world</p>'
                 , actionButton: {
                     text: "Hello World"
-                    , actionFunction: this.actionFunctionButton
                     , url: ""
                 }
             },

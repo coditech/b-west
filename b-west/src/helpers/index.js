@@ -28,16 +28,6 @@ const fetchHomeHeaderData = () => {
         }, 200)
     })
 }
-const fetchFindAStoreHeaderData = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve({
-                status: STATUS.READY
-                , title: "Hello world this is a title"
-            })
-        }, 200)
-    })
-}
 const WebsiteStructure = {
 
     menu: [

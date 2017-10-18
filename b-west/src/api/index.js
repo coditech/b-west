@@ -132,6 +132,10 @@ api.get('/insert_list', (req, res, next) => {
     });
 
 })
+
+
+api.post('/home')
+
 api.get('/*', (req, res, next) => {
     res.send(allData)
 })
