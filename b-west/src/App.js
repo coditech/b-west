@@ -594,6 +594,7 @@ class App extends React.Component {
     render() {
         const passedProps = this.state;
         const mix = mixProps(passedProps);
+        console.log('this.state ==> ', this.state);
 
         return (
             <div>
