@@ -7,6 +7,7 @@ import {SideBar} from "../components/Sidebar";
 import {HomeHeaderAdminPage} from "./HomeHeaderAdminPage";
 import {HomeAboutUsAdminPage} from "./HomeAboutUsAdminPage";
 import {HomeStoriesAdminPage} from "./HomeStoriesAdminPage";
+import {HomeFeaturedItemsAdminPage} from "./HomeFeaturedItemsAdminPage";
 
 const User = () => {
 
@@ -63,8 +64,10 @@ class AdminApp extends React.Component {
                                 <Route exact path="/admin/home" component={HomeHeaderAdminPage}/>
                                 <Route exact path="/admin/about" component={HomeAboutUsAdminPage}/>
                                 <Route exact path="/admin/stories" component={HomeStoriesAdminPage}/>
-
+                                <Route exact path="/admin/featureditems" component={HomeFeaturedItemsAdminPage}/>
                                 
+
+
                                 <Route  path="/" component={Default}/>
                             </Switch>
                         </div>
