@@ -9,6 +9,8 @@ import {HomeAboutUsAdminPage} from "./HomeAboutUsAdminPage";
 import {HomeStoriesAdminPage} from "./HomeStoriesAdminPage";
 import {HomeFeaturedItemsAdminPage} from "./HomeFeaturedItemsAdminPage";
 import {AboutUsAdminPage} from "./AboutUsAdminPage";
+import {VillagerStoryAdminPage} from "./VillagerStoryAdminPage";
+import {ShopItemAdminPage} from "./ShopItemAdminPage";
 
 const User = () => {
 
@@ -67,6 +69,9 @@ class AdminApp extends React.Component {
                                 <Route exact path="/admin/stories" component={HomeStoriesAdminPage}/>
                                 <Route exact path="/admin/featureditems" component={HomeFeaturedItemsAdminPage}/>
                                 <Route exact path="/admin/aboutpage" component={AboutUsAdminPage}/>
+                                <Route exact path="/admin/villagers" component={VillagerStoryAdminPage}/>
+                                <Route exact path="/admin/shopitems" component={ShopItemAdminPage}/>
+                                
 
 
                                 <Route  path="/" component={Default}/>
