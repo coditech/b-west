@@ -3,14 +3,22 @@ import CKEditor from "react-ckeditor-component";
 import superagent from "superagent";
 import { websiteUrl } from "../helpers";
 
-class HomeHeaderAdminPage extends React.Component {
+class HomeStoriesAdminPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      title: "Old Title",
-      content: "Old content",
-      actionUrl: "",
-      actionText: ""
+      firstStory: {
+        title: "Old Title 1",
+        slug: "",
+        slogan: "",
+        content: ""
+      },
+      secondStory: {
+        title: "Old Title 2",
+        slug: "",
+        slogan: "",
+        content: ""
+      }
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -52,13 +60,13 @@ class HomeHeaderAdminPage extends React.Component {
 
     const form = evt.target;
 
-    // HEADER IMAGE MISSING IN THE FORM DATA
-    formData.append("title", form.title.value);
-    formData.append("subTitle", form.subTitle.value);
-    formData.append("content", this.state.content);
-    formData.append("actionButton", form.actionButton.value);
-    formData.append("actionUrl", form.actionUrl.value);
-    formData.append("actionText", form.actionText.value);
+    // IMAGES MISSING IN THE FORM DATA
+    formData.append("title1", form.title1.value);
+    formData.append("slogan1", form.slogan1.value);
+    formData.append("content1", this.state.firstStory.content);
+    formData.append("title2", form.title2.value);
+    formData.append("slogan2", form.slogan2.value);
+    formData.append("content2", this.state.secondStory.content);
 
     superagent
       .post(websiteUrl + "api/homeheader")
@@ -83,52 +91,51 @@ class HomeHeaderAdminPage extends React.Component {
     return (
       <div>
         <div className="row">
-          <h2 className="col-sm-6 col-sm-push-3">Home Header Admin Page</h2>
+          <h2 className="col-sm-6 col-sm-push-3">Home About Admin Page</h2>
         </div>
-
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
             <div className="col-sm-6">
-              <label htmlFor="title" className={" "}>
-                Title
+              <label htmlFor="title1" className={" "}>
+                Title 1
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
                 type="text"
-                id={"title"}
-                name={"title"}
-                value={this.state.title}
+                id={"title1"}
+                name={"title1"}
+                value={this.state.firstStory.title}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-6">
-              <label htmlFor="subTitle" className={" "}>
-                Sub Title
+              <label htmlFor="slogan1" className={" "}>
+                Slogan 1
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
                 type="text"
-                id={"subTitle"}
-                name={"subTitle"}
-                value={this.state.title}
+                id={"slogan1"}
+                name={"slogan1"}
+                value={this.state.firstStory.slogan}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-6">
-              <label htmlFor="content" className={" "}>
-                Content
+              <label htmlFor="content1" className={" "}>
+                Content 1
               </label>
             </div>
             <div className="col-sm-6">
               <CKEditor
                 activeClass="p10"
-                content={this.state.content}
+                content={this.state.firstStory.content}
                 events={{
                   blur: this.onBlur,
                   afterPaste: this.afterPaste,
@@ -137,50 +144,10 @@ class HomeHeaderAdminPage extends React.Component {
               />
             </div>
           </div>
-          <span>
-            <input
-              type={"checkbox"}
-              name={"actionButton"}
-              id={"actionButton"}
-              value={"false"}
-            />Select if action button is available on Home Header
-          </span>
           <div className="row form-group text-center">
             <div className="col-sm-6">
-              <label htmlFor="actionUrl" className={" "}>
-                Action Url
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"actionUrl"}
-                name={"actionUrl"}
-                value={this.state.actionUrl}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-6">
-              <label htmlFor="actionText" className={" "}>
-                Action Text
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"actionText"}
-                name={"actionText"}
-                value={this.state.actionText}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-6">
-              <label htmlFor="image" className={" "}>
-                Header image
+              <label htmlFor="image1" className={" "}>
+                Image 1
               </label>
             </div>
             <div className="col-sm-6">
@@ -190,8 +157,76 @@ class HomeHeaderAdminPage extends React.Component {
                 ref={input => {
                   this.filesInput = input;
                 }}
-                id={"image"}
-                name={"file"}
+                id={"image1"}
+                name={"image1"}
+              />
+            </div>
+          </div>
+          <div className="row form-group text-center">
+            <div className="col-sm-6">
+              <label htmlFor="title2" className={" "}>
+                Title 2
+              </label>
+            </div>
+            <div className="col-sm-6">
+              <input
+                className={"form-control"}
+                type="text"
+                id={"title2"}
+                name={"title2"}
+                value={this.state.secondStory.title}
+              />
+            </div>
+          </div>
+          <div className="row form-group text-center">
+            <div className="col-sm-6">
+              <label htmlFor="slogan2" className={" "}>
+                Slogan 2
+              </label>
+            </div>
+            <div className="col-sm-6">
+              <input
+                className={"form-control"}
+                type="text"
+                id={"slogan2"}
+                name={"slogan2"}
+                value={this.state.secondStory.slogan}
+              />
+            </div>
+          </div>
+          <div className="row form-group text-center">
+            <div className="col-sm-6">
+              <label htmlFor="content2" className={" "}>
+                Content 2
+              </label>
+            </div>
+            <div className="col-sm-6">
+              <CKEditor
+                activeClass="p10"
+                content={this.state.secondStory.content}
+                events={{
+                  blur: this.onBlur,
+                  afterPaste: this.afterPaste,
+                  change: this.onChange
+                }}
+              />
+            </div>
+          </div>
+          <div className="row form-group text-center">
+            <div className="col-sm-6">
+              <label htmlFor="image2" className={" "}>
+                Image 2
+              </label>
+            </div>
+            <div className="col-sm-6">
+              <input
+                className={"form-control"}
+                type="file"
+                ref={input => {
+                  this.filesInput = input;
+                }}
+                id={"image2"}
+                name={"image2"}
               />
             </div>
           </div>
@@ -202,4 +237,4 @@ class HomeHeaderAdminPage extends React.Component {
   }
 }
 
-export { HomeHeaderAdminPage };
+export { HomeStoriesAdminPage };

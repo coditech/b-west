@@ -7,12 +7,11 @@ class HomeAboutUsAdminPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      title: "B-West Title",
-      subTitle: "B-West Title Section",
-      content: "content content content"
+      title: "Old Title",
+      subTitle: "Old subtitle ",
+      content: "Old Content"
     };
     this.onChange = this.onChange.bind(this);
-    this.state = {};
   }
 
   updateContent(newContent) {

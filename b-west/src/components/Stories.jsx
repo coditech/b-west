@@ -18,7 +18,7 @@ const Stories = ({ firstStory, secondStory }) => {
                     {firstStory.title}
                   </h2>
                 </div>
-                <p>{firstStory.desc}</p>
+                <p>{firstStory.content}</p>
                 <NavLink
                   to={"/villagers#" + firstStory.slug}
                   className={
@@ -56,7 +56,7 @@ const Stories = ({ firstStory, secondStory }) => {
                     {secondStory.title}
                   </h2>
                 </div>
-                <p>{secondStory.desc}</p>
+                <p>{secondStory.content}</p>
                 <NavLink
                   to={"/villagers#" + secondStory.slug}
                   className={
