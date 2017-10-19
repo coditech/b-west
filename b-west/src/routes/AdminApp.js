@@ -5,6 +5,7 @@ import '../styles/bootstrap.min.css';
 import '../styles/Admin.css'
 import {SideBar} from "../components/Sidebar";
 import {HomeHeaderAdminPage} from "./HomeHeaderAdminPage";
+import {HomeAboutUsAdminPage} from "./HomeAboutUsAdminPage";
 
 const User = () => {
 
@@ -59,6 +60,7 @@ class AdminApp extends React.Component {
 
                                 <Route exact path="admin/user" component={User}/>
                                 <Route exact path="/admin/home" component={HomeHeaderAdminPage}/>
+                                <Route exact path="/admin/about" component={HomeAboutUsAdminPage}/>
                                 <Route  path="/" component={Default}/>
                             </Switch>
                         </div>
