@@ -63,6 +63,8 @@ class AdminApp extends React.Component {
                                 <Route exact path="/admin/home" component={HomeHeaderAdminPage}/>
                                 <Route exact path="/admin/about" component={HomeAboutUsAdminPage}/>
                                 <Route exact path="/admin/stories" component={HomeStoriesAdminPage}/>
+
+                                
                                 <Route  path="/" component={Default}/>
                             </Switch>
                         </div>

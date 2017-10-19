@@ -83,7 +83,7 @@ class HomeAboutUsAdminPage extends React.Component {
         </div>
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="title" className={" "}>
                 Title
               </label>
@@ -99,7 +99,7 @@ class HomeAboutUsAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="subTitle" className={" "}>
                 Sub Title
               </label>
@@ -115,7 +115,7 @@ class HomeAboutUsAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="content" className={" "}>
                 Content
               </label>
@@ -133,7 +133,7 @@ class HomeAboutUsAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="image1" className={" "}>
                 Image 1
               </label>
@@ -151,7 +151,7 @@ class HomeAboutUsAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="image1" className={" "}>
                 Image 2
               </label>

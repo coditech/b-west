@@ -95,7 +95,7 @@ class HomeStoriesAdminPage extends React.Component {
         </div>
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="title1" className={" "}>
                 Title 1
               </label>
@@ -111,7 +111,7 @@ class HomeStoriesAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="slogan1" className={" "}>
                 Slogan 1
               </label>
@@ -127,7 +127,7 @@ class HomeStoriesAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="content1" className={" "}>
                 Content 1
               </label>
@@ -145,7 +145,7 @@ class HomeStoriesAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="image1" className={" "}>
                 Image 1
               </label>
@@ -163,7 +163,7 @@ class HomeStoriesAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="title2" className={" "}>
                 Title 2
               </label>
@@ -179,7 +179,7 @@ class HomeStoriesAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="slogan2" className={" "}>
                 Slogan 2
               </label>
@@ -195,7 +195,7 @@ class HomeStoriesAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="content2" className={" "}>
                 Content 2
               </label>
@@ -213,7 +213,7 @@ class HomeStoriesAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="image2" className={" "}>
                 Image 2
               </label>

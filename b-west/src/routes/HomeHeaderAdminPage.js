@@ -88,7 +88,7 @@ class HomeHeaderAdminPage extends React.Component {
 
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="title" className={" "}>
                 Title
               </label>
@@ -104,7 +104,7 @@ class HomeHeaderAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="subTitle" className={" "}>
                 Sub Title
               </label>
@@ -120,7 +120,7 @@ class HomeHeaderAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="content" className={" "}>
                 Content
               </label>
@@ -137,16 +137,18 @@ class HomeHeaderAdminPage extends React.Component {
               />
             </div>
           </div>
-          <span>
+          <div className="row form-group text-center">
+          <div className="col-sm-6 col-sm-push-3">
             <input
               type={"checkbox"}
               name={"actionButton"}
               id={"actionButton"}
               value={"false"}
             />Select if action button is available on Home Header
-          </span>
+          </div>
+          </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="actionUrl" className={" "}>
                 Action Url
               </label>
@@ -162,7 +164,7 @@ class HomeHeaderAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="actionText" className={" "}>
                 Action Text
               </label>
@@ -178,7 +180,7 @@ class HomeHeaderAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6">
+            <div className="col-sm-3">
               <label htmlFor="image" className={" "}>
                 Header image
               </label>
