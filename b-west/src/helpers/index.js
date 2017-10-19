@@ -1,3 +1,3 @@
 const websiteUrl = 'http://localhost:3000/';
-
-export {websiteUrl};
+const rootPath = '/Users/gabykaram/Desktop-2/codi/b-westProject/b-west';
+export {websiteUrl, rootPath};

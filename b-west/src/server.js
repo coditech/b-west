@@ -11,7 +11,6 @@ const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 const server = express();
 
 
-
 let allData = {};
 const rootRef = db.ref("/");
 rootRef.once("value", function (snapshot) {
@@ -19,11 +18,34 @@ rootRef.once("value", function (snapshot) {
     console.log(snapshot.val());
 });
 
+const uploads = express();
+//const uploadsStaticServer = express.static('/Users/gabykaram/Desktop-2/codi/b-westProject/b-west/uploads/public')
+uploads.use((req,res,next)=>{
+    const url = req.url
+    const path = './uploads'+url
+    const realPath = require('path').resolve(path)
+    try{
+        const fileExists = require('fs').statSync(realPath)
+        console.log('file',realPath,'exists')
+    }catch(e){
+        console.log('file',realPath,'does not exist')
+    }
+    console.log(process.env.RAZZLE_MAN)
+    next()
+})
+uploads.use(express.static('./uploads'));
+uploads.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+
+    next();
+});
 
 server.use('/api', api);
+server.use('/uploads', uploads);
 server
     .disable('x-powered-by')
-    .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+    // .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+    .use(express.static('./public'))
     .get('/*', (req, res) => {
         const context = {};
         const markup = renderToString(

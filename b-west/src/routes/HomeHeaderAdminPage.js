@@ -42,12 +42,14 @@ class HomeHeaderAdminPage extends React.Component {
 
     onSubmit(evt) {
         evt.preventDefault();
+        alert(0);
         let formData = new FormData();
         const files = this.filesInput.files;
         for (var key in files) {
             // check if this is a file:
             if (files.hasOwnProperty(key) && files[key] instanceof File) {
-                formData.append(key, files[key]);
+                console.log('key ==> ' , key);
+                formData.append('file', files[key]);
             }
         }
 
@@ -64,13 +66,20 @@ class HomeHeaderAdminPage extends React.Component {
         superagent.post(websiteUrl + 'api/homeheader')
             .send(formData)
             .end((err, response) => {
-                console.log(response)
+                console.log('response', response);
+                console.log('response Json', '');
                 if (err) {
                     //there was an error, handle it here
+                    alert(-1);
+
                 } else if (response.ok) {
                     //this was successful, handle it here
+                    alert(1);
+
                 }
-            });
+            }).then((x)=> {
+            console.log('x =>', x);
+        });
 
     }
 
