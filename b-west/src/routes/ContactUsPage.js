@@ -7,9 +7,9 @@ class ContactUsPage extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            headerTitle: props.constactUs.headerTitle,
-            title: props.constactUs.title,
-            content: props.constactUs.content,
+            headerTitle: props.contactUs.headerTitle,
+            title: props.contactUs.title,
+            content: props.contactUs.content,
 
         }
     }

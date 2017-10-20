@@ -9,7 +9,7 @@ const FindAStoreBanner = ({ additionalClass,backgroundImage}) => {
         backgroundPosition: 'center center !important'
     }
     return (
-        <section className={"banner style-4 padding-top-90 padding-bottom-90 "+ ' ' + additionalClass} style={style}>
+        <section className={`banner style-4 padding-top-90 padding-bottom-90 ${additionalClass}`} style={style}>
             <div className="container-fluid">
                 <div className="row counter">
                     {/* Facts */}

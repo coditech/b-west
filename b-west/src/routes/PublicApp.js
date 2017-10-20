@@ -9,7 +9,6 @@ import {ProductsPage} from "./ProductsPage";
 
 import '../styles/ionicons.min.css';
 import '../styles/bootstrap.min.css';
-import '../styles/font-awesome.min.css';
 import '../styles/theme-main.css';
 import '../styles/theme-style.css';
 import '../styles/theme-responsive.css';
@@ -41,7 +40,7 @@ class PublicApp extends React.Component {
             products: props.products,
             productsPageHeader: props.productsPageHeader,
             subscriberBanner: props.subscriberBanner,
-            constactUs: props.constactUs
+            contactUs: props.contactUs
 
         }
     }
@@ -52,7 +51,7 @@ class PublicApp extends React.Component {
             featuredProducts, findAStoereBanner, aboutUs, findAStore,
             villagersStories, villagersStoriesHeader,
             products, productsPageHeader, subscriberBanner,
-            constactUs
+            contactUs
         } = this.state;
         const mixHomePage = mixProps({
             homeHeader,
@@ -68,7 +67,7 @@ class PublicApp extends React.Component {
         const mixFindAStore = mixProps({findAStore});
         const mixVillagers = mixProps({villagersStories, villagersStoriesHeader});
         const mixProductsPage = mixProps({products, productsPageHeader})
-        const mixContactPage = mixProps({constactUs})
+        const mixContactPage = mixProps({contactUs})
         return (
             <div id={'wrap'}>
                 {/* Header */}

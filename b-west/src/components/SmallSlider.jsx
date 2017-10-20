@@ -1,20 +1,5 @@
 import React from "react";
 
-const dataTest = [
-    {
-        url: "/assets/images/shop/item-detail-img-1.jpg",
-        alt: "img1"
-    },
-    {
-        url: "/assets/images/shop/item-detail-img-2.jpg",
-        alt: "img2"
-    },
-    {
-        url: "/assets/images/shop/item-detail-img-3.jpg",
-        alt: "img3"
-    }
-];
-
 class SmallSlider extends React.Component {
     constructor(props, context) {
         super(props, context);

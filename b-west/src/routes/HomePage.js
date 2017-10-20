@@ -7,7 +7,6 @@ import Header from "../components/Header";
 import Banner from "../components/Banner";
 import {NavLink} from "react-router-dom";
 import {SubscribeBanner} from "../components/SubscribeBanner";
-import {FindAStorePage} from "./FindAStorePage";
 import FindAStoreBanner from "../components/FIndAStoreBanner";
 
 
@@ -17,8 +16,8 @@ class HomePage extends React.Component {
 
         super(props, context);
         this.state = {
-            status: STATUS.NONE
-            , homeHeader: props.homeHeader,
+            status: STATUS.NONE,
+            homeHeader: props.homeHeader,
             aboutUsHomeSection: props.aboutUsHomeSection,
             featuredStories: props.featuredStories,
             instaBanner: props.instaBanner,
@@ -31,6 +30,7 @@ class HomePage extends React.Component {
             'actionFunctionButton'
         ])
     }
+
 
     bindMe(methodNames) {
         methodNames.map(methodName =>
@@ -52,13 +52,23 @@ class HomePage extends React.Component {
                 {/* End Header */}
                 {/*======= HOME MAIN SLIDERs =========*/}
                 {/*<Header {...this.state.headerData}/>*/}
-                <Header {...homeHeader}/>
+                {
+                    homeHeader ? <Header {...homeHeader}/> : null
+                }
+
                 {/* Content */}
                 <div id="content">
                     {/* Welcome */}
-                    <About {...aboutUsHomeSection}/>
-                    <Stories {...featuredStories}/>
-                    <Banner {...instaBanner}/>
+                    {
+                        aboutUsHomeSection ? <About {...aboutUsHomeSection}/> : null
+                    }
+                    {
+                        featuredStories ? <Stories {...featuredStories}/> : null
+                    }
+                    {
+                        instaBanner ? <Banner {...instaBanner}/> : null
+                    }
+
                     {/* Store */}
 
                     <section className="shop padding-top-80 padding-bottom-80">
@@ -71,7 +81,9 @@ class HomePage extends React.Component {
                                 {/*<span>Tell your Story</span>*/}
                             </div>
 
-                            <Store {...{featuredProducts}}/>
+                            {
+                                featuredProducts ? <Store {...{featuredProducts}}/> : null
+                            }
                             <div className="text-center">
                                 <NavLink to={'/products#wrap'}
                                          className={'btn btn-large dark-border font-normal margin-top-50 letter-space-1'}>SHOW
@@ -79,13 +91,18 @@ class HomePage extends React.Component {
                             </div>
                         </div>
                     </section>
-                    <FindAStoreBanner {...{backgroundImage: findAStore.bannerBackgroundImage}}/>
+                    {
+                        findAStore ? <FindAStoreBanner {...{backgroundImage: findAStore.bannerBackgroundImage}}/> : null
+                    }
+
                     {/* Small Slider*/}
                     {/*<SmallSlider/>*/}
 
 
                 </div>
-                {subscriberBanner.display ? <SubscribeBanner url={subscriberBanner.mailchimpUrl}/> : null}
+
+
+                {subscriberBanner ? subscriberBanner.display ? <SubscribeBanner url={subscriberBanner.mailchimpUrl}/> : null : null}
 
                 <a className="cd-top"><i className="fa fa-angle-up"/></a>
                 {/* GO TO TOP End */}

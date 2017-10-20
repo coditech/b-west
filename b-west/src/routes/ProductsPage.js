@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/StoreLocator.css";
 import Header from "../components/Header";
 import { STATUS } from "../commanConfig";
-import { fetchFindAStoreHeaderData } from "../helpers/index";
 import Product from "../components/Product";
 
 const iframe =
@@ -30,15 +29,16 @@ class ProductsPage extends React.Component {
   handleSearch(event) {
    const searchTerm = event.target.value;
     var filtered = [];
-    this.state.products.map((product, n) => {
+    this.state.products.map((product) => {
       if (
         product.name
           .toLowerCase()
           .indexOf(searchTerm.toLowerCase()) === -1
       ) {
-        return;
+        return 1;
       }
       filtered.push(product);
+      return 0;
     });
     this.setState({
       fileteredProducts: filtered

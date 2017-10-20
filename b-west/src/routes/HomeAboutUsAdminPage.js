@@ -1,178 +1,222 @@
 import React from "react";
 import CKEditor from "react-ckeditor-component";
 import superagent from "superagent";
-import { websiteUrl } from "../helpers";
+import {websiteUrl} from "../helpers";
 
 class HomeAboutUsAdminPage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      title: "Old Title",
-      subTitle: "Old subtitle ",
-      content: "Old Content"
-    };
-    this.onChange = this.onChange.bind(this);
-  }
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            title: "Old Title",
+            subTitle: "Old subTitle ",
+            alt_image_one: "alt_image_one",
+            alt_image_two: "alt_image_two",
+            content: "Old Content"
+        };
 
-  updateContent(newContent) {
-    this.setState({
-      content: newContent
-    });
-  }
+        this.onChange = this.onChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
 
-  onChange(evt) {
-    console.log("onChange fired with event info: ", evt);
-    var newContent = evt.editor.getData();
-    this.setState({
-      content: newContent
-    });
-  }
-
-  onBlur(evt) {
-    console.log("onBlur event called with event info: ", evt);
-  }
-
-  afterPaste(evt) {
-    console.log("afterPaste event called with event info: ", evt);
-  }
-
-  onSubmit(evt) {
-    evt.preventDefault();
-    alert(0);
-    let formData = new FormData();
-    const files = this.filesInput.files;
-    for (var key in files) {
-      // check if this is a file:
-      if (files.hasOwnProperty(key) && files[key] instanceof File) {
-        console.log("key ==> ", key);
-        formData.append("file", files[key]);
-      }
     }
 
-    const form = evt.target;
 
-    // IMAGES MISSING IN THE FORM DATA
-    formData.append("title", form.title.value);
-    formData.append("subTitle", form.subTitle.value);
-    formData.append("content", this.state.content);
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
 
-    superagent
-      .post(websiteUrl + "api/homeheader")
-      .send(formData)
-      .end((err, response) => {
-        console.log("response", response);
-        console.log("response Json", "");
-        if (err) {
-          //there was an error, handle it here
-          alert(-1);
-        } else if (response.ok) {
-          //this was successful, handle it here
-          alert(1);
-        }
-      })
-      .then(x => {
-        console.log("x =>", x);
-      });
-  }
+        this.setState({
+            [name]: value
+        });
+    }
 
-  render() {
-    return (
-      <div>
-        <div className="row">
-          <h2 className="col-sm-6 col-sm-push-3">Home About Admin Page</h2>
-        </div>
-        <form onSubmit={event => this.onSubmit(event)}>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="title" className={" "}>
-                Title
-              </label>
+    onChange(evt) {
+        // console.log("onChange fired with event info: ", evt);
+        var newContent = evt.editor.getData();
+        this.setState({
+            content: newContent
+        });
+    }
+
+    onSubmit(evt) {
+        evt.preventDefault();
+        alert(0);
+        let formData = new FormData();
+        const filesOne = this.filesInputOne.files;
+        const filesTwo = this.filesInputTwo.files;
+        formData.append("imageOne", filesOne[0]);
+        formData.append("imageTwo", filesTwo[0]);
+        // for (let key in filesOne) {
+        //     // check if this is a file:
+        //     if (filesOne.hasOwnProperty(key) && filesOne[key] instanceof File) {
+        //         console.log("key ==> ", key);
+        //         alert(key);
+        //
+        //     }
+        // }
+        // for (let key in filesTwo) {
+        //     // check if this is a file:
+        //     if (filesTwo.hasOwnProperty(key) && filesTwo[key] instanceof File) {
+        //         console.log("key ==> ", key);
+        //         alert(key);
+        //
+        //         formData.append("imageTwo", filesTwo[key]);
+        //     }
+        // }
+
+
+        // IMAGES MISSING IN THE FORM DATA
+        formData.append("title", this.state.title);
+        formData.append("subTitle", this.state.subTitle);
+        formData.append("content", this.state.content);
+        formData.append("alt_image_one", this.state.alt_image_one);
+        formData.append("alt_image_two", this.state.alt_image_two);
+
+        superagent
+            .post(websiteUrl + "api/about-us-home")
+            .send(formData)
+            .then( (res) => res.json() )
+            .then(x => {
+                console.log("x =>", x);
+            })
+            .catch( err => {
+                console.error(err)
+            })
+    }
+
+    render() {
+        return (
+            <div>
+                <div className="row">
+                    <h2 className="col-sm-6 col-sm-push-3">Home About Admin Page</h2>
+                </div>
+                <form onSubmit={event => this.onSubmit(event)}>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="title" className={" "}>
+                                Title
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"title"}
+                                name={"title"}
+                                defaultValue={this.state.title}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="subTitle" className={" "}>
+                                Sub Title
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"subTitle"}
+                                name={"subTitle"}
+                                defaultValue={this.state.subTitle}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="content" className={" "}>
+                                Content
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <CKEditor
+                                activeClass="p10"
+                                content={this.state.content}
+                                events={{
+                                    change: this.onChange
+                                }}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="image1" className={" "}>
+                                Image 1
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="file"
+                                ref={input => {
+                                    this.filesInputOne = input;
+                                }}
+                                id={"image1"}
+                                name={"image1"}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="title" className={" "}>
+                                Image 1 ALT
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"alt_image_one"}
+                                name={"alt_image_one"}
+                                defaultValue={this.state.alt_image_one}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="image1" className={" "}>
+                                Image 2
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="file"
+                                ref={input => {
+                                    this.filesInputTwo = input;
+                                }}
+                                id={"image2"}
+                                name={"image2"}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="title" className={" "}>
+                                Image 2 ALT
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"alt_image_two"}
+                                name={"alt_image_two"}
+                                defaultValue={this.state.alt_image_two}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                    </div>
+
+                    <input type="submit" method="post"/>
+                </form>
             </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"title"}
-                name={"title"}
-                value={this.state.title}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="subTitle" className={" "}>
-                Sub Title
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"subTitle"}
-                name={"subTitle"}
-                value={this.state.title}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="content" className={" "}>
-                Content
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <CKEditor
-                activeClass="p10"
-                content={this.state.content}
-                events={{
-                  blur: this.onBlur,
-                  afterPaste: this.afterPaste,
-                  change: this.onChange
-                }}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="image1" className={" "}>
-                Image 1
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="file"
-                ref={input => {
-                  this.filesInput = input;
-                }}
-                id={"image1"}
-                name={"image1"}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="image1" className={" "}>
-                Image 2
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="file"
-                ref={input => {
-                  this.filesInput = input;
-                }}
-                id={"image2"}
-                name={"image2"}
-              />
-            </div>
-          </div>
-          <input type="submit" method="post" />
-        </form>
-      </div>
-    );
-  }
+        );
+    }
 }
 
-export { HomeAboutUsAdminPage };
+export {HomeAboutUsAdminPage};
