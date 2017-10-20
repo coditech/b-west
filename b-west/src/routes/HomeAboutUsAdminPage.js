@@ -40,12 +40,11 @@ class HomeAboutUsAdminPage extends React.Component {
 
     onSubmit(evt) {
         evt.preventDefault();
-        alert(0);
         let formData = new FormData();
         const filesOne = this.filesInputOne.files;
         const filesTwo = this.filesInputTwo.files;
         formData.append("imageOne", filesOne[0]);
-        formData.append("imageTwo", filesTwo[0]);
+        formData.append("imageTwo", filesTwo[1]);
         // for (let key in filesOne) {
         //     // check if this is a file:
         //     if (filesOne.hasOwnProperty(key) && filesOne[key] instanceof File) {
@@ -211,12 +210,10 @@ class HomeAboutUsAdminPage extends React.Component {
 
                     <div className="row form-group text-center">
                         <div className="col-sm-3 col-sm-push-3">
-                            <input type="submit" className={"form-control btn"}/>
+                            <input type="submit" className={" btn btn-secondary"}/>
                         </div>
                     </div>
                 </form>
-                )
-                }
 
 
             </div>
