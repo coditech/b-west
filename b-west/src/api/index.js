@@ -144,7 +144,7 @@ api.post("/contact-us", uploadGoogle.any(), (req, res, next) => {
 
   const dataUpdate = {
     title,
-    content
+    content:contactinfo
   };
   aboutUsHomeSectionRef.set(dataUpdate, function(error) {
     if (error) {
