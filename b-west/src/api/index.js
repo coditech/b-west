@@ -142,17 +142,7 @@ api.post("/about-us-home", uploadGoogle.any(), (req, res, next) => {
 
 api.post("/contact-us", uploadGoogle.any(), (req, res, next) => {
     const { title, contactinfo} = req.body;
-  
-  
-      for (let file in files) {
-        const uploadFile = files[file];
-        console.log("FIle Name : ", files[file]);
-  
-        if (uploadFile.fieldname === "imageOne") {
-          console.log("FIle Name : ", uploadFile);
-          uploadImageToStorage(uploadFile)
-            .then(success => {
-              console.log("Api Server =>", success);
+
               const dataUpdate = {
                 title,
                 subTitle,
@@ -172,11 +162,6 @@ api.post("/contact-us", uploadGoogle.any(), (req, res, next) => {
                   console.log("Data saved successfully.");
                 }
               });
-            })
-            .catch(next);
-        }
-      }
-  
     res.status(200).send(test);
   });
   
