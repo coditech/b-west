@@ -24,7 +24,7 @@ class App extends React.Component {
     }
 
 
-    componentDidMount() {
+    ___gcomponentDidMount() {
         const oldState = this.state;
         this.setState({
             ...oldState, status: 1
