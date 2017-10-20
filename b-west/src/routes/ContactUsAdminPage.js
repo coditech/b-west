@@ -3,16 +3,27 @@ import CKEditor from "react-ckeditor-component";
 import superagent from "superagent";
 import { websiteUrl } from "../helpers";
 
-class HeadersAdminPage extends React.Component {
+class ContactUsAdminPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-        villagersStoriesHeader:"old villagersStoriesHeader title",
-        productsPageHeader:"old productsPageHeader title",
-        contactusHeader:"old about us header",
-        findaStoreHeader:"old find a store header"
+        content:""
     };
+    this.onChange = this.onChange.bind(this);
+  }
 
+  updateContent(newContent) {
+    this.setState({
+      content: newContent
+    });
+  }
+
+  onChange(evt) {
+    console.log("onChange fired with event info: ", evt);
+    var newContent = evt.editor.getData();
+    this.setState({
+      content: newContent
+    });
   }
 
   onBlur(evt) {
@@ -39,9 +50,9 @@ class HeadersAdminPage extends React.Component {
     const form = evt.target;
 
     // IMAGES MISSING IN THE FORM DATA
-    formData.append("villagers", form.title.value);
-    formData.append("products", form.subTitle.value);
-    formData.append("findastore", this.state.content);
+    formData.append("title", form.title.value);
+    formData.append("contactinfo", this.state.content);
+
 
     superagent
       .post(websiteUrl + "api/homeheader")
@@ -66,76 +77,45 @@ class HeadersAdminPage extends React.Component {
     return (
       <div>
         <div className="row">
-          <h2 className="col-sm-6 col-sm-push-3">Headers Admin Page</h2>
+          <h2 className="col-sm-6 col-sm-push-3">Home About Admin Page</h2>
         </div>
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
             <div className="col-sm-3">
               <label htmlFor="title" className={" "}>
-                Village Stories Header
+                Title
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
                 type="text"
-                id={"villagers"}
-                name={"villagers"}
-                defaultValue={this.state.villagersStoriesHeader}
+                id={"title"}
+                name={"title"}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="title" className={" "}>
-              Products Page Header
+              <label htmlFor="contactinformation" className={" "}>
+                Contact Information
               </label>
             </div>
             <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"products"}
-                name={"products"}
-                defaultValue={this.state.productsPageHeader}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="title" className={" "}>
-                Contact Us Page Header
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"contactus"}
-                name={"contactus"}
-                defaultdefaultValue={this.state.contactusHeader}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="title" className={" "}>
-                Find A Store Page Header
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"findastore"}
-                name={"findastore"}
-                defaultValue={this.state.findaStoreHeader}
+              <CKEditor
+                activeClass="p10"
+                content={this.state.content}
+                events={{
+                  blur: this.onBlur,
+                  afterPaste: this.afterPaste,
+                  change: this.onChange
+                }}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3 col-sm-push-3">
-              <input type="submit" className={"form-control btn"} />
+              <input type="submit"  className={"form-control btn"} />
             </div>
           </div>
         </form>
@@ -144,4 +124,4 @@ class HeadersAdminPage extends React.Component {
   }
 }
 
-export { HeadersAdminPage };
+export { ContactUsAdminPage };
