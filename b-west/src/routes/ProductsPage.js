@@ -57,10 +57,14 @@ class ProductsPage extends React.Component {
       <div>
         <Header {...productsPageHeader} additionalClass={"products-header"} />
         <div className="container store-locator">
-          <div className="popurlar_product">
+          <div className="popurlar_product ">
+
             <div className="row">
-              <input type="text" onChange={e => this.handleSearch(e)} />
+              <div className="col-sm-6 col-sm-push-3">
+              <input type="text" onChange={e => this.handleSearch(e)} className={"form-control"} placeholder="Take A Look At Our Different Products" id="search-product-input" />
+              </div>
             </div>
+            
             <ul className="row">
               {fileteredProducts
                 ? fileteredProducts.map((product, index) => (

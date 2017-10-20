@@ -1,4 +1,10 @@
-
+#search-product-input{
+    margin-top: 28px;
+    background-color: #ececec;
+}
+#search-product-input:focus{
+    background-color: #FFFFFF;
+}
 
 .store-locator {
     background-color: #fff;

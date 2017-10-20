@@ -138,14 +138,14 @@ class HomeHeaderAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-          <div className="col-sm-6 col-sm-push-3">
-            <input
-              type={"checkbox"}
-              name={"actionButton"}
-              id={"actionButton"}
-              value={"false"}
-            />Select if action button is available on Home Header
-          </div>
+            <div className="col-sm-6 col-sm-push-3">
+              <input
+                type={"checkbox"}
+                name={"actionButton"}
+                id={"actionButton"}
+                value={"false"}
+              />Select if action button is available on Home Header
+            </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
@@ -197,7 +197,14 @@ class HomeHeaderAdminPage extends React.Component {
               />
             </div>
           </div>
-          <input type="submit" method="post" />
+          <div className="row form-group text-center">
+            <div className="col-sm-3 col-sm-push-3">
+              <input
+                type="submit"
+                className={"form-control btn"}
+              />
+            </div>
+          </div>
         </form>
       </div>
     );

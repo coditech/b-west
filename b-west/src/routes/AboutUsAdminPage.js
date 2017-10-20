@@ -94,23 +94,23 @@ class AboutUsAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-          <div className="col-sm-3">
-            <label htmlFor="content" className={" "}>
-              Content
-            </label>
+            <div className="col-sm-3">
+              <label htmlFor="content" className={" "}>
+                Content
+              </label>
+            </div>
+            <div className="col-sm-6">
+              <CKEditor
+                activeClass="p10"
+                content={this.state.content}
+                events={{
+                  blur: this.onBlur,
+                  afterPaste: this.afterPaste,
+                  change: this.onChange
+                }}
+              />
+            </div>
           </div>
-          <div className="col-sm-6">
-            <CKEditor
-              activeClass="p10"
-              content={this.state.content}
-              events={{
-                blur: this.onBlur,
-                afterPaste: this.afterPaste,
-                change: this.onChange
-              }}
-            />
-          </div>
-        </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
               <label htmlFor="image" className={" "}>
@@ -129,7 +129,11 @@ class AboutUsAdminPage extends React.Component {
               />
             </div>
           </div>
-          <input type="submit" method="post" />
+          <div className="row form-group text-center">
+            <div className="col-sm-3 col-sm-push-3">
+              <input type="submit" className={"form-control btn"} />
+            </div>
+          </div>
         </form>
       </div>
     );
