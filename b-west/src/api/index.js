@@ -143,10 +143,11 @@ api.post("/contact-us", uploadGoogle.any(), (req, res, next) => {
   const { title, contactinfo } = req.body;
 
   const dataUpdate = {
+    ...allData.contactUs,
     title,
-    content:contactinfo
+    content: contactinfo
   };
-  aboutUsHomeSectionRef.set(dataUpdate, function(error) {
+  contactUsRef.set(dataUpdate, function(error) {
     if (error) {
       console.log("Data could not be saved." + error);
     } else {
