@@ -3,29 +3,16 @@ import CKEditor from "react-ckeditor-component";
 import superagent from "superagent";
 import { websiteUrl } from "../helpers";
 
-class HomeAboutUsAdminPage extends React.Component {
+class HeadersAdminPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      title: "Old Title",
-      subTitle: "Old subtitle ",
-      content: "Old Content"
+        villagersStoriesHeader:"old villagersStoriesHeader title",
+        productsPageHeader:"old productsPageHeader title",
+        contactusHeader:"old about us header",
+        findaStoreHeader:"old find a store header"
     };
-    this.onChange = this.onChange.bind(this);
-  }
 
-  updateContent(newContent) {
-    this.setState({
-      content: newContent
-    });
-  }
-
-  onChange(evt) {
-    console.log("onChange fired with event info: ", evt);
-    var newContent = evt.editor.getData();
-    this.setState({
-      content: newContent
-    });
   }
 
   onBlur(evt) {
@@ -79,92 +66,70 @@ class HomeAboutUsAdminPage extends React.Component {
     return (
       <div>
         <div className="row">
-          <h2 className="col-sm-6 col-sm-push-3">Home About Admin Page</h2>
+          <h2 className="col-sm-6 col-sm-push-3">Headers Admin Page</h2>
         </div>
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
             <div className="col-sm-3">
               <label htmlFor="title" className={" "}>
-                Title
+                Village Stories Header
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
                 type="text"
-                id={"title"}
-                name={"title"}
-                defaultValue={this.state.title}
+                id={"villagers"}
+                name={"villager"}
+                defaultValue={this.state.villagersStoriesHeader}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="subTitle" className={" "}>
-                Sub Title
+              <label htmlFor="title" className={" "}>
+              Products Page Header
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
                 type="text"
-                id={"subTitle"}
-                name={"subTitle"}
-                defaultValue={this.state.title}
+                id={"products"}
+                name={"products"}
+                defaultValue={this.state.productsPageHeader}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="content" className={" "}>
-                Content
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <CKEditor
-                activeClass="p10"
-                content={this.state.content}
-                events={{
-                  blur: this.onBlur,
-                  afterPaste: this.afterPaste,
-                  change: this.onChange
-                }}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="image1" className={" "}>
-                Image 1
+              <label htmlFor="title" className={" "}>
+                Contact Us Page Header
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
-                type="file"
-                ref={input => {
-                  this.filesInput = input;
-                }}
-                id={"image1"}
-                name={"image1"}
+                type="text"
+                id={"contactus"}
+                name={"contactus"}
+                defaultdefaultValue={this.state.contactusHeader}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="image1" className={" "}>
-                Image 2
+              <label htmlFor="title" className={" "}>
+                Find A Store Page Header
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
-                type="file"
-                ref={input => {
-                  this.filesInput = input;
-                }}
-                id={"image2"}
-                name={"image2"}
+                type="text"
+                id={"findastore"}
+                name={"findastore"}
+                defaultValue={this.state.findaStoreHeader}
               />
             </div>
           </div>
@@ -179,4 +144,4 @@ class HomeAboutUsAdminPage extends React.Component {
   }
 }
 
-export { HomeAboutUsAdminPage };
+export { HeadersAdminPage };

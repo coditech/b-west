@@ -99,7 +99,7 @@ class HomeHeaderAdminPage extends React.Component {
                 type="text"
                 id={"title"}
                 name={"title"}
-                value={this.state.title}
+                defaultValue={this.state.title}
               />
             </div>
           </div>
@@ -115,7 +115,7 @@ class HomeHeaderAdminPage extends React.Component {
                 type="text"
                 id={"subTitle"}
                 name={"subTitle"}
-                value={this.state.title}
+                defaultValue={this.state.title}
               />
             </div>
           </div>
@@ -159,7 +159,7 @@ class HomeHeaderAdminPage extends React.Component {
                 type="text"
                 id={"actionUrl"}
                 name={"actionUrl"}
-                value={this.state.actionUrl}
+                defaultValue={this.state.actionUrl}
               />
             </div>
           </div>
@@ -175,7 +175,7 @@ class HomeHeaderAdminPage extends React.Component {
                 type="text"
                 id={"actionText"}
                 name={"actionText"}
-                value={this.state.actionText}
+                defaultValue={this.state.actionText}
               />
             </div>
           </div>
