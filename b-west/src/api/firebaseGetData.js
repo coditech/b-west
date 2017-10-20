@@ -2,6 +2,7 @@ import db from '../databaseConnection';
 
 const rootRef = db.ref("/");
 const aboutUsHomeSectionRef = db.ref("/aboutUsHomeSection");
+const contactUsRef = db.ref("/contactUs");
 
 let allData = {
     aboutUs: [],
@@ -205,4 +206,4 @@ once(() => {
     _hasLoaded = true
 });
 
-export  {aboutUsHomeSectionRef}
+export  {aboutUsHomeSectionRef, contactUsRef}

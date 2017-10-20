@@ -55,7 +55,7 @@ class ContactUsAdminPage extends React.Component {
 
 
     superagent
-      .post(websiteUrl + "api/homeheader")
+      .post(websiteUrl + "api/contact-us")
       .send(formData)
       .end((err, response) => {
         console.log("response", response);
