@@ -17,29 +17,28 @@ class App extends React.Component {
 
         this.state = {
             ...data,
-            status: 0
-
+            status: 2,
+            allData: data
         };
 
     }
 
 
-    ____componentDidMount() {
+    componentDidMount() {
         const oldState = this.state;
         this.setState({
             ...oldState, status: 1
         });
 
         const url = 'http://localhost:3000/api/aboutUs';
-        fetch(url)
-            .then((resp) => resp.json())
-            .then(function (data) {
-                this.setState({
-                    ...data,
-                    status: 2
+        fetch(url).then((resp) => resp.json()).then(function (data) {
+            console.log('data', data);
+            this.setState({
+                ...data,
+                status: 2
 
-                })
             })
+        })
             .catch(function (error) {
                 console.log(error);
             });
@@ -50,10 +49,16 @@ class App extends React.Component {
         const passedProps = this.state;
         const mix = mixProps(passedProps);
 
+        // if (this.state.status !== 2) {
+        //
+        //     return <h2>State Empty<br/>
+        //         {JSON.stringify(this.state)}
+        //     </h2>
+        // }
+
         return (
             <div>
                 <Switch>
-
                     <Route path="/admin" component={AdminApp}/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/" render={(props) => {
@@ -65,6 +70,7 @@ class App extends React.Component {
                     }
                     }/>
                 </Switch>
+
             </div>
         )
     }

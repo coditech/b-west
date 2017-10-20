@@ -4,19 +4,19 @@ const rootRef = db.ref("/");
 const aboutUsHomeSectionRef = db.ref("/aboutUsHomeSection");
 
 let allData = {
-    aboutUsData: [],
-    featuredProductsData: [],
-    aboutUsHomeSectionData: {},
-    contactUsData: {},
-    featuredStoriesData: {},
-    findAStoreData: {},
-    homeHeaderData: {},
-    instaBannerData: {},
-    productsData: [],
-    productsPageHeaderData: {},
-    subscriberBannerData: {},
-    villagersStoriesData: [],
-    villagersStoriesHeaderData: {}
+    aboutUs: [],
+    featuredProducts: [],
+    aboutUsHomeSection: {},
+    contactUs: {},
+    featuredStories: {},
+    findAStore: {},
+    homeHeader: {},
+    instaBanner: {},
+    products: [],
+    productsPageHeader: {},
+    subscriberBanner: {},
+    villagersStories: [],
+    villagersStoriesHeader: {}
 };
 let aboutUsData = [];
 let featuredProductsData = [];
@@ -25,19 +25,53 @@ let productsData = [];
 const log = (thing) => {
     console.log("[firebaseGetData]", thing)
 };
+const menu = {
+    menuItems: [
+        {
+            name: "Home",
+            url: "/",
+        },
+        {
+            name: "About Us",
+            url: "/about-us",
+        },
+        {
+            name: "Villagers",
+            url: "/villagers",
+        },
+        {
+            name: "Products",
+            url: "/products",
+        },
+        {
+            name: "Contact Us",
+            url: "/contact-us",
+        },
+        {
+            name: "Find A Store",
+            url: "/find-a-store",
+        }
+    ],
+    logo: {
+        src: '/b-west-latin-logo.png'
+        , alt: 'B-West Logo'
+    },
+};
 
 rootRef.on("value", function (snapshot) {
 
     let allItems = snapshot.val();
 
-    allData.aboutUsHomeSectionData = allItems.aboutUsHomeSection;
-    allData.contactUsData = allItems.contactUs;
-    allData.featuredStoriesData = allItems.featuredStories;
-    allData.homeHeaderData = allItems.homeHeader;
-    allData.instaBannerData = allItems.instaBanner;
-    allData.productsPageHeaderData = allItems.productsPageHeader;
-    allData.subscriberBannerData = allItems.subscriberBanner;
-    allData.villagersStoriesHeaderData = allItems.villagersStoriesHeader;
+
+    allData.menu = menu;
+    allData.aboutUsHomeSection = allItems.aboutUsHomeSection;
+    allData.contactUs = allItems.contactUs;
+    allData.featuredStories = allItems.featuredStories;
+    allData.homeHeader = allItems.homeHeader;
+    allData.instaBanner = allItems.instaBanner;
+    allData.productsPageHeader = allItems.productsPageHeader;
+    allData.subscriberBanner = allItems.subscriberBanner;
+    allData.villagersStoriesHeader = allItems.villagersStoriesHeader;
     /**/
     let aboutUsItems = allItems.aboutUs;
     aboutUsData = [];
@@ -49,7 +83,7 @@ rootRef.on("value", function (snapshot) {
 
         });
     }
-    allData.aboutUsData = aboutUsData;
+    allData.aboutUs = aboutUsData;
     /**/
 
     /**/
@@ -60,11 +94,11 @@ rootRef.on("value", function (snapshot) {
         const itemData = featuredProductsItems[itemKey];
         featuredProductsData.push({
             ...itemData,
-            id: itemKey,
+            id: itemKey
 
         });
     }
-    allData.featuredProductsData = featuredProductsData;
+    allData.featuredProducts = featuredProductsData;
 
     /**/
 
@@ -76,12 +110,12 @@ rootRef.on("value", function (snapshot) {
         const itemData = sotresItems[itemKey];
         stores.push({
             ...itemData,
-            id: itemKey,
+            id: itemKey
 
         });
     }
     findAStoreItems.stores = stores;
-    allData.findAStoreData = findAStoreItems;
+    allData.findAStore = findAStoreItems;
     /**/
 
     /**/
@@ -92,11 +126,11 @@ rootRef.on("value", function (snapshot) {
         const itemData = productsItems[itemKey];
         productsData.push({
             ...itemData,
-            id: itemKey,
+            id: itemKey
 
         });
     }
-    allData.productsData = productsData;
+    allData.products = productsData;
     /**/
 
     /**/
@@ -113,89 +147,24 @@ rootRef.on("value", function (snapshot) {
         for (let imageKey in images) {
             imagesData.push({
                 ...images[imageKey],
-                id: imageKey,
+                id: imageKey
 
             });
         }
         itemData.images = imagesData;
         villagersStoriesData.push({
             ...itemData,
-            id: itemKey,
+            id: itemKey
 
         });
     }
-    allData.villagersStoriesData = villagersStoriesData;
+    allData.villagersStories = villagersStoriesData;
 
     /**/
 
 }, function (errorObject) {
     log("The read failed: " + errorObject.code);
 });
-
-/*
-villagersStoriesRef.on("value", function (snapshot) {
-    //
-    villagersStoriesData = snapshot.val();
-    let images = snapshot.val().images;
-    let storiesImages = [];
-    for (let itemKey in images) {
-        const itemData = images[itemKey];
-        storiesImages.push({
-            ...itemData,
-            id: itemKey,
-
-        });
-    }
-    villagersStoriesData.images = images;
-    allData.villagersStoriesData = villagersStoriesData;
-
-
-}, function (errorObject) {
-    log("The read failed: " + errorObject.code);
-});
-
-
-aboutUsHomeSectionRef.on("value", function (snapshot) {
-    allData.aboutUsHomeSectionData = snapshot.val();
-
-}, function (errorObject) {
-    log("The read failed: " + errorObject.code);
-});
-contactUsRef.on("value", function (snapshot) {
-    allData.contactUsData = snapshot.val();
-}, function (errorObject) {
-    log("The read failed: " + errorObject.code);
-});
-featuredStoriesRef.on("value", function (snapshot) {
-    allData.featuredStoriesData = snapshot.val();
-}, function (errorObject) {
-    log("The read failed: " + errorObject.code);
-});
-homeHeaderRef.on("value", function (snapshot) {
-    allData.homeHeaderData = snapshot.val();
-}, function (errorObject) {
-    log("The read failed: " + errorObject.code);
-});
-instaBannerRef.on("value", function (snapshot) {
-    allData.instaBannerData = snapshot.val();
-}, function (errorObject) {
-    log("The read failed: " + errorObject.code);
-});
-productsPageHeaderRef.on("value", function (snapshot) {
-    allData.productsPageHeaderData = snapshot.val();
-}, function (errorObject) {
-    log("The read failed: " + errorObject.code);
-});
-subscriberBannerRef.on("value", function (snapshot) {
-    allData.subscriberBannerData = snapshot.val();
-}, function (errorObject) {
-    log("The read failed: " + errorObject.code);
-});
-villagersStoriesHeaderRef.on("value", function (snapshot) {
-    allData.villagersStoriesHeaderData = snapshot.val();
-}, function (errorObject) {
-    log("The read failed: " + errorObject.code);
-});*/
 
 const listeners = [];
 
@@ -204,36 +173,36 @@ export const once = (listener) => {
         listener(data);
         unsubscribe(listener);
     })
-}
+};
 
 export const subscribe = (listener) => {
-    listeners.push(listener)
+    listeners.push(listener);
     return unsubscribe.bind(null, listener);
-}
+};
 
 export const unsubscribe = (listener) => {
-    const index = listeners.indexOf(listener)
+    const index = listeners.indexOf(listener);
     if (index >= 0) {
-        listeners.splice(index, 1)
+        listeners.splice(index, 1);
         return subscribe.bind(null, listener)
     }
-}
+};
 
 const trigger = () => {
     listeners.forEach(listener => listener(allData))
-}
+};
 
 
 let _hasLoaded = false;
 
 export const hasLoaded = () => {
     return _hasLoaded
-}
+};
 
-rootRef.on("value", trigger)
+rootRef.on("value", trigger);
 
 once(() => {
     _hasLoaded = true
-})
+});
 
-export {aboutUsHomeSectionRef}
+export  {aboutUsHomeSectionRef}

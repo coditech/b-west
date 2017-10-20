@@ -6,11 +6,12 @@ import { hydrate } from 'react-dom';
 /* eslint-disable */
 // eslint-disable-line no-undef
 const globalState = ___STATE___
+const globalAllState = ___allData___
 /* eslint-enable */
 
 hydrate(
   <BrowserRouter>
-    <App appData={globalState}/>
+    <App appData={globalState} allData={globalAllState}/>
   </BrowserRouter>,
   document.getElementById('root')
 );

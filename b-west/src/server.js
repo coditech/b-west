@@ -4,6 +4,7 @@ import {StaticRouter} from 'react-router-dom';
 import express from 'express';
 import {renderToString} from 'react-dom/server';
 import api from './api';
+import {subscribe} from "./api/firebaseGetData";
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -580,7 +581,11 @@ const tempData = {
         content: `<p>Mr Michel Skaff<br/>Saghbine - District of West Bekaa, Abu Ha<br/>mad building<br/>Saghbine, West Bekaa<br/>Lebanon<br/><a href="+9613334121">+961 3 334 121</a><br/><a href="mailto:skaff.michel@gmail.com">skaff.michel@gmail.com</a></p>`
     }
 
-}
+};
+
+var requestLoop = setInterval(function () {
+
+}, 2 * 60 * 60 * 1000);
 
 const server = express();
 const uploads = express();
@@ -598,25 +603,37 @@ uploads.use((req, res, next) => {
     console.log(process.env.RAZZLE_MAN)
     next()
 })
+
+let allData = {}
+subscribe((newData) => {
+    allData = newData
+});
+
+
 uploads.use(express.static('./uploads'));
 uploads.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
 
     next();
 });
+
 server.use('/api', api);
 server.use('/uploads', uploads);
 server
     .disable('x-powered-by')
     // .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
     .use(express.static('./public'))
+    .use((req, res, next) => {
+
+        // allData = tempData;
+        next();
+    })
     .get('/*', (req, res) => {
         const context = {};
 
-        // console.log('App Data ==>', tempData);
         const markup = renderToString(
             <StaticRouter context={context} location={req.url}>
-                <App appData={tempData}/>
+                <App appData={allData} allData={allData}/>
             </StaticRouter>
         );
 
@@ -641,7 +658,8 @@ server
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <!-- JavaScripts -->
         <script>
-            var ___STATE___ = ${JSON.stringify(tempData)}
+            var ___STATE___ = ${JSON.stringify(allData)}
+            var ___allData___ = ${JSON.stringify(allData)}
         </script>
         <script src="/assets/js/vendors/modernizr.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
