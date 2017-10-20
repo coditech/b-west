@@ -38,14 +38,6 @@ class ContactUsAdminPage extends React.Component {
     evt.preventDefault();
     alert(0);
     let formData = new FormData();
-    const files = this.filesInput.files;
-    for (var key in files) {
-      // check if this is a file:
-      if (files.hasOwnProperty(key) && files[key] instanceof File) {
-        console.log("key ==> ", key);
-        formData.append("file", files[key]);
-      }
-    }
 
     const form = evt.target;
 

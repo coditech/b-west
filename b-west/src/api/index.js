@@ -183,20 +183,21 @@ api.post("/about-us-home", uploadGoogle.any(), (req, res, next) => {
     res.status(200).send({});
 });
 api.post("/contact-us", uploadGoogle.any(), (req, res, next) => {
-    const {title, contactinfo} = req.body;
+  const { title, contactinfo } = req.body;
 
-    const dataUpdate = {
-        title,
-        content: contactinfo
-    };
-    aboutUsHomeSectionRef.set(dataUpdate, function (error) {
-        if (error) {
-            console.log("Data could not be saved." + error);
-        } else {
-            console.log("Data saved successfully.");
-        }
-    });
-    res.status(200).send(test);
+  const dataUpdate = {
+    ...allData.contactUs,
+    title,
+    content: contactinfo
+  };
+  contactUsRef.set(dataUpdate, function(error) {
+    if (error) {
+      console.log("Data could not be saved." + error);
+    } else {
+      console.log("Data saved successfully.");
+    }
+  });
+  res.status(200).send(test);
 });
 // Insert and overide all list
 api.get("/insert", (req, res, next) => {
