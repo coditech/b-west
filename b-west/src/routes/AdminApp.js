@@ -8,6 +8,13 @@ import {HomeHeaderAdminPage} from "./HomeHeaderAdminPage";
 import {HomeAboutUsAdminPage} from "./HomeAboutUsAdminPage";
 import {HomeStoriesAdminPage} from "./HomeStoriesAdminPage";
 import {HomeFeaturedItemsAdminPage} from "./HomeFeaturedItemsAdminPage";
+import {AboutUsAdminPage} from "./AboutUsAdminPage";
+import {VillagerStoryAdminPage} from "./VillagerStoryAdminPage";
+import {ShopItemAdminPage} from "./ShopItemAdminPage";
+import {HeadersAdminPage} from "./HeadersAdminPage";
+import {LocationAdminPage} from "./LocationAdminPage";
+import {ContactUsAdminPage} from "./ContactUsAdminPage";
+
 
 const User = () => {
 
@@ -65,6 +72,13 @@ class AdminApp extends React.Component {
                                 <Route exact path="/admin/about" component={HomeAboutUsAdminPage}/>
                                 <Route exact path="/admin/stories" component={HomeStoriesAdminPage}/>
                                 <Route exact path="/admin/featureditems" component={HomeFeaturedItemsAdminPage}/>
+                                <Route exact path="/admin/aboutpage" component={AboutUsAdminPage}/>
+                                <Route exact path="/admin/villagers" component={VillagerStoryAdminPage}/>
+                                <Route exact path="/admin/shopitems" component={ShopItemAdminPage}/>
+                                <Route exact path="/admin/headers" component={HeadersAdminPage}/>
+                                <Route exact path="/admin/locations" component={LocationAdminPage}/>
+                                <Route exact path="/admin/contact" component={ContactUsAdminPage}/>
+                                
                                 
 
 

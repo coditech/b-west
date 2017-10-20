@@ -63,8 +63,6 @@ class HomeAboutUsAdminPage extends React.Component {
         //         formData.append("imageTwo", filesTwo[key]);
         //     }
         // }
-
-
         // IMAGES MISSING IN THE FORM DATA
         formData.append("title", this.state.title);
         formData.append("subTitle", this.state.subTitle);
@@ -75,18 +73,17 @@ class HomeAboutUsAdminPage extends React.Component {
         superagent
             .post(websiteUrl + "api/about-us-home")
             .send(formData)
-            .then( (res) => res.json() )
+            .then((res) => res.json())
             .then(x => {
                 console.log("x =>", x);
             })
-            .catch( err => {
+            .catch(err => {
                 console.error(err)
             })
     }
 
     render() {
-        return (
-            <div>
+        return (<div>
                 <div className="row">
                     <h2 className="col-sm-6 col-sm-push-3">Home About Admin Page</h2>
                 </div>
@@ -212,11 +209,21 @@ class HomeAboutUsAdminPage extends React.Component {
                         </div>
                     </div>
 
-                    <input type="submit" method="post"/>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3 col-sm-push-3">
+                            <input type="submit" className={"form-control btn"}/>
+                        </div>
+                    </div>
                 </form>
+                )
+                }
+
+
             </div>
         );
     }
 }
 
-export {HomeAboutUsAdminPage};
+export {
+    HomeAboutUsAdminPage
+};

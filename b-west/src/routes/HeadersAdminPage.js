@@ -2,7 +2,18 @@ import React from "react";
 import superagent from "superagent";
 import { websiteUrl } from "../helpers";
 
-class HomeFeaturedItemsAdminPage extends React.Component {
+class HeadersAdminPage extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+        villagersStoriesHeader:"old villagersStoriesHeader title",
+        productsPageHeader:"old productsPageHeader title",
+        contactusHeader:"old about us header",
+        findaStoreHeader:"old find a store header"
+    };
+
+  }
+
   onBlur(evt) {
     console.log("onBlur event called with event info: ", evt);
   }
@@ -27,9 +38,9 @@ class HomeFeaturedItemsAdminPage extends React.Component {
     const form = evt.target;
 
     // IMAGES MISSING IN THE FORM DATA
-    formData.append("name", form.name.value);
-    formData.append("status", form.status.value);
-    formData.append("price", form.price.value);
+    formData.append("villagers", form.title.value);
+    formData.append("products", form.subTitle.value);
+    formData.append("findastore", this.state.content);
 
     superagent
       .post(websiteUrl + "api/homeheader")
@@ -54,78 +65,76 @@ class HomeFeaturedItemsAdminPage extends React.Component {
     return (
       <div>
         <div className="row">
-          <h2 className="col-sm-6 col-sm-push-3">Home Featured Item</h2>
+          <h2 className="col-sm-6 col-sm-push-3">Headers Admin Page</h2>
         </div>
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="Name" className={" "}>
-                Name
+              <label htmlFor="title" className={" "}>
+                Village Stories Header
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
                 type="text"
-                id={"Name"}
-                name={"Name"}
+                id={"villagers"}
+                name={"villagers"}
+                defaultValue={this.state.villagersStoriesHeader}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="Status" className={" "}>
-                Status
+              <label htmlFor="title" className={" "}>
+              Products Page Header
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
                 type="text"
-                id={"status"}
-                name={"status"}
+                id={"products"}
+                name={"products"}
+                defaultValue={this.state.productsPageHeader}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="Status" className={" "}>
-                Price
+              <label htmlFor="title" className={" "}>
+                Contact Us Page Header
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
                 type="text"
-                id={"Price"}
-                name={"Price"}
+                id={"contactus"}
+                name={"contactus"}
+                defaultdefaultValue={this.state.contactusHeader}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="image" className={" "}>
-                Image
+              <label htmlFor="title" className={" "}>
+                Find A Store Page Header
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
-                type="file"
-                ref={input => {
-                  this.filesInput = input;
-                }}
-                id={"image"}
-                name={"image"}
+                type="text"
+                id={"findastore"}
+                name={"findastore"}
+                defaultValue={this.state.findaStoreHeader}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3 col-sm-push-3">
-              <input
-                type="submit"
-                className={"form-control btn"}
-              />
+              <input type="submit" className={"form-control btn"} />
             </div>
           </div>
         </form>
@@ -134,4 +143,4 @@ class HomeFeaturedItemsAdminPage extends React.Component {
   }
 }
 
-export { HomeFeaturedItemsAdminPage };
+export { HeadersAdminPage };

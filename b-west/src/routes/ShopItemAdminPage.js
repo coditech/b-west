@@ -2,7 +2,7 @@ import React from "react";
 import superagent from "superagent";
 import { websiteUrl } from "../helpers";
 
-class HomeFeaturedItemsAdminPage extends React.Component {
+class ShopItemAdminPage extends React.Component {
   onBlur(evt) {
     console.log("onBlur event called with event info: ", evt);
   }
@@ -122,10 +122,7 @@ class HomeFeaturedItemsAdminPage extends React.Component {
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3 col-sm-push-3">
-              <input
-                type="submit"
-                className={"form-control btn"}
-              />
+              <input type="submit" className={"form-control btn"} />
             </div>
           </div>
         </form>
@@ -134,4 +131,4 @@ class HomeFeaturedItemsAdminPage extends React.Component {
   }
 }
 
-export { HomeFeaturedItemsAdminPage };
+export { ShopItemAdminPage };

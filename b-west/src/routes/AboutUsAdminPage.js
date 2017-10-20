@@ -3,14 +3,11 @@ import CKEditor from "react-ckeditor-component";
 import superagent from "superagent";
 import { websiteUrl } from "../helpers";
 
-class HomeHeaderAdminPage extends React.Component {
+class AboutUsAdminPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      title: "Old Title",
-      content: "Old content",
-      actionUrl: "",
-      actionText: ""
+      content: ""
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -28,7 +25,6 @@ class HomeHeaderAdminPage extends React.Component {
       content: newContent
     });
   }
-
   onBlur(evt) {
     console.log("onBlur event called with event info: ", evt);
   }
@@ -52,13 +48,9 @@ class HomeHeaderAdminPage extends React.Component {
 
     const form = evt.target;
 
-    // HEADER IMAGE MISSING IN THE FORM DATA
+    // IMAGES MISSING IN THE FORM DATA
     formData.append("title", form.title.value);
-    formData.append("subTitle", form.subTitle.value);
     formData.append("content", this.state.content);
-    formData.append("actionButton", form.actionButton.value);
-    formData.append("actionUrl", form.actionUrl.value);
-    formData.append("actionText", form.actionText.value);
 
     superagent
       .post(websiteUrl + "api/homeheader")
@@ -83,13 +75,12 @@ class HomeHeaderAdminPage extends React.Component {
     return (
       <div>
         <div className="row">
-          <h2 className="col-sm-6 col-sm-push-3">Home Header Admin Page</h2>
+          <h2 className="col-sm-6 col-sm-push-3">About Us Page Section</h2>
         </div>
-
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="title" className={" "}>
+              <label htmlFor="Name" className={" "}>
                 Title
               </label>
             </div>
@@ -97,25 +88,8 @@ class HomeHeaderAdminPage extends React.Component {
               <input
                 className={"form-control"}
                 type="text"
-                id={"title"}
-                name={"title"}
-                defaultValue={this.state.title}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="subTitle" className={" "}>
-                Sub Title
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"subTitle"}
-                name={"subTitle"}
-                defaultValue={this.state.title}
+                id={"Name"}
+                name={"Name"}
               />
             </div>
           </div>
@@ -138,51 +112,9 @@ class HomeHeaderAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6 col-sm-push-3">
-              <input
-                type={"checkbox"}
-                name={"actionButton"}
-                id={"actionButton"}
-                value={"false"}
-              />Select if action button is available on Home Header
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="actionUrl" className={" "}>
-                Action Url
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"actionUrl"}
-                name={"actionUrl"}
-                defaultValue={this.state.actionUrl}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="actionText" className={" "}>
-                Action Text
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"actionText"}
-                name={"actionText"}
-                defaultValue={this.state.actionText}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
             <div className="col-sm-3">
               <label htmlFor="image" className={" "}>
-                Header image
+                Background Image
               </label>
             </div>
             <div className="col-sm-6">
@@ -193,16 +125,13 @@ class HomeHeaderAdminPage extends React.Component {
                   this.filesInput = input;
                 }}
                 id={"image"}
-                name={"file"}
+                name={"image"}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3 col-sm-push-3">
-              <input
-                type="submit"
-                className={"form-control btn"}
-              />
+              <input type="submit" className={"form-control btn"} />
             </div>
           </div>
         </form>
@@ -211,4 +140,4 @@ class HomeHeaderAdminPage extends React.Component {
   }
 }
 
-export { HomeHeaderAdminPage };
+export { AboutUsAdminPage };

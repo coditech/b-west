@@ -3,14 +3,11 @@ import CKEditor from "react-ckeditor-component";
 import superagent from "superagent";
 import { websiteUrl } from "../helpers";
 
-class HomeHeaderAdminPage extends React.Component {
+class VillagerStoryAdminPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      title: "Old Title",
-      content: "Old content",
-      actionUrl: "",
-      actionText: ""
+      content: ""
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -52,13 +49,10 @@ class HomeHeaderAdminPage extends React.Component {
 
     const form = evt.target;
 
-    // HEADER IMAGE MISSING IN THE FORM DATA
+    // IMAGES MISSING IN THE FORM DATA
     formData.append("title", form.title.value);
-    formData.append("subTitle", form.subTitle.value);
+    formData.append("slogan", form.slogan.value);
     formData.append("content", this.state.content);
-    formData.append("actionButton", form.actionButton.value);
-    formData.append("actionUrl", form.actionUrl.value);
-    formData.append("actionText", form.actionText.value);
 
     superagent
       .post(websiteUrl + "api/homeheader")
@@ -83,9 +77,8 @@ class HomeHeaderAdminPage extends React.Component {
     return (
       <div>
         <div className="row">
-          <h2 className="col-sm-6 col-sm-push-3">Home Header Admin Page</h2>
+          <h2 className="col-sm-6 col-sm-push-3">Home About Admin Page</h2>
         </div>
-
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
             <div className="col-sm-3">
@@ -99,29 +92,27 @@ class HomeHeaderAdminPage extends React.Component {
                 type="text"
                 id={"title"}
                 name={"title"}
-                defaultValue={this.state.title}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="subTitle" className={" "}>
-                Sub Title
+              <label htmlFor="slogan" className={" "}>
+                Slogan
               </label>
             </div>
             <div className="col-sm-6">
               <input
                 className={"form-control"}
                 type="text"
-                id={"subTitle"}
-                name={"subTitle"}
-                defaultValue={this.state.title}
+                id={"slogan"}
+                name={"slogan"}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="content" className={" "}>
+              <label htmlFor="content1" className={" "}>
                 Content
               </label>
             </div>
@@ -138,51 +129,9 @@ class HomeHeaderAdminPage extends React.Component {
             </div>
           </div>
           <div className="row form-group text-center">
-            <div className="col-sm-6 col-sm-push-3">
-              <input
-                type={"checkbox"}
-                name={"actionButton"}
-                id={"actionButton"}
-                value={"false"}
-              />Select if action button is available on Home Header
-            </div>
-          </div>
-          <div className="row form-group text-center">
             <div className="col-sm-3">
-              <label htmlFor="actionUrl" className={" "}>
-                Action Url
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"actionUrl"}
-                name={"actionUrl"}
-                defaultValue={this.state.actionUrl}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="actionText" className={" "}>
-                Action Text
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"actionText"}
-                name={"actionText"}
-                defaultValue={this.state.actionText}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="image" className={" "}>
-                Header image
+              <label htmlFor="image1" className={" "}>
+                Image 1
               </label>
             </div>
             <div className="col-sm-6">
@@ -192,17 +141,50 @@ class HomeHeaderAdminPage extends React.Component {
                 ref={input => {
                   this.filesInput = input;
                 }}
-                id={"image"}
-                name={"file"}
+                id={"image1"}
+                name={"image1"}
+              />
+            </div>
+          </div>
+          <div className="row form-group text-center">
+            <div className="col-sm-3">
+              <label htmlFor="image2" className={" "}>
+                Image 2
+              </label>
+            </div>
+            <div className="col-sm-6">
+              <input
+                className={"form-control"}
+                type="file"
+                ref={input => {
+                  this.filesInput = input;
+                }}
+                id={"image2"}
+                name={"image2"}
+              />
+            </div>
+          </div>
+          <div className="row form-group text-center">
+            <div className="col-sm-3">
+              <label htmlFor="image3" className={" "}>
+                Image 3
+              </label>
+            </div>
+            <div className="col-sm-6">
+              <input
+                className={"form-control"}
+                type="file"
+                ref={input => {
+                  this.filesInput = input;
+                }}
+                id={"image3"}
+                name={"image3"}
               />
             </div>
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3 col-sm-push-3">
-              <input
-                type="submit"
-                className={"form-control btn"}
-              />
+              <input type="submit" className={"form-control btn"} />
             </div>
           </div>
         </form>
@@ -211,4 +193,4 @@ class HomeHeaderAdminPage extends React.Component {
   }
 }
 
-export { HomeHeaderAdminPage };
+export { VillagerStoryAdminPage };

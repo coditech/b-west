@@ -7,8 +7,8 @@ import Menu from '../components/Menu';
 import Footer from "../components/Footer";
 import {ProductsPage} from "./ProductsPage";
 
-import '../styles/ionicons.min.css';
-import '../styles/bootstrap.min.css';
+//import '../styles/ionicons.min.css';
+//import '../styles/bootstrap.min.css';
 import '../styles/theme-main.css';
 import '../styles/theme-style.css';
 import '../styles/theme-responsive.css';

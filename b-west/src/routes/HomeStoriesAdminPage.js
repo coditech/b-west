@@ -106,7 +106,7 @@ class HomeStoriesAdminPage extends React.Component {
                 type="text"
                 id={"title1"}
                 name={"title1"}
-                value={this.state.firstStory.title}
+                defaultValue={this.state.firstStory.title}
               />
             </div>
           </div>
@@ -122,7 +122,7 @@ class HomeStoriesAdminPage extends React.Component {
                 type="text"
                 id={"slogan1"}
                 name={"slogan1"}
-                value={this.state.firstStory.slogan}
+                defaultValue={this.state.firstStory.slogan}
               />
             </div>
           </div>
@@ -174,7 +174,7 @@ class HomeStoriesAdminPage extends React.Component {
                 type="text"
                 id={"title2"}
                 name={"title2"}
-                value={this.state.secondStory.title}
+                defaultValue={this.state.secondStory.title}
               />
             </div>
           </div>
@@ -190,7 +190,7 @@ class HomeStoriesAdminPage extends React.Component {
                 type="text"
                 id={"slogan2"}
                 name={"slogan2"}
-                value={this.state.secondStory.slogan}
+                defaultValue={this.state.secondStory.slogan}
               />
             </div>
           </div>
@@ -230,7 +230,11 @@ class HomeStoriesAdminPage extends React.Component {
               />
             </div>
           </div>
-          <input type="submit" method="post" />
+          <div className="row form-group text-center">
+            <div className="col-sm-3 col-sm-push-3">
+              <input type="submit"  className={"form-control btn"} />
+            </div>
+          </div>
         </form>
       </div>
     );
