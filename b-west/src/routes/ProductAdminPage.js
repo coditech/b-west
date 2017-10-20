@@ -1,8 +1,30 @@
 import React from "react";
 import superagent from "superagent";
+import CKEditor from "react-ckeditor-component";
 import { websiteUrl } from "../helpers";
 
-class HomeFeaturedItemsAdminPage extends React.Component {
+class ProductAdminPage extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      content: ""
+    };
+    this.onChange = this.onChange.bind(this);
+  }
+
+  updateContent(newContent) {
+    this.setState({
+      content: newContent
+    });
+  }
+
+  onChange(evt) {
+    console.log("onChange fired with event info: ", evt);
+    var newContent = evt.editor.getData();
+    this.setState({
+      content: newContent
+    });
+  }
   onBlur(evt) {
     console.log("onBlur event called with event info: ", evt);
   }
@@ -30,6 +52,7 @@ class HomeFeaturedItemsAdminPage extends React.Component {
     formData.append("name", form.name.value);
     formData.append("status", form.status.value);
     formData.append("price", form.price.value);
+    formData.append("content", this.state.content);
 
     superagent
       .post(websiteUrl + "api/homeheader")
@@ -54,7 +77,7 @@ class HomeFeaturedItemsAdminPage extends React.Component {
     return (
       <div>
         <div className="row">
-          <h2 className="col-sm-6 col-sm-push-3">Home Featured Item</h2>
+          <h2 className="col-sm-6 col-sm-push-3">Product Admin Page</h2>
         </div>
         <form onSubmit={event => this.onSubmit(event)}>
           <div className="row form-group text-center">
@@ -69,6 +92,24 @@ class HomeFeaturedItemsAdminPage extends React.Component {
                 type="text"
                 id={"name"}
                 name={"name"}
+              />
+            </div>
+          </div>
+          <div className="row form-group text-center">
+            <div className="col-sm-3">
+              <label htmlFor="content" className={" "}>
+                Description
+              </label>
+            </div>
+            <div className="col-sm-6">
+              <CKEditor
+                activeClass="p10"
+                content={this.state.content}
+                events={{
+                  blur: this.onBlur,
+                  afterPaste: this.afterPaste,
+                  change: this.onChange
+                }}
               />
             </div>
           </div>
@@ -122,10 +163,7 @@ class HomeFeaturedItemsAdminPage extends React.Component {
           </div>
           <div className="row form-group text-center">
             <div className="col-sm-3 col-sm-push-3">
-              <input
-                type="submit"
-                className={"form-control btn"}
-              />
+              <input type="submit" className={"form-control btn"} />
             </div>
           </div>
         </form>
@@ -134,4 +172,4 @@ class HomeFeaturedItemsAdminPage extends React.Component {
   }
 }
 
-export { HomeFeaturedItemsAdminPage };
+export { ProductAdminPage };
