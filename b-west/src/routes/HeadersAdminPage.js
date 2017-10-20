@@ -38,9 +38,11 @@ class HeadersAdminPage extends React.Component {
     const form = evt.target;
 
     // IMAGES MISSING IN THE FORM DATA
-    formData.append("villagers", form.title.value);
-    formData.append("products", form.subTitle.value);
-    formData.append("findastore", this.state.content);
+    formData.append("villagers", form.villagers.value);
+    formData.append("products", form.products.value);
+    formData.append("contactus", form.contactus.value);
+    formData.append("findastore", form.findastore.value);
+    
 
     superagent
       .post(websiteUrl + "api/homeheader")
