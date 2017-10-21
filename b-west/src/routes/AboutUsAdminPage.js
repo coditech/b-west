@@ -6,6 +6,7 @@ import { websiteUrl } from "../helpers";
 class AboutUsAdminPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    console.log('About Us ', props.aboutUs);
     this.state = {
       content: ""
     };
@@ -25,13 +26,7 @@ class AboutUsAdminPage extends React.Component {
       content: newContent
     });
   }
-  onBlur(evt) {
-    console.log("onBlur event called with event info: ", evt);
-  }
 
-  afterPaste(evt) {
-    console.log("afterPaste event called with event info: ", evt);
-  }
 
   onSubmit(evt) {
     evt.preventDefault();
@@ -104,8 +99,6 @@ class AboutUsAdminPage extends React.Component {
                 activeClass="p10"
                 content={this.state.content}
                 events={{
-                  blur: this.onBlur,
-                  afterPaste: this.afterPaste,
                   change: this.onChange
                 }}
               />

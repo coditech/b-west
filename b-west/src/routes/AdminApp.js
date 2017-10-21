@@ -15,6 +15,7 @@ import {HeadersAdminPage} from "./HeadersAdminPage";
 import {LocationAdminPage} from "./LocationAdminPage";
 import {ContactUsAdminPage} from "./ContactUsAdminPage";
 import {ProductAdminPage} from "./ProductAdminPage";
+import {mixProps} from "../helpers/index";
 
 
 const User = () => {
@@ -34,7 +35,8 @@ const Default = () => {
 class AdminApp extends React.Component {
 
     constructor(props, context) {
-        super(props, context)
+        super(props, context);
+        console.log("props ", props)
         this.state = {
             toggled: true
         }
@@ -52,7 +54,8 @@ class AdminApp extends React.Component {
             const newState = {...oldState, toggled: !oldState.toggled}
             this.setState(newState);
         }
-
+        const passedProps = this.state;
+        const mix = mixProps(passedProps);
         return (
             <div>
                 <div style={{maxHeight: '60px', width: '100%', backgroundColor: 'blue'}}>
@@ -67,21 +70,27 @@ class AdminApp extends React.Component {
                     <div id="page-content-wrapper">
                         <div className="container-fluid">
                             <Switch>
+                                <Route exact path="/admin/aboutpage" render={(props) => {
+                                    // TODO: move this to componentDidMount
+                                    if (typeof window !== 'undefined') {
+                                        window.scrollTo(0, 0)
+                                    }
+                                    return ( <AboutUsAdminPage  {...mix(props)}/>)
+                                }
+                                }/>
 
-                                <Route exact path="admin/user" component={User}/>
+
                                 <Route exact path="/admin/home" component={HomeHeaderAdminPage}/>
-                                <Route exact path="/admin/about" component={HomeAboutUsAdminPage}/>
                                 <Route exact path="/admin/stories" component={HomeStoriesAdminPage}/>
                                 <Route exact path="/admin/featureditems" component={HomeFeaturedItemsAdminPage}/>
-                                <Route exact path="/admin/aboutpage" component={AboutUsAdminPage}/>
                                 <Route exact path="/admin/villagers" component={VillagerStoryAdminPage}/>
                                 <Route exact path="/admin/shopitems" component={ShopItemAdminPage}/>
                                 <Route exact path="/admin/headers" component={HeadersAdminPage}/>
                                 <Route exact path="/admin/locations" component={LocationAdminPage}/>
                                 <Route exact path="/admin/contact" component={ContactUsAdminPage}/>
-                                
+
                                 <Route exact path="/admin/products" component={ProductAdminPage}/>
-                                
+
 
 
                                 <Route  path="/" component={Default}/>

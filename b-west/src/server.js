@@ -4,7 +4,9 @@ import {StaticRouter} from 'react-router-dom';
 import express from 'express';
 import {renderToString} from 'react-dom/server';
 import api from './api';
-import {subscribe} from "./api/firebaseGetData";
+import {firebaseInsertData, firebasePushData} from './api/firebaseData';
+import {subscribe} from "./api/firebaseData";
+import {isEmpty} from "./helpers/index";
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -583,13 +585,9 @@ const tempData = {
 
 };
 
-var requestLoop = setInterval(function () {
-
-}, 2 * 60 * 60 * 1000);
 
 const server = express();
 const uploads = express();
-//const uploadsStaticServer = express.static('/Users/gabykaram/Desktop-2/codi/b-westProject/b-west/uploads/public')
 uploads.use((req, res, next) => {
     const url = req.url
     const path = './uploads' + url
@@ -604,7 +602,18 @@ uploads.use((req, res, next) => {
     next()
 })
 
-let allData = {}
+let allData = {};
+if (isEmpty(allData)) {
+    setTimeout(() => firebasePushData({
+            databaseRef: 'logs',
+            data: {
+                date: Date.now(),
+                message: 'All Data is Empty server restart'
+            }
+        }
+    ), 2000);
+
+}
 subscribe((newData) => {
     allData = newData
 });
@@ -621,8 +630,8 @@ server.use('/api', api);
 server.use('/uploads', uploads);
 server
     .disable('x-powered-by')
-    .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-    // .use(express.static('./public'))
+    // .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+    .use(express.static('./public'))
     .use((req, res, next) => {
 
         // allData = tempData;

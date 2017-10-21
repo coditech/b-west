@@ -1,101 +1,52 @@
 import express from "express";
-import multer from "multer";
-import util from "util";
 import db from "../databaseConnection";
+import aboutUsMode from "./model/aboutUs"
 import {
     subscribe,
     aboutUsHomeSectionRef,
-    contactUsRef
-} from "./firebaseGetData";
+    contactUsRef, firebasePushData
+} from "./firebaseData";
+import {uploadImageToStorage, uploadGoogle} from "./firebaseStorage";
+import {isEmpty} from "../helpers/index";
 
 let allData = {};
+if (isEmpty(allData)) {
+    setTimeout(() => firebasePushData({
+            databaseRef: 'logs',
+            data: {
+                date: Date.now(),
+                message: 'All Data is Empty server restart'
+            }
+        }
+    ), 2000);
+
+}
 subscribe(newData => {
     allData = newData;
 });
+export {allData};
 
-const googleStorage = require("@google-cloud/storage");
 
 const api = express();
-
-console.log("process.env.RAZZLE_PUBLIC_DIR===>,", process.env.MAN);
-
-// api.use(express.static(rootPath + '/api/public'));
+var router = express.Router();
 const rootRef = db.ref("/");
-
-api.get("/aboutUs", (request, resources, next) => {
+router.get("/aboutUs", (request, resources, next) => {
     resources.send(allData);
 });
-//
-const storage = googleStorage({
-    projectId: "b-west",
-    keyFilename: "../b-west/src/b-west-firebase-adminsdk-e58gj-0315440c03.json"
-});
-
-const storageDisk = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, "./uploads");
-    },
-    filename: function (req, file, callback) {
-        callback(null, Date.now() + file.originalname);
-    }
-});
-
-const bucket = storage.bucket("b-west.appspot.com");
-
-const uploadGoogle = multer({
-    storage: multer.memoryStorage(),
-    limits: {
-        fileSize: 5 * 1024 * 1024 // no larger than 5mb, you can change as needed.
-    },
-    fileFilter: function fileFilter(req, file, callback) {
-        // The function should call `cb` with a boolean
-        // to indicate if the file should be accepted
-        var fileType = file.mimetype;
-        if (
-            fileType !== "image/png" &&
-            fileType !== "image/jpeg" &&
-            fileType !== "image/gif" &&
-            fileType !== "image/jpg"
-        ) {
-            return callback(new Error("Only images are allowed"));
-        }
-        callback(null, true);
-    }
-});
-
-const upload = multer({
-    storage: storageDisk,
-    limits: {
-        fileSize: 5 * 1024 * 1024
-    },
-    fileFilter: function fileFilter(req, file, callback) {
-        // The function should call `cb` with a boolean
-        // to indicate if the file should be accepted
-        var fileType = file.mimetype;
-        if (
-            fileType !== "image/png" &&
-            fileType !== "image/jpeg" &&
-            fileType !== "image/gif" &&
-            fileType !== "image/jpg"
-        ) {
-            return callback(new Error("Only images are allowed"));
-        }
-        callback(null, true);
-    }
-});
-api.use(function (req, res, next) {
+router.get("/about", aboutUsMode.aboutUs_get);
+router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
 });
 
-api.post('/homeheader', upload.any(), (req, res, next) => {
+router.post('/homeheader', uploadGoogle.any(), (req, res, next) => {
 
     res.send({
         req: req.body
     })
 
 })
-api.post('/about-us-home', uploadGoogle.any(), (req, res, next) => {
+router.post('/about-us-home', uploadGoogle.any(), (req, res, next) => {
     const {title, subTitle, content, alt_image_one, alt_image_two} = req.body;
 
     let files = req.files;
@@ -138,7 +89,7 @@ api.post('/about-us-home', uploadGoogle.any(), (req, res, next) => {
 
     }
 });
-api.post("/about-us-home", uploadGoogle.any(), (req, res, next) => {
+router.post("/about-us-home", uploadGoogle.any(), (req, res, next) => {
     const {title, subTitle, content, alt_image_one, alt_image_two} = req.body;
 
     let files = req.files;
@@ -182,25 +133,25 @@ api.post("/about-us-home", uploadGoogle.any(), (req, res, next) => {
 
     res.status(200).send({});
 });
-api.post("/contact-us", uploadGoogle.any(), (req, res, next) => {
-  const { title, contactinfo } = req.body;
+router.post("/contact-us", uploadGoogle.any(), (req, res, next) => {
+    const {title, contactinfo} = req.body;
 
-  const dataUpdate = {
-    ...allData.contactUs,
-    title,
-    content: contactinfo
-  };
-  contactUsRef.set(dataUpdate, function(error) {
-    if (error) {
-      console.log("Data could not be saved." + error);
-    } else {
-      console.log("Data saved successfully.");
-    }
-  });
-  res.status(200).send(test);
+    const dataUpdate = {
+        ...allData.contactUs,
+        title,
+        content: contactinfo
+    };
+    contactUsRef.set(dataUpdate, function (error) {
+        if (error) {
+            console.log("Data could not be saved." + error);
+        } else {
+            console.log("Data saved successfully.");
+        }
+    });
+    res.status(200).send(test);
 });
 // Insert and overide all list
-api.get("/insert", (req, res, next) => {
+router.get("/insert", (req, res, next) => {
     const usersRef = rootRef.child("users");
     usersRef.set(
         {
@@ -226,7 +177,7 @@ api.get("/insert", (req, res, next) => {
     });
 });
 // Insert and overide all list
-api.get("/insertvalidate", (req, res, next) => {
+router.get("/insertvalidate", (req, res, next) => {
     const validate = rootRef.child("/validate");
     validate.set(
         {
@@ -246,7 +197,7 @@ api.get("/insertvalidate", (req, res, next) => {
     );
 });
 // Insert To The list then send all post data
-api.get("/insert_list", (req, res, next) => {
+router.get("/insert_list", (req, res, next) => {
     const postsRef = rootRef.child("posts");
 
     const newPostRef = postsRef.push();
@@ -256,92 +207,17 @@ api.get("/insert_list", (req, res, next) => {
         date: Date.now()
     });
 });
+
+
 //  Extract Get url
 // var parts = url.parse(req.url, true);
 // var query = parts.query;
-api.get("/*", (req, res, next) => {
-    let allData = {};
-    res.send(allData);
+router.get("/*", (req, res, next) => {
+    res.send({
+        allData: allData,
+        default: true
+    });
 });
 
-/**
- * Upload the image file to Google Storage
- * @param {File} file object that will be uploaded to Google Storage
- */
-const uploadImageToStorage = (file, path) => {
-    console.log('uploadImageToStorage');
-    var promise = new Promise((resolve, reject) => {
-        if (!file) {
-            reject('No image file');
-        }
-        const directory = path ? path + '/' : '';
-        let newFileName = `${directory}${Date.now()}_${file.originalname}`;
-        console.log('newFileName:', newFileName);
-        let fileUpload = bucket.file(newFileName);
 
-        const blobStream = fileUpload.createWriteStream({
-            metadata: {
-                contentType: file.mimetype
-            }
-        });
-
-        blobStream.on("error", error => {
-            reject("Something is wrong! Unable to upload at the moment.");
-        });
-        blobStream.on("finish", () => {
-            // The public URL can be used to directly access the file via HTTP.
-            const url = util.format(`https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`);
-            //const f = bucket.file(url)
-            return fileUpload.makePublic()
-                .then(() => resolve(url))
-                .catch(reject)
-        });
-
-        blobStream.end(file.buffer);
-    });
-    return promise;
-}
-const uploadImagesToStorage = (files, path) => {
-    return new Promise((resolve, reject) => {
-        if (!files) {
-            reject(new Error('No image file'));
-        }
-        let urls = [];
-
-        const promises = files.map(file =>
-            new Promise((resolve, reject) => {
-                console.log(file)
-                const fieldname = file.fieldname;
-                let newFileName = `${file.originalname}_${Date.now()}`;
-
-                let fileUpload = bucket.file(newFileName);
-
-                const blobStream = fileUpload.createWriteStream({
-                    metadata: {
-                        contentType: file.mimetype
-                    }
-                });
-
-                blobStream.on('error', (error) => {
-                    reject('Something is wrong! Unable to upload at the moment.');
-                });
-                blobStream.on('finish', () => {
-                    // The public URL can be used to directly access the file via HTTP.
-                    console.log(fileUpload.name, bucket);
-                    const url = util.format(`https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`);
-                    urls[fieldname] = url;
-                    resolve(url)
-                });
-                blobStream.end(file.buffer);
-
-            })
-        );
-        return Promise.all(promises)
-            .then(() => resolve(urls))
-            .catch((e) => {
-                throw e
-            });
-    })
-};
-
-export default api;
+export default router;

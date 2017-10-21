@@ -5,8 +5,7 @@ import PublicApp from "./routes/PublicApp";
 import {LoginPage} from "./routes/LoginPage";
 import AdminApp from "./routes/AdminApp";
 import './styles/App.css'
-
-const mixProps = (passed_props_home) => (props) => ({...passed_props_home, ...props});
+import {mixProps} from "./helpers/index";
 
 class App extends React.Component {
 
@@ -18,7 +17,6 @@ class App extends React.Component {
         this.state = {
             ...data,
             status: 2,
-            allData: data
         };
 
     }
@@ -47,6 +45,7 @@ class App extends React.Component {
 
     render() {
         const passedProps = this.state;
+        console.log('passedProps', passedProps)
         const mix = mixProps(passedProps);
 
         // if (this.state.status !== 2) {
@@ -60,6 +59,10 @@ class App extends React.Component {
             <div>
                 <Switch>
                     <Route path="/admin" component={AdminApp}/>
+                    <Route path="/admin" render={(props) => {
+                        return (<AdminApp {...mixProps(props)}/>)
+                    }
+                    }/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/" render={(props) => {
                         // TODO: move this to componentDidMount

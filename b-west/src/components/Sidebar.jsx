@@ -5,9 +5,10 @@ import '../styles/SideBar.css'
 
 const SideBar = () => {
     const menItems = [
-        {name: 'Home', url: '/', active: true}
-        , {name: 'Dashboard', url: '/admin', active: true}
-        , {name: 'Users', url: '/admin/user', active: false}
+        {name: 'Home', url: '/'}
+        , {name: 'Dashboard', url: '/admin'}
+        , {name: 'Users', url: '/admin/user'}
+        , {name: 'About Us', url: '/admin/about'}
     ]
 
 
@@ -20,7 +21,7 @@ const SideBar = () => {
 
                         return (
                             <li key={index}>
-                                <NavLink className={active ? 'active' : ''} to={url}>{name}</NavLink>
+                                <NavLink exact={true} to={url}>{name}</NavLink>
                             </li>
                         )
                     })

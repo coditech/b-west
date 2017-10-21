@@ -18,9 +18,7 @@ import {AboutUsPage} from "./AboutUsPage";
 import {ContactUsPage} from "./ContactUsPage";
 import {VillagersPage} from "./VillagersPage";
 import {ProductItemPage} from "./ProductItemPage";
-
-const mixProps = (passed_props_home) => (props) => ({...passed_props_home, ...props})
-
+import {mixProps} from "../helpers/index";
 class PublicApp extends React.Component {
 
     constructor(props, context) {
