@@ -33,7 +33,9 @@ const rootRef = db.ref("/");
 router.get("/aboutUs", (request, resources, next) => {
     resources.send(allData);
 });
-router.get("/about", aboutUsMode.aboutUs_get);
+router.get("/aboutpage", uploadGoogle.any(), aboutUsMode.aboutUs_get);
+router.post("/aboutpage", uploadGoogle.any(), aboutUsMode.aboutUs_create);
+router.delete("/aboutpage/:id", uploadGoogle.any(), aboutUsMode.aboutUs_remove);
 router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
@@ -208,6 +210,12 @@ router.get("/insert_list", (req, res, next) => {
     });
 });
 
+router.get("/alldata", (req,res,next)=>{
+    res.send({
+        success: true,
+        data: allData
+    })
+})
 
 //  Extract Get url
 // var parts = url.parse(req.url, true);

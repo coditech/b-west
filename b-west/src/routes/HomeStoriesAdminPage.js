@@ -30,20 +30,12 @@ class HomeStoriesAdminPage extends React.Component {
   }
 
   onChange(evt) {
-    console.log("onChange fired with event info: ", evt);
     var newContent = evt.editor.getData();
     this.setState({
       content: newContent
     });
   }
 
-  onBlur(evt) {
-    console.log("onBlur event called with event info: ", evt);
-  }
-
-  afterPaste(evt) {
-    console.log("afterPaste event called with event info: ", evt);
-  }
 
   onSubmit(evt) {
     evt.preventDefault();
@@ -137,8 +129,6 @@ class HomeStoriesAdminPage extends React.Component {
                 activeClass="p10"
                 content={this.state.firstStory.content}
                 events={{
-                  blur: this.onBlur,
-                  afterPaste: this.afterPaste,
                   change: this.onChange
                 }}
               />
@@ -205,8 +195,6 @@ class HomeStoriesAdminPage extends React.Component {
                 activeClass="p10"
                 content={this.state.secondStory.content}
                 events={{
-                  blur: this.onBlur,
-                  afterPaste: this.afterPaste,
                   change: this.onChange
                 }}
               />

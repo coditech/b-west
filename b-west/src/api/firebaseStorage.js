@@ -99,7 +99,7 @@ const uploadImagesToStorage = (files, path) => {
                     const url = util.format(`https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`);
                     urls[fieldname] = url;
                     resolve(url)
-                });
+            });
                 blobStream.end(file.buffer);
 
             })

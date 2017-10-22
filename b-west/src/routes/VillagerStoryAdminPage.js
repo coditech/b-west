@@ -19,19 +19,10 @@ class VillagerStoryAdminPage extends React.Component {
   }
 
   onChange(evt) {
-    console.log("onChange fired with event info: ", evt);
     var newContent = evt.editor.getData();
     this.setState({
       content: newContent
     });
-  }
-
-  onBlur(evt) {
-    console.log("onBlur event called with event info: ", evt);
-  }
-
-  afterPaste(evt) {
-    console.log("afterPaste event called with event info: ", evt);
   }
 
   onSubmit(evt) {
@@ -121,8 +112,6 @@ class VillagerStoryAdminPage extends React.Component {
                 activeClass="p10"
                 content={this.state.content}
                 events={{
-                  blur: this.onBlur,
-                  afterPaste: this.afterPaste,
                   change: this.onChange
                 }}
               />

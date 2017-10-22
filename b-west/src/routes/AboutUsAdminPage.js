@@ -1,136 +1,54 @@
 import React from "react";
-import CKEditor from "react-ckeditor-component";
-import superagent from "superagent";
-import { websiteUrl } from "../helpers";
+import {Cell, Column} from "fixed-data-table-2";
+import {ActionCell, ContentCell, DataTable, TextCell} from '../components/DataTable'
+import {NavLink} from "react-router-dom";
 
-class AboutUsAdminPage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-    console.log('About Us ', props.aboutUs);
-    this.state = {
-      content: ""
-    };
-    this.onChange = this.onChange.bind(this);
-  }
+const AboutUsAdminPage = (props) => {
 
-  updateContent(newContent) {
-    this.setState({
-      content: newContent
-    });
-  }
-
-  onChange(evt) {
-    console.log("onChange fired with event info: ", evt);
-    var newContent = evt.editor.getData();
-    this.setState({
-      content: newContent
-    });
-  }
-
-
-  onSubmit(evt) {
-    evt.preventDefault();
-    alert(0);
-    let formData = new FormData();
-    const files = this.filesInput.files;
-    for (var key in files) {
-      // check if this is a file:
-      if (files.hasOwnProperty(key) && files[key] instanceof File) {
-        console.log("key ==> ", key);
-        formData.append("file", files[key]);
-      }
-    }
-
-    const form = evt.target;
-
-    // IMAGES MISSING IN THE FORM DATA
-    formData.append("title", form.title.value);
-    formData.append("content", this.state.content);
-
-    superagent
-      .post(websiteUrl + "api/homeheader")
-      .send(formData)
-      .end((err, response) => {
-        console.log("response", response);
-        console.log("response Json", "");
-        if (err) {
-          //there was an error, handle it here
-          alert(-1);
-        } else if (response.ok) {
-          //this was successful, handle it here
-          alert(1);
-        }
-      })
-      .then(x => {
-        console.log("x =>", x);
-      });
-  }
-
-  render() {
+    const {aboutUs, refreshData} = props;
     return (
-      <div>
-        <div className="row">
-          <h2 className="col-sm-6 col-sm-push-3">About Us Page Section</h2>
-        </div>
-        <form onSubmit={event => this.onSubmit(event)}>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="Name" className={" "}>
-                Title
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="text"
-                id={"Name"}
-                name={"Name"}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="content" className={" "}>
-                Content
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <CKEditor
-                activeClass="p10"
-                content={this.state.content}
-                events={{
-                  change: this.onChange
-                }}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3">
-              <label htmlFor="image" className={" "}>
-                Background Image
-              </label>
-            </div>
-            <div className="col-sm-6">
-              <input
-                className={"form-control"}
-                type="file"
-                ref={input => {
-                  this.filesInput = input;
-                }}
-                id={"image"}
-                name={"image"}
-              />
-            </div>
-          </div>
-          <div className="row form-group text-center">
-            <div className="col-sm-3 col-sm-push-3">
-              <input type="submit" className={"form-control btn"} />
-            </div>
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
+        <div id={'table-container'}>
+            <div className="row">
+                <h2 className="col-sm-6 col-sm-push-3">About Us Page Section</h2>
 
-export { AboutUsAdminPage };
+            </div>
+            <NavLink to={'/admin/aboutpage/create'}>
+                <button className={'btn'}>Add New Entry</button>
+            </NavLink>
+
+            <DataTable rowsCount={aboutUs.length} containerId={'table-container'}>
+
+                <Column
+                    columnKey="title"
+                    cell={<TextCell data={aboutUs}/>}
+                    header={<Cell>Title</Cell>}
+                    fixed={true}
+                    width={200}
+                    flexGrow={2}
+                />
+                <Column
+                    columnKey="content"
+                    cell={<ContentCell data={aboutUs}/>}
+                    header={<Cell>Content</Cell>}
+                    width={200}
+                    height={200}
+                    flexGrow={2}
+                />
+                <Column
+                    columnKey={"id"}
+                    header={<Cell>Action</Cell>}
+                    cell={<ActionCell data={aboutUs} action={{
+                        refreshData,
+                        action_delete: '/api/aboutpage',
+                        action_url: '/admin/aboutpage'
+                    }}
+                    />}
+                    width={300}
+                    flexGrow={1}
+                />
+
+            </DataTable>
+        </div>)
+
+}
+export {AboutUsAdminPage};

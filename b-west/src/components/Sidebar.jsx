@@ -8,7 +8,7 @@ const SideBar = () => {
         {name: 'Home', url: '/'}
         , {name: 'Dashboard', url: '/admin'}
         , {name: 'Users', url: '/admin/user'}
-        , {name: 'About Us', url: '/admin/about'}
+        , {name: 'About Us', url: '/admin/aboutpage'}
     ]
 
 

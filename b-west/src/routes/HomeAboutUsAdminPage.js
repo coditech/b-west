@@ -31,7 +31,6 @@ class HomeAboutUsAdminPage extends React.Component {
     }
 
     onChange(evt) {
-        // console.log("onChange fired with event info: ", evt);
         var newContent = evt.editor.getData();
         this.setState({
             content: newContent
@@ -45,24 +44,7 @@ class HomeAboutUsAdminPage extends React.Component {
         const filesTwo = this.filesInputTwo.files;
         formData.append("imageOne", filesOne[0]);
         formData.append("imageTwo", filesTwo[1]);
-        // for (let key in filesOne) {
-        //     // check if this is a file:
-        //     if (filesOne.hasOwnProperty(key) && filesOne[key] instanceof File) {
-        //         console.log("key ==> ", key);
-        //         alert(key);
-        //
-        //     }
-        // }
-        // for (let key in filesTwo) {
-        //     // check if this is a file:
-        //     if (filesTwo.hasOwnProperty(key) && filesTwo[key] instanceof File) {
-        //         console.log("key ==> ", key);
-        //         alert(key);
-        //
-        //         formData.append("imageTwo", filesTwo[key]);
-        //     }
-        // }
-        // IMAGES MISSING IN THE FORM DATA
+
         formData.append("title", this.state.title);
         formData.append("subTitle", this.state.subTitle);
         formData.append("content", this.state.content);

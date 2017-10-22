@@ -1,6 +1,7 @@
 import React from 'react';
-import Route from 'react-router-dom/Route';
-import Switch from 'react-router-dom/Switch';
+import {Switch, Route} from 'react-router-dom';
+import superagent from 'superagent';
+
 import PublicApp from "./routes/PublicApp";
 import {LoginPage} from "./routes/LoginPage";
 import AdminApp from "./routes/AdminApp";
@@ -13,54 +14,48 @@ class App extends React.Component {
         super(props, context);
         const data = props.appData;
 
-
+        this.refreshData = this.refreshData.bind(this);
+        this.refresh = this.refresh.bind(this);
         this.state = {
             ...data,
             status: 2,
+            counter: 0
         };
 
     }
 
+    refresh(data) {
+        this.setState(...this.state, ...data);
+    }
 
-    ___gcomponentDidMount() {
-        const oldState = this.state;
-        this.setState({
-            ...oldState, status: 1
-        });
+    refreshData() {
+        let data = {};
+        superagent.get('/api/alldata').then(res => {
 
-        const url = 'http://localhost:3000/api/aboutUs';
-        fetch(url).then((resp) => resp.json()).then(function (data) {
-            console.log('data', data);
+            console.log('Api', res);
+            data = res.body.data;
+
+            console.log('this a =>', this);
+            const oldState = this.state;
+            const counter = oldState.counter + 1;
             this.setState({
-                ...data,
-                status: 2
-
+                ...data, counter
             })
-        })
-            .catch(function (error) {
-                console.log(error);
-            });
 
+        })
     }
 
     render() {
-        const passedProps = this.state;
-        console.log('passedProps', passedProps)
+        const {refreshData} = this;
+        const passedProps = {...this.state, refreshData};
         const mix = mixProps(passedProps);
-
-        // if (this.state.status !== 2) {
-        //
-        //     return <h2>State Empty<br/>
-        //         {JSON.stringify(this.state)}
-        //     </h2>
-        // }
 
         return (
             <div>
+                <input type={'button'} onClick={() => this.refreshData()} value={'refresh ' + this.state.counter}/>
                 <Switch>
-                    <Route path="/admin" component={AdminApp}/>
                     <Route path="/admin" render={(props) => {
-                        return (<AdminApp {...mixProps(props)}/>)
+                        return (<AdminApp {...mix(props)}/>)
                     }
                     }/>
                     <Route path="/login" component={LoginPage}/>

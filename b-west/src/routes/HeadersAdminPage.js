@@ -14,13 +14,7 @@ class HeadersAdminPage extends React.Component {
 
   }
 
-  onBlur(evt) {
-    console.log("onBlur event called with event info: ", evt);
-  }
 
-  afterPaste(evt) {
-    console.log("afterPaste event called with event info: ", evt);
-  }
 
   onSubmit(evt) {
     evt.preventDefault();

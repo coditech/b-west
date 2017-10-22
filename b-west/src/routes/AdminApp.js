@@ -16,14 +16,10 @@ import {LocationAdminPage} from "./LocationAdminPage";
 import {ContactUsAdminPage} from "./ContactUsAdminPage";
 import {ProductAdminPage} from "./ProductAdminPage";
 import {mixProps} from "../helpers/index";
+import {AboutUsAdminAddPage} from "./AboutUsAdminAddPage";
+import {AboutUsAdminViewPage} from "./AboutUsAdminViewPage";
+import {AboutUsAdminEditPage} from "./AboutUsAdminEditPage";
 
-
-const User = () => {
-
-    return (
-        <h3>Users</h3>
-    )
-}
 
 const Default = () => {
 
@@ -32,75 +28,98 @@ const Default = () => {
     )
 };
 
-class AdminApp extends React.Component {
+const toggleMenu = (event) => {
+    const target = event.target;
+    // target.h
+    const wrapper = document.getElementById('wrapper');
+    if (wrapper.classList.contains('toggled')) {
+        wrapper.classList.remove('toggled');
+        target.innerHTML = 'Show Menu';
 
-    constructor(props, context) {
-        super(props, context);
-        console.log("props ", props)
-        this.state = {
-            toggled: true
-        }
+    } else {
+        wrapper.classList.add('toggled');
+        target.innerHTML = 'Hide Menu';
+
     }
 
-    render() {
+}
 
-        const {
-            toggled
-        } = this.state;
 
-        const toggleMenu = () => {
+const AdminApp = (props) => {
 
-            const oldState = this.state;
-            const newState = {...oldState, toggled: !oldState.toggled}
-            this.setState(newState);
-        }
-        const passedProps = this.state;
-        const mix = mixProps(passedProps);
-        return (
-            <div>
-                <div style={{maxHeight: '60px', width: '100%', backgroundColor: 'blue'}}>
-                    <button type={'button'} className="btn btn-secondary menu-toggle"
-                            id="menu-toggle" onClick={(event) => toggleMenu(event)
-                    }>{toggled ? 'Show Menu' : 'Hide Menu'} </button>
+    const passedProps = props;
+    const {aboutUs, refreshData} = props;
+    const defaultPassedProps = {refreshData};
+    const mixAboutUs = mixProps({...defaultPassedProps, aboutUs});
+    return (
+        <div>
+            <div style={{maxHeight: '60px', width: '100%', backgroundColor: 'blue'}}>
+                <button type={'button'} className="btn btn-secondary menu-toggle"
+                        id="menu-toggle" onClick={(event) => toggleMenu(event)
+                }>Show Menu
+                </button>
 
-                </div>
-                <div id={'wrapper'} className={toggled ? 'toggled' : ''}>
+            </div>
+            <div id={'wrapper'} className={'toggled'}>
 
-                    <SideBar/>
-                    <div id="page-content-wrapper">
-                        <div className="container-fluid">
-                            <Switch>
-                                <Route exact path="/admin/aboutpage" render={(props) => {
-                                    // TODO: move this to componentDidMount
-                                    if (typeof window !== 'undefined') {
-                                        window.scrollTo(0, 0)
-                                    }
-                                    return ( <AboutUsAdminPage  {...mix(props)}/>)
+                <SideBar/>
+                <div id="page-content-wrapper">
+                    <div className="container-fluid">
+                        <Switch>
+                            <Route exact path="/admin/aboutpage" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
                                 }
-                                }/>
+                                return ( <AboutUsAdminPage  {...mixAboutUs(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/aboutpage/create" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <AboutUsAdminAddPage  {...mixAboutUs(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/aboutpage/:id/edit" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <AboutUsAdminEditPage  {...mixAboutUs(props)}/>)
+                            }
+                            }/> <Route exact path="/admin/aboutpage/:id" render={(props) => {
+                            // TODO: move this to componentDidMount
+                            if (typeof window !== 'undefined') {
+                                window.scrollTo(0, 0)
+                            }
+                            return ( <AboutUsAdminViewPage  {...mixAboutUs(props)}/>)
+                        }
+                        }/>
 
 
-                                <Route exact path="/admin/home" component={HomeHeaderAdminPage}/>
-                                <Route exact path="/admin/stories" component={HomeStoriesAdminPage}/>
-                                <Route exact path="/admin/featureditems" component={HomeFeaturedItemsAdminPage}/>
-                                <Route exact path="/admin/villagers" component={VillagerStoryAdminPage}/>
-                                <Route exact path="/admin/shopitems" component={ShopItemAdminPage}/>
-                                <Route exact path="/admin/headers" component={HeadersAdminPage}/>
-                                <Route exact path="/admin/locations" component={LocationAdminPage}/>
-                                <Route exact path="/admin/contact" component={ContactUsAdminPage}/>
+                            <Route exact path="/admin/about-home" component={HomeAboutUsAdminPage}/>
+                            <Route exact path="/admin/home" component={HomeHeaderAdminPage}/>
+                            <Route exact path="/admin/stories" component={HomeStoriesAdminPage}/>
+                            <Route exact path="/admin/featureditems" component={HomeFeaturedItemsAdminPage}/>
+                            <Route exact path="/admin/villagers" component={VillagerStoryAdminPage}/>
+                            <Route exact path="/admin/shopitems" component={ShopItemAdminPage}/>
+                            <Route exact path="/admin/headers" component={HeadersAdminPage}/>
+                            <Route exact path="/admin/locations" component={LocationAdminPage}/>
+                            <Route exact path="/admin/contact" component={ContactUsAdminPage}/>
 
-                                <Route exact path="/admin/products" component={ProductAdminPage}/>
+                            <Route exact path="/admin/products" component={ProductAdminPage}/>
 
 
-
-                                <Route  path="/" component={Default}/>
-                            </Switch>
-                        </div>
+                            <Route path="/" component={Default}/>
+                        </Switch>
                     </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
+
 }
 
 export default AdminApp;
