@@ -1,5 +1,5 @@
 import {subscribe} from "../firebaseData";
-import {firebaseInsertData, firebaseUpdateData, firebasePushData, firebaseDeleteData} from '../firebaseData';
+import {firebaseUpdateData, firebasePushData, firebaseDeleteData} from '../firebaseData';
 import {isEmpty} from "../../helpers/index";
 import {uploadImageToStorage} from "../firebaseStorage";
 
@@ -27,58 +27,51 @@ const aboutUs_create = (request, resources, next) => {
     if (files.length > 0) {
         for (let file in files) {
             const uploadFile = files[file];
-            console.log("FIle Name : ", files[file]);
 
 
-                const imagePath = new Promise((resolve, reject) => {
-                    if (title === 'error') {
-                        reject("error");
-                    }
-                    if (uploadFile.fieldname === "image") {
+            new Promise((resolve, reject) => {
+                if (title === 'error') {
+                    reject("error");
+                }
+                if (uploadFile.fieldname === "image") {
 
 
-                        uploadImageToStorage(uploadFile, 'aboutUs')
-                            .then(success => {
-                                resolve(success);
+                    uploadImageToStorage(uploadFile, 'aboutUs')
+                        .then(success => {
+                            resolve(success);
 
-                            })
-                            .catch((err) => {
-                                next(err);
-                                reject(err)
-                            })
-                    }else {
-                        resolve('')
-                    }
-                }).then(resp => {
-
-                    console.log('resp =>' , resp);
-                    firebasePushData({
-                        databaseRef: 'aboutUs',
-                        data: {
-                            title: title,
-                            content: content,
-                            image: {
-                                alt: alt,
-                                src: resp
-                            }
-                        }
-                    }).then(res => {
-                        console.log(res);
-                        resources.send({
-                            res
                         })
-                    })
+                        .catch((err) => {
+                            next(err);
+                            reject(err)
+                        })
+                } else {
+                    resolve('')
+                }
+            }).then(resp => {
 
-                });
+                firebasePushData({
+                    databaseRef: 'aboutUs',
+                    data: {
+                        title: title,
+                        content: content,
+                        image: {
+                            alt: alt,
+                            src: resp
+                        }
+                    }
+                }).then(res => {
+                    resources.send({
+                        res
+                    })
+                })
+
+            });
 
 
         }
     } else {
-        console.log("else");
     }
-    // firebaseInsertData({databaseRef: 'aboutUs', data: {}}).then(response => {
-    //
-    // })
 };
 
 const aboutUs_get = (request, resources, next) => {
@@ -89,9 +82,69 @@ const aboutUs_get = (request, resources, next) => {
 };
 const aboutUs_update = (request, resources, next) => {
 
-    resources.send({
-        test: true
-    });
+    const {title, content, alt} = request.body;
+    const key = request.params.id;
+    let files = request.files;
+
+    if (files.length > 0) {
+        for (let file in files) {
+            const uploadFile = files[file];
+            new Promise((resolve, reject) => {
+                if (title === 'error') {
+                    reject("error");
+                }
+                if (uploadFile.fieldname === "image") {
+
+
+                    uploadImageToStorage(uploadFile, 'aboutUs')
+                        .then(success => {
+                            resolve(success);
+
+                        })
+                        .catch((err) => {
+                            next(err);
+                            reject(err)
+                        })
+                } else {
+                    resolve('')
+                }
+            }).then(resp => {
+                firebaseUpdateData({
+                    databaseRef: 'aboutUs',
+                    data: {
+                        title: title,
+                        content: content,
+                        image: {
+                            alt: alt,
+                            src: resp
+                        }
+                    },
+                    key
+                }).then(res => {
+                    resources.send({
+                        res
+                    })
+                })
+
+            });
+
+
+        }
+    } else {
+        // update without Image
+        firebaseUpdateData({
+            databaseRef: 'aboutUs',
+            data: {
+                title: title,
+                content: content
+            },
+            key
+        }).then(res => {
+            resources.send({
+                res
+            })
+        })
+    }
 };
 const aboutUs_remove = (request, resources, next) => {
 

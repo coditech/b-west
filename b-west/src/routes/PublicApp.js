@@ -100,7 +100,6 @@ class PublicApp extends React.Component {
                     }/>
                     <Route exact path="/products/:slug" render={(props) => {
 
-                        console.log("props, ", props);
                         const products = this.state.products.filter(({slug}) => {
                             return slug === props.match.params.slug;
                         })

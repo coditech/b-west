@@ -37,14 +37,12 @@ const uploadGoogle = multer({
  * @param {File} file object that will be uploaded to Google Storage
  */
 const uploadImageToStorage = (file, path) => {
-    console.log('uploadImageToStorage');
-    var promise = new Promise((resolve, reject) => {
+    let promise = new Promise((resolve, reject) => {
         if (!file) {
             reject('No image file');
         }
         const directory = path ? path + '/' : '';
         let newFileName = `${directory}${Date.now()}_${file.originalname}`;
-        console.log('newFileName:', newFileName);
         let fileUpload = bucket.file(newFileName);
 
         const blobStream = fileUpload.createWriteStream({
@@ -78,7 +76,6 @@ const uploadImagesToStorage = (files, path) => {
 
         const promises = files.map(file =>
             new Promise((resolve, reject) => {
-                console.log(file)
                 const fieldname = file.fieldname;
                 let newFileName = `${file.originalname}_${Date.now()}`;
 
@@ -95,7 +92,6 @@ const uploadImagesToStorage = (files, path) => {
                 });
                 blobStream.on('finish', () => {
                     // The public URL can be used to directly access the file via HTTP.
-                    console.log(fileUpload.name, bucket);
                     const url = util.format(`https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`);
                     urls[fieldname] = url;
                     resolve(url)

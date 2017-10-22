@@ -33,7 +33,6 @@ class SmallSlider extends React.Component {
                     <ul className="slides">
 
                         {imagesCopy.map((imageSlide, index) => {
-                            console.log('imageSlide ==< ', imageSlide)
                             return (
                                 <li data-thumb={imageSlide.src} key={index}>
                                     <img

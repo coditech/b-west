@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 const AboutUsAdminViewPage = ({aboutUs, match}) => {
     aboutUs = aboutUs.find(item => {
         return item.id === match.params.id
-    })
+    });
     return (
         <div className={'text-center'}>
             <h2>About Us </h2>
@@ -43,6 +43,6 @@ const AboutUsAdminViewPage = ({aboutUs, match}) => {
 
         </div>
     )
-}
+};
 
 export {AboutUsAdminViewPage}

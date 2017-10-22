@@ -1,14 +1,14 @@
 import React from 'react';
-import CKEditor from "react-ckeditor-component";
 import superagent from "superagent";
 import {websiteUrl} from "../helpers";
 import {NavLink} from "react-router-dom";
+import {Quill} from "../components/Quill";
+
 
 class AboutUsAdminEditPage extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-        console.log('props', props);
 
         const id = props.match.params.id;
         const aboutUs = props.aboutUs.find(item => {
@@ -17,10 +17,20 @@ class AboutUsAdminEditPage extends React.Component {
         this.state = {
             ...props,
             aboutUs,
-            id
+            id,
+            title: aboutUs.title,
+            alt: aboutUs.alt,
+            content: aboutUs.content
         };
+        this.refreshData = props.refreshData;
         this.onChange = this.onChange.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleQuillChange = this.handleQuillChange.bind(this);
+    }
+
+
+    handleQuillChange(value) {
+        this.setState({content: value});
     }
 
     handleInputChange(event) {
@@ -55,18 +65,16 @@ class AboutUsAdminEditPage extends React.Component {
         formData.append("content", this.state.content);
         formData.append("alt", this.state.alt);
 
-        console.log('this.state', this.state);
         superagent
-            .post(websiteUrl + "api/aboutpage")
+            .put(websiteUrl + "api/aboutpage/" + this.state.id)
             .send(formData)
             .end((err, res) => {
-                console.log(err);
                 if (err) {
                     alert('something went wrong please try again');
                 }
                 else {
-                    alert('Record Added');
-                    console.log(res.body);
+                    alert('Record Updated');
+                    this.refreshData();
                     this.state.history.push('/admin/aboutpage')
 
 
@@ -109,18 +117,14 @@ class AboutUsAdminEditPage extends React.Component {
                             </label>
                         </div>
                         <div className="col-sm-6">
-                            <CKEditor
-                                activeClass="p10"
-                                content={this.state.aboutUs.content}
-                                events={{
-                                    change: this.onChange
-                                }}
-                            />
+                            <Quill content={this.state.aboutUs.content} onChange={this.handleQuillChange}/>
+
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-xs-4">
-                            <img className={'img-responsive'} src={this.state.aboutUs.image.src} alt={this.state.aboutUs.image.alt}/>
+                            <img className={'img-responsive'} src={this.state.aboutUs.image.src}
+                                 alt={this.state.aboutUs.image.alt}/>
                         </div>
                     </div>
                     <div className="row form-group text-center">
@@ -133,6 +137,7 @@ class AboutUsAdminEditPage extends React.Component {
                             <input
                                 className={"form-control"}
                                 type="file"
+                                accept={"image/*"}
                                 ref={input => {
                                     this.filesInput = input;
                                 }}

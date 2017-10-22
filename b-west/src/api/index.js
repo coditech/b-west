@@ -27,7 +27,6 @@ subscribe(newData => {
 export {allData};
 
 
-const api = express();
 var router = express.Router();
 const rootRef = db.ref("/");
 router.get("/aboutUs", (request, resources, next) => {
@@ -36,6 +35,7 @@ router.get("/aboutUs", (request, resources, next) => {
 router.get("/aboutpage", uploadGoogle.any(), aboutUsMode.aboutUs_get);
 router.post("/aboutpage", uploadGoogle.any(), aboutUsMode.aboutUs_create);
 router.delete("/aboutpage/:id", uploadGoogle.any(), aboutUsMode.aboutUs_remove);
+router.put("/aboutpage/:id", uploadGoogle.any(), aboutUsMode.aboutUs_update);
 router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
@@ -58,12 +58,8 @@ router.post('/about-us-home', uploadGoogle.any(), (req, res, next) => {
 
         for (let file in files) {
             const uploadFile = files[file];
-            console.log('FIle Name : ', files[file])
-
             if (uploadFile.fieldname === 'imageOne') {
-                console.log('FIle Name : ', uploadFile)
                 uploadImageToStorage(uploadFile, 'about_us_home').then((success) => {
-                    console.log('Api Server =>', success)
                     const dataUpdate = {
                         title,
                         subTitle,
@@ -99,13 +95,10 @@ router.post("/about-us-home", uploadGoogle.any(), (req, res, next) => {
     if (files.length > 0) {
         for (let file in files) {
             const uploadFile = files[file];
-            console.log("FIle Name : ", files[file]);
 
             if (uploadFile.fieldname === "imageOne") {
-                console.log("FIle Name : ", uploadFile);
                 uploadImageToStorage(uploadFile)
                     .then(success => {
-                        console.log("Api Server =>", success);
                         const dataUpdate = {
                             title,
                             subTitle,
@@ -130,7 +123,6 @@ router.post("/about-us-home", uploadGoogle.any(), (req, res, next) => {
             }
         }
     } else {
-        console.log("else");
     }
 
     res.status(200).send({});
@@ -210,7 +202,7 @@ router.get("/insert_list", (req, res, next) => {
     });
 });
 
-router.get("/alldata", (req,res,next)=>{
+router.get("/alldata", (req, res, next) => {
     res.send({
         success: true,
         data: allData

@@ -56,7 +56,6 @@ class HomeAboutUsAdminPage extends React.Component {
             .send(formData)
             .then((res) => res.json())
             .then(x => {
-                console.log("x =>", x);
             })
             .catch(err => {
                 console.error(err)

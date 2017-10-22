@@ -32,10 +32,8 @@ class App extends React.Component {
         let data = {};
         superagent.get('/api/alldata').then(res => {
 
-            console.log('Api', res);
             data = res.body.data;
 
-            console.log('this a =>', this);
             const oldState = this.state;
             const counter = oldState.counter + 1;
             this.setState({

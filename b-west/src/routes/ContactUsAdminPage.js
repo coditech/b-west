@@ -42,8 +42,6 @@ class ContactUsAdminPage extends React.Component {
       .post(websiteUrl + "api/contact-us")
       .send(formData)
       .end((err, response) => {
-        console.log("response", response);
-        console.log("response Json", "");
         if (err) {
           //there was an error, handle it here
           alert(-1);
@@ -53,7 +51,6 @@ class ContactUsAdminPage extends React.Component {
         }
       })
       .then(x => {
-        console.log("x =>", x);
       });
   }
 

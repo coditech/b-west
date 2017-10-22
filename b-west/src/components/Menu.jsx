@@ -11,7 +11,6 @@ const Menu = ({menuItems, logo, menuAction}) => {
         }
     };
     const menuClick = (event) => {
-        console.log('Click', event)
         const ownmenu = document.getElementById("ownmenu");
         if (ownmenu.classList.contains("open")) {
             ownmenu.classList.remove("open");

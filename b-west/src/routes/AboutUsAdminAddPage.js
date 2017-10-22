@@ -1,8 +1,8 @@
 import React from 'react';
-import CKEditor from "react-ckeditor-component";
 import superagent from "superagent";
 import {websiteUrl} from "../helpers";
 import {NavLink} from "react-router-dom";
+import {Quill} from "../components/Quill";
 
 class AboutUsAdminAddPage extends React.Component {
 
@@ -12,10 +12,17 @@ class AboutUsAdminAddPage extends React.Component {
             ...props,
             title: '',
             content: '',
-            alt: ''
+            alt: '',
         };
+        this.refreshData = props.refreshData;
         this.onChange = this.onChange.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleQuillChange = this.handleQuillChange.bind(this);
+
+    }
+
+    handleQuillChange(value) {
+        this.setState({content: value});
     }
 
     handleInputChange(event) {
@@ -51,22 +58,20 @@ class AboutUsAdminAddPage extends React.Component {
         formData.append("content", this.state.content);
         formData.append("alt", this.state.alt);
 
-        console.log('this.state', this.state);
         superagent
             .post(websiteUrl + "api/aboutpage")
             .send(formData)
-            .end((err, res)=>{
-            console.log(err);
-            if(err){
-                alert('something went wrong please try again');
-            }
-            else {
-                alert('Record Added');
-                console.log(res.body);
-               this.state.history.push('/admin/aboutpage')
+            .end((err, res) => {
+                if (err) {
+                    alert('something went wrong please try again');
+                }
+                else {
+                    alert('Record Added');
+                    this.refreshData();
+                    this.state.history.push('/admin/aboutpage')
 
 
-            }
+                }
             })
     }
 
@@ -93,6 +98,7 @@ class AboutUsAdminAddPage extends React.Component {
                                 type="text"
                                 id={"title"}
                                 name={"title"}
+                                required={true}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
@@ -104,13 +110,8 @@ class AboutUsAdminAddPage extends React.Component {
                             </label>
                         </div>
                         <div className="col-sm-6">
-                            <CKEditor
-                                activeClass="p10"
-                                content={this.state.content}
-                                events={{
-                                    change: this.onChange
-                                }}
-                            />
+                            <Quill content={''} onChange={this.handleQuillChange}/>
+
                         </div>
                     </div>
                     <div className="row form-group text-center">
@@ -123,6 +124,8 @@ class AboutUsAdminAddPage extends React.Component {
                             <input
                                 className={"form-control"}
                                 type="file"
+                                required={true}
+                                accept={"image/*"}
                                 ref={input => {
                                     this.filesInput = input;
                                 }}

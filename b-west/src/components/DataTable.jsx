@@ -25,13 +25,12 @@ const deleteAction = (action_url, action_refresh) => {
 
         })
         .catch(err => {
-            console.error(err)
         })
 }
 export const ActionCell = props => {
     const {action, rowIndex, columnKey, data} = props;
     const {action_delete, action_url, refreshData} = action;
-    const key = getObjectAt(data, rowIndex)[columnKey];
+    const key = getObjectAt(data, rowIndex) ? getObjectAt(data, rowIndex)[columnKey] : '';
     const actionView = action_url + '/' + key;
     const actionEdit = action_url + '/' + key + '/edit';
     const actionDelete = action_delete + '/' + key;
@@ -59,87 +58,33 @@ export const ActionCell = props => {
 export const TextCell = props => {
     const {data, rowIndex, columnKey} = props;
 
-    return <Cell {...props}>{getObjectAt(data, rowIndex)[columnKey]}</Cell>;
+    return <Cell {...props}>{getObjectAt(data, rowIndex) ? getObjectAt(data, rowIndex)[columnKey] : 'undefined'}</Cell>;
 };
 export const ContentCell = props => {
     const {data, rowIndex, columnKey} = props;
 
     return <Cell {...props}  >
-        <div dangerouslySetInnerHTML={{__html: getObjectAt(data, rowIndex)[columnKey]}}/>
+        <div
+            dangerouslySetInnerHTML={{__html: getObjectAt(data, rowIndex) ? getObjectAt(data, rowIndex)[columnKey] : 'undefined'}}/>
     </Cell>;
 };
 
-class DataTable extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            tableWidth: 1000,
-            tableHeight: 600,
-            data: props.data,
-            action: props.action,
-            rowLength: props.rowsCount,
-            containerId: props.containerId
-        };
-    }
+const DataTable = (props) => {
+    const {rowsCount, tableWidth = 1000, tableHeight = 600, children} = props;
+    const rowLength = rowsCount;
+    return (
+        <Table
 
-    /**
-     * Calculate & Update state of new dimensions
-     */
-
-    //
-    // updateDimensions() {
-    //     const tableContainer = document.getElementById(this.state.containerId);
-    //     if (tableContainer) {
-    //         if (tableContainer.clientWidth < 500) {
-    //             this.setState({tableWidth: 450, tableHeight: 102});
-    //         } else {
-    //
-    //             let update_width = tableContainer.clientWidth - 250;
-    //             let update_height = Math.round(update_width / 2.4);
-    //             this.setState({tableWidth: update_width, tableHeight: update_height});
-    //
-    //         }
-    //     }
-    // }
-
-    /**
-     * Add event listener
-     */
-    //
-    //
-    // componentDidMount() {
-    //     this.updateDimensions();
-    //     window.addEventListener("resize", this.updateDimensions.bind(this));
-    // }
-    //
-    // componentWillReceiveProps(props) {
-    //     this.updateDimensions();
-    //     this.setState(props);
-    // }
-
-    /**
-     * Remove event listener
-     */
-
-
-    componentWillUnmount() {
-        // window.removeEventListener("resize", this.updateDimensions.bind(this));
-    }
-
-    render() {
-        return (
-            <Table
-                rowHeight={100}
-                headerHeight={50}
-                rowsCount={this.state.rowLength}
-                width={this.state.tableWidth}
-                height={this.state.tableHeight}
-                {...this.state}
-            >
-                {this.props.children}
-            </Table>
-        );
-    }
+            rowHeight={100}
+            headerHeight={50}
+            rowsCount={rowLength}
+            width={tableWidth}
+            height={tableHeight}
+            {...props}
+        >
+            {children}
+        </Table>
+    );
 }
 
 export {DataTable};

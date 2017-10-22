@@ -13,7 +13,6 @@ class ShopItemAdminPage extends React.Component {
     for (var key in files) {
       // check if this is a file:
       if (files.hasOwnProperty(key) && files[key] instanceof File) {
-        console.log("key ==> ", key);
         formData.append("file", files[key]);
       }
     }
@@ -29,8 +28,6 @@ class ShopItemAdminPage extends React.Component {
       .post(websiteUrl + "api/homeheader")
       .send(formData)
       .end((err, response) => {
-        console.log("response", response);
-        console.log("response Json", "");
         if (err) {
           //there was an error, handle it here
           alert(-1);
@@ -40,7 +37,6 @@ class ShopItemAdminPage extends React.Component {
         }
       })
       .then(x => {
-        console.log("x =>", x);
       });
   }
 

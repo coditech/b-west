@@ -37,7 +37,6 @@ class HomeHeaderAdminPage extends React.Component {
         for (var key in files) {
             // check if this is a file:
             if (files.hasOwnProperty(key) && files[key] instanceof File) {
-                console.log("key ==> ", key);
                 formData.append("file", files[key]);
             }
         }
@@ -57,7 +56,6 @@ class HomeHeaderAdminPage extends React.Component {
             .send(formData)
             .then((res) => res.json())
             .then(x => {
-                console.log("x =>", x);
             })
             .catch(err => {
                 console.error(err)

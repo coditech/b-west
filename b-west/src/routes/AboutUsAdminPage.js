@@ -15,7 +15,6 @@ const AboutUsAdminPage = (props) => {
             <NavLink to={'/admin/aboutpage/create'}>
                 <button className={'btn'}>Add New Entry</button>
             </NavLink>
-
             <DataTable rowsCount={aboutUs.length} containerId={'table-container'}>
 
                 <Column

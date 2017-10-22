@@ -6,7 +6,6 @@ class ProductItemPage extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-        console.log('props 2', props);
         this.state = {
             products: props.products,
             productFound: props.productFound,

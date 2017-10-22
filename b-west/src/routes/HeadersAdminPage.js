@@ -28,14 +28,12 @@ class HeadersAdminPage extends React.Component {
     formData.append("products", form.products.value);
     formData.append("contactus", form.contactus.value);
     formData.append("findastore", form.findastore.value);
-    
+
 
     superagent
       .post(websiteUrl + "api/homeheader")
       .send(formData)
       .end((err, response) => {
-        console.log("response", response);
-        console.log("response Json", "");
         if (err) {
           //there was an error, handle it here
           alert(-1);
@@ -45,7 +43,6 @@ class HeadersAdminPage extends React.Component {
         }
       })
       .then(x => {
-        console.log("x =>", x);
       });
   }
 
