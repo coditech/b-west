@@ -30,8 +30,8 @@ subscribe((newData) => {
 server.use('/api', api);
 server
     .disable('x-powered-by')
-    // .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-    .use(express.static('./public'))
+    .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+    // .use(express.static('./public'))
     .use((req, res, next) => {
 
         // allData = tempData;
