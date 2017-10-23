@@ -13,7 +13,8 @@ const Store = ({featuredProducts}) => {
                                 <Product
                                     name={storeItem.name}
                                     url={storeItem.productUrl}
-                                    image={storeItem.image}
+                                    imageSrc={storeItem.imageSrc}
+                                    imageAlt={storeItem.imageAlt}
                                     price={storeItem.price}
                                     status={storeItem.status}
                                     slug={storeItem.slug}

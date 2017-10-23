@@ -22,6 +22,14 @@ import {AboutUsAdminEditPage} from "./AboutUsAdminEditPage";
 import {AboutUsHomeSectionAdminPage} from "./AboutUsHomeSectionAdminPage";
 import {AboutUsHomeSectionAdminEditPage} from "./AboutUsHomeSectionAdminEditPage";
 import {ContactUsAdminEditPage} from "./ContacUsAdminEditPage";
+import {FeaturedProductsAdminPage} from "./FeaturedProductsAdminPage";
+import {FeaturedProductsAdminEditPage} from "./FeaturedProductsAdminEditPage";
+import {FeaturedProductsAdminViewPage} from "./FeaturedProductsAdminViewPage";
+import {FeaturedProductsAdminAddPage} from "./FeaturedProductsAdminAddPage";
+import {ProductsAdminPage} from "./ProductsAdminPage";
+import {ProductsAdminAddPage} from "./ProductsAdminAddPage";
+import {ProductsAdminEditPage} from "./ProductsAdminEditPage";
+import {ProductsAdminViewPage} from "./ProductsAdminViewPage";
 
 
 const Default = () => {
@@ -50,11 +58,13 @@ const toggleMenu = (event) => {
 
 const AdminApp = (props) => {
 
-    const {aboutUs, aboutUsHomeSection, refreshData,contactUs} = props;
-    const defaultPassedProps = {...props,refreshData};
+    const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products} = props;
+    const defaultPassedProps = {...props, refreshData};
     const mixAboutUs = mixProps({...defaultPassedProps, aboutUs});
     const mixAboutUsHomeSection = mixProps({...defaultPassedProps, aboutUsHomeSection});
     const mixContactUs = mixProps({...defaultPassedProps, contactUs});
+    const mixFeaturedProducts = mixProps({...defaultPassedProps, featuredProducts});
+    const mixProducts = mixProps({...defaultPassedProps, products});
     return (
         <div>
             <div style={{maxHeight: '60px', width: '100%', backgroundColor: 'blue'}}>
@@ -133,6 +143,77 @@ const AdminApp = (props) => {
                                     window.scrollTo(0, 0)
                                 }
                                 return ( <ContactUsAdminEditPage  {...mixContactUs(props)}/>)
+                            }
+                            }/>
+
+                            <Route exact path="/admin/featured-products" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <FeaturedProductsAdminPage  {...mixFeaturedProducts(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/featured-products/create" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <FeaturedProductsAdminAddPage  {...mixFeaturedProducts(props)}/>)
+                            }
+                            }/>
+
+                            <Route exact path="/admin/featured-products/:id/edit" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <FeaturedProductsAdminEditPage  {...mixFeaturedProducts(props)}/>)
+                            }
+                            }/>
+
+                            <Route exact path="/admin/featured-products/:id" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <FeaturedProductsAdminViewPage  {...mixFeaturedProducts(props)}/>)
+                            }
+                            }/>
+
+
+                             <Route exact path="/admin/products" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <ProductsAdminPage  {...mixProducts(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/products/create" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <ProductsAdminAddPage  {...mixProducts(props)}/>)
+                            }
+                            }/>
+
+                            <Route exact path="/admin/products/:id/edit" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <ProductsAdminEditPage  {...mixProducts(props)}/>)
+                            }
+                            }/>
+
+                            <Route exact path="/admin/products/:id" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <ProductsAdminViewPage  {...mixProducts(props)}/>)
                             }
                             }/>
 

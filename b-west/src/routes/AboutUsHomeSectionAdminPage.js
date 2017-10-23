@@ -29,21 +29,21 @@ const AboutUsHomeSectionAdminPage = ({aboutUsHomeSection}) => {
                         </tr>
                         <tr>
                             <th>Image One</th>
-                            <td><img className={'img-responsive'} src={aboutUsHomeSection.imageOne.src}
-                                     alt={aboutUsHomeSection.imageOne.alt}/></td>
+                            <td><img className={'img-responsive'} src={aboutUsHomeSection.imageOneSrc}
+                                     alt={aboutUsHomeSection.imageOneAlt}/></td>
                         </tr>
                         <tr>
                             <th>Alt</th>
-                            <td>{aboutUsHomeSection.imageOne.alt}</td>
+                            <td>{aboutUsHomeSection.imageOneAlt}</td>
                         </tr>
                         <tr>
                             <th>Image Two</th>
-                            <td><img className={'img-responsive'} src={aboutUsHomeSection.imageTwo.src}
-                                     alt={aboutUsHomeSection.imageTwo.alt}/></td>
+                            <td><img className={'img-responsive'} src={aboutUsHomeSection.imageTwoSrc}
+                                     alt={aboutUsHomeSection.imageTwoAlt}/></td>
                         </tr>
                         <tr>
                             <th>Alt</th>
-                            <td>{aboutUsHomeSection.imageTwo.alt}</td>
+                            <td>{aboutUsHomeSection.imageTwoAlt}</td>
                         </tr>
                         </tbody>
                     </table>

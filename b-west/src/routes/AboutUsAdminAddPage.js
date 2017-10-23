@@ -12,7 +12,7 @@ class AboutUsAdminAddPage extends React.Component {
             ...props,
             title: '',
             content: '',
-            alt: '',
+            imageAlt: '',
         };
         this.refreshData = props.refreshData;
         this.onChange = this.onChange.bind(this);
@@ -56,7 +56,7 @@ class AboutUsAdminAddPage extends React.Component {
         // IMAGES MISSING IN THE FORM DATA
         formData.append("title", this.state.title);
         formData.append("content", this.state.content);
-        formData.append("alt", this.state.alt);
+        formData.append("imageAlt", this.state.imageAlt);
 
         superagent
             .post(websiteUrl + "api/aboutpage")
@@ -135,7 +135,7 @@ class AboutUsAdminAddPage extends React.Component {
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
-                            <label htmlFor="alt" className={" "}>
+                            <label htmlFor="imageAlt" className={" "}>
                                 Image Alt
                             </label>
                         </div>
@@ -143,8 +143,8 @@ class AboutUsAdminAddPage extends React.Component {
                             <input
                                 className={"form-control"}
                                 type="text"
-                                id={"alt"}
-                                name={"alt"}
+                                id={"imageAlt"}
+                                name={"imageAlt"}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>

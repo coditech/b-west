@@ -29,7 +29,7 @@ const aboutUsHomeSection_get = (request, resources) => {
 };
 const aboutUsHomeSection_update = (request, resources, next) => {
 
-    const {title, content, subTitle, altOne, altTwo} = request.body;
+    const {title, content, subTitle, imageOneAlt, imageTwoAlt} = request.body;
     let files = request.files;
     console.log(request.body);
 
@@ -39,23 +39,19 @@ const aboutUsHomeSection_update = (request, resources, next) => {
                 title,
                 content,
                 subTitle,
+                imageOneAlt,
+                imageTwoAlt
             };
             const imageOne = response['imageOne'];
             if (imageOne) {
-                data.imageOne = {
-                    src: imageOne.url,
-                    alt: altOne
-                }
+                data.imageOneSrc = imageOne.url;
 
             } else {
                 log('Image One not found')
             }
             const imageTwo = response['imageTwo'];
             if (imageTwo) {
-                data.imageTwo = {
-                    src: imageTwo.url,
-                    alt: altTwo
-                }
+                data.imageTwoSrc = imageTwo.url;
 
             } else {
                 log('Image Two not found')

@@ -2,7 +2,7 @@ import {firebaseDeleteData, firebasePushData, firebaseUpdateData, subscribe} fro
 import {isEmpty} from "../../helpers/index";
 import {uploadImagesToStorage, uploadImageToStorage} from "../firebaseStorage";
 
-const log = (message) => console.log('About Us Model path: b-west/src/api/model/aboutUs.js ' + message)
+const log = (message) => console.log('featured Products Model path: b-west/src/api/model/featuredProducts.js ' + message);
 let allData = {};
 if (isEmpty(allData)) {
     setTimeout(() => firebasePushData({
@@ -18,22 +18,27 @@ if (isEmpty(allData)) {
 subscribe(newData => {
     allData = newData;
 });
-const {aboutUs} = allData;
+const {featuredProducts} = allData;
 
-const aboutUs_create = (request, resources, next) => {
-    const {title, content, imageAlt} = request.body;
+const featuredProducts_create = (request, resources, next) => {
+    const {name, description, price, status, imageAlt, slug} = request.body;
 
     let files = request.files;
-    let counter = 0;
 
 
-    uploadImagesToStorage(files, 'aboutUs')
+    uploadImagesToStorage(files, 'featuredProducts')
         .then(response => {
             let data = {
-                title,
-                content,
+                status,
+                name,
+                price,
                 imageAlt,
-            }
+                classContainer: "col-sm-4 col-xs-6",
+                description,
+                slug
+
+
+            };
             const image = response['image'];
             if (image) {
                 data.imageSrc = image.url;
@@ -42,7 +47,7 @@ const aboutUs_create = (request, resources, next) => {
                 log('Image not found')
             }
             firebasePushData({
-                databaseRef: 'aboutUs',
+                databaseRef: 'featuredProducts',
                 data
             }).then(response => {
                 resources.send({
@@ -65,26 +70,31 @@ const aboutUs_create = (request, resources, next) => {
 
 };
 
-const aboutUs_get = (request, resources, next) => {
+const featuredProducts_get = (request, resources, next) => {
 
     resources.send({
         test: allData
     });
 };
-const aboutUs_update = (request, resources, next) => {
+const featuredProducts_update = (request, resources, next) => {
 
-    const {title, content, imageAlt} = request.body;
+    const {name, description, price, status, imageAlt, slug} = request.body;
     const key = request.params.id;
 
     let files = request.files;
 
 
-    uploadImagesToStorage(files, 'aboutUs')
+    uploadImagesToStorage(files, 'featuredProducts')
         .then(response => {
             let data = {
-                title,
-                content,
-                imageAlt
+                status,
+                name,
+                price,
+                imageAlt,
+                classContainer: "col-sm-4 col-xs-6",
+                description,
+                slug
+
 
             };
             const image = response['image'];
@@ -95,12 +105,13 @@ const aboutUs_update = (request, resources, next) => {
                 log('Image not found')
             }
             firebaseUpdateData({
-                databaseRef: 'aboutUs',
+                databaseRef: 'featuredProducts',
                 data,
                 key
             }).then(response => {
                 resources.send({
                     success: true,
+                    response,
                     error: null,
                     data: data
                 })
@@ -124,11 +135,11 @@ const aboutUs_update = (request, resources, next) => {
         })
 
 };
-const aboutUs_remove = (request, resources, next) => {
+const featuredProducts_remove = (request, resources, next) => {
 
 
     firebaseDeleteData({
-        databaseRef: 'aboutUs',
+        databaseRef: 'featuredProducts',
         key: request.params.id
 
 
@@ -145,8 +156,8 @@ const aboutUs_remove = (request, resources, next) => {
 };
 
 export {
-    aboutUs_create,
-    aboutUs_get,
-    aboutUs_remove,
-    aboutUs_update
+    featuredProducts_create,
+    featuredProducts_get,
+    featuredProducts_remove,
+    featuredProducts_update
 }

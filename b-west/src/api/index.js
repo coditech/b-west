@@ -1,6 +1,6 @@
 import express from "express";
 import db from "../databaseConnection";
-import {aboutUsHomeSectionModel, aboutUsModel, contactUsModel} from "./model"
+import {aboutUsHomeSectionModel, aboutUsModel, contactUsModel, featuredProductsModel} from "./model"
 import {aboutUsHomeSectionRef, contactUsRef, firebasePushData, subscribe} from "./firebaseData";
 import {uploadGoogle, uploadImageToStorage} from "./firebaseStorage";
 import {isEmpty} from "../helpers/index";
@@ -32,8 +32,14 @@ router.get("/aboutpage", uploadGoogle.any(), aboutUsModel.aboutUs_get);
 router.post("/aboutpage", uploadGoogle.any(), aboutUsModel.aboutUs_create);
 router.delete("/aboutpage/:id", uploadGoogle.any(), aboutUsModel.aboutUs_remove);
 router.put("/aboutpage/:id", uploadGoogle.any(), aboutUsModel.aboutUs_update);
+
 router.put("/aboutus-home", uploadGoogle.any(), aboutUsHomeSectionModel.aboutUsHomeSection_update);
+
 router.put("/contact-us", uploadGoogle.any(), contactUsModel.contactUs_update);
+
+router.post("/featured-products", uploadGoogle.any(), featuredProductsModel.featuredProducts_create);
+router.put("/featured-products/:id", uploadGoogle.any(), featuredProductsModel.featuredProducts_update);
+router.delete("/featured-products/:id", uploadGoogle.any(), featuredProductsModel.featuredProducts_remove);
 router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();

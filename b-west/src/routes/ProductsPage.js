@@ -75,6 +75,7 @@ class ProductsPage extends React.Component {
                     />
                   ))
                 : products.map((product, index) => (
+
                     <Product
                       key={index}
                       {...product}

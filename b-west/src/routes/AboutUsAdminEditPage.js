@@ -20,13 +20,11 @@ class AboutUsAdminEditPage extends React.Component {
             id,
             title: aboutUs.title,
             content: aboutUs.content,
-            alt: '',
-            src: ''
+            imageAlt: aboutUs.imageAlt,
+            imageSrc: ''
         };
-        if (aboutUs.image) {
-
-            state.alt = aboutUs.image.alt;
-            state.src = aboutUs.image.src;
+        if (aboutUs.imageSrc) {
+            state.imageSrc = aboutUs.imageSrc;
         }
 
         this.state = state;
@@ -72,7 +70,7 @@ class AboutUsAdminEditPage extends React.Component {
         // IMAGES MISSING IN THE FORM DATA
         formData.append("title", this.state.title);
         formData.append("content", this.state.content);
-        formData.append("alt", this.state.alt);
+        formData.append("imageAlt", this.state.imageAlt);
         superagent
             .put(websiteUrl + "api/aboutpage/" + this.state.id)
             .send(formData)
@@ -130,10 +128,10 @@ class AboutUsAdminEditPage extends React.Component {
                         </div>
                     </div>
                     {
-                        this.state.src ? <div className="row">
+                        this.state.imageSrc ? <div className="row">
                             <div className="col-xs-4">
-                                <img className={'img-responsive'} src={this.state.src}
-                                     alt={this.state.alt || ''}/>
+                                <img className={'img-responsive'} src={this.state.imageSrc}
+                                     alt={this.state.imageAlt || ''}/>
                             </div>
                         </div> : null
                     }
@@ -169,7 +167,7 @@ class AboutUsAdminEditPage extends React.Component {
                                 type="text"
                                 id={"alt"}
                                 name={"alt"}
-                                defaultValue={this.state.alt}
+                                defaultValue={this.state.imageAlt}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>

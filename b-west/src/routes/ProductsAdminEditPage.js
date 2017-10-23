@@ -4,30 +4,43 @@ import {websiteUrl} from "../helpers";
 import {NavLink} from "react-router-dom";
 import {Quill} from "../components/Quill";
 
-class AboutUsHomeSectionAdminEditPage extends React.Component {
+
+class ProductsAdminEditPage extends React.Component {
 
     constructor(props, context) {
         super(props, context);
 
-        const aboutUsHomeSection = props.aboutUsHomeSection;
-        this.state = {
+        const id = props.match.params.id;
+        const products = props.products.find(item => {
+            return item.id === id
+        });
+        const {name, description, slug, price, status, imageAlt} = products;
+        let state = {
             ...props,
-            ...aboutUsHomeSection,
-            imageOneAlt: aboutUsHomeSection.imageOneAlt,
-            imageTwoAlt: aboutUsHomeSection.imageTwoAlt,
-            imageOneSrc: aboutUsHomeSection.imageOneSrc,
-            imageTwoSrc: aboutUsHomeSection.imageTwoSrc,
+            products,
+            id,
+            name,
+            description,
+            price,
+            status,
+            imageAlt,
+            slug
 
         };
+        if (products.imageSrc) {
+            state.imageSrc = products.imageSrc;
+        }
+
+        this.state = state;
+
         this.refreshData = props.refreshData;
-        this.onChange = this.onChange.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleQuillChange = this.handleQuillChange.bind(this);
     }
 
 
     handleQuillChange(value) {
-        this.setState({content: value});
+        this.setState({description: value});
     }
 
     handleInputChange(event) {
@@ -40,43 +53,26 @@ class AboutUsHomeSectionAdminEditPage extends React.Component {
         });
     }
 
-    onChange(evt) {
-        let newContent = evt.editor.getData();
-        this.setState({
-            content: newContent
-        });
-    }
 
     onSubmit(evt) {
         evt.preventDefault();
-        alert(9);
-        console.log('this.filesInputTwo', this.filesInputTwo.files);
-        console.log(this.filesInputOne.files);
-        const imageOne = this.filesInputOne.files;
-        const imageTwo = this.filesInputTwo.files;
         let formData = new FormData();
-
-        for (let key in imageOne) {
+        const files = this.filesInput.files;
+        for (let key in files) {
             // check if this is a file:
-            if (imageOne.hasOwnProperty(key) && imageOne[key] instanceof File) {
-                formData.append("imageOne", imageOne[key]);
-            }
-        }
-        for (let key in imageTwo) {
-            // check if this is a file:
-            if (imageTwo.hasOwnProperty(key) && imageTwo[key] instanceof File) {
-                formData.append("imageTwo", imageTwo[key]);
+            if (files.hasOwnProperty(key) && files[key] instanceof File) {
+                formData.append("image", files[key]);
             }
         }
         // IMAGES MISSING IN THE FORM DATA
-        formData.append("title", this.state.title);
-        formData.append("subTitle", this.state.subTitle);
-        formData.append("content", this.state.content);
-        formData.append("imageOneAlt", this.state.imageOneAlt);
-        formData.append("imageTwoAlt", this.state.imageTwoAlt);
-
+        formData.append("status", this.state.status);
+        formData.append("name", this.state.name);
+        formData.append("price", this.state.price);
+        formData.append("slug", this.state.slug);
+        formData.append("description", this.state.description);
+        formData.append("imageAlt", this.state.imageAlt);
         superagent
-            .put(websiteUrl + "api/aboutus-home")
+            .put(websiteUrl + "api/products/" + this.state.id)
             .send(formData)
             .end((err, res) => {
                 if (err) {
@@ -85,7 +81,7 @@ class AboutUsHomeSectionAdminEditPage extends React.Component {
                 else {
                     alert('Record Updated');
                     this.refreshData();
-                    this.state.history.push('/admin/aboutus-home')
+                    this.state.history.push('/admin/products')
 
 
                 }
@@ -99,65 +95,102 @@ class AboutUsHomeSectionAdminEditPage extends React.Component {
                     <h2 className="col-sm-6 col-sm-push-3">About Us Page Section</h2>
 
                 </div>
-                <NavLink to={'/admin/aboutus-home'}>
+                <NavLink to={'/admin/products'}>
                     <button className={'btn'}>Back</button>
                 </NavLink>
                 <form onSubmit={event => this.onSubmit(event)}>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
-                            <label htmlFor="title" className={" "}>
-                                Title
+                            <label htmlFor="name" className={" "}>
+                                Product Name
                             </label>
                         </div>
                         <div className="col-sm-6">
                             <input
                                 className={"form-control"}
                                 type="text"
-                                id={"title"}
-                                name={"title"}
-                                defaultValue={this.state.title}
+                                id={"name"}
+                                name={"name"}
+                                defaultValue={this.state.products.name}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
-                            <label htmlFor="title" className={" "}>
-                                Sub Title
+                            <label htmlFor="slug" className={" "}>
+                                Product Slug
                             </label>
                         </div>
                         <div className="col-sm-6">
                             <input
                                 className={"form-control"}
                                 type="text"
-                                id={"subTitle"}
-                                name={"subTitle"}
-                                defaultValue={this.state.subTitle}
+                                id={"slug"}
+                                name={"slug"}
+                                defaultValue={this.state.products.slug}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
-                            <label htmlFor="content" className={" "}>
-                                Content
+                            <label htmlFor="price" className={" "}>
+                                Product Price
                             </label>
                         </div>
                         <div className="col-sm-6">
-                            <Quill content={this.state.content} onChange={this.handleQuillChange}/>
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"price"}
+                                name={"price"}
+                                defaultValue={this.state.products.price}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="status" className={" "}>
+                                Product Status
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"status"}
+                                name={"status"}
+                                defaultValue={this.state.products.status}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="description" className={" "}>
+                                Product Description
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <Quill content={this.state.products.description} onChange={this.handleQuillChange}/>
 
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-xs-4">
-                            <img className={'img-responsive'} src={this.state.imageOneSrc}
-                                 alt={this.state.imageOneAlt}/>
-                        </div>
-                    </div>
+                    {
+                        this.state.imageSrc ? <div className="row">
+                            <div className="col-xs-4">
+                                <img className={'img-responsive'} src={this.state.imageSrc}
+                                     alt={this.state.imageAlt || ''}/>
+                            </div>
+                        </div> : null
+                    }
+
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
                             <label htmlFor="image" className={" "}>
-                                Image One
+                                Product Image
                             </label>
                         </div>
                         <div className="col-sm-6">
@@ -166,16 +199,16 @@ class AboutUsHomeSectionAdminEditPage extends React.Component {
                                 type="file"
                                 accept={"image/*"}
                                 ref={input => {
-                                    this.filesInputOne = input;
+                                    this.filesInput = input;
                                 }}
-                                id={"imageOne"}
-                                name={"imageOne"}
+                                id={"image"}
+                                name={"image"}
                             />
                         </div>
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
-                            <label htmlFor="imageOneAlt" className={" "}>
+                            <label htmlFor="alt" className={" "}>
                                 Image Alt
                             </label>
                         </div>
@@ -183,59 +216,16 @@ class AboutUsHomeSectionAdminEditPage extends React.Component {
                             <input
                                 className={"form-control"}
                                 type="text"
-                                id={"imageOneAlt"}
-                                name={"imageOneAlt"}
-                                defaultValue={this.state.imageOneAlt}
-                                onChange={(event) => this.handleInputChange(event)}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-xs-4">
-                            <img className={'img-responsive'} src={this.state.imageTwoSrc}
-                                 alt={this.state.imageTwoAlt}/>
-                        </div>
-                    </div>
-                    <div className="row form-group text-center">
-                        <div className="col-sm-3">
-                            <label htmlFor="imageTwo" className={" "}>
-                                Image 2
-                            </label>
-                        </div>
-                        <div className="col-sm-6">
-                            <input
-                                className={"form-control"}
-                                type="file"
-                                accept={"image/*"}
-                                ref={input => {
-                                    this.filesInputTwo = input;
-                                }}
-                                id={"imageTwo"}
-                                name={"imageTwo"}
-                            />
-                        </div>
-                    </div>
-                    <div className="row form-group text-center">
-                        <div className="col-sm-3">
-                            <label htmlFor="alt" className={" "}>
-                                Image Two Alt
-                            </label>
-                        </div>
-                        <div className="col-sm-6">
-                            <input
-                                className={"form-control"}
-                                type="text"
-                                id={"imageTwoAlt"}
-                                name={"imageTwoAlt"}
-                                defaultValue={this.state.imageTwoAlt}
+                                id={"imageAlt"}
+                                name={"imageAlt"}
+                                defaultValue={this.state.imageAlt}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3 col-sm-push-3">
-                            <button type={'submit'} className={'btn btn-block'} >Submit</button>
+                            <button type={'submit'} className={'btn btn-block'}>Submit</button>
                         </div>
                     </div>
 
@@ -245,4 +235,4 @@ class AboutUsHomeSectionAdminEditPage extends React.Component {
     }
 }
 
-export {AboutUsHomeSectionAdminEditPage};
+export {ProductsAdminEditPage};

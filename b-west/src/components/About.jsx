@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import '../styles/About.css'
 
-const About = ({title, subTitle, content, imageOne, imageTwo}) => {
+const About = ({title, subTitle, content, imageOneSrc, imageOneAlt, imageTwoSrc, imageTwoAlt}) => {
 
     const style = {
         maxHeight: '500px',
@@ -35,15 +35,15 @@ const About = ({title, subTitle, content, imageOne, imageTwo}) => {
                         <div className={' image1'}>
                             <img
                                 className=""
-                                src={imageOne.src}
-                                alt={imageOne.alt}
+                                src={imageOneSrc}
+                                alt={imageOneAlt}
                             />
                         </div>
                         <div className={' image2'} style={style}>
                             <img
                                 className="img-responsive"
-                                src={imageTwo.src}
-                                alt={imageTwo.alt}
+                                src={imageTwoSrc}
+                                alt={imageTwoAlt}
                             />
                         </div>
                     </div>

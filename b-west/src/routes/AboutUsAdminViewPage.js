@@ -30,11 +30,11 @@ const AboutUsAdminViewPage = ({aboutUs, match}) => {
                         </tr>
                         <tr>
                             <th>Image</th>
-                            <td><img className={'img-responsive'} src={aboutUs.image.src} alt={aboutUs.image.alt}/></td>
+                            <td><img className={'img-responsive'} src={aboutUs.imageSrc} alt={aboutUs.imageAlt}/></td>
                         </tr>
                         <tr>
                             <th>Alt</th>
-                            <td>{aboutUs.image.alt}</td>
+                            <td>{aboutUs.imageAlt}</td>
                         </tr>
                         </tbody>
                     </table>
