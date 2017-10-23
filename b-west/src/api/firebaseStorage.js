@@ -66,7 +66,7 @@ const uploadImageToStorage = (file, path) => {
 
         blobStream.end(file.buffer);
     });
-    return promise;
+   // return promise;
 };
 const uploadImagesToStorage = (files, path) => {
     return new Promise((resolve, reject) => {
