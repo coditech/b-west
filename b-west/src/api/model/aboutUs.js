@@ -1,5 +1,4 @@
-import {subscribe} from "../firebaseData";
-import {firebaseUpdateData, firebasePushData, firebaseDeleteData} from '../firebaseData';
+import {firebaseDeleteData, firebasePushData, firebaseUpdateData, subscribe} from "../firebaseData";
 import {isEmpty} from "../../helpers/index";
 import {uploadImageToStorage} from "../firebaseStorage";
 
@@ -167,7 +166,7 @@ const aboutUs_remove = (request, resources, next) => {
 };
 
 
-export default {
+export {
     aboutUs_create,
     aboutUs_get,
     aboutUs_remove,

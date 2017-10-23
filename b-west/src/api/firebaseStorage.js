@@ -19,7 +19,7 @@ const uploadGoogle = multer({
     fileFilter: function fileFilter(req, file, callback) {
         // The function should call `cb` with a boolean
         // to indicate if the file should be accepted
-        var fileType = file.mimetype;
+        let fileType = file.mimetype;
         if (
             fileType !== "image/png" &&
             fileType !== "image/jpeg" &&
@@ -35,9 +35,10 @@ const uploadGoogle = multer({
 /**
  * Upload the image file to Google Storage
  * @param {File} file object that will be uploaded to Google Storage
+ * @param {String} file Path of the directory where the file gonna be uploaded
  */
 const uploadImageToStorage = (file, path) => {
-    let promise = new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
         if (!file) {
             reject('No image file');
         }
@@ -52,7 +53,7 @@ const uploadImageToStorage = (file, path) => {
         });
 
         blobStream.on("error", error => {
-            reject("Something is wrong! Unable to upload at the moment.");
+            reject("Something is wrong! Unable to upload at the moment.", error);
         });
         blobStream.on("finish", () => {
             // The public URL can be used to directly access the file via HTTP.
@@ -66,18 +67,18 @@ const uploadImageToStorage = (file, path) => {
         blobStream.end(file.buffer);
     });
     return promise;
-}
+};
 const uploadImagesToStorage = (files, path) => {
     return new Promise((resolve, reject) => {
         if (!files) {
             reject(new Error('No image file'));
         }
         let urls = [];
-
+        const directory = path ? path + '/' : '';
         const promises = files.map(file =>
             new Promise((resolve, reject) => {
                 const fieldname = file.fieldname;
-                let newFileName = `${file.originalname}_${Date.now()}`;
+                let newFileName = `${directory}${Date.now()}_${file.originalname}`;
 
                 let fileUpload = bucket.file(newFileName);
 
@@ -88,14 +89,18 @@ const uploadImagesToStorage = (files, path) => {
                 });
 
                 blobStream.on('error', (error) => {
-                    reject('Something is wrong! Unable to upload at the moment.');
+                    reject('Something is wrong! Unable to upload at the moment.', error);
                 });
                 blobStream.on('finish', () => {
                     // The public URL can be used to directly access the file via HTTP.
                     const url = util.format(`https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`);
-                    urls[fieldname] = url;
-                    resolve(url)
-            });
+                    const fileInfo = {
+                        url,
+                        file: file
+                    };
+                    urls[fieldname] = fileInfo;
+                    resolve(fileInfo)
+                });
                 blobStream.end(file.buffer);
 
             })

@@ -9,7 +9,8 @@ const SideBar = () => {
         , {name: 'Dashboard', url: '/admin'}
         , {name: 'Users', url: '/admin/user'}
         , {name: 'About Us', url: '/admin/aboutpage'}
-    ]
+        , {name: 'About Us Home Page', url: '/admin/aboutus-home'}
+    ];
 
 
     return (
@@ -17,7 +18,7 @@ const SideBar = () => {
             <ul className="sidebar-nav">
 
                 {
-                    menItems.map(({name, url, active}, index) => {
+                    menItems.map(({name, url}, index) => {
 
                         return (
                             <li key={index}>
@@ -30,5 +31,5 @@ const SideBar = () => {
         </div>
     )
 
-}
+};
 export {SideBar}

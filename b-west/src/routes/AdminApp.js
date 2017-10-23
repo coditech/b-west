@@ -19,6 +19,8 @@ import {mixProps} from "../helpers/index";
 import {AboutUsAdminAddPage} from "./AboutUsAdminAddPage";
 import {AboutUsAdminViewPage} from "./AboutUsAdminViewPage";
 import {AboutUsAdminEditPage} from "./AboutUsAdminEditPage";
+import {AboutUsHomeSectionAdminPage} from "./AboutUsHomeSectionAdminPage";
+import {AboutUsHomeSectionAdminEditPage} from "./AboutUsHomeSectionAdminEditPage";
 
 
 const Default = () => {
@@ -42,14 +44,15 @@ const toggleMenu = (event) => {
 
     }
 
-}
+};
 
 
 const AdminApp = (props) => {
 
-    const {aboutUs, refreshData} = props;
+    const {aboutUs, aboutUsHomeSection, refreshData} = props;
     const defaultPassedProps = {refreshData};
     const mixAboutUs = mixProps({...defaultPassedProps, aboutUs});
+    const mixAboutUsHomeSection = mixProps({...defaultPassedProps, aboutUsHomeSection});
     return (
         <div>
             <div style={{maxHeight: '60px', width: '100%', backgroundColor: 'blue'}}>
@@ -88,14 +91,32 @@ const AdminApp = (props) => {
                                 }
                                 return ( <AboutUsAdminEditPage  {...mixAboutUs(props)}/>)
                             }
-                            }/> <Route exact path="/admin/aboutpage/:id" render={(props) => {
-                            // TODO: move this to componentDidMount
-                            if (typeof window !== 'undefined') {
-                                window.scrollTo(0, 0)
+                            }/>
+                            <Route exact path="/admin/aboutpage/:id" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <AboutUsAdminViewPage  {...mixAboutUs(props)}/>)
                             }
-                            return ( <AboutUsAdminViewPage  {...mixAboutUs(props)}/>)
-                        }
-                        }/>
+                            }/>
+
+                            <Route exact path="/admin/aboutus-home" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <AboutUsHomeSectionAdminPage  {...mixAboutUsHomeSection(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/aboutus-home/edit" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <AboutUsHomeSectionAdminEditPage  {...mixAboutUsHomeSection(props)}/>)
+                            }
+                            }/>
 
 
                             <Route exact path="/admin/about-home" component={HomeAboutUsAdminPage}/>
@@ -119,6 +140,6 @@ const AdminApp = (props) => {
         </div>
     )
 
-}
+};
 
 export default AdminApp;

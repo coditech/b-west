@@ -4,23 +4,18 @@ import {websiteUrl} from "../helpers";
 import {NavLink} from "react-router-dom";
 import {Quill} from "../components/Quill";
 
-
-class AboutUsAdminEditPage extends React.Component {
+class AboutUsHomeSectionAdminEditPage extends React.Component {
 
     constructor(props, context) {
         super(props, context);
 
-        const id = props.match.params.id;
-        const aboutUs = props.aboutUs.find(item => {
-            return item.id === id
-        });
+        const aboutUsHomeSection = props.aboutUsHomeSection;
         this.state = {
             ...props,
-            aboutUs,
-            id,
-            title: aboutUs.title,
-            alt: aboutUs.alt,
-            content: aboutUs.content
+            ...aboutUsHomeSection,
+            altOne: aboutUsHomeSection.imageOne.alt,
+            altTwo: aboutUsHomeSection.imageTwo.alt,
+
         };
         this.refreshData = props.refreshData;
         this.onChange = this.onChange.bind(this);
@@ -52,22 +47,34 @@ class AboutUsAdminEditPage extends React.Component {
 
     onSubmit(evt) {
         evt.preventDefault();
+        alert(9);
+        console.log('this.filesInputTwo', this.filesInputTwo.files);
+        console.log(this.filesInputOne.files);
+        const imageOne = this.filesInputOne.files;
+        const imageTwo = this.filesInputTwo.files;
         let formData = new FormData();
-        const files = this.filesInput.files;
-        console.log('this.filesInput =>', this.filesInput);
-        for (let key in files) {
+
+        for (let key in imageOne) {
             // check if this is a file:
-            if (files.hasOwnProperty(key) && files[key] instanceof File) {
-                formData.append("image", files[key]);
+            if (imageOne.hasOwnProperty(key) && imageOne[key] instanceof File) {
+                formData.append("imageOne", imageOne[key]);
+            }
+        }
+        for (let key in imageTwo) {
+            // check if this is a file:
+            if (imageTwo.hasOwnProperty(key) && imageTwo[key] instanceof File) {
+                formData.append("imageTwo", imageTwo[key]);
             }
         }
         // IMAGES MISSING IN THE FORM DATA
         formData.append("title", this.state.title);
+        formData.append("subTitle", this.state.subTitle);
         formData.append("content", this.state.content);
-        formData.append("alt", this.state.alt);
+        formData.append("altOne", this.state.altOne);
+        formData.append("altTwo", this.state.altTwo);
 
         superagent
-            .put(websiteUrl + "api/aboutpage/" + this.state.id)
+            .put(websiteUrl + "api/aboutus-home")
             .send(formData)
             .end((err, res) => {
                 if (err) {
@@ -76,7 +83,7 @@ class AboutUsAdminEditPage extends React.Component {
                 else {
                     alert('Record Updated');
                     this.refreshData();
-                    this.state.history.push('/admin/aboutpage')
+                    this.state.history.push('/admin/aboutus-home')
 
 
                 }
@@ -90,7 +97,7 @@ class AboutUsAdminEditPage extends React.Component {
                     <h2 className="col-sm-6 col-sm-push-3">About Us Page Section</h2>
 
                 </div>
-                <NavLink to={'/admin/aboutpage'}>
+                <NavLink to={'/admin/aboutus-home'}>
                     <button className={'btn'}>Back</button>
                 </NavLink>
                 <form onSubmit={event => this.onSubmit(event)}>
@@ -106,7 +113,24 @@ class AboutUsAdminEditPage extends React.Component {
                                 type="text"
                                 id={"title"}
                                 name={"title"}
-                                defaultValue={this.state.aboutUs.title}
+                                defaultValue={this.state.title}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="title" className={" "}>
+                                Sub Title
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"title"}
+                                name={"title"}
+                                defaultValue={this.state.subTitle}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
@@ -118,20 +142,20 @@ class AboutUsAdminEditPage extends React.Component {
                             </label>
                         </div>
                         <div className="col-sm-6">
-                            <Quill content={this.state.aboutUs.content} onChange={this.handleQuillChange}/>
+                            <Quill content={this.state.content} onChange={this.handleQuillChange}/>
 
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-xs-4">
-                            <img className={'img-responsive'} src={this.state.aboutUs.image.src}
-                                 alt={this.state.aboutUs.image.alt}/>
+                            <img className={'img-responsive'} src={this.state.imageOne.src}
+                                 alt={this.state.altOne}/>
                         </div>
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
                             <label htmlFor="image" className={" "}>
-                                Background Image
+                                Image One
                             </label>
                         </div>
                         <div className="col-sm-6">
@@ -140,7 +164,7 @@ class AboutUsAdminEditPage extends React.Component {
                                 type="file"
                                 accept={"image/*"}
                                 ref={input => {
-                                    this.filesInput = input;
+                                    this.filesInputOne = input;
                                 }}
                                 id={"image"}
                                 name={"image"}
@@ -157,9 +181,52 @@ class AboutUsAdminEditPage extends React.Component {
                             <input
                                 className={"form-control"}
                                 type="text"
-                                id={"alt"}
-                                name={"alt"}
-                                defaultValue={this.state.aboutUs.image.alt}
+                                id={"altOne"}
+                                name={"altOne"}
+                                defaultValue={this.state.altOne}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-xs-4">
+                            <img className={'img-responsive'} src={this.state.imageTwo.src}
+                                 alt={this.state.altTwo}/>
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="image" className={" "}>
+                                Image 2
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="file"
+                                accept={"image/*"}
+                                ref={input => {
+                                    this.filesInputTwo = input;
+                                }}
+                                id={"image2"}
+                                name={"image2"}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="alt" className={" "}>
+                                Image Two Alt
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"altTwo"}
+                                name={"altTwo"}
+                                defaultValue={this.state.altTwo}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
@@ -176,4 +243,4 @@ class AboutUsAdminEditPage extends React.Component {
     }
 }
 
-export {AboutUsAdminEditPage};
+export {AboutUsHomeSectionAdminEditPage};

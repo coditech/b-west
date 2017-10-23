@@ -1,12 +1,8 @@
 import express from "express";
 import db from "../databaseConnection";
-import aboutUsMode from "./model/aboutUs"
-import {
-    subscribe,
-    aboutUsHomeSectionRef,
-    contactUsRef, firebasePushData
-} from "./firebaseData";
-import {uploadImageToStorage, uploadGoogle} from "./firebaseStorage";
+import {aboutUsHomeSectionModel, aboutUsModel} from "./model"
+import {aboutUsHomeSectionRef, contactUsRef, firebasePushData, subscribe} from "./firebaseData";
+import {uploadGoogle, uploadImageToStorage} from "./firebaseStorage";
 import {isEmpty} from "../helpers/index";
 
 let allData = {};
@@ -27,15 +23,16 @@ subscribe(newData => {
 export {allData};
 
 
-var router = express.Router();
+const router = express.Router();
 const rootRef = db.ref("/");
 router.get("/aboutUs", (request, resources, next) => {
     resources.send(allData);
 });
-router.get("/aboutpage", uploadGoogle.any(), aboutUsMode.aboutUs_get);
-router.post("/aboutpage", uploadGoogle.any(), aboutUsMode.aboutUs_create);
-router.delete("/aboutpage/:id", uploadGoogle.any(), aboutUsMode.aboutUs_remove);
-router.put("/aboutpage/:id", uploadGoogle.any(), aboutUsMode.aboutUs_update);
+router.get("/aboutpage", uploadGoogle.any(), aboutUsModel.aboutUs_get);
+router.post("/aboutpage", uploadGoogle.any(), aboutUsModel.aboutUs_create);
+router.delete("/aboutpage/:id", uploadGoogle.any(), aboutUsModel.aboutUs_remove);
+router.put("/aboutpage/:id", uploadGoogle.any(), aboutUsModel.aboutUs_update);
+router.put("/aboutus-home", uploadGoogle.any(), aboutUsHomeSectionModel.aboutUsHomeSection_update);
 router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
@@ -47,7 +44,7 @@ router.post('/homeheader', uploadGoogle.any(), (req, res, next) => {
         req: req.body
     })
 
-})
+});
 router.post('/about-us-home', uploadGoogle.any(), (req, res, next) => {
     const {title, subTitle, content, alt_image_one, alt_image_two} = req.body;
 
@@ -71,7 +68,7 @@ router.post('/about-us-home', uploadGoogle.any(), (req, res, next) => {
                         imageTwo: {
                             alt_image_two
                         }
-                    }
+                    };
                     aboutUsHomeSectionRef.set(dataUpdate, function (error) {
                         if (error) {
                             console.log("Data could not be saved." + error);
@@ -207,7 +204,7 @@ router.get("/alldata", (req, res, next) => {
         success: true,
         data: allData
     })
-})
+});
 
 //  Extract Get url
 // var parts = url.parse(req.url, true);
