@@ -38,7 +38,7 @@ const uploadGoogle = multer({
  * @param {String} file Path of the directory where the file gonna be uploaded
  */
 const uploadImageToStorage = (file, path) => {
-    new Promise((resolve, reject) => {
+  const promise =   new Promise((resolve, reject) => {
         if (!file) {
             reject('No image file');
         }
