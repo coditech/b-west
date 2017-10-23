@@ -124,7 +124,6 @@ class AboutUsAdminAddPage extends React.Component {
                             <input
                                 className={"form-control"}
                                 type="file"
-                                required={true}
                                 accept={"image/*"}
                                 ref={input => {
                                     this.filesInput = input;

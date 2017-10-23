@@ -128,8 +128,8 @@ class AboutUsHomeSectionAdminEditPage extends React.Component {
                             <input
                                 className={"form-control"}
                                 type="text"
-                                id={"title"}
-                                name={"title"}
+                                id={"subTitle"}
+                                name={"subTitle"}
                                 defaultValue={this.state.subTitle}
                                 onChange={(event) => this.handleInputChange(event)}
                             />

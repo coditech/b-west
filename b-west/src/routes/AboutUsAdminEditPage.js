@@ -14,14 +14,23 @@ class AboutUsAdminEditPage extends React.Component {
         const aboutUs = props.aboutUs.find(item => {
             return item.id === id
         });
-        this.state = {
+        let state = {
             ...props,
             aboutUs,
             id,
             title: aboutUs.title,
-            alt: aboutUs.alt,
-            content: aboutUs.content
+            content: aboutUs.content,
+            alt: '',
+            src: ''
         };
+        if (aboutUs.image) {
+
+            state.alt = aboutUs.image.alt;
+            state.src = aboutUs.image.src;
+        }
+
+        this.state = state;
+
         this.refreshData = props.refreshData;
         this.onChange = this.onChange.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -54,7 +63,6 @@ class AboutUsAdminEditPage extends React.Component {
         evt.preventDefault();
         let formData = new FormData();
         const files = this.filesInput.files;
-        console.log('this.filesInput =>', this.filesInput);
         for (let key in files) {
             // check if this is a file:
             if (files.hasOwnProperty(key) && files[key] instanceof File) {
@@ -65,7 +73,6 @@ class AboutUsAdminEditPage extends React.Component {
         formData.append("title", this.state.title);
         formData.append("content", this.state.content);
         formData.append("alt", this.state.alt);
-
         superagent
             .put(websiteUrl + "api/aboutpage/" + this.state.id)
             .send(formData)
@@ -122,12 +129,15 @@ class AboutUsAdminEditPage extends React.Component {
 
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-xs-4">
-                            <img className={'img-responsive'} src={this.state.aboutUs.image.src}
-                                 alt={this.state.aboutUs.image.alt}/>
-                        </div>
-                    </div>
+                    {
+                        this.state.src ? <div className="row">
+                            <div className="col-xs-4">
+                                <img className={'img-responsive'} src={this.state.src}
+                                     alt={this.state.alt || ''}/>
+                            </div>
+                        </div> : null
+                    }
+
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
                             <label htmlFor="image" className={" "}>
@@ -159,14 +169,14 @@ class AboutUsAdminEditPage extends React.Component {
                                 type="text"
                                 id={"alt"}
                                 name={"alt"}
-                                defaultValue={this.state.aboutUs.image.alt}
+                                defaultValue={this.state.alt}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3 col-sm-push-3">
-                            <button type={'submit'} className={'btn btn-block'} >Submit</button>
+                            <button type={'submit'} className={'btn btn-block'}>Submit</button>
                         </div>
                     </div>
 

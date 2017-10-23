@@ -38,7 +38,7 @@ const uploadGoogle = multer({
  * @param {String} file Path of the directory where the file gonna be uploaded
  */
 const uploadImageToStorage = (file, path) => {
-  const promise =   new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
         if (!file) {
             reject('No image file');
         }
@@ -66,7 +66,7 @@ const uploadImageToStorage = (file, path) => {
 
         blobStream.end(file.buffer);
     });
-   // return promise;
+    // return promise;
 };
 const uploadImagesToStorage = (files, path) => {
     return new Promise((resolve, reject) => {
@@ -99,7 +99,9 @@ const uploadImagesToStorage = (files, path) => {
                         file: file
                     };
                     urls[fieldname] = fileInfo;
-                    resolve(fileInfo)
+                    fileUpload.makePublic()
+                        .then(() => resolve(fileInfo))
+                        .catch(reject)
                 });
                 blobStream.end(file.buffer);
 
