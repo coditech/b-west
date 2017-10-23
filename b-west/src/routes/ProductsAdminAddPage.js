@@ -61,7 +61,7 @@ class ProductsAdminAddPage extends React.Component {
         formData.append("description", this.state.description);
         formData.append("imageAlt", this.state.imageAlt);
         superagent
-            .post(websiteUrl + "api/featured-products/")
+            .post(websiteUrl + "api/products/")
             .send(formData)
             .end((err, res) => {
                 if (err) {
@@ -70,7 +70,7 @@ class ProductsAdminAddPage extends React.Component {
                 else {
                     alert('Record Updated');
                     this.refreshData();
-                    this.state.history.push('/admin/featured-products')
+                    this.state.history.push('/admin/products')
 
 
                 }
@@ -84,7 +84,7 @@ class ProductsAdminAddPage extends React.Component {
                     <h2 className="col-sm-6 col-sm-push-3">About Us Page Section</h2>
 
                 </div>
-                <NavLink to={'/admin/featured-products'}>
+                <NavLink to={'/admin/products'}>
                     <button className={'btn'}>Back</button>
                 </NavLink>
                 <form onSubmit={event => this.onSubmit(event)}>
@@ -100,7 +100,7 @@ class ProductsAdminAddPage extends React.Component {
                                 type="text"
                                 id={"name"}
                                 name={"name"}
-                                defaultValue={this.state.featuredProducts.name}
+                                defaultValue={this.state.products.name}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
@@ -117,7 +117,7 @@ class ProductsAdminAddPage extends React.Component {
                                 type="text"
                                 id={"slug"}
                                 name={"slug"}
-                                defaultValue={this.state.featuredProducts.slug}
+                                defaultValue={this.state.products.slug}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
@@ -134,7 +134,7 @@ class ProductsAdminAddPage extends React.Component {
                                 type="text"
                                 id={"price"}
                                 name={"price"}
-                                defaultValue={this.state.featuredProducts.price}
+                                defaultValue={this.state.products.price}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
@@ -151,7 +151,7 @@ class ProductsAdminAddPage extends React.Component {
                                 type="text"
                                 id={"status"}
                                 name={"status"}
-                                defaultValue={this.state.featuredProducts.status}
+                                defaultValue={this.state.products.status}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
@@ -163,7 +163,7 @@ class ProductsAdminAddPage extends React.Component {
                             </label>
                         </div>
                         <div className="col-sm-6">
-                            <Quill content={this.state.featuredProducts.description} onChange={this.handleQuillChange}/>
+                            <Quill content={this.state.products.description} onChange={this.handleQuillChange}/>
 
                         </div>
                     </div>
