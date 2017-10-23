@@ -21,6 +21,7 @@ import {AboutUsAdminViewPage} from "./AboutUsAdminViewPage";
 import {AboutUsAdminEditPage} from "./AboutUsAdminEditPage";
 import {AboutUsHomeSectionAdminPage} from "./AboutUsHomeSectionAdminPage";
 import {AboutUsHomeSectionAdminEditPage} from "./AboutUsHomeSectionAdminEditPage";
+import {ContactUsAdminEditPage} from "./ContacUsAdminEditPage";
 
 
 const Default = () => {
@@ -49,10 +50,11 @@ const toggleMenu = (event) => {
 
 const AdminApp = (props) => {
 
-    const {aboutUs, aboutUsHomeSection, refreshData} = props;
+    const {aboutUs, aboutUsHomeSection, refreshData,contactUs} = props;
     const defaultPassedProps = {refreshData};
     const mixAboutUs = mixProps({...defaultPassedProps, aboutUs});
     const mixAboutUsHomeSection = mixProps({...defaultPassedProps, aboutUsHomeSection});
+    const mixContactUs = mixProps({...defaultPassedProps, contactUs});
     return (
         <div>
             <div style={{maxHeight: '60px', width: '100%', backgroundColor: 'blue'}}>
@@ -115,6 +117,22 @@ const AdminApp = (props) => {
                                     window.scrollTo(0, 0)
                                 }
                                 return ( <AboutUsHomeSectionAdminEditPage  {...mixAboutUsHomeSection(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/contact-us" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <ContactUsAdminPage  {...mixContactUs(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/contact-us/edit" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <ContactUsAdminEditPage  {...mixContactUs(props)}/>)
                             }
                             }/>
 

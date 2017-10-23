@@ -233,7 +233,7 @@ class AboutUsHomeSectionAdminEditPage extends React.Component {
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3 col-sm-push-3">
-                            <input type="submit" className={"form-control btn"}/>
+                            <button type={'submit'} className={'btn btn-block'} >Submit</button>
                         </div>
                     </div>
 
