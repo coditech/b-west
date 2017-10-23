@@ -51,7 +51,7 @@ const toggleMenu = (event) => {
 const AdminApp = (props) => {
 
     const {aboutUs, aboutUsHomeSection, refreshData,contactUs} = props;
-    const defaultPassedProps = {refreshData};
+    const defaultPassedProps = {...props,refreshData};
     const mixAboutUs = mixProps({...defaultPassedProps, aboutUs});
     const mixAboutUsHomeSection = mixProps({...defaultPassedProps, aboutUsHomeSection});
     const mixContactUs = mixProps({...defaultPassedProps, contactUs});

@@ -27,66 +27,6 @@ const aboutUsHomeSection_get = (request, resources) => {
         test: allData
     });
 };
-const aboutUsHomeSection_updates = (request, resources, next) => {
-
-    const {title, content, subTitle, altOne, altTwo} = request.body;
-    let files = request.files;
-    if (files.length > 0) {
-
-        uploadImagesToStorage(files, 'aboutUsHomeSection')
-            .then(resp => {
-                let data = {
-                    title,
-                    content,
-                    subTitle,
-                };
-                if (resp['imageOne']) {
-                    data.imageOne = {
-                        alt: altOne,
-                        src: resp['imageOne'].url
-                    }
-                }
-                if (resp['imageTwo']) {
-                    data.imageTwo = {
-                        alt: altTwo,
-                        src: resp['imageTwo'].url
-                    }
-                }
-
-                log('Data', data);
-                firebaseUpdateData({
-                    databaseRef: 'aboutUsHomeSection',
-                    data
-                }).then(res => {
-                    resources.send({
-                        res
-                    })
-                })
-            })
-            .catch((err) => {
-                next(err);
-            });
-
-
-    } else {
-        // update without Image
-        firebaseUpdateData({
-            databaseRef: 'aboutUsHomeSection',
-            data: {
-                title,
-                content,
-                subTitle,
-
-
-            }
-        }).then(res => {
-            resources.send({
-                res
-            })
-        })
-    }
-};
-
 const aboutUsHomeSection_update = (request, resources, next) => {
 
     const {title, content, subTitle, altOne, altTwo} = request.body;
@@ -158,7 +98,6 @@ const aboutUsHomeSection_update = (request, resources, next) => {
         })
 
 };
-
 
 export {
     aboutUsHomeSection_get,

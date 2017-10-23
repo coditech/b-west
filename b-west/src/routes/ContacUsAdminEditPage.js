@@ -8,11 +8,13 @@ class ContactUsAdminEditPage extends React.Component {
         super(props, context);
         const {contactUs } = props;
         this.state = {
+            ...props,
             content: contactUs.content,
             headerTitle: contactUs.headerTitle,
             title: contactUs.title
         }
         this.onChange = this.onChange.bind(this);
+        this.refreshData = props.refreshData;
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleQuillChange = this.handleQuillChange.bind(this);
 
@@ -53,24 +55,27 @@ class ContactUsAdminEditPage extends React.Component {
         const form = evt.target;
 
         // IMAGES MISSING IN THE FORM DATA
-        formData.append("title", form.title.value);
-        formData.append("contactinfo", this.state.content);
+        formData.append("title", this.state.title);
+        formData.append("content", this.state.content);
+        formData.append("headerTitle", this.state.headerTitle);
 
 
         superagent
-            .post(websiteUrl + "api/contact-us")
+            .put(websiteUrl + "api/contact-us")
             .send(formData)
             .end((err, response) => {
                 if (err) {
-                    //there was an error, handle it here
-                    alert(-1);
-                } else if (response.ok) {
-                    //this was successful, handle it here
-                    alert(1);
+                    alert('something went wrong please try again');
+                }
+                else {
+                    console.log('response =<', response)
+                    alert('Record Updated');
+                    this.refreshData();
+                    this.state.history.push('/admin/contact-us')
+
+
                 }
             })
-            .then(x => {
-            });
     }
 
     render() {
@@ -92,6 +97,24 @@ class ContactUsAdminEditPage extends React.Component {
                                 type="text"
                                 id={"title"}
                                 name={"title"}
+                                defaultValue={this.state.title}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="title" className={" "}>
+                                Header Title
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"headerTitle"}
+                                name={"headerTitle"}
+                                defaultValue={this.state.headerTitle}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>

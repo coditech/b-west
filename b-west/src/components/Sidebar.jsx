@@ -10,6 +10,7 @@ const SideBar = () => {
         , {name: 'Users', url: '/admin/user'}
         , {name: 'About Us', url: '/admin/aboutpage'}
         , {name: 'About Us Home Page', url: '/admin/aboutus-home'}
+        , {name: 'Contact Us', url: '/admin/contact-us'}
     ];
 
 

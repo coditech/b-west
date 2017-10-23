@@ -1,6 +1,6 @@
 import express from "express";
 import db from "../databaseConnection";
-import {aboutUsHomeSectionModel, aboutUsModel} from "./model"
+import {aboutUsHomeSectionModel, aboutUsModel, contactUsModel} from "./model"
 import {aboutUsHomeSectionRef, contactUsRef, firebasePushData, subscribe} from "./firebaseData";
 import {uploadGoogle, uploadImageToStorage} from "./firebaseStorage";
 import {isEmpty} from "../helpers/index";
@@ -33,6 +33,7 @@ router.post("/aboutpage", uploadGoogle.any(), aboutUsModel.aboutUs_create);
 router.delete("/aboutpage/:id", uploadGoogle.any(), aboutUsModel.aboutUs_remove);
 router.put("/aboutpage/:id", uploadGoogle.any(), aboutUsModel.aboutUs_update);
 router.put("/aboutus-home", uploadGoogle.any(), aboutUsHomeSectionModel.aboutUsHomeSection_update);
+router.put("/contact-us", uploadGoogle.any(), contactUsModel.contactUs_update);
 router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
