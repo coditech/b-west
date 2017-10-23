@@ -18,6 +18,7 @@ class VillagersPage extends React.Component {
         return (
             <div className={'villagers item-detail-page '}>
                 <Header {...villagersStoriesHeader} additionalClass={'villagers'}/>
+                <hr/>
                 <div className={'villagersStories margin-top-50 container'}>
                     {
                         villagersStories.map((storie, index) => {
