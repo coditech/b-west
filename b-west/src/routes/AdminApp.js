@@ -30,6 +30,8 @@ import {ProductsAdminPage} from "./ProductsAdminPage";
 import {ProductsAdminAddPage} from "./ProductsAdminAddPage";
 import {ProductsAdminEditPage} from "./ProductsAdminEditPage";
 import {ProductsAdminViewPage} from "./ProductsAdminViewPage";
+import {FindAStoreHeaderAdminPage} from "./FindAStoreHeaderAdminPage";
+import {FindAStoreHeaderAdminEditPage} from "./FindAStoreHeaderAdminEditPage";
 
 
 const Default = () => {
@@ -58,13 +60,14 @@ const toggleMenu = (event) => {
 
 const AdminApp = (props) => {
 
-    const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products} = props;
+    const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products, findAStore} = props;
     const defaultPassedProps = {...props, refreshData};
     const mixAboutUs = mixProps({...defaultPassedProps, aboutUs});
     const mixAboutUsHomeSection = mixProps({...defaultPassedProps, aboutUsHomeSection});
     const mixContactUs = mixProps({...defaultPassedProps, contactUs});
     const mixFeaturedProducts = mixProps({...defaultPassedProps, featuredProducts});
     const mixProducts = mixProps({...defaultPassedProps, products});
+    const mixFindAStore = mixProps({...defaultPassedProps, findAStore});
     return (
         <div>
             <div style={{maxHeight: '60px', width: '100%', backgroundColor: 'blue'}}>
@@ -182,7 +185,7 @@ const AdminApp = (props) => {
                             }/>
 
 
-                             <Route exact path="/admin/products" render={(props) => {
+                            <Route exact path="/admin/products" render={(props) => {
                                 // TODO: move this to componentDidMount
                                 if (typeof window !== 'undefined') {
                                     window.scrollTo(0, 0)
@@ -214,6 +217,22 @@ const AdminApp = (props) => {
                                     window.scrollTo(0, 0)
                                 }
                                 return ( <ProductsAdminViewPage  {...mixProducts(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/find-a-store-header" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <FindAStoreHeaderAdminPage  {...mixFindAStore(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/find-a-store-header/edit" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <FindAStoreHeaderAdminEditPage  {...mixFindAStore(props)}/>)
                             }
                             }/>
 

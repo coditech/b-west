@@ -66,6 +66,8 @@ const ProductsAdminPage = (props) => {
                         action_url: '/admin/products'
                     }}
                     />}
+                    fixed={true}
+
                     width={300}
                     flexGrow={1}
                 />
