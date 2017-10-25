@@ -60,7 +60,7 @@ const toggleMenu = (event) => {
 
 const AdminApp = (props) => {
 
-    const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products, findAStore} = props;
+    const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products, findAStore, counter} = props;
     const defaultPassedProps = {...props, refreshData};
     const mixAboutUs = mixProps({...defaultPassedProps, aboutUs});
     const mixAboutUsHomeSection = mixProps({...defaultPassedProps, aboutUsHomeSection});
@@ -70,6 +70,8 @@ const AdminApp = (props) => {
     const mixFindAStore = mixProps({...defaultPassedProps, findAStore});
     return (
         <div>
+            <input type={'button'} onClick={() => refreshData()} value={'refresh ' + ( counter)}/>
+
             <div style={{maxHeight: '60px', width: '100%', backgroundColor: 'blue'}}>
                 <button type={'button'} className="btn btn-secondary menu-toggle"
                         id="menu-toggle" onClick={(event) => toggleMenu(event)

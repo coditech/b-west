@@ -50,7 +50,6 @@ class App extends React.Component {
 
         return (
             <div>
-                <input type={'button'} onClick={() => this.refreshData()} value={'refresh ' + this.state.counter}/>
                 <Switch>
                     <Route path="/admin" render={(props) => {
                         return (<AdminApp {...mix(props)}/>)
