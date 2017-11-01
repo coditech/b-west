@@ -32,6 +32,7 @@ import {ProductsAdminEditPage} from "./ProductsAdminEditPage";
 import {ProductsAdminViewPage} from "./ProductsAdminViewPage";
 import {FindAStoreHeaderAdminPage} from "./FindAStoreHeaderAdminPage";
 import {FindAStoreHeaderAdminEditPage} from "./FindAStoreHeaderAdminEditPage";
+import {HomeHeaderAdminEditPage} from "./HomeHeaderAdminEditPage";
 
 
 const Default = () => {
@@ -60,7 +61,7 @@ const toggleMenu = (event) => {
 
 const AdminApp = (props) => {
 
-    const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products, findAStore, counter} = props;
+    const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products, findAStore, homeHeader, counter} = props;
     const defaultPassedProps = {...props, refreshData};
     const mixAboutUs = mixProps({...defaultPassedProps, aboutUs});
     const mixAboutUsHomeSection = mixProps({...defaultPassedProps, aboutUsHomeSection});
@@ -68,6 +69,7 @@ const AdminApp = (props) => {
     const mixFeaturedProducts = mixProps({...defaultPassedProps, featuredProducts});
     const mixProducts = mixProps({...defaultPassedProps, products});
     const mixFindAStore = mixProps({...defaultPassedProps, findAStore});
+    const mixHomeHeader = mixProps({...defaultPassedProps, homeHeader});
     return (
         <div>
             <input type={'button'} onClick={() => refreshData()} value={'refresh ' + ( counter)}/>
@@ -235,6 +237,21 @@ const AdminApp = (props) => {
                                     window.scrollTo(0, 0)
                                 }
                                 return ( <FindAStoreHeaderAdminEditPage  {...mixFindAStore(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/home-header" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <HomeHeaderAdminPage  {...mixFindAStore(props)}/>)
+                            }
+                            }/>   <Route exact path="/admin/home-header/edit" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <HomeHeaderAdminEditPage  {...mixFindAStore(props)}/>)
                             }
                             }/>
 

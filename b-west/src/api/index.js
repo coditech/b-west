@@ -1,6 +1,14 @@
 import express from "express";
 import db from "../databaseConnection";
-import {aboutUsHomeSectionModel, aboutUsModel, contactUsModel, featuredProductsModel, productsModel, findAStoreModel} from "./model"
+import {
+    aboutUsHomeSectionModel,
+    aboutUsModel,
+    contactUsModel,
+    featuredProductsModel,
+    productsModel,
+    findAStoreModel,
+    homeHeaderModel
+} from "./model"
 import {aboutUsHomeSectionRef, contactUsRef, firebasePushData, subscribe} from "./firebaseData";
 import {uploadGoogle, uploadImageToStorage} from "./firebaseStorage";
 import {isEmpty} from "../helpers/index";
@@ -45,7 +53,9 @@ router.post("/products", uploadGoogle.any(), productsModel.products_create);
 router.put("/products/:id", uploadGoogle.any(), productsModel.products_update);
 router.delete("/products/:id", uploadGoogle.any(), productsModel.products_remove);
 
-router.put("/find-a-store-header", uploadGoogle.any(),findAStoreModel.findAStore_header_update);
+router.put("/find-a-store-header", uploadGoogle.any(), findAStoreModel.findAStore_header_update);
+
+router.put("/home-header", uploadGoogle.any(), homeHeaderModel.homeHeader_update);
 
 router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

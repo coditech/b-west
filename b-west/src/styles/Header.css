@@ -17,6 +17,9 @@ div.jumbotron.hero-technology .header-content p,div.jumbotron.hero-technology .h
 div.jumbotron.hero-technology.dark-pattern {
 background-size: inherit;
 }
+div.jumbotron.header-content .hero-button {
+    margin-top: 20px;
+}
 div.jumbotron.hero-technology.find-a-store ,div.jumbotron.hero-technology.villagers,div.jumbotron.hero-technology.products-header ,div.jumbotron.hero-technology.product-item-header {
     min-height: 45vh;
 }

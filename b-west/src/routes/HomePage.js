@@ -46,6 +46,20 @@ class HomePage extends React.Component {
 
     render() {
         const {homeHeader, aboutUsHomeSection, featuredStories, subscriberBanner, instaBanner, featuredProducts, findAStore} = this.state;
+        const homeHeaderData = {
+            title: homeHeader.title,
+            content: homeHeader.content,
+            image: {
+                src: homeHeader.imageSrc,
+                alt: homeHeader.imageAlt
+            },
+            actionButton: {
+                show: homeHeader.actionButtonShow,
+                text: homeHeader.actionButtonText,
+                url: homeHeader.actionButtonUrl
+            }
+
+        };
         return (
             <div>
 
@@ -53,7 +67,7 @@ class HomePage extends React.Component {
                 {/*======= HOME MAIN SLIDERs =========*/}
                 {/*<Header {...this.state.headerData}/>*/}
                 {
-                    homeHeader ? <Header {...homeHeader}/> : null
+                    homeHeaderData ? <Header {...homeHeaderData}/> : null
                 }
 
                 {/* Content */}
@@ -102,7 +116,8 @@ class HomePage extends React.Component {
                 </div>
 
 
-                {subscriberBanner ? subscriberBanner.display ? <SubscribeBanner url={subscriberBanner.mailchimpUrl}/> : null : null}
+                {subscriberBanner ? subscriberBanner.display ?
+                    <SubscribeBanner url={subscriberBanner.mailchimpUrl}/> : null : null}
 
                 <a className="cd-top"><i className="fa fa-angle-up"/></a>
                 {/* GO TO TOP End */}

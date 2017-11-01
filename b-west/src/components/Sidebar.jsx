@@ -15,6 +15,7 @@ const SideBar = () => {
         , {name: 'Products', url: '/admin/products'}
         , {name: 'Find A Store Header', url: '/admin/find-a-store-header'}
         , {name: 'Find A Store', url: '/admin/find-a-store'}
+        , {name: 'Home Header', url: '/admin/home-header'}
     ];
 
 

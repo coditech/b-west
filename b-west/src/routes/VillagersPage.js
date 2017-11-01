@@ -39,7 +39,8 @@ class VillagersPage extends React.Component {
 
                                             </div>
                                         </div>
-                                        <hr/>
+                                        {villagersStories.length !== parseInt(index + 1) ? <hr/> : '' }
+
                                     </div>
 
                                 )
@@ -47,7 +48,7 @@ class VillagersPage extends React.Component {
                         )
                     }
                 </div>
-
+                <div className="margin-top-100"/>
             </div>
         )
     }
