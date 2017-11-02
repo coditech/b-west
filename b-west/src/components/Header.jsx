@@ -16,10 +16,17 @@ const Header = ({image, title, subTitle, actionButton, additionalClass, content}
     } else {
         additionalClass += ' dark-pattern'
     }
+    let actionButtonAnchor = '';
+    if (actionButton) {
+        console.log(actionButton);
+        actionButtonAnchor = isUrl(actionButton.url) ?
+            <a className={'btn  btn-primary btn-lg hero-button'} target={'_blank'}
+               href={actionButton.url}>{actionButton.text}</a> : <NavLink to={actionButton.url}
+                                                                          className={'btn btn-primary btn-lg hero-button'}
+                                                                          role={'button'}>{actionButton.text}</NavLink>;
 
-    const actionButtonAnchor = isUrl(actionButton.url) ? <a className={'btn  btn-primary btn-lg hero-button'} target={'_blank'} href={actionButton.url}>{actionButton.text}</a> : <NavLink to={actionButton.url}
-                                                                       className={'btn btn-primary btn-lg hero-button'}
-                                                                       role={'button'}>{actionButton.text}</NavLink>;
+    }
+
     return (
 
         <div className={"jumbotron hero-technology " + additionalClass} style={styleReady}>
@@ -37,9 +44,11 @@ const Header = ({image, title, subTitle, actionButton, additionalClass, content}
                 }
 
 
-                {actionButton.show ?
+                {
+                    actionButton ? (actionButton.show ?
 
-                    actionButtonAnchor : null}
+                        actionButtonAnchor : null ) : null
+                }
 
             </div>
         </div>
