@@ -7,7 +7,8 @@ import {
     featuredProductsModel,
     productsModel,
     findAStoreModel,
-    homeHeaderModel
+    homeHeaderModel,
+    instaBannerModel
 } from "./model"
 import {aboutUsHomeSectionRef, contactUsRef, firebasePushData, subscribe} from "./firebaseData";
 import {uploadGoogle, uploadImageToStorage} from "./firebaseStorage";
@@ -56,6 +57,8 @@ router.delete("/products/:id", uploadGoogle.any(), productsModel.products_remove
 router.put("/find-a-store-header", uploadGoogle.any(), findAStoreModel.findAStore_header_update);
 
 router.put("/home-header", uploadGoogle.any(), homeHeaderModel.homeHeader_update);
+
+router.put("/instagram-banner", uploadGoogle.any(), instaBannerModel.instaBanner_update);
 
 router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

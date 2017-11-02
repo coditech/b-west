@@ -33,6 +33,8 @@ import {ProductsAdminViewPage} from "./ProductsAdminViewPage";
 import {FindAStoreHeaderAdminPage} from "./FindAStoreHeaderAdminPage";
 import {FindAStoreHeaderAdminEditPage} from "./FindAStoreHeaderAdminEditPage";
 import {HomeHeaderAdminEditPage} from "./HomeHeaderAdminEditPage";
+import {InstaBannerAdminPage} from "./InstaBannerAdminPage";
+import {InstaBannerAdminEditPage} from "./InstaBannerAdminEditPage";
 
 
 const Default = () => {
@@ -61,7 +63,7 @@ const toggleMenu = (event) => {
 
 const AdminApp = (props) => {
 
-    const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products, findAStore, homeHeader, counter} = props;
+    const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products, instaBanner, findAStore, homeHeader, counter} = props;
     const defaultPassedProps = {...props, refreshData};
     const mixAboutUs = mixProps({...defaultPassedProps, aboutUs});
     const mixAboutUsHomeSection = mixProps({...defaultPassedProps, aboutUsHomeSection});
@@ -70,6 +72,7 @@ const AdminApp = (props) => {
     const mixProducts = mixProps({...defaultPassedProps, products});
     const mixFindAStore = mixProps({...defaultPassedProps, findAStore});
     const mixHomeHeader = mixProps({...defaultPassedProps, homeHeader});
+    const mixInstaBanner = mixProps({...defaultPassedProps, instaBanner});
     return (
         <div>
             <input type={'button'} onClick={() => refreshData()} value={'refresh ' + ( counter)}/>
@@ -244,14 +247,31 @@ const AdminApp = (props) => {
                                 if (typeof window !== 'undefined') {
                                     window.scrollTo(0, 0)
                                 }
-                                return ( <HomeHeaderAdminPage  {...mixFindAStore(props)}/>)
+                                return ( <HomeHeaderAdminPage  {...mixHomeHeader(props)}/>)
                             }
-                            }/>   <Route exact path="/admin/home-header/edit" render={(props) => {
+                            }/>
+                            <Route exact path="/admin/home-header/edit" render={(props) => {
                                 // TODO: move this to componentDidMount
                                 if (typeof window !== 'undefined') {
                                     window.scrollTo(0, 0)
                                 }
-                                return ( <HomeHeaderAdminEditPage  {...mixFindAStore(props)}/>)
+                                return ( <HomeHeaderAdminEditPage  {...mixHomeHeader(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/instagram-banner" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <InstaBannerAdminPage  {...mixInstaBanner(props)}/>)
+                            }
+                            }/>
+                            <Route exact path="/admin/instagram-banner/edit" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return ( <InstaBannerAdminEditPage  {...mixInstaBanner(props)}/>)
                             }
                             }/>
 

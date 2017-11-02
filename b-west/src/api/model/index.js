@@ -5,8 +5,10 @@ import * as featuredProductsModel from './featuredProducts'
 import * as productsModel from './products'
 import * as findAStoreModel from './findAStore'
 import * as homeHeaderModel from './homeHeader'
+import * as instaBannerModel from './instaBanner'
 
 export {
     aboutUsModel, aboutUsHomeSectionModel, contactUsModel, featuredProductsModel, productsModel, findAStoreModel,
-    homeHeaderModel
+    homeHeaderModel, instaBannerModel
+
 }
