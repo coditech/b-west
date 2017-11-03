@@ -22,13 +22,13 @@ class ProductItemPage extends React.Component {
                     <Header title={products[0].name} additionalClass={'product-item-header dark-pattern'}/>
                     <div className="container margin-top-80 margin-bottom-80">
                         {
-                            products.map(({name, price, image, status, slug,description}, index) => {
+                            products.map(({name, price,  status, imageSrc, imageAlt,description}, index) => {
                                 return (
-                                    <div className={'row product'}>
+                                    <div key={index} className={'row product'}>
                                         <div className="col-sm-5">
                                             <div className="items-in ">
                                                 {status ? <div className="shop-tags" style={{backgroundColor: 'rgba(67, 125, 67, 0.65)', color: '#fff', fontSize: '1.5em'}}>{status}</div> : ""}
-                                                <img src={image.src} className={'img-responsive'} alt={image.url}/>
+                                                <img src={imageSrc} className={'img-responsive'} alt={imageAlt}/>
                                             </div>
 
                                         </div>
