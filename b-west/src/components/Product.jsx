@@ -1,15 +1,20 @@
 import React from "react";
 import "../styles/Store.css";
 import {NavLink} from "react-router-dom";
+import LazyLoad from "react-lazyload";
 
 const Product = (props) => {
-    const {status, slug, name, price, imageSrc, imageAlt, classContainer} =  props;
+    const {status, slug, name, price, imageSrc, imageAlt, classContainer} = props;
     return (
         <li className={classContainer}>
             <div className="items-in">
                 {status ? <div className="shop-tags">{status}</div> : ""}
                 <NavLink to={'/products/' + slug}>
-                    <img src={imageSrc} alt={imageAlt}/>
+                    <LazyLoad height={200} offset={100}>
+
+                        <img src={imageSrc} alt={imageAlt}/>
+                    </LazyLoad>
+
                 </NavLink>
             </div>
             <div className="details-sec">

@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@google-cloud/storage": "^1.4.0",
-    "fixed-data-table-2": "^0.8.3"
+    "fixed-data-table-2": "^0.8.3",
+    "react-lazyload": "^2.3.0"
   }
 }
