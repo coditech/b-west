@@ -1,6 +1,6 @@
 import {firebaseDeleteData, firebasePushData, firebaseUpdateData, subscribe} from "../firebaseData";
 import {isEmpty} from "../../helpers/index";
-import {uploadImagesToStorage, uploadImageToStorage} from "../firebaseStorage";
+import {uploadImagesToStorage} from "../firebaseStorage";
 
 const log = (message) => console.log('featured Products Model path: b-west/src/api/model/featuredProducts.js ' + message);
 let allData = {};
@@ -18,7 +18,6 @@ if (isEmpty(allData)) {
 subscribe(newData => {
     allData = newData;
 });
-const {featuredProducts} = allData;
 
 const featuredProducts_create = (request, resources, next) => {
     const {name, description, price, status, imageAlt, slug} = request.body;

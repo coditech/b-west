@@ -2,8 +2,6 @@ import React from 'react';
 import superagent from "superagent";
 import {websiteUrl} from "../helpers";
 import {NavLink} from "react-router-dom";
-import {Quill} from "../components/Quill";
-
 
 const FindAStoreHeaderAdminEditPage = (props) => {
     const {findAStore, history, refreshData} = props;

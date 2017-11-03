@@ -1,6 +1,6 @@
 import {firebaseDeleteData, firebasePushData, firebaseUpdateData, subscribe} from "../firebaseData";
 import {isEmpty} from "../../helpers/index";
-import {uploadImagesToStorage, uploadImageToStorage} from "../firebaseStorage";
+import {uploadImagesToStorage} from "../firebaseStorage";
 
 const log = (message) => console.log('About Us Model path: b-west/src/api/model/aboutUs.js ' + message)
 let allData = {};
@@ -18,13 +18,11 @@ if (isEmpty(allData)) {
 subscribe(newData => {
     allData = newData;
 });
-const {aboutUs} = allData;
 
 const aboutUs_create = (request, resources, next) => {
     const {title, content, imageAlt} = request.body;
 
     let files = request.files;
-    let counter = 0;
 
 
     uploadImagesToStorage(files, 'aboutUs')

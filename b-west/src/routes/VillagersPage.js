@@ -3,12 +3,18 @@ import Header from "../components/Header";
 import SmallSlider from "../components/SmallSlider";
 
 class VillagersPage extends React.Component {
-
     constructor(props, context) {
         super(props, context);
         this.state = {
             villagersStories: props.villagersStories,
-            villagersStoriesHeader: props.villagersStoriesHeader
+            villagersStoriesHeader: {
+                ...props.villagersStoriesHeader,
+                actionButton: {
+                    show: false
+                }
+
+
+            }
         }
     }
 
@@ -18,13 +24,12 @@ class VillagersPage extends React.Component {
         return (
             <div className={'villagers item-detail-page '}>
                 <Header {...villagersStoriesHeader} additionalClass={'villagers'}/>
-                <hr/>
                 <div className={'villagersStories margin-top-50 container'}>
                     {
                         villagersStories.map((storie, index) => {
                                 const floatRight = index % 2 === 0 ? 'floatRight' : '';
                                 return (
-                                    <div>
+                                    <div key={index}>
                                         <div className={'story row margin-top-50'} key={index} id={storie.slug}>
                                             <div className={'col-sm-5 ' + floatRight}>
                                                 <SmallSlider images={storie.images}/>
@@ -39,7 +44,7 @@ class VillagersPage extends React.Component {
 
                                             </div>
                                         </div>
-                                        {villagersStories.length !== parseInt(index + 1) ? <hr/> : '' }
+                                        {villagersStories.length !== parseInt(index + 1,10) ? <hr/> : null}
 
                                     </div>
 

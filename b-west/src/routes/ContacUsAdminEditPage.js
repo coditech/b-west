@@ -52,8 +52,6 @@ class ContactUsAdminEditPage extends React.Component {
         alert(0);
         let formData = new FormData();
 
-        const form = evt.target;
-
         // IMAGES MISSING IN THE FORM DATA
         formData.append("title", this.state.title);
         formData.append("content", this.state.content);

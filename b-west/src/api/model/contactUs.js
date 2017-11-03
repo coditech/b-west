@@ -1,7 +1,5 @@
 import {firebasePushData, firebaseUpdateData, subscribe} from "../firebaseData";
 import {isEmpty} from "../../helpers/index";
-import {uploadImagesToStorage} from "../firebaseStorage";
-
 const log = (message) => console.log('Contact Us Home Section Model path: b-west/src/api/model/contactUs.js ' + JSON.stringify(message))
 
 let allData = {};

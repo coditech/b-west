@@ -64,8 +64,6 @@ class HomeHeaderAdminEditPage extends React.Component {
             }
         }
 
-        const form = evt.target;
-
         // HEADER IMAGE MISSING IN THE FORM DATA
         formData.append("title", this.state.title);
         formData.append("subTitle", this.state.subTitle);

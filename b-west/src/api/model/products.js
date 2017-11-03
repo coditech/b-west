@@ -1,6 +1,6 @@
 import {firebaseDeleteData, firebasePushData, firebaseUpdateData, subscribe} from "../firebaseData";
 import {isEmpty} from "../../helpers/index";
-import {uploadImagesToStorage, uploadImageToStorage} from "../firebaseStorage";
+import {uploadImagesToStorage} from "../firebaseStorage";
 
 const log = (message) => console.log(' Products Model path: b-west/src/api/model/products.js ' + message);
 let allData = {};
@@ -18,7 +18,6 @@ if (isEmpty(allData)) {
 subscribe(newData => {
     allData = newData;
 });
-const {products} = allData;
 
 const products_create = (request, resources, next) => {
     const {name, description, price, status, imageAlt, slug} = request.body;

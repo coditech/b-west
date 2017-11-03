@@ -2,7 +2,6 @@ import React from 'react';
 import superagent from "superagent";
 import {websiteUrl} from "../helpers";
 import {NavLink} from "react-router-dom";
-import {Quill} from "../components/Quill";
 
 class InstaBannerAdminEditPage extends React.Component {
 

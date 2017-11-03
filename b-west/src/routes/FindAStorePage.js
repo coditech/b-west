@@ -30,7 +30,7 @@ class FindAStorePage extends React.Component {
         const {findAStore} = this.state;
         return (
             <div>
-                <Header  title={findAStore.title} additionalClass={'find-a-store'}/>
+                <Header  title={findAStore.title} additionalClass={'find-a-store'} actionButton={{show: false}}/>
                 <div className="container store-locator margin-top-80">
 
                     <div className="row">

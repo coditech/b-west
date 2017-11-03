@@ -19,22 +19,29 @@ class ProductItemPage extends React.Component {
             return (
 
                 <div className={'product-item'}>
-                    <Header title={products[0].name} additionalClass={'product-item-header dark-pattern'}/>
+                    <Header title={products[0].name} additionalClass={'product-item-header dark-pattern'}
+                            actionButton={{
+                                show: false
+                            }}/>
                     <div className="container margin-top-80 margin-bottom-80">
                         {
-                            products.map(({name, price,  status, imageSrc, imageAlt,description}, index) => {
+                            products.map(({name, price, status, imageSrc, imageAlt, description}, index) => {
                                 return (
                                     <div key={index} className={'row product'}>
                                         <div className="col-sm-5">
                                             <div className="items-in ">
-                                                {status ? <div className="shop-tags" style={{backgroundColor: 'rgba(67, 125, 67, 0.65)', color: '#fff', fontSize: '1.5em'}}>{status}</div> : ""}
+                                                {status ? <div className="shop-tags" style={{
+                                                    backgroundColor: 'rgba(67, 125, 67, 0.65)',
+                                                    color: '#fff',
+                                                    fontSize: '1.5em'
+                                                }}>{status}</div> : ""}
                                                 <img src={imageSrc} className={'img-responsive'} alt={imageAlt}/>
                                             </div>
 
                                         </div>
                                         <div className="col-sm-6 large-detail">
                                             <h2 className="margin-top-0 margin-bottom-20">{name}</h2>
-                                           <div dangerouslySetInnerHTML={{__html: description}}/>
+                                            <div dangerouslySetInnerHTML={{__html: description}}/>
                                             <hr/>
                                             <div className="some-info no-border">
 

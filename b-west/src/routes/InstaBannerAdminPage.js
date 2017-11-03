@@ -17,7 +17,7 @@ const InstaBannerAdminPage = ({instaBanner}) => {
                         <tr>
                             <th>Image</th>
                             <td><img className={'img-responsive'} src={instaBanner.backgroundImage}
-                                     alt={'Background Image'}/></td>
+                                     alt={'Background instagram banner'}/></td>
                         </tr>
 
                         </tbody>

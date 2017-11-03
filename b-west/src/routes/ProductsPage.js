@@ -51,11 +51,18 @@ class ProductsPage extends React.Component {
     };
   }
 
+
   render() {
     const { products, productsPageHeader,fileteredProducts } = this.state;
+      const headerData = {
+          ...productsPageHeader,
+          actionButton: {
+              show: false
+          }
+      }
     return (
       <div>
-        <Header {...productsPageHeader} additionalClass={"products-header"} />
+        <Header {...headerData} additionalClass={"products-header"} />
         <div className="container store-locator">
           <div className="popurlar_product ">
 

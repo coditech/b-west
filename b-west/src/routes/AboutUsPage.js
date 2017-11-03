@@ -9,6 +9,9 @@ const AboutUsPage = ({aboutUs}) => {
         image: {
             src: aboutUs[0].imageSrc,
             alt: aboutUs[0].imageAlt
+        },
+        actionButton: {
+            show: false
         }
     };
     const aboutUsSections = aboutUs.slice(1);

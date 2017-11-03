@@ -18,7 +18,7 @@ class ContactUsPage extends React.Component {
         const {title, content, headerTitle} = this.state;
         return (
             <div>
-                <Header title={headerTitle} additionalClass={'products-header'}/>
+                <Header title={headerTitle} additionalClass={'products-header'} actionButton={{show: false}}/>
                 <ContactInfo title={title} content={content}/>
             </div>
         )

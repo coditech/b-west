@@ -1,6 +1,5 @@
 import {firebasePushData, firebaseUpdateData, subscribe} from "../firebaseData";
 import {isEmpty} from "../../helpers/index";
-import {uploadImagesToStorage} from "../firebaseStorage";
 
 const log = (message) => console.log('Find A Store  Model path: b-west/src/api/model/findAStore.js ' + message);
 
@@ -30,7 +29,6 @@ const findAStore_get = (request, resources) => {
 const findAStore_header_update = (request, resources, next) => {
 
     const {title} = request.body;
-    let files = request.files;
     console.log(request.body);
     let data = {
         title

@@ -4,7 +4,8 @@ import '../styles/Header.css';
 import {NavLink} from "react-router-dom";
 
 const isUrl = (str) => {
-    const regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+    // language=JSRegexp
+    const regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
     return regexp.test(str);
 }
 const Header = ({image, title, subTitle, actionButton, additionalClass, content}) => {
@@ -17,8 +18,8 @@ const Header = ({image, title, subTitle, actionButton, additionalClass, content}
         additionalClass += ' dark-pattern'
     }
     let actionButtonAnchor = '';
-    if (actionButton) {
-        console.log(actionButton);
+    if (actionButton.show === true || actionButton === 'true') {
+        console.log('actionButton', actionButton);
         actionButtonAnchor = isUrl(actionButton.url) ?
             <a className={'btn  btn-primary btn-lg hero-button'} target={'_blank'}
                href={actionButton.url}>{actionButton.text}</a> : <NavLink to={actionButton.url}
