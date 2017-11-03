@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/Store.css";
 import {NavLink} from "react-router-dom";
 import LazyLoad from "react-lazyload";
+import "../styles/Store.css";
 
 const Product = (props) => {
     const {status, slug, name, price, imageSrc, imageAlt, classContainer} = props;
