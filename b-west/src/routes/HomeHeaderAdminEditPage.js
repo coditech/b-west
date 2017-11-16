@@ -54,10 +54,9 @@ class HomeHeaderAdminEditPage extends React.Component {
 
     onSubmit(evt) {
         evt.preventDefault();
-        alert(0);
         let formData = new FormData();
         const files = this.filesInput.files;
-        for (var key in files) {
+        for (let key in files) {
             // check if this is a file:
             if (files.hasOwnProperty(key) && files[key] instanceof File) {
                 formData.append("imageSrc", files[key]);
@@ -78,6 +77,7 @@ class HomeHeaderAdminEditPage extends React.Component {
             .send(formData)
             .then((res) => res.json())
             .then(x => {
+                console.log('success =>', x);
             })
             .catch(err => {
                 console.error(err)

@@ -6,7 +6,7 @@ const googleStorage = require("@google-cloud/storage");
 
 const storage = googleStorage({
     projectId: "b-west",
-    keyFilename: "../b-west/src/b-west-firebase-adminsdk-e58gj-0315440c03.json"
+    keyFilename: "../b-west/src/b-west-firebase-adminsdk.json"
 });
 const bucket = storage.bucket("b-west.appspot.com");
 
@@ -89,6 +89,7 @@ const uploadImagesToStorage = (files, path) => {
                 });
 
                 blobStream.on('error', (error) => {
+                    console.log('error ', error);
                     reject('Something is wrong! Unable to upload at the moment.', error);
                 });
                 blobStream.on('finish', () => {
