@@ -13,6 +13,7 @@ class AboutUsAdminAddPage extends React.Component {
             title: '',
             content: '',
             imageAlt: '',
+            submitForm: false,
         };
         this.refreshData = props.refreshData;
         this.onChange = this.onChange.bind(this);
@@ -45,34 +46,48 @@ class AboutUsAdminAddPage extends React.Component {
 
     onSubmit(evt) {
         evt.preventDefault();
-        let formData = new FormData();
-        const files = this.filesInput.files;
-        for (let key in files) {
-            // check if this is a file:
-            if (files.hasOwnProperty(key) && files[key] instanceof File) {
-                formData.append("image", files[key]);
-            }
+        this.setState({...this.state, submitForm: true});
+        if (this.state.submitForm) {
+            alert('please Wait');
         }
-        // IMAGES MISSING IN THE FORM DATA
-        formData.append("title", this.state.title);
-        formData.append("content", this.state.content);
-        formData.append("imageAlt", this.state.imageAlt);
-
-        superagent
-            .post(websiteUrl + "api/aboutpage")
-            .send(formData)
-            .end((err, res) => {
-                if (err) {
-                    alert('something went wrong please try again');
+        else {
+            let formData = new FormData();
+            const files = this.filesInput.files;
+            for (let key in files) {
+                // check if this is a file:
+                if (files.hasOwnProperty(key) && files[key] instanceof File) {
+                    formData.append("image", files[key]);
                 }
-                else {
-                    alert('Record Added');
-                    this.refreshData();
-                    this.state.history.push('/admin/aboutpage')
+            }
+            // IMAGES MISSING IN THE FORM DATA
+            formData.append("title", this.state.title);
+            formData.append("content", this.state.content);
+            formData.append("imageAlt", this.state.imageAlt);
+
+            superagent
+                .post(websiteUrl + "api/aboutpage")
+                .send(formData)
+                .end((err, res) => {
+                    if (err) {
+                        alert('something went wrong please try again');
+                        this.setState({...this.state, submitForm: false});
+
+                    }
+                    else {
+                        alert('Record Added');
+                        this.setState({...this.state, submitForm: false});
+
+                        this.refreshData();
+                        setTimeout(() => {
+                            this.state.history.push('/admin/aboutpage')
+
+                        },300)
 
 
-                }
-            })
+                    }
+                })
+        }
+
     }
 
     render() {
@@ -80,7 +95,7 @@ class AboutUsAdminAddPage extends React.Component {
             <div>
                 <div className="row">
                     <h2 className="col-sm-6 col-sm-push-3">About Us Page Section</h2>
-
+                    <h3>{this.state.submitForm ? 'Please wait till this message go away' : ''}</h3>
                 </div>
                 <NavLink to={'/admin/aboutpage'}>
                     <button className={'btn'}>Back</button>
@@ -151,7 +166,7 @@ class AboutUsAdminAddPage extends React.Component {
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3 col-sm-push-3">
-                            <button type={'submit'} className={'btn btn-block'} >Submit</button>
+                            <button type={'submit'} className={'btn btn-block'}>Submit</button>
                         </div>
                     </div>
 

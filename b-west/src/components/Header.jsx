@@ -12,7 +12,8 @@ const Header = ({image, title, subTitle, actionButton, additionalClass, content}
     let styleReady = {};
     if (image) {
         styleReady = {
-            backgroundImage: 'url("' + image.src + '")'
+            backgroundImage: 'url("' + image.src + '")',
+            backgroundSize: '100% 100%'
         }
     } else {
         additionalClass += ' dark-pattern'

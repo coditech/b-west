@@ -11,7 +11,8 @@ const HomeHeaderAdminPage = ({homeHeader}) => {
             </NavLink>
             <div className="row">
                 <div className="col-sm-8">
-                    <table className="table table-bordered table-striped"><tbody>
+                    <table className="table table-bordered table-striped">
+                        <tbody>
                         <tr>
                             <th>Title</th>
                             <td>{homeHeader.title}</td>
@@ -40,7 +41,7 @@ const HomeHeaderAdminPage = ({homeHeader}) => {
                         </tr>
                         <tr>
                             <th>Available</th>
-                            <td>{homeHeader.actionButtonShow ? 'true' : 'false'}</td>
+                            <td>{(homeHeader.actionButtonShow === true || homeHeader.actionButtonShow === 'true') ? 'true' : 'false'}</td>
                         </tr>
                         <tr>
                             <th>Action Button text</th>
@@ -49,7 +50,9 @@ const HomeHeaderAdminPage = ({homeHeader}) => {
                         <tr>
                             <th>Action Button url</th>
                             <td>{homeHeader.actionButtonUrl}</td>
-                        </tr></tbody></table>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

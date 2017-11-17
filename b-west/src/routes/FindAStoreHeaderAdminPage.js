@@ -17,6 +17,19 @@ const FindAStoreHeaderAdminPage = ({findAStore}) => {
                             <th>Title</th>
                             <td>{findAStore.title}</td>
                         </tr>
+                        <tr>
+                            <th>Show Background Image</th>
+                            <td>
+                                {
+                                    findAStore.showBackgroundImage.toString()
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Image</th>
+                            <td><img className={'img-responsive'} src={findAStore.bannerBackgroundImage}
+                                     alt={'Find a store '}/></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

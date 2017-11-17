@@ -1,5 +1,7 @@
 import {firebasePushData, firebaseUpdateData, subscribe} from "../firebaseData";
 import {isEmpty} from "../../helpers/index";
+import {uploadImagesToStorage} from "../firebaseStorage";
+
 const log = (message) => console.log('Contact Us Home Section Model path: b-west/src/api/model/contactUs.js ' + JSON.stringify(message))
 
 let allData = {};
@@ -27,39 +29,61 @@ const contactUs_get = (request, resources) => {
 };
 const contactUs_update = (request, resources, next) => {
 
-    const {title, content, headerTitle} = request.body;
+    const {title, content, headerTitle, showBackgroundImage} = request.body;
     const data = {
         title,
         content,
-        headerTitle
+        headerTitle,
+        showBackgroundImage
     };
-    log(data);
-    firebaseUpdateData({
-        databaseRef: 'contactUs',
-        data
-    }).then(response => {
-        if (response.success) {
-            resources.send({
-                success: true,
-                error: null,
-                data: data
-            })
-        } else {
+
+    let files = request.files;
+    uploadImagesToStorage(files, 'contactUs')
+        .then(response => {
+
+            const image = response['bannerBackgroundImage'];
+            if (image) {
+                data.bannerBackgroundImage = image.url;
+
+            } else {
+                log('Image not found')
+            }
+            firebaseUpdateData({
+                databaseRef: 'contactUs',
+                data
+            }).then(response => {
+                if (response.success) {
+                    resources.send({
+                        success: true,
+                        error: null,
+                        data: data
+                    })
+                } else {
+                    resources.send({
+                        success: false,
+                        error: response.error,
+                        data: data
+                    })
+                }
+
+            }).catch(error => {
+                log(error);
+                resources.send({
+                    success: false,
+                    error: error,
+                    data: data
+                })
+            });
+
+        })
+        .catch((err) => {
+            next(err);
             resources.send({
                 success: false,
-                error: response.error,
-                data: data
+                error: err
             })
-        }
-
-    }).catch(error => {
-        log(error);
-        resources.send({
-            success: false,
-            error: error,
-            data: data
         })
-    });
+
 
 };
 

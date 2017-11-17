@@ -9,6 +9,7 @@ class HomeHeaderAdminEditPage extends React.Component {
         const homeHeader = props.homeHeader;
         const {title, content, subTitle, imageSrc, imageAlt, actionButtonShow, actionButtonText, actionButtonUrl} = homeHeader;
         this.state = {
+            ...props,
             title: title || '',
             content: content || '',
             subTitle: subTitle || '',
@@ -31,7 +32,7 @@ class HomeHeaderAdminEditPage extends React.Component {
     }
 
     onChange(evt) {
-        var newContent = evt.editor.getData();
+        const newContent = evt.editor.getData();
         this.setState({
             content: newContent
         });
@@ -75,9 +76,19 @@ class HomeHeaderAdminEditPage extends React.Component {
         superagent
             .put(websiteUrl + "api/home-header")
             .send(formData)
-            .then((res) => res.json())
-            .then(x => {
-                console.log('success =>', x);
+            .then(response => {
+                console.log('success =>', response.body);
+                const {success} = response.body;
+                if (success) {
+                    console.log(this);
+                    alert('Change done');
+                    setTimeout(() => {
+
+                        this.state.history.push('/admin/home-header')
+                    }, 500);
+                } else {
+                    alert('Please Try Again');
+                }
             })
             .catch(err => {
                 console.error(err)

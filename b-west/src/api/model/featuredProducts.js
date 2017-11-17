@@ -23,8 +23,6 @@ const featuredProducts_create = (request, resources, next) => {
     const {name, description, price, status, imageAlt, slug} = request.body;
 
     let files = request.files;
-
-
     uploadImagesToStorage(files, 'featuredProducts')
         .then(response => {
             let data = {
@@ -65,8 +63,6 @@ const featuredProducts_create = (request, resources, next) => {
                 error: err
             })
         })
-
-
 };
 
 const featuredProducts_get = (request, resources, next) => {

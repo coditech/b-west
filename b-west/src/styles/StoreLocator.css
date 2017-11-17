@@ -36,6 +36,7 @@
     border-radius: 4px;
     position: relative;
     color: rgb(152, 152, 152);
+    width: 100%;
 }
 
 .store-locator .location {

@@ -2,17 +2,19 @@ import React from "react";
 import superagent from "superagent";
 import {websiteUrl} from "../helpers";
 import {Quill} from "../components/Quill";
+import {NavLink} from "react-router-dom";
 
 class ContactUsAdminEditPage extends React.Component {
     constructor(props, context) {
         super(props, context);
-        const {contactUs } = props;
+        const {contactUs} = props;
         this.state = {
             ...props,
             content: contactUs.content,
             headerTitle: contactUs.headerTitle,
-            title: contactUs.title
-        }
+            title: contactUs.title,
+            showBackgroundImage: contactUs.showBackgroundImage
+        };
         this.onChange = this.onChange.bind(this);
         this.refreshData = props.refreshData;
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -42,6 +44,7 @@ class ContactUsAdminEditPage extends React.Component {
             [name]: value
         });
     }
+
     handleQuillChange(value) {
         this.setState({content: value});
     }
@@ -51,11 +54,19 @@ class ContactUsAdminEditPage extends React.Component {
         evt.preventDefault();
         alert(0);
         let formData = new FormData();
+        const files = this.filesInput.files;
+        for (let key in files) {
+            // check if this is a file:
+            if (files.hasOwnProperty(key) && files[key] instanceof File) {
+                formData.append("bannerBackgroundImage", files[key]);
+            }
+        }
 
         // IMAGES MISSING IN THE FORM DATA
         formData.append("title", this.state.title);
         formData.append("content", this.state.content);
         formData.append("headerTitle", this.state.headerTitle);
+        formData.append("showBackgroundImage", this.state.showBackgroundImage);
 
 
         superagent
@@ -66,7 +77,7 @@ class ContactUsAdminEditPage extends React.Component {
                     alert('something went wrong please try again');
                 }
                 else {
-                    console.log('response =<', response)
+                    console.log('response =<', response);
                     alert('Record Updated');
                     this.refreshData();
                     this.state.history.push('/admin/contact-us')
@@ -77,12 +88,59 @@ class ContactUsAdminEditPage extends React.Component {
     }
 
     render() {
+        const {title, bannerBackgroundImage, content, headerTitle, showBackgroundImage} = this.state;
+
         return (
             <div>
                 <div className="row">
-                    <h2 className="col-sm-6 col-sm-push-3">Home About Admin Page</h2>
+                    <h2 className="col-sm-6 col-sm-push-3">Contact Us Admin Page</h2>
                 </div>
+                <NavLink to={'/admin/contact-us'}>
+                    <button className={'btn'}>Back</button>
+                </NavLink>
                 <form onSubmit={event => this.onSubmit(event)}>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-6 col-sm-push-3">
+                            <input
+                                type={"checkbox"}
+                                name={"showBackgroundImage"}
+                                id={"showBackgroundImage"}
+                                defaultChecked={showBackgroundImage.toString() === 'true'}
+                                onChange={event => {
+                                    this.handleInputChange(event)
+                                }}
+                            /><label htmlFor={'showBackgroundImage'}>Select if action button is available on Home
+                            Header</label>
+                        </div>
+                    </div>
+                    {
+                        bannerBackgroundImage ? <div className="row">
+                            <div className="col-xs-4">
+                                <img className={'img-responsive'} src={bannerBackgroundImage}
+                                     alt={'background '}/>
+                            </div>
+                        </div> : null
+                    }
+
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="image" className={" "}>
+                                Find A store Image
+                            </label>
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="file"
+                                accept={"image/*"}
+                                ref={input => {
+                                    this.filesInput = input;
+                                }}
+                                id={"image"}
+                                name={"image"}
+                            />
+                        </div>
+                    </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
                             <label htmlFor="title" className={" "}>
@@ -95,7 +153,7 @@ class ContactUsAdminEditPage extends React.Component {
                                 type="text"
                                 id={"title"}
                                 name={"title"}
-                                defaultValue={this.state.title}
+                                defaultValue={title}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
@@ -112,7 +170,7 @@ class ContactUsAdminEditPage extends React.Component {
                                 type="text"
                                 id={"headerTitle"}
                                 name={"headerTitle"}
-                                defaultValue={this.state.headerTitle}
+                                defaultValue={headerTitle}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
@@ -124,7 +182,7 @@ class ContactUsAdminEditPage extends React.Component {
                             </label>
                         </div>
                         <div className="col-sm-6">
-                            <Quill content={this.state.content} onChange={this.handleQuillChange}/>
+                            <Quill content={content} onChange={this.handleQuillChange}/>
                         </div>
                     </div>
                     <div className="row form-group text-center">

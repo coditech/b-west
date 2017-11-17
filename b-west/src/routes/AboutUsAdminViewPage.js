@@ -10,7 +10,9 @@ const AboutUsAdminViewPage = ({aboutUs, match}) => {
             <h2>About Us </h2>
             <NavLink to={'/admin/aboutpage'}>
                 <button className={'btn'}>Back</button>
-            </NavLink>
+            </NavLink> <NavLink to={`/admin/aboutpage/${aboutUs.id}/edit`}>
+            <button className={'btn'}>Edit</button>
+        </NavLink>
             <NavLink to={'/admin/aboutpage/create'}>
                 <button className={'btn'}>Add New Entry</button>
             </NavLink>

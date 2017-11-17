@@ -11,7 +11,6 @@ const getObjectAt = (objectData, index) => {
     return objectData[index];
 };
 const deleteAction = (action_url, action_refresh) => {
-    alert(1);
     superagent
         .del(action_url)
         .then((response) => {
@@ -25,6 +24,7 @@ const deleteAction = (action_url, action_refresh) => {
 
         })
         .catch(err => {
+            alert("Error please try again", err);
         })
 }
 export const ActionCell = props => {

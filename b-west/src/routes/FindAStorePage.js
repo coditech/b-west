@@ -28,9 +28,14 @@ class FindAStorePage extends React.Component {
     render() {
 
         const {findAStore} = this.state;
+
+        const image = {
+            src: findAStore.bannerBackgroundImage
+        }
         return (
             <div>
-                <Header  title={findAStore.title} additionalClass={'find-a-store'} actionButton={{show: false}}/>
+                <Header title={findAStore.title} additionalClass={'find-a-store'} showBackgroundImage={findAStore.showBackgroundImage} actionButton={{show: false}}
+                        image={image}/>
                 <div className="container store-locator margin-top-80">
 
                     <div className="row">
