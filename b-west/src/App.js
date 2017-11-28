@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import superagent from 'superagent';
 
 import PublicApp from "./routes/PublicApp";
@@ -7,6 +7,25 @@ import {LoginPage} from "./routes/LoginPage";
 import AdminApp from "./routes/AdminApp";
 import './styles/App.css'
 import {mixProps} from "./helpers/index";
+const PrivateRoute = ({component: Component, passedProps, ...rest}) => {
+
+    return (
+        <Route {...rest} render={props => {
+            const {auth} = passedProps;
+            props = {...props, ...passedProps};
+            return (
+                auth.isAuthenticated ? (
+                    <Component {...props}/>
+                ) : (
+                    <Redirect to={{
+                        pathname: '/login',
+                        state: {from: props.location}
+                    }}/>
+                )
+            )
+        }}/>
+    )
+};
 
 class App extends React.Component {
 
@@ -17,9 +36,12 @@ class App extends React.Component {
         this.refreshData = this.refreshData.bind(this);
         this.refresh = this.refresh.bind(this);
         this.state = {
-            ...data,
             status: 2,
-            counter: 0
+            counter: 0,
+            auth: {
+                isAuthenticated: false
+            },
+            ...data,
         };
 
     }
@@ -43,6 +65,7 @@ class App extends React.Component {
         })
     }
 
+
     render() {
         const {refreshData} = this;
         const passedProps = {...this.state, refreshData};
@@ -51,10 +74,13 @@ class App extends React.Component {
         return (
             <div>
                 <Switch>
-                    <Route path="/admin" render={(props) => {
-                        return (<AdminApp {...mix(props)}/>)
-                    }
-                    }/>
+                    <PrivateRoute path="/admin/:page?/:page2?/:page3?/:page4?" component={AdminApp}
+                                  passedProps={{...passedProps}}/>
+
+                    {/*<Route path="/admin" render={(props) => {*/}
+                        {/*return (<AdminApp {...mix(props)}/>)*/}
+                    {/*}*/}
+                    {/*}/>*/}
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/" render={(props) => {
                         // TODO: move this to componentDidMount
