@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import moment from 'moment';
 import User from '../mongo_model/users';
 import config from '../config';
-import {uploadImagesToStorage} from "../firebaseStorage";
 
 const createToken = name => {
     let payload = {
@@ -27,13 +26,15 @@ const signup = (req, res) => {
             errors: {},
             message: ''
         };
+
         if (existingUser) {
+            if (existingUser.email === existingUser) {
+                response.errors.email = 'Email already exist';
+                response.errors.username = 'Username already exist';
+            }
             response = {
                 ...response,
                 success: false,
-                user: existingUser,
-                email,
-                username
             };
             if (existingUser.username === username) {
                 response.errors.username = 'Username already exist';
@@ -68,19 +69,15 @@ const signup = (req, res) => {
 };
 const login = (req, res) => {
 
-    const {email_username, password} = req.body;
+    const {email, password} = req.body;
     let response = {
         success: true,
         errors: {},
         message: ''
     };
     User.findOne({
-        $or: [{
-            email: email_username
-        }, {
-            username: email_username
-        }]
-    }, 'password').populate('images').exec((err, user) => {
+        email
+    }, 'password').exec((err, user) => {
         if (!user) {
             response.success = false;
             response.message = 'Invalid email/password 1';
@@ -96,11 +93,7 @@ const login = (req, res) => {
             }
 
             User.findOne({
-                $or: [{
-                    email: email_username
-                }, {
-                    username: email_username
-                }]
+                email
             }, (err, user) => {
 
                 user.lastLogin = new Date();
@@ -192,7 +185,7 @@ const checkAuth = (req, res, next) => {
 
 };
 const updateUser = (req, res) => {
-    const {id,password} = req.body;
+    const {id, password} = req.body;
     User.findById(id, (err, user) => {
         if (err) {
             res.send({
@@ -220,167 +213,29 @@ const updateUser = (req, res) => {
         });
     })
 };
-const updateProfilePic = (req, res, next) => {
-    const files = req.files;
-    const token = req.headers['x-access-token'];
 
-    uploadImagesToStorage(files, 'profileImages')
-        .then(response => {
-
-            const image = response['profile_image'];
-            if (image) {
-                // data.imageSrc = image.url;
-                User.findOne({token}, (err, user) => {
-
-                    if (err) {
-                        res.json({
-                            success: false,
-                            errors: {},
-                            message: 'Something wen wrong try to login again'
-                        })
-                    }
-                    user.profileImage = image.url;
-                    user.save((err, user) => {
-                        if (err) {
-                            res.send({
-                                success: false,
-                                message: 'Something went wrong',
-                                err
-                            })
-                        }
-                        res.status(200).send({
-                            success: true,
-                            message: 'User profile pic updated',
-                            data: {
-                                user, body: req.body
-                            }
-                        });
-                    });
-                });
-
-            } else {
-                res.json({
-                    success: false,
-                    errors: {},
-                    message: 'Something wen wrong try to login again'
-                })
-            }
-
-
-        })
-        .catch((err) => {
-            next(err);
-            res.send({
-                success: false,
-                error: err
-            })
-        });
-};
-const loveDogById = (req, res) => {
-    const logidInUser = req.user;
-    const {_id} = req.body;
-    User.findOne({_id: _id}, (err, user) => {
+const getUsers = (req, res) => {
+    User.find({}, function (err, users) {
         if (err) {
             res.send({
                 success: false,
-                message: 'User not found',
-                err
+                message: 'some error in users route',
+                users: []
             })
         } else {
-            const oldLikes = user.likes;
-            const isUserDidLikeBefore = oldLikes.find(item => {
-                return item.toString() === logidInUser._id.toString();
-            });
-            if (isUserDidLikeBefore) {
-                const index = oldLikes.indexOf(logidInUser._id);
-                if (index > -1) {
-                    oldLikes.splice(index, 1);
-                }
 
-            } else {
-                oldLikes.push(logidInUser._id);
-
-            }
-            user.likes = oldLikes;
-            user.save((err, user) => {
-                if (err) {
-                    res.json({
-                        success: false,
-                        _id,
-                        userSignId: req.user,
-                        user
-                    })
-                } else {
-                    res.json({
-                        success: true,
-                        _id,
-                        userSignId: req.user,
-                        isUserDidLikeBefore: isUserDidLikeBefore || '',
-                        user
-                    })
-                }
-            })
-
-        }
-    });
-
-
-}
-
-const updateUserFilter = (req, res) => {
-    const logidInUser = req.user;
-    const {location, origin, breed, gender} = req.body;
-    logidInUser.filters.location = location;
-    logidInUser.filters.origin = origin;
-    logidInUser.filters.breed = breed;
-    logidInUser.filters.gender = gender;
-    logidInUser.save((err, user) => {
-        if (err) {
-            res.json({
-                success: false,
-                message: 'somthing went wrong'
-            })
-        }
-        else {
-            res.json({
+            res.send({
                 success: true,
-                user,
+                users
             });
         }
-    })
-};
-
-const getRandomUser = (req, res) => {
-
-    User.aggregate([{$sample: {size: 5}}]).then(results => {
-        res.json({
-            success: true,
-            results,
-            query: req.query,
-            body: req.body
-        })
-    }).catch(err => {
-        res.json({
-            success: false,
-            err,
-            query: req.query,
-            body: req.body
-        })
     });
-
 };
 export {
     signup,
     login,
     verifyAuth,
-    getLocations,
-    insertNewLocation,
     updateUser,
-    updateProfilePic,
-    getUsers,
-    getUserByUsername,
-    loveDogById,
-    updateUserFilter,
     checkAuth,
-    getRandomUser
+    getUsers
 };

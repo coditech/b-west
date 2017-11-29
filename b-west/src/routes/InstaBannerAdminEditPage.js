@@ -44,7 +44,7 @@ class InstaBannerAdminEditPage extends React.Component {
 
     onSubmit(evt) {
         evt.preventDefault();
-        alert(9);
+
         const image = this.filesInput.files;
         let formData = new FormData();
         for (let key in image) {
@@ -54,6 +54,7 @@ class InstaBannerAdminEditPage extends React.Component {
                 formData.append("backgroundImage", image[key]);
                 superagent
                     .put(websiteUrl + "api/instagram-banner")
+                    .set('x-access-token', this.state.auth.token)
                     .send(formData)
                     .end((err, res) => {
                         if (err) {

@@ -6,26 +6,28 @@ const logoStyle = {
     maxWidth: '100px'
 
 };
-const loginAction = (event, history) => {
+const loginAction = (event, login, history) => {
     event.preventDefault();
-    history.push('/new-location');
-    alert(123);
-
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    login(email, password, history);
 };
-const Login = ({history}) => {
+const Login = ({login, history}) => {
 
 
     return (
 
         <div className="login-clean">
-            <form method="post" onSubmit={(event)=> {loginAction(event, history)}}>
+            <form method="post" onSubmit={(event) => {
+                loginAction(event, login, history)
+            }}>
                 <h2 className="sr-only">Login Form</h2>
                 <div className="illustration"><img src={BWestImage} alt={'B-West Logo'} style={logoStyle}/></div>
                 <div className="form-group">
-                    <input className="form-control" type="email" name="email" placeholder="Email"/>
+                    <input className="form-control" type="email" name="email" id={'email'} placeholder="Email"/>
                 </div>
                 <div className="form-group">
-                    <input className="form-control" type="password" name="password" placeholder="Password"/>
+                    <input className="form-control" type="password" name="password" id={'password'} placeholder="Password"/>
                 </div>
                 <div className="form-group">
                     <button className="btn btn-primary btn-block" type="submit">Log In</button>

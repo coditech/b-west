@@ -10,9 +10,10 @@ const getObjectAt = (objectData, index) => {
     }
     return objectData[index];
 };
-const deleteAction = (action_url, action_refresh) => {
+const deleteAction = (action_url, action_refresh, token) => {
     superagent
         .del(action_url)
+        .set('x-access-token', token)
         .then((response) => {
             const body = response.body;
             if (body.success) {
@@ -24,11 +25,11 @@ const deleteAction = (action_url, action_refresh) => {
 
         })
         .catch(err => {
-            alert("Error please try again", err);
+            alert("Error please try again " +  err);
         })
 }
 export const ActionCell = props => {
-    const {action, rowIndex, columnKey, data} = props;
+    const {action, rowIndex, columnKey, data, token} = props;
     const {action_delete, action_url, refreshData} = action;
     const key = getObjectAt(data, rowIndex) ? getObjectAt(data, rowIndex)[columnKey] : '';
     const actionView = action_url + '/' + key;
@@ -48,7 +49,7 @@ export const ActionCell = props => {
             </NavLink>
 
             <button onClick={() => {
-                deleteAction(actionDelete, refreshData)
+                deleteAction(actionDelete, refreshData, token)
             }}
                     style={{minWidth: "80px", margin: '10px 10px', display: 'inline-block'}} className="btn">Delete
             </button>

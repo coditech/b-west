@@ -73,6 +73,7 @@ class AboutUsAdminEditPage extends React.Component {
         formData.append("imageAlt", this.state.imageAlt);
         superagent
             .put(websiteUrl + "api/aboutpage/" + this.state.id)
+            .set('x-access-token', this.state.auth.token)
             .send(formData)
             .end((err, res) => {
                 if (err) {

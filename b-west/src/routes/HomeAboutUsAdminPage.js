@@ -7,6 +7,7 @@ class HomeAboutUsAdminPage extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
+            ...props,
             title: "Old Title",
             subTitle: "Old subTitle ",
             alt_image_one: "alt_image_one",
@@ -53,6 +54,7 @@ class HomeAboutUsAdminPage extends React.Component {
 
         superagent
             .post(websiteUrl + "api/about-us-home")
+            .set('x-access-token', this.state.auth.token)
             .send(formData)
             .then((res) => res.json())
             .then(x => {

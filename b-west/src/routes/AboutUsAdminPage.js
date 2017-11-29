@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 const AboutUsAdminPage = (props) => {
 
-    const {aboutUs, refreshData} = props;
+    const {aboutUs, refreshData, auth} = props;
     return (
         <div id={'table-container'}>
             <div className="row">
@@ -39,7 +39,8 @@ const AboutUsAdminPage = (props) => {
                     cell={<ActionCell data={aboutUs} action={{
                         refreshData,
                         action_delete: '/api/aboutpage',
-                        action_url: '/admin/aboutpage'
+                        action_url: '/admin/aboutpage',
+                        token: auth.token
                     }}
                     />}
                     width={300}

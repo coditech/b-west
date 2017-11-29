@@ -14,7 +14,6 @@ const userSchema = new Schema({
     password: {type: String, select: false},
     username: {type: String, unique: [true, 'Username already exist'], lowercase: true, trim: true},
     token: {type: String, default: ''},
-    lastLogin: {type: Date, default: '12/10/1990'},
     createdAt: {type: Date, default: Date.now()},
 });
 userSchema.pre('save', function (next) {

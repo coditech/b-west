@@ -77,6 +77,7 @@ class AboutUsHomeSectionAdminEditPage extends React.Component {
 
         superagent
             .put(websiteUrl + "api/aboutus-home")
+            .set('x-access-token', this.state.auth.token)
             .send(formData)
             .end((err, res) => {
                 if (err) {

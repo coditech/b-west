@@ -2,28 +2,30 @@ import React from 'react';
 import superagent from "superagent";
 import {websiteUrl} from "../helpers";
 import {NavLink} from "react-router-dom";
-import {Quill} from "../components/Quill";
 
-class AboutUsAdminAddPage extends React.Component {
+class UsersAdminAddPage extends React.Component {
 
     constructor(props, context) {
         super(props, context);
         this.state = {
             ...props,
-            title: '',
-            content: '',
-            imageAlt: '',
-            submitForm: false,
+
+            inputs: {
+                username: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
+            },
+            errors: {
+                username: '',
+                email: '',
+                password: '',
+            }
         };
+
         this.refreshData = props.refreshData;
-        this.onChange = this.onChange.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleQuillChange = this.handleQuillChange.bind(this);
-
-    }
-
-    handleQuillChange(value) {
-        this.setState({content: value});
+        this.validatePassword = this.validatePassword.bind(this);
     }
 
     handleInputChange(event) {
@@ -31,62 +33,59 @@ class AboutUsAdminAddPage extends React.Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        this.setState({
-            [name]: value
-        });
+        const newState = {
+            ...this.state,
+            inputs: {
+                ...this.state.inputs,
+                [name]: value
+            }
+        };
+        this.setState(newState);
     }
 
-    onChange(evt) {
-        let newContent = evt.editor.getData();
-        this.setState({
-            content: newContent
-        });
-    }
+    validatePassword() {
+        const {password, confirmPassword} = this.state.inputs;
+        if (password !== confirmPassword || password.length < 6) {
+            const oldState = this.state;
+            const newState = {
+                ...oldState,
+                errors: {
+                    ...oldState.errors,
+                    password: 'password and confirm password need to be the same and more then 6 character'
+                }
+            };
+            this.setState(newState);
 
+            return false;
+        }
+        return true;
+    }
 
     onSubmit(evt) {
         evt.preventDefault();
-        this.setState({...this.state, submitForm: true});
-        if (this.state.submitForm) {
-            alert('please Wait');
-        }
-        else {
-            let formData = new FormData();
-            const files = this.filesInput.files;
-            for (let key in files) {
-                // check if this is a file:
-                if (files.hasOwnProperty(key) && files[key] instanceof File) {
-                    formData.append("image", files[key]);
-                }
-            }
-            // IMAGES MISSING IN THE FORM DATA
-            formData.append("title", this.state.title);
-            formData.append("content", this.state.content);
-            formData.append("imageAlt", this.state.imageAlt);
-
+        // this.state.getUsersData();
+        if (!this.validatePassword()) {
+            alert('Check Errors and re-submit');
+        } else {
             superagent
-                .post(websiteUrl + "api/aboutpage")
-                .send(formData)
+                .post(websiteUrl + "api/users")
                 .set('x-access-token', this.state.auth.token)
+                .send({
+                    ...this.state.inputs
+                })
                 .end((err, res) => {
                     if (err) {
                         alert('something went wrong please try again');
-                        this.setState({...this.state, submitForm: false});
-
                     }
                     else {
-                        alert('Record Added');
-                        this.setState({...this.state, submitForm: false});
-
+                        alert('Record Updated');
                         this.refreshData();
-                        setTimeout(() => {
-                            this.state.history.push('/admin/aboutpage')
-
-                        },300)
+                        this.state.history.push('/admin/users')
 
 
                     }
                 })
+
         }
 
     }
@@ -96,24 +95,26 @@ class AboutUsAdminAddPage extends React.Component {
             <div>
                 <div className="row">
                     <h2 className="col-sm-6 col-sm-push-3">About Us Page Section</h2>
-                    <h3>{this.state.submitForm ? 'Please wait till this message go away' : ''}</h3>
+
                 </div>
-                <NavLink to={'/admin/aboutpage'}>
+                <NavLink to={'/admin/users'}>
                     <button className={'btn'}>Back</button>
                 </NavLink>
                 <form onSubmit={event => this.onSubmit(event)}>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
-                            <label htmlFor="title" className={" "}>
-                                Title
+                            <label htmlFor="name" className={" "}>
+                                username
                             </label>
+                            <span style={{color: 'red', display: 'block'}}>{this.state.errors.username}</span>
                         </div>
                         <div className="col-sm-6">
                             <input
                                 className={"form-control"}
                                 type="text"
-                                id={"title"}
-                                name={"title"}
+                                id={"username"}
+                                name={"username"}
+                                defaultValue={this.state.inputs.username}
                                 required={true}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
@@ -121,50 +122,61 @@ class AboutUsAdminAddPage extends React.Component {
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
-                            <label htmlFor="content" className={" "}>
-                                Content
+                            <label htmlFor="slug" className={" "}>
+                                Email
                             </label>
-                        </div>
-                        <div className="col-sm-6">
-                            <Quill content={''} onChange={this.handleQuillChange}/>
+                            <span style={{color: 'red', display: 'block'}}>{this.state.errors.email}</span>
 
-                        </div>
-                    </div>
-                    <div className="row form-group text-center">
-                        <div className="col-sm-3">
-                            <label htmlFor="image" className={" "}>
-                                Background Image
-                            </label>
                         </div>
                         <div className="col-sm-6">
                             <input
                                 className={"form-control"}
-                                type="file"
-                                accept={"image/*"}
-                                ref={input => {
-                                    this.filesInput = input;
-                                }}
-                                id={"image"}
-                                name={"image"}
+                                type="email"
+                                id={"email"}
+                                name={"email"}
+                                defaultValue={this.state.inputs.email}
+                                required={true}
+                                onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
                     </div>
                     <div className="row form-group text-center">
                         <div className="col-sm-3">
-                            <label htmlFor="imageAlt" className={" "}>
-                                Image Alt
+                            <label htmlFor="price" className={" "}>
+                                Password
+                            </label>
+                            <span style={{color: 'red', display: 'block'}}>{this.state.errors.password}</span>
+
+                        </div>
+                        <div className="col-sm-6">
+                            <input
+                                className={"form-control"}
+                                type="text"
+                                id={"password"}
+                                name={"password"}
+                                defaultValue={this.state.inputs.password}
+                                onChange={(event) => this.handleInputChange(event)}
+                            />
+                        </div>
+                    </div>
+                    <div className="row form-group text-center">
+                        <div className="col-sm-3">
+                            <label htmlFor="status" className={" "}>
+                                Confirm Password
                             </label>
                         </div>
                         <div className="col-sm-6">
                             <input
                                 className={"form-control"}
                                 type="text"
-                                id={"imageAlt"}
-                                name={"imageAlt"}
+                                id={"confirmPassword"}
+                                name={"confirmPassword"}
+                                defaultValue={this.state.inputs.confirmPassword}
                                 onChange={(event) => this.handleInputChange(event)}
                             />
                         </div>
                     </div>
+
                     <div className="row form-group text-center">
                         <div className="col-sm-3 col-sm-push-3">
                             <button type={'submit'} className={'btn btn-block'}>Submit</button>
@@ -177,4 +189,4 @@ class AboutUsAdminAddPage extends React.Component {
     }
 }
 
-export {AboutUsAdminAddPage};
+export {UsersAdminAddPage};

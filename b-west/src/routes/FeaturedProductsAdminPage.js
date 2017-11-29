@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 const FeaturedProductsAdminPage = (props) => {
 
-    const {featuredProducts, refreshData} = props;
+    const {featuredProducts, refreshData, auth} = props;
     return (
         <div id={'table-container'}>
             <div className="row">
@@ -66,7 +66,8 @@ const FeaturedProductsAdminPage = (props) => {
                     cell={<ActionCell data={featuredProducts} action={{
                         refreshData,
                         action_delete: '/api/featured-products',
-                        action_url: '/admin/featured-products'
+                        action_url: '/admin/featured-products',
+                        token: auth.token
                     }}
                     />}
                     width={300}

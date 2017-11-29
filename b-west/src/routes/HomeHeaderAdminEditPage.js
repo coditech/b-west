@@ -76,6 +76,7 @@ class HomeHeaderAdminEditPage extends React.Component {
         superagent
             .put(websiteUrl + "api/home-header")
             .send(formData)
+            .set('x-access-token', this.state.auth.token)
             .then(response => {
                 console.log('success =>', response.body);
                 const {success} = response.body;

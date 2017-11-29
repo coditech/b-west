@@ -6,16 +6,16 @@ class LoginPage extends React.Component {
     constructor(props, context){
         super(props, context);
         this.state = {
-            history: props.history
+            ...props,
+
         }
     }
 
 
     render() {
-        const {history} = this.state;
         const passedProps = {
-            history
-        }
+            ...this.state
+        };
         return (
             <Login {...passedProps} />
         )

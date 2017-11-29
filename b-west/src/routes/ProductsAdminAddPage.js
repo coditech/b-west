@@ -13,7 +13,7 @@ class ProductsAdminAddPage extends React.Component {
 
         this.state = {
             ...props,
-            name:'',
+            name: '',
             slug: '',
             description: '',
             price: '',
@@ -62,6 +62,7 @@ class ProductsAdminAddPage extends React.Component {
         formData.append("imageAlt", this.state.imageAlt);
         superagent
             .post(websiteUrl + "api/products/")
+            .set('x-access-token', this.state.auth.token)
             .send(formData)
             .end((err, res) => {
                 if (err) {

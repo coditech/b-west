@@ -71,6 +71,7 @@ class ContactUsAdminEditPage extends React.Component {
 
         superagent
             .put(websiteUrl + "api/contact-us")
+            .set('x-access-token', this.state.auth.token)
             .send(formData)
             .end((err, response) => {
                 if (err) {

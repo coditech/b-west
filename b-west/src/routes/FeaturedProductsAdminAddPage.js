@@ -62,6 +62,7 @@ class FeaturedProductsAdminAddPage extends React.Component {
         formData.append("imageAlt", this.state.imageAlt);
         superagent
             .post(websiteUrl + "api/featured-products/")
+            .set('x-access-token', this.state.auth.token)
             .send(formData)
             .end((err, res) => {
                 if (err) {
