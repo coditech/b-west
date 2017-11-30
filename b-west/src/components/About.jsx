@@ -3,11 +3,6 @@ import {NavLink} from "react-router-dom";
 import '../styles/About.css'
 
 const About = ({title, subTitle, content, imageOneSrc, imageOneAlt, imageTwoSrc, imageTwoAlt}) => {
-
-    const style = {
-        maxHeight: '500px',
-        overflow: 'hidden'
-    };
     return (
         <section className="welcome intro-style-2 padding-top-20  padding-bottom-20 dark-pattern about-us">
             <div className="container">

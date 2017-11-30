@@ -1,5 +1,4 @@
 import React from "react";
-import CKEditor from "react-ckeditor-component";
 import superagent from "superagent";
 import {websiteUrl} from "../helpers";
 

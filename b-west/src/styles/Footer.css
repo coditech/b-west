@@ -73,10 +73,17 @@
 }
 
 .footer-logo-codi{
-    height:30px;
+
     width: 30px;
+    height: auto;
+    margin-top: 10px;
 }
 
+.vertical-center {
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+    display: flex;
+    align-items: center;
+}
 @media screen and (max-width: 1000px) {
     .footer-logo {
         position: static;

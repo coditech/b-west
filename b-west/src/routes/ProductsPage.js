@@ -118,6 +118,7 @@ class ProductsPage extends React.Component {
                                 </button>
                             </div> : null
                         }
+                        <div className="margin-bottom-90"/>
 
                     </div>
                 </div>

@@ -3,7 +3,9 @@ import '../styles/Banner.css'
 
 const Banner = ({backgroundImage}) => {
     const style = {
-        background: "url('" + backgroundImage + "') no-repeat 50% fixed / cover"
+        backgroundImage: "url('" + backgroundImage + "')",
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '50% fixed / cover'
     }
 
     return (

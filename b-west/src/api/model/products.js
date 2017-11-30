@@ -77,11 +77,11 @@ const products_get = (request, resources, next) => {
 };
 const products_update = (request, resources, next) => {
 
-    const {name, description, price, status, imageAlt, slug} = request.body;
+    const {name, description, price, status, imageAlt, slug, related_products} = request.body;
     const key = request.params.id;
 
     let files = request.files;
-
+    const related_products_array = JSON.parse(related_products);
 
     uploadImagesToStorage(files, 'products')
         .then(response => {
@@ -92,7 +92,8 @@ const products_update = (request, resources, next) => {
                 imageAlt,
                 classContainer: "col-sm-4 col-xs-6",
                 description,
-                slug
+                slug,
+                related_products: related_products_array
 
 
             };

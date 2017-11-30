@@ -19,6 +19,8 @@ import {ContactUsPage} from "./ContactUsPage";
 import {VillagersPage} from "./VillagersPage";
 import {ProductItemPage} from "./ProductItemPage";
 import {mixProps} from "../helpers/index";
+import {shuffle} from "../utils";
+
 class PublicApp extends React.Component {
 
     constructor(props, context) {
@@ -73,45 +75,63 @@ class PublicApp extends React.Component {
                 <Switch>
                     <Route exact path="/" render={(props) => {
 
-                        return ( <HomePage {...mixHomePage(props)}/>)
+                        return (<HomePage {...mixHomePage(props)}/>)
                     }
 
                     }/>
                     <Route exact path="/about-us" render={(props) => {
 
-                        return ( <AboutUsPage {...mixAboutPage(props)}/>)
+                        return (<AboutUsPage {...mixAboutPage(props)}/>)
                     }
                     }/>
                     <Route exact path="/find-a-store" render={(props) => {
 
-                        return ( <FindAStorePage {...mixFindAStore(props)}/>)
+                        return (<FindAStorePage {...mixFindAStore(props)}/>)
                     }
                     }/>
                     <Route exact path="/villagers" render={(props) => {
 
-                        return ( <VillagersPage {...mixVillagers(props)}/>)
+                        return (<VillagersPage {...mixVillagers(props)}/>)
                     }
                     }/>
 
                     <Route exact path="/products" render={(props) => {
 
-                        return ( <ProductsPage {...mixProductsPage(props)}/>)
+                        return (<ProductsPage {...mixProductsPage(props)}/>)
                     }
                     }/>
                     <Route exact path="/products/:slug" render={(props) => {
 
-                        const products = this.state.products.filter(({slug}) => {
+                        const product = this.state.products.find(({slug}) => {
                             return slug === props.match.params.slug;
-                        })
-                        const mixProductItemPage = mixProps({products});
-                        return products.length > 0 ?
-                            ( <ProductItemPage {...mixProductItemPage(props)} productFound={true}/>) :
+                        });
+                        console.log(JSON.stringify(product));
+
+                        let related_products = [];
+                        if (product) {
+                            if (product.related_products) {
+                                related_products = product.related_products.map(product_id => {
+                                    return this.state.products.find(item => item.id === product_id);
+                                });
+                                related_products = shuffle(related_products);
+                            }
+
+                        }
+
+
+                        // const relatedProducts =
+                        // related_products = [];
+                        const mixProductItemPage = mixProps({product, related_products});
+
+                        return product ?
+                            (<ProductItemPage {...mixProductItemPage(props)} productFound={true}/>) :
                             <ProductItemPage {...mixProductItemPage(props)} productFound={false}/>;
+
                     }
                     }/>
                     <Route exact path="/contact-us" render={(props) => {
 
-                        return ( <ContactUsPage {...mixContactPage(props)}/>)
+                        return (<ContactUsPage {...mixContactPage(props)}/>)
                     }
                     }/>
 

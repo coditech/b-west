@@ -7,7 +7,7 @@ const isUrl = (str) => {
     // language=JSRegexp
     const regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
     return regexp.test(str);
-}
+};
 const Header = ({image, title, subTitle, actionButton, additionalClass, content}) => {
     let styleReady = {};
     if (image) {

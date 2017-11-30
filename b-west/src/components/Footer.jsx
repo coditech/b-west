@@ -10,7 +10,7 @@ const Footer = ({ menuItems }) => {
           <li className="footer-social__item">
             <a
               className="social_link"
-              href="http://instagram.com/villagergoods"
+              href="https://www.instagram.com/bwestngo"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -20,7 +20,7 @@ const Footer = ({ menuItems }) => {
           <li className="footer-social__item">
             <a
               className="social_link"
-              href="http://facebook.com/villagergoods"
+              href="https://www.facebook.com/BekaaWest"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -47,9 +47,10 @@ const Footer = ({ menuItems }) => {
             rel="noopener noreferrer"
           >
            <span className={'licence'}> Designed And Developped By </span>
-            <img src={"/codi-logo-white.svg"} alt={'Codi Logo'} className={"footer-logo-codi"} />
+
+            <img src={"/codi_logo_white.png"} alt={'Codi Logo'} className={"footer-logo-codi"} />
           </a>
-          
+
         </p>
       </div>
     </footer>

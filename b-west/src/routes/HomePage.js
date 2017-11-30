@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import Banner from "../components/Banner";
 import {NavLink} from "react-router-dom";
 import {SubscribeBanner} from "../components/SubscribeBanner";
-import FindAStoreBanner from "../components/FIndAStoreBanner";
+import FindAStoreBanner from "../components/FindAStoreBanner";
 
 
 class HomePage extends React.Component {

@@ -9,7 +9,9 @@ const Store = ({featuredProducts}) => {
                 <ul className="row">
                     {featuredProducts.map(
                         (storeItem, n) =>
-                            n < 3 ? (
+                        {
+                            console.log('storeItem ', storeItem);
+                            return n < 3 ? (
                                 <Product
                                     name={storeItem.name}
                                     url={storeItem.productUrl}
@@ -22,6 +24,7 @@ const Store = ({featuredProducts}) => {
                                     key={n}
                                 />
                             ) : null
+                        }
                     )}
                 </ul>
             </div>
