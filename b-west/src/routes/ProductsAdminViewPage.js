@@ -8,7 +8,7 @@ const ProductsAdminViewPage = ({featuredProducts, match}) => {
     return (
 
         <div className={'text-center'}>
-            <h2>About Us </h2>
+            <h2>Products </h2>
             <NavLink to={'/admin/featured-products'}>
                 <button className={'btn'}>Back</button>
             </NavLink>

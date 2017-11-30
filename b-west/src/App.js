@@ -94,9 +94,7 @@ class App extends React.Component {
             password
 
         }).then(res => {
-            alert(JSON.stringify(res.body));
             if (res.body.success) {
-                alert(2);
 
                 const oldState = this.state;
                 const newState = {
@@ -114,12 +112,10 @@ class App extends React.Component {
                 }, 200);
             }
             else {
-                alert(3)
             }
 
 
         }).catch(err => {
-            alert(-1);
 
         });
     }

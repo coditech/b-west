@@ -39,6 +39,8 @@ import {UsersAdminPage} from "./UsersAdminPage";
 import {UsersAdminAddPage} from "./UsersAdminAddPage";
 import {UsersAdminEditPage} from "./UsersAdminEditPage";
 import {UsersAdminViewPage} from "./UsersAdminViewPage";
+import {SubscriberBannerAdminPage} from "./SubscriberBannerAdminPage";
+import {SubscriberBannerAdminEditPage} from "./SubscriberBannerAdminEditPage";
 
 
 const Default = () => {
@@ -73,16 +75,16 @@ class AdminApp extends React.Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.setState({});
         this.state.getUsersData();
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         this.setState(nextProps);
     }
 
-    render(){
+    render() {
         const props = this.state;
         const {aboutUs, aboutUsHomeSection, refreshData, contactUs, featuredProducts, products, instaBanner, findAStore, homeHeader, counter} = props;
         const defaultPassedProps = {...props, refreshData};
@@ -327,6 +329,21 @@ class AdminApp extends React.Component {
                                     return (<InstaBannerAdminEditPage  {...mixInstaBanner(props)}/>)
                                 }
                                 }/>
+                                <Route exact path="/admin/subscriberBanner" render={(props) => {
+                                    // TODO: move this to componentDidMount
+                                    if (typeof window !== 'undefined') {
+                                        window.scrollTo(0, 0)
+                                    }
+                                    return (<SubscriberBannerAdminPage  {...mixDefaults(props)}/>)
+                                }
+                                }/> <Route exact path="/admin/subscriberBanner/edit" render={(props) => {
+                                // TODO: move this to componentDidMount
+                                if (typeof window !== 'undefined') {
+                                    window.scrollTo(0, 0)
+                                }
+                                return (<SubscriberBannerAdminEditPage {...mixDefaults(props)}/>)
+                            }
+                            }/>
 
 
                                 <Route exact path="/admin/about-home" component={HomeAboutUsAdminPage}/>

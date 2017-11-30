@@ -14,6 +14,15 @@
     position: relative;
 }
 
+.about-image-block .image {
+    max-width: 500px;
+    overflow: hidden;
+}
+
+.about-image-block .image img {
+    width: 100%;
+}
+
 .about-image-block .image1 {
     width: 35%;
     position: absolute;
@@ -32,4 +41,18 @@
 
 .about-us.dark-pattern .content {
     font-size: 1.6em;
+}
+
+.vertical-center {
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+
+    display: flex;
+    align-items: center;
+}
+
+/* Extra small devices (767px and down) */
+@media (max-width: 767px) {
+    .row.vertical-center {
+        display: block; /* Turn off the flexible box layout */
+    }
 }

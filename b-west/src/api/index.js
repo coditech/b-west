@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
-import  {db_mongoose} from "../databaseConnection";
+import {db_mongoose} from "../databaseConnection";
 import {
     aboutUsHomeSectionModel,
     aboutUsModel,
@@ -10,7 +10,8 @@ import {
     productsModel,
     findAStoreModel,
     homeHeaderModel,
-    instaBannerModel
+    instaBannerModel,
+    subscriberBannerModel
 } from "./model"
 import {aboutUsHomeSectionRef, contactUsRef, firebasePushData, subscribe} from "./firebaseData";
 import {uploadGoogle, uploadImageToStorage} from "./firebaseStorage";
@@ -48,7 +49,7 @@ router.use((req, res, next) => {
 });
 router.post('/login', login);
 
-router.post('/users_get', verifyAuth,getUsers);
+router.post('/users_get', verifyAuth, getUsers);
 router.post('/users', verifyAuth, signup);
 router.put('/users', verifyAuth, updateUser);
 // router.get('/users', getUsers);
@@ -82,6 +83,7 @@ router.put("/find-a-store-header", verifyAuth, uploadGoogle.any(), findAStoreMod
 router.put("/home-header", verifyAuth, uploadGoogle.any(), homeHeaderModel.homeHeader_update);
 
 router.put("/instagram-banner", verifyAuth, uploadGoogle.any(), instaBannerModel.instaBanner_update);
+router.put("/subscriberBanner", verifyAuth, uploadGoogle.any(), subscriberBannerModel.subscriberBanner_update);
 
 router.post('/homeheader', verifyAuth, uploadGoogle.any(), (req, res, next) => {
 

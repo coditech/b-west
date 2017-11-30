@@ -19,7 +19,7 @@ const Banner = ({backgroundImage}) => {
                             @b-west
                         </h2>
                         <h3>Join Our JOIN OUR JOURNEY</h3>
-                        <a href={'https://instagram.com'} target={'_blank'}
+                        <a href={'https://instagram.com/bwestngo/'} target={'_blank'}
                            className={' btn btn-color btn-med insta_btn'}>Follow Us</a>
                     </div>
                 </div>

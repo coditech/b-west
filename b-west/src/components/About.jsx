@@ -7,12 +7,12 @@ const About = ({title, subTitle, content, imageOneSrc, imageOneAlt, imageTwoSrc,
     const style = {
         maxHeight: '500px',
         overflow: 'hidden'
-    }
+    };
     return (
         <section className="welcome intro-style-2 padding-top-20  padding-bottom-20 dark-pattern about-us">
             <div className="container">
-                <div className="row">
-                    <div className="col-md-5 text-center">
+                <div className="row  vertical-center">
+                    <div className="col-md-6 text-center">
                         <div className="heading-block no-margin">
 
                             <h2 className="no-margin margin-bottom-30  title">
@@ -31,21 +31,15 @@ const About = ({title, subTitle, content, imageOneSrc, imageOneAlt, imageTwoSrc,
                     </div>
                     <br/>
 
-                    <div className="col-md-7 text-center about-image-block">
-                        <div className={' image1'}>
+                    <div className="col-md-6 text-center about-image-block">
+                        <div className={' image img-responsive'}>
                             <img
                                 className=""
-                                src={imageOneSrc}
+                                src={imageTwoSrc}
                                 alt={imageOneAlt}
                             />
                         </div>
-                        <div className={' image2'} style={style}>
-                            <img
-                                className="img-responsive"
-                                src={imageTwoSrc}
-                                alt={imageTwoAlt}
-                            />
-                        </div>
+
                     </div>
                 </div>
             </div>

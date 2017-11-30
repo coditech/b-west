@@ -29,8 +29,9 @@ const deleteAction = (action_url, action_refresh, token) => {
         })
 }
 export const ActionCell = props => {
-    const {action, rowIndex, columnKey, data, token} = props;
-    const {action_delete, action_url, refreshData} = action;
+
+    const {action, rowIndex, columnKey, data} = props;
+    const {action_delete, action_url, refreshData, token} = action;
     const key = getObjectAt(data, rowIndex) ? getObjectAt(data, rowIndex)[columnKey] : '';
     const actionView = action_url + '/' + key;
     const actionEdit = action_url + '/' + key + '/edit';

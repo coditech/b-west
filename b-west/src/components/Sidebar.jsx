@@ -17,6 +17,7 @@ const SideBar = () => {
         , {name: 'Find A Store', url: '/admin/find-a-store'}
         , {name: 'Home Header', url: '/admin/home-header'}
         , {name: 'Instagram Banner', url: '/admin/instagram-banner'}
+        , {name: 'Subscriber Banner', url: '/admin/subscriberBanner'}
     ];
 
 
