@@ -34,7 +34,7 @@
     "react-quill": "^1.1.0",
     "react-router-dom": "^4.2.2",
     "react-select": "^1.1.0",
-    "sequelize": "^4.13.17",
+    "sequelize": "^5.15.1",
     "superagent": "^3.6.3",
     "wowjs": "^1.1.3"
   }
